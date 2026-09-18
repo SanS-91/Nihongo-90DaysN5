@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Quick Review hub for N5 Japanese." />
+  <title>Quick Review — Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-soft: #e8f6f1;
+
+      --blue: #c9def1;
+      --blue-soft: #edf5fb;
+
+      --butter: #f3e4ae;
+      --butter-soft: #fff7db;
+
+      --lavender: #d9cdec;
+      --lavender-soft: #f4eefb;
+
+      --coral: #f4c8bd;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 7% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 93% 9%, rgba(191,222,212,.21), transparent 27%),
+        radial-gradient(circle at 68% 94%, rgba(201,222,241,.16), transparent 31%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    /* NAV */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.72);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .nav-links .n4-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .soon-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--mint);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.77);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 42px 0 22px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(30px, 4vw, 50px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 92% 0%, rgba(239,166,181,.22), transparent 27%),
+        radial-gradient(circle at 7% 100%, rgba(191,222,212,.24), transparent 33%),
+        rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--mint-soft);
+      color: #5f8e80;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 8px;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .hero-jp {
+      color: var(--sakura-deep);
+      font-size: clamp(20px, 2.5vw, 29px);
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+    }
+
+    .hero-lead {
+      max-width: 820px;
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .pill {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* QUICK START */
+    .block {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(28px, 3.5vw, 41px);
+      line-height: 1.06;
+      letter-spacing: -.04em;
+    }
+
+    .section-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .quick-card {
+      min-height: 165px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: .2s ease;
+    }
+
+    .quick-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .quick-card:nth-child(1) { background: var(--sakura-soft); }
+    .quick-card:nth-child(2) { background: var(--mint-soft); }
+    .quick-card:nth-child(3) { background: var(--blue-soft); }
+    .quick-card:nth-child(4) { background: var(--butter-soft); }
+
+    .quick-card small {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .quick-card h3 {
+      margin: 14px 0 5px;
+      font-size: 18px;
+      letter-spacing: -.02em;
+    }
+
+    .quick-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .quick-arrow {
+      margin-top: 14px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    /* CATEGORY HUB */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .category-card {
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(238,229,225,.95);
+      background: rgba(255,255,255,.84);
+      box-shadow: var(--shadow-soft);
+      transition: .2s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .category-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .category-icon {
+      flex: 0 0 auto;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .category-card:nth-child(1) .category-icon { background: var(--sakura-soft); color: #9b5969; }
+    .category-card:nth-child(2) .category-icon { background: var(--mint-soft); color: #5d8d7f; }
+    .category-card:nth-child(3) .category-icon { background: var(--blue-soft); color: #5a7892; }
+    .category-card:nth-child(4) .category-icon { background: var(--butter-soft); color: #9b7c2e; }
+    .category-card:nth-child(5) .category-icon { background: var(--lavender-soft); color: #7b6799; }
+    .category-card:nth-child(6) .category-icon { background: var(--coral-soft); color: #a76858; }
+    .category-card:nth-child(7) .category-icon { background: #eef6ee; color: #668c68; }
+    .category-card:nth-child(8) .category-icon { background: #f8f0f4; color: #966b7c; }
+
+    .category-copy h3 {
+      margin: 2px 0 5px;
+      font-size: 22px;
+      letter-spacing: -.025em;
+    }
+
+    .category-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .topic-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 17px;
+    }
+
+    .topic-chip {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #f8f4f2;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .category-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .category-footer span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .open-link {
+      font-weight: 900;
+      color: #a05f70;
+      white-space: nowrap;
+    }
+
+    /* YOUR REVIEW */
+    .review-status {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .status-card {
+      padding: 22px;
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .status-card h3 {
+      margin: 0 0 6px;
+      font-size: 21px;
+      letter-spacing: -.02em;
+    }
+
+    .status-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .status-number {
+      margin-top: 18px;
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -.05em;
+    }
+
+    .status-number small {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: normal;
+      margin-left: 5px;
+    }
+
+    .favorite-preview {
+      margin-top: 14px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .favorite-item {
+      padding: 11px 12px;
+      border-radius: 14px;
+      background: #faf7f5;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .empty-copy {
+      margin-top: 14px;
+      padding: 13px 14px;
+      border-radius: 14px;
+      background: #faf7f5;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* TOPIC STRIP */
+    .topic-strip {
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(201,222,241,.25), transparent 32%),
+        radial-gradient(circle at 90% 90%, rgba(243,228,174,.26), transparent 31%),
+        rgba(255,255,255,.8);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .topic-strip h3 {
+      margin: 0 0 5px;
+      font-size: 24px;
+      letter-spacing: -.03em;
+    }
+
+    .topic-strip p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .topic-strip .topic-chips {
+      margin-top: 18px;
+    }
+
+    footer {
+      padding: 38px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    @media (max-width: 980px) {
+      .quick-grid { grid-template-columns: repeat(2, 1fr); }
+      .category-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .review-status {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(calc(100% - 22px), var(--max));
+      }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      .quick-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card,
+      .status-card,
+      .topic-strip {
+        padding: 18px;
+      }
+
+      .category-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Nihongo 90 Home">
+        <span class="brand-mark">🌸</span>
+        <span class="brand-copy">
+          Nihongo 90
+          <small>Japanese for real life</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="n5.html">N5 Course</a>
+        <a class="active" href="review.html">Quick Review</a>
+        <a class="n4-link" href="n4.html">N4 <span class="soon-dot"></span></a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Mở menu" aria-expanded="false">☰</button>
+    </div>
+
+    <nav class="mobile-menu container" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="n5.html">N5 Course</a>
+      <a href="review.html">Quick Review</a>
+      <a href="n4.html">N4 · Coming Soon</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <span class="eyebrow">N5 · Quick Review</span>
+
+          <h1>Ôn đúng thứ bạn cần.</h1>
+          <div class="hero-jp">さっと復習しよう。</div>
+
+          <p class="hero-lead">
+            Không cần nhớ kiến thức nằm ở Day nào. Chọn Vocabulary, Grammar,
+            Expressions, Situations, Listening, Speaking, Kana hoặc Kanji
+            và vào thẳng phần muốn ôn.
+          </p>
+
+          <div class="hero-pills">
+            <span class="pill">5–15 phút / lượt</span>
+            <span class="pill">Theo chủ đề</span>
+            <span class="pill">N5 Beginner</span>
+            <span class="pill">Favorites hỗ trợ localStorage</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Ôn nhanh 5–10 phút</h2>
+            <p>Chọn một mục nếu bạn chỉ có ít thời gian.</p>
+          </div>
+        </div>
+
+        <div class="quick-grid">
+          <a class="quick-card" href="review-expressions.html">
+            <div>
+              <small>Quick pick 01</small>
+              <h3>10 câu giao tiếp thiết yếu</h3>
+              <p>Chào hỏi, xin lỗi, nhờ vả, không hiểu, gọi nhân viên.</p>
+            </div>
+            <div class="quick-arrow">Expressions →</div>
+          </a>
+
+          <a class="quick-card" href="review-vocabulary.html">
+            <div>
+              <small>Quick pick 02</small>
+              <h3>Flashcard từ vựng</h3>
+              <p>Ẩn nghĩa, nghe lại và tự nhớ theo chủ đề.</p>
+            </div>
+            <div class="quick-arrow">Vocabulary →</div>
+          </a>
+
+          <a class="quick-card" href="review-grammar.html">
+            <div>
+              <small>Quick pick 03</small>
+              <h3>1 điểm ngữ pháp</h3>
+              <p>Công thức ngắn + ví dụ + mẹo tiếng Việt.</p>
+            </div>
+            <div class="quick-arrow">Grammar →</div>
+          </a>
+
+          <a class="quick-card" href="review-situations.html">
+            <div>
+              <small>Quick pick 04</small>
+              <h3>1 tình huống sinh tồn</h3>
+              <p>Restaurant, station, shopping, hotel hoặc airport.</p>
+            </div>
+            <div class="quick-arrow">Situations →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Quick Review Library</h2>
+            <p>8 nhóm ôn tập độc lập, có thể mở bất kỳ lúc nào trong lộ trình 90 ngày.</p>
+          </div>
+        </div>
+
+        <div class="category-grid">
+          <a class="category-card" href="review-vocabulary.html">
+            <div class="category-top">
+              <div class="category-icon">あ</div>
+              <div class="category-copy">
+                <h3>Vocabulary</h3>
+                <p>Từ vựng theo chủ đề, nghe, flashcard và ẩn nghĩa.</p>
+              </div>
+            </div>
+            <div class="topic-chips">
+              <span class="topic-chip">Greetings</span>
+              <span class="topic-chip">Family</span>
+              <span class="topic-chip">Food</span>
+              <span class="topic-chip">Shopping</span>
+              <span class="topic-chip">Transport</span>
+              <span class="topic-chip">Travel</span>
+            </div>
+            <div class="category-footer">
+              <span>Dùng khi muốn ôn nhanh từ/cụm từ.</span>
+              <strong class="open-link">Mở Vocabulary →</strong>
+            </div>
+          </a>
+
+          <a class="category-card" href="review-grammar.html">
+            <div class="category-top">
+              <div class="category-icon">文</div>
+              <div class="category-copy">
+                <h3>Grammar</h3>
+                <p>Ngữ pháp N5 giải thích ngắn, rõ và có mẹo tiếng Việt.</p>
+              </div>
+            </div>
+            <div class="topic-chips">
+              <span class="topic-chip">です</span>
+              <span class="topic-chip">は / も / の</span>
+              <span class="topic-chip">あります / います</span>
+              <span class="topic-chip">て-form</span>
+              <span class="topic-chip">〜たい</span>
+              <span class="topic-chip">〜から</span>
+            </div>
+            <div class="category-footer">
+              <span>Dùng khi quên cấu trúc hoặc muốn tra nhanh.</span>
+              <strong class="open-link">Mở Grammar →</strong>
+            </div>
+          </a>
+
+          <a class="category-card" href="review-expressions.html">
+            <div class="category-top">
+              <div class="category-icon">会</div>
+              <div class="category-copy">
+                <h3>Expressions</h3>
+                <p>Câu và cụm người Nhật dùng thật trong giao tiếp hằng ngày.</p>
+              </div>
+            </div>
+            <div class="topic-chips">
+              <span class="topic-chip">Greeting</span>
+              <span class="topic-chip">Thanks</span>
+              <span class="topic-chip">Apology</span>
+              <span class="topic-chip">Requests</span>
+              <span class="topic-chip">Permission</span>
+              <span class="topic-chip">Not understanding</span>
+            </div>
+            <div class="category-footer">
+              <span>Dùng khi muốn tăng phản xạ nói nhanh.</span>
+              <strong class="open-link">Mở Expressions →</strong>
+            </div>
+          </a>
+
+          <a class="category-card" href="review-situations.html">
+            <div class="category-top">
+              <div class="category-icon">場</div>
+              <div class="category-copy">
+                <h3>Situations</h3>
+                <p>Ôn theo tình huống thực tế trước khi đi Nhật hoặc cần dùng ngay.</p>
+              </div>
+            </div>
+            <div class="topic-chips">
+              <span class="topic-chip">Café</span>
+              <span class="topic-chip">Restaurant</span>
+              <span class="topic-chip">Shopping</span>
+              <span class="topic-chip">Train Station</span>
+              <span class="topic-chip">Hotel</span>
+              <span class="topic-chip">Airport</span>
+            </div>
+            <div class="category-footer">
+              <span>Dùng khi cần “survival Japanese”.</span>
+              <strong class="open-link">Mở Situations →</strong>
+            </div>
+          </a>
+
+          <a class="category-card" href="review-listening.html">
+            <div class="category-top">
+              <div class="category-icon">聴</div>
+              <div class="category-copy">
+                <h3>Listening</h3>
+                <p>Nghe chọn đáp án, nhận diện câu và nghe chép ngắn.</p>
+              </div>
+            </div>
+            <div class="topic-chips">
+              <span class="topic-chip">Easy</span>
+              <span class="topic-chip">Normal</span>
+              <span class="topic-chip">Challenge</span>
+              <span class="topic-chip">Daily Life</span>
+              <span class="topic-chip">Travel</span>
+            </div>
+            <div class="category-footer">
+              <span>Dùng khi muốn luyện tai riêng.</span>
+              <strong class="open-link">Mở Listening →</strong>
+            </div>
+          </a>
+
+          <a class="category-card" href="review-speaking.html">
+            <div class="category-top">
+              <div class="category-icon">話</div>
+              <div class="category-copy">
+                <h3>Speaking</h3>
+                <p>Repeat, shadowing, role-play và rapid response.</p>
+              </div>
+            </div>
+            <div class="topic-chips">
+              <span class="topic-chip">Repeat</span>
+              <span class="topic-chip">Shadow</span>
+              <span class="topic-chip">Answer</span>
+              <span class="topic-chip">Role Play</span>
+              <span class="topic-chip">Rapid Response</span>
+            </div>
+            <div class="category-footer">
+              <span>Dùng khi muốn bật phản xạ nói.</span>
+              <strong class="open-link">Mở Speaking →</strong>
+            </div>
+          </a>
+
+          <a class="category-card" href="review-kana.html">
+            <div class="category-top">
+              <div class="category-icon">かな</div>
+              <div class="category-copy">
+                <h3>Kana</h3>
+                <p>Hiragana, Katakana, nghe âm và nhóm chữ dễ nhầm.</p>
+              </div>
+            </div>
+            <div class="topic-chips">
+              <span class="topic-chip">Hiragana</span>
+              <span class="topic-chip">Katakana</span>
+              <span class="topic-chip">Confusing Kana</span>
+              <span class="topic-chip">Mini Quiz</span>
+            </div>
+            <div class="category-footer">
+              <span>Dùng khi muốn đọc nhanh hơn, bớt lệ thuộc Romaji.</span>
+              <strong class="open-link">Mở Kana →</strong>
+            </div>
+          </a>
+
+          <a class="category-card" href="review-kanji.html">
+            <div class="category-top">
+              <div class="category-icon">日</div>
+              <div class="category-copy">
+                <h3>Kanji</h3>
+                <p>Kanji N5 thiết yếu, học qua từ và tình huống quen thuộc.</p>
+              </div>
+            </div>
+            <div class="topic-chips">
+              <span class="topic-chip">Numbers</span>
+              <span class="topic-chip">Time</span>
+              <span class="topic-chip">People</span>
+              <span class="topic-chip">Places</span>
+              <span class="topic-chip">Daily Life</span>
+            </div>
+            <div class="category-footer">
+              <span>Dùng khi muốn ghi nhớ chữ trong ngữ cảnh.</span>
+              <strong class="open-link">Mở Kanji →</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Your Review</h2>
+            <p>Thông tin được đọc trực tiếp từ tiến độ và Favorites của N5.</p>
+          </div>
+        </div>
+
+        <div class="review-status">
+          <div class="status-card">
+            <h3>Tiến độ N5 hiện tại</h3>
+            <p>Quick Review không thay thế lộ trình, mà giúp củng cố những gì đã học.</p>
+            <div class="status-number">
+              <span id="completedCount">0</span><small>/ 90 days</small>
+            </div>
+          </div>
+
+          <div class="status-card">
+            <h3>Favorites gần đây</h3>
+            <p>Các Day bạn đã đánh dấu ★ sẽ xuất hiện ở đây.</p>
+            <div class="favorite-preview" id="favoritePreview"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="container">
+        <div class="topic-strip">
+          <h3>Ôn theo “nhu cầu thật” cũng được</h3>
+          <p>
+            Nếu sắp đi Nhật, bạn không cần học tuần tự. Hãy mở Situations hoặc Expressions
+            và chọn đúng hoàn cảnh cần dùng.
+          </p>
+
+          <div class="topic-chips">
+            <a class="topic-chip" href="review-situations.html">☕ Café</a>
+            <a class="topic-chip" href="review-situations.html">🍜 Restaurant</a>
+            <a class="topic-chip" href="review-situations.html">🛍 Shopping</a>
+            <a class="topic-chip" href="review-situations.html">🚉 Train Station</a>
+            <a class="topic-chip" href="review-situations.html">🏨 Hotel</a>
+            <a class="topic-chip" href="review-situations.html">✈ Airport</a>
+            <a class="topic-chip" href="review-expressions.html">❓ Không hiểu</a>
+            <a class="topic-chip" href="review-expressions.html">🙏 Nhờ giúp đỡ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <span class="footer-brand">🌸 Nihongo 90</span>
+        <span> · Quick Review</span>
+      </div>
+      <div>Review little. Remember longer.</div>
+    </div>
+  </footer>
+
+  <script>
+    const LESSON_TITLES = {
+      1:"はじめまして — Nice to Meet You",
+      2:"わたしは〜です — Introducing Yourself",
+      3:"〜ですか — Simple Questions",
+      4:"これは何ですか — What's This?",
+      5:"Numbers & Age",
+      6:"どこから来ましたか — Where Are You From?",
+      7:"仕事は何ですか — Jobs & Study",
+      8:"My Family",
+      9:"好きです — Likes & Dislikes",
+      10:"Survival Conversation #1",
+      11:"What Time Is It?",
+      12:"My Daily Routine",
+      13:"Morning to Evening",
+      14:"Days & Dates",
+      15:"My Schedule",
+      16:"Where Are You Going?",
+      17:"What Are You Doing?",
+      18:"Let's Go Together",
+      19:"Weekend Plans",
+      20:"Daily Life Challenge",
+      21:"At a Café",
+      22:"Ordering Food",
+      23:"What Would You Like?",
+      24:"Food I Like",
+      25:"How Much Is It?",
+      26:"Shopping",
+      27:"Sizes & Colors",
+      28:"Numbers & Quantities",
+      29:"Convenience Store Japanese",
+      30:"Restaurant & Shopping Challenge",
+      31:"Where Is It?",
+      32:"Here / There / Over There",
+      33:"Asking for Directions",
+      34:"Right / Left / Straight",
+      35:"At the Train Station",
+      36:"Which Train?",
+      37:"Buying a Ticket",
+      38:"Taking a Taxi",
+      39:"How Long Does It Take?",
+      40:"Transport Challenge",
+      41:"Weather",
+      42:"Hot / Cold / Beautiful",
+      43:"Describing Places",
+      44:"Describing People",
+      45:"My Room",
+      46:"There Is / There Are",
+      47:"Work & Office",
+      48:"School & Study",
+      49:"Simple Opinions",
+      50:"Everyday Conversation Challenge",
+      51:"What Do You Like Doing?",
+      52:"I Want to...",
+      53:"Where Do You Want to Go?",
+      54:"Shall We...?",
+      55:"Would You Like to...?",
+      56:"Making Plans",
+      57:"Meeting a Friend",
+      58:"Café with Friends",
+      59:"Changing Plans",
+      60:"Social Conversation Challenge",
+      61:"て-form Introduction",
+      62:"Please Do...",
+      63:"May I...?",
+      64:"You Mustn't...",
+      65:"Please Don't...",
+      66:"Can You Help Me?",
+      67:"Please Wait",
+      68:"Please Say It Again",
+      69:"I Don't Understand",
+      70:"Communication Challenge",
+      71:"Past Tense",
+      72:"What Did You Do Yesterday?",
+      73:"How Was It?",
+      74:"Weekend Story",
+      75:"Because...",
+      76:"I Think...",
+      77:"Tomorrow's Plan",
+      78:"Next Week",
+      79:"Travel Plans",
+      80:"Tell Me About Your Week",
+      81:"Airport",
+      82:"Hotel Check-in",
+      83:"Restaurant",
+      84:"Shopping",
+      85:"Train Station",
+      86:"Asking for Help",
+      87:"Meeting Japanese Friends",
+      88:"One Day in Tokyo",
+      89:"Full Survival Conversation",
+      90:"FINAL N5 Conversation Challenge"
+    };
+
+    const pad = n => String(n).padStart(2, "0");
+
+    function isCompleted(day) {
+      const d = pad(day);
+      const keys = [
+        `n5-day-${d}`,
+        `n5-day-${day}`,
+        `n5-day-${d}-completed`,
+        `day${d}-completed`
+      ];
+
+      return keys.some(key => {
+        const value = localStorage.getItem(key);
+        return value === "completed" || value === "true" || value === "1";
+      });
+    }
+
+    function isFavorite(day) {
+      return localStorage.getItem(`n5-favorite-day-${pad(day)}`) === "true";
+    }
+
+    function renderStatus() {
+      let completed = 0;
+      const favorites = [];
+
+      for (let day = 1; day <= 90; day++) {
+        if (isCompleted(day)) completed++;
+        if (isFavorite(day)) favorites.push(day);
+      }
+
+      document.getElementById("completedCount").textContent = completed;
+
+      const wrap = document.getElementById("favoritePreview");
+
+      if (!favorites.length) {
+        wrap.innerHTML = `
+          <div class="empty-copy">
+            Chưa có Favorite. Trong mỗi Day, bấm ☆ Favorite để lưu bài muốn ôn lại.
+          </div>
+        `;
+        return;
+      }
+
+      const recent = favorites.slice(-4).reverse();
+
+      wrap.innerHTML = recent.map(day => `
+        <a class="favorite-item" href="day${pad(day)}.html">
+          ★ Day ${pad(day)} · ${LESSON_TITLES[day]}
+        </a>
+      `).join("");
+    }
+
+    function setupMenu() {
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "✕" : "☰";
+      });
+
+      menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+          btn.textContent = "☰";
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupMenu();
+      renderStatus();
+
+      window.addEventListener("focus", renderStatus);
+      window.addEventListener("storage", renderStatus);
+    });
+  </script>
+</body>
+</html>
