@@ -4,596 +4,695 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fffaf7" />
-  <meta name="description" content="Nihongo 90 — Quick Review hub for N5 Japanese." />
-  <title>Quick Review — Nihongo 90</title>
+  <meta name="description" content="Nihongo 90 — N5 Retention System and Quick Review hub." />
+  <title>N5 Review System — Nihongo 90</title>
 
   <style>
-    :root {
-      --bg: #fffaf7;
-      --text: #3e3a39;
-      --muted: #7d7572;
-      --line: #eee5e1;
+    :root{
+      --bg:#fffaf7;
+      --text:#3e3a39;
+      --muted:#7d7572;
+      --line:#eee5e1;
 
-      --sakura: #efa6b5;
-      --sakura-deep: #db8195;
-      --sakura-soft: #fde7ec;
+      --sakura:#efa6b5;
+      --sakura-deep:#db8195;
+      --sakura-soft:#fde7ec;
 
-      --mint: #bfded4;
-      --mint-soft: #e8f6f1;
+      --mint:#bfded4;
+      --mint-soft:#e8f6f1;
 
-      --blue: #c9def1;
-      --blue-soft: #edf5fb;
+      --blue:#c9def1;
+      --blue-soft:#edf5fb;
 
-      --butter: #f3e4ae;
-      --butter-soft: #fff7db;
+      --butter:#f3e4ae;
+      --butter-soft:#fff7db;
 
-      --lavender: #d9cdec;
-      --lavender-soft: #f4eefb;
+      --lavender:#d9cdec;
+      --lavender-soft:#f4eefb;
 
-      --coral: #f4c8bd;
-      --coral-soft: #fff0ec;
+      --coral:#f4c8bd;
+      --coral-soft:#fff0ec;
 
-      --shadow: 0 18px 45px rgba(91,67,61,.08);
-      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
-
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --max: 1180px;
+      --shadow:0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft:0 10px 28px rgba(91,67,61,.06);
+      --radius-xl:28px;
+      --max:1180px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
       background:
         radial-gradient(circle at 7% 4%, rgba(239,166,181,.17), transparent 28%),
-        radial-gradient(circle at 93% 9%, rgba(191,222,212,.21), transparent 27%),
+        radial-gradient(circle at 93% 8%, rgba(191,222,212,.21), transparent 27%),
         radial-gradient(circle at 68% 94%, rgba(201,222,241,.16), transparent 31%),
         var(--bg);
-      font-family:
-        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
-      line-height: 1.6;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,
+        "Segoe UI","Noto Sans","Noto Sans JP",Arial,sans-serif;
+      line-height:1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;cursor:pointer}
 
-    .container {
-      width: min(calc(100% - 32px), var(--max));
-      margin-inline: auto;
+    .container{
+      width:min(calc(100% - 32px),var(--max));
+      margin-inline:auto;
     }
 
     /* NAV */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      backdrop-filter: blur(18px);
-      background: rgba(255,250,247,.8);
-      border-bottom: 1px solid rgba(238,229,225,.72);
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:70;
+      backdrop-filter:blur(18px);
+      background:rgba(255,250,247,.8);
+      border-bottom:1px solid rgba(238,229,225,.72);
     }
 
-    .nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+    .nav{
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
     }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      font-weight: 800;
-      letter-spacing: -.02em;
-      white-space: nowrap;
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:11px;
+      font-weight:800;
+      letter-spacing:-.02em;
+      white-space:nowrap;
     }
 
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: linear-gradient(145deg, var(--sakura-soft), #fff);
-      box-shadow: var(--shadow-soft);
-      font-size: 20px;
+    .brand-mark{
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:linear-gradient(145deg,var(--sakura-soft),#fff);
+      box-shadow:var(--shadow-soft);
+      font-size:20px;
     }
 
-    .brand-copy {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.08;
+    .brand-copy{
+      display:flex;
+      flex-direction:column;
+      line-height:1.08;
     }
 
-    .brand-copy small {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      margin-top: 4px;
+    .brand-copy small{
+      color:var(--muted);
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      margin-top:4px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px;
-      border: 1px solid rgba(238,229,225,.85);
-      border-radius: 999px;
-      background: rgba(255,255,255,.68);
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:6px;
+      border:1px solid rgba(238,229,225,.85);
+      border-radius:999px;
+      background:rgba(255,255,255,.68);
     }
 
-    .nav-links a {
-      padding: 9px 14px;
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
+    .nav-links a{
+      padding:9px 14px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
     }
 
     .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-      background: #fff;
-      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    .nav-links a.active{
+      color:var(--text);
+      background:#fff;
+      box-shadow:0 5px 18px rgba(77,55,50,.07);
     }
 
-    .nav-links .n4-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
+    .menu-btn{
+      display:none;
+      width:44px;
+      height:44px;
+      border:0;
+      background:#fff;
+      border-radius:14px;
+      box-shadow:var(--shadow-soft);
+      color:var(--text);
     }
 
-    .soon-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--mint);
+    .mobile-menu{
+      display:none;
+      padding:0 16px 18px;
     }
 
-    .menu-btn {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border: 0;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: var(--shadow-soft);
-      color: var(--text);
+    .mobile-menu.open{
+      display:grid;
+      gap:8px;
     }
 
-    .mobile-menu {
-      display: none;
-      padding: 0 16px 18px;
-    }
-
-    .mobile-menu.open {
-      display: grid;
-      gap: 8px;
-    }
-
-    .mobile-menu a {
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.77);
-      border: 1px solid var(--line);
-      font-weight: 700;
-      color: var(--muted);
+    .mobile-menu a{
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      font-weight:700;
+      color:var(--muted);
     }
 
     /* HERO */
-    .hero {
-      padding: 42px 0 22px;
-    }
+    .hero{padding:42px 0 22px}
 
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(30px, 4vw, 50px);
-      border-radius: var(--radius-xl);
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      padding:clamp(30px,4vw,52px);
+      border-radius:var(--radius-xl);
       background:
         radial-gradient(circle at 92% 0%, rgba(239,166,181,.22), transparent 27%),
-        radial-gradient(circle at 7% 100%, rgba(191,222,212,.24), transparent 33%),
-        rgba(255,255,255,.84);
-      border: 1px solid rgba(238,229,225,.94);
-      box-shadow: var(--shadow);
+        radial-gradient(circle at 7% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border:1px solid rgba(238,229,225,.94);
+      box-shadow:var(--shadow);
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--mint-soft);
-      color: #5f8e80;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .06em;
-      text-transform: uppercase;
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:var(--mint-soft);
+      color:#5f8e80;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
     }
 
-    .hero h1 {
-      margin: 18px 0 8px;
-      font-size: clamp(42px, 6vw, 70px);
-      line-height: 1;
-      letter-spacing: -.055em;
+    .hero h1{
+      margin:18px 0 8px;
+      font-size:clamp(42px,6vw,70px);
+      line-height:1;
+      letter-spacing:-.055em;
     }
 
-    .hero-jp {
-      color: var(--sakura-deep);
-      font-size: clamp(20px, 2.5vw, 29px);
-      font-family: "Noto Sans JP", sans-serif;
-      font-weight: 800;
+    .hero-jp{
+      color:var(--sakura-deep);
+      font-size:clamp(20px,2.5vw,29px);
+      font-family:"Noto Sans JP",sans-serif;
+      font-weight:800;
     }
 
-    .hero-lead {
-      max-width: 820px;
-      margin: 17px 0 0;
-      color: var(--muted);
-      font-size: 17px;
+    .hero-lead{
+      max-width:880px;
+      margin:17px 0 0;
+      color:var(--muted);
+      font-size:17px;
     }
 
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 22px;
+    .hero-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:22px;
     }
 
-    .pill {
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.76);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
+    .pill{
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.76);
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
     }
 
-    /* QUICK START */
-    .block {
-      padding: 28px 0;
+    /* SECTION */
+    .block{padding:28px 0}
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      margin-bottom:18px;
     }
 
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 18px;
-      margin-bottom: 18px;
+    .section-head h2{
+      margin:0;
+      font-size:clamp(28px,3.5vw,41px);
+      line-height:1.06;
+      letter-spacing:-.04em;
     }
 
-    .section-head h2 {
-      margin: 0;
-      font-size: clamp(28px, 3.5vw, 41px);
-      line-height: 1.06;
-      letter-spacing: -.04em;
+    .section-head p{
+      margin:6px 0 0;
+      color:var(--muted);
     }
 
-    .section-head p {
-      margin: 6px 0 0;
-      color: var(--muted);
+    /* SESSION BUILDER */
+    .session-shell{
+      padding:22px;
+      border-radius:var(--radius-xl);
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(238,229,225,.95);
+      box-shadow:var(--shadow-soft);
     }
 
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+    .time-tabs{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
     }
 
-    .quick-card {
-      min-height: 165px;
-      padding: 18px;
-      border-radius: 22px;
-      border: 1px solid rgba(238,229,225,.94);
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: .2s ease;
+    .time-btn{
+      padding:18px 14px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      text-align:left;
+      transition:.2s ease;
     }
 
-    .quick-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
+    .time-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow-soft);
     }
 
-    .quick-card:nth-child(1) { background: var(--sakura-soft); }
-    .quick-card:nth-child(2) { background: var(--mint-soft); }
-    .quick-card:nth-child(3) { background: var(--blue-soft); }
-    .quick-card:nth-child(4) { background: var(--butter-soft); }
-
-    .quick-card small {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+    .time-btn.active{
+      background:var(--sakura-soft);
+      border-color:#f0cad2;
     }
 
-    .quick-card h3 {
-      margin: 14px 0 5px;
-      font-size: 18px;
-      letter-spacing: -.02em;
+    .time-btn strong{
+      display:block;
+      font-size:24px;
+      line-height:1;
     }
 
-    .quick-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
+    .time-btn span{
+      display:block;
+      margin-top:7px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
     }
 
-    .quick-arrow {
-      margin-top: 14px;
-      font-weight: 900;
-      color: var(--muted);
-    }
-
-    /* CATEGORY HUB */
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .category-card {
-      position: relative;
-      overflow: hidden;
-      padding: 22px;
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(238,229,225,.95);
-      background: rgba(255,255,255,.84);
-      box-shadow: var(--shadow-soft);
-      transition: .2s ease;
-    }
-
-    .category-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-
-    .category-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .category-icon {
-      flex: 0 0 auto;
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 17px;
-      font-size: 21px;
-      font-weight: 900;
-    }
-
-    .category-card:nth-child(1) .category-icon { background: var(--sakura-soft); color: #9b5969; }
-    .category-card:nth-child(2) .category-icon { background: var(--mint-soft); color: #5d8d7f; }
-    .category-card:nth-child(3) .category-icon { background: var(--blue-soft); color: #5a7892; }
-    .category-card:nth-child(4) .category-icon { background: var(--butter-soft); color: #9b7c2e; }
-    .category-card:nth-child(5) .category-icon { background: var(--lavender-soft); color: #7b6799; }
-    .category-card:nth-child(6) .category-icon { background: var(--coral-soft); color: #a76858; }
-    .category-card:nth-child(7) .category-icon { background: #eef6ee; color: #668c68; }
-    .category-card:nth-child(8) .category-icon { background: #f8f0f4; color: #966b7c; }
-
-    .category-copy h3 {
-      margin: 2px 0 5px;
-      font-size: 22px;
-      letter-spacing: -.025em;
-    }
-
-    .category-copy p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .topic-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 17px;
-    }
-
-    .topic-chip {
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: #f8f4f2;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .category-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .category-footer span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .open-link {
-      font-weight: 900;
-      color: #a05f70;
-      white-space: nowrap;
-    }
-
-    /* YOUR REVIEW */
-    .review-status {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .status-card {
-      padding: 22px;
-      border-radius: var(--radius-xl);
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(238,229,225,.95);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .status-card h3 {
-      margin: 0 0 6px;
-      font-size: 21px;
-      letter-spacing: -.02em;
-    }
-
-    .status-card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .status-number {
-      margin-top: 18px;
-      font-size: 42px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -.05em;
-    }
-
-    .status-number small {
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: normal;
-      margin-left: 5px;
-    }
-
-    .favorite-preview {
-      margin-top: 14px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .favorite-item {
-      padding: 11px 12px;
-      border-radius: 14px;
-      background: #faf7f5;
-      border: 1px solid var(--line);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .empty-copy {
-      margin-top: 14px;
-      padding: 13px 14px;
-      border-radius: 14px;
-      background: #faf7f5;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* TOPIC STRIP */
-    .topic-strip {
-      padding: 24px;
-      border-radius: var(--radius-xl);
+    .session-plan{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:18px;
+      align-items:center;
+      padding:20px;
+      border-radius:22px;
       background:
-        radial-gradient(circle at 8% 10%, rgba(201,222,241,.25), transparent 32%),
-        radial-gradient(circle at 90% 90%, rgba(243,228,174,.26), transparent 31%),
-        rgba(255,255,255,.8);
-      border: 1px solid rgba(238,229,225,.95);
-      box-shadow: var(--shadow-soft);
+        radial-gradient(circle at 92% 12%,rgba(201,222,241,.2),transparent 28%),
+        #fff;
+      border:1px solid var(--line);
     }
 
-    .topic-strip h3 {
-      margin: 0 0 5px;
-      font-size: 24px;
-      letter-spacing: -.03em;
+    .session-plan h3{
+      margin:0 0 6px;
+      font-size:24px;
+      letter-spacing:-.03em;
     }
 
-    .topic-strip p {
-      margin: 0;
-      color: var(--muted);
+    .session-plan p{
+      margin:0;
+      color:var(--muted);
     }
 
-    .topic-strip .topic-chips {
-      margin-top: 18px;
+    .session-items{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
     }
 
-    footer {
-      padding: 38px 0 52px;
-      color: var(--muted);
-      font-size: 13px;
+    .session-item{
+      padding:11px 12px;
+      border-radius:15px;
+      background:#faf7f5;
+      border:1px solid var(--line);
     }
 
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
+    .session-item strong{
+      display:block;
+      font-size:16px;
     }
 
-    .footer-brand {
-      color: var(--text);
-      font-weight: 900;
+    .session-item span{
+      color:var(--muted);
+      font-size:11px;
+      font-weight:700;
     }
 
-    @media (max-width: 980px) {
-      .quick-grid { grid-template-columns: repeat(2, 1fr); }
-      .category-grid { grid-template-columns: 1fr; }
+    .launch-group{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-width:170px;
     }
 
-    @media (max-width: 760px) {
-      .nav-links { display: none; }
-      .menu-btn { display: grid; place-items: center; }
+    .launch-btn{
+      min-height:46px;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:900;
+      text-align:center;
+    }
 
-      .section-head {
-        flex-direction: column;
-        align-items: flex-start;
+    .launch-btn.primary{
+      background:linear-gradient(135deg,var(--sakura-deep),#e994a4);
+      color:#fff;
+      border-color:transparent;
+      box-shadow:0 10px 22px rgba(219,129,149,.2);
+    }
+
+    /* LIBRARY */
+    .library-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:15px;
+    }
+
+    .library-card{
+      padding:22px;
+      border-radius:var(--radius-xl);
+      border:1px solid rgba(238,229,225,.95);
+      background:rgba(255,255,255,.84);
+      box-shadow:var(--shadow-soft);
+      transition:.2s ease;
+    }
+
+    .library-card:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow);
+    }
+
+    .library-top{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+
+    .library-icon{
+      flex:0 0 auto;
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      border-radius:18px;
+      font-size:21px;
+      font-weight:900;
+    }
+
+    .library-card:nth-child(1) .library-icon{background:var(--sakura-soft);color:#9b5969}
+    .library-card:nth-child(2) .library-icon{background:var(--mint-soft);color:#5d8d7f}
+    .library-card:nth-child(3) .library-icon{background:var(--blue-soft);color:#5a7892}
+    .library-card:nth-child(4) .library-icon{background:var(--butter-soft);color:#9b7c2e}
+    .library-card:nth-child(5) .library-icon{background:var(--lavender-soft);color:#7b6799}
+    .library-card:nth-child(6) .library-icon{background:var(--coral-soft);color:#a76858}
+    .library-card:nth-child(7) .library-icon{background:#eef6ee;color:#668c68}
+    .library-card:nth-child(8) .library-icon{background:#f8f0f4;color:#966b7c}
+
+    .library-copy h3{
+      margin:1px 0 4px;
+      font-size:23px;
+      letter-spacing:-.025em;
+    }
+
+    .scope{
+      display:inline-flex;
+      align-items:center;
+      margin-top:3px;
+      padding:5px 8px;
+      border-radius:999px;
+      background:#f8f4f2;
+      color:#8a7f7a;
+      font-size:11px;
+      font-weight:900;
+    }
+
+    .library-copy p{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .library-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:15px;
+    }
+
+    .tag{
+      padding:5px 8px;
+      border-radius:999px;
+      background:#f8f4f2;
+      color:var(--muted);
+      font-size:10px;
+      font-weight:800;
+    }
+
+    .library-footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .library-footer span{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .open-link{
+      color:#a05f70;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    /* RETENTION */
+    .retention-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    .retention-card{
+      padding:20px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .retention-card h3{
+      margin:0 0 6px;
+      font-size:20px;
+      letter-spacing:-.02em;
+    }
+
+    .retention-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .big-number{
+      margin-top:18px;
+      font-size:42px;
+      line-height:1;
+      font-weight:900;
+      letter-spacing:-.05em;
+    }
+
+    .big-number small{
+      margin-left:5px;
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:0;
+    }
+
+    .mini-list{
+      margin-top:13px;
+      display:grid;
+      gap:7px;
+    }
+
+    .mini-list a,
+    .mini-list div{
+      padding:10px 11px;
+      border-radius:13px;
+      background:#faf7f5;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    /* SYSTEM FLOW */
+    .flow-card{
+      padding:24px;
+      border-radius:var(--radius-xl);
+      background:
+        radial-gradient(circle at 8% 10%,rgba(201,222,241,.25),transparent 32%),
+        radial-gradient(circle at 90% 90%,rgba(243,228,174,.26),transparent 31%),
+        rgba(255,255,255,.82);
+      border:1px solid rgba(238,229,225,.95);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .flow-card h3{
+      margin:0 0 5px;
+      font-size:24px;
+      letter-spacing:-.03em;
+    }
+
+    .flow-card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:9px;
+      margin-top:18px;
+    }
+
+    .flow-step{
+      padding:16px 12px;
+      border-radius:17px;
+      background:#fff;
+      border:1px solid var(--line);
+      text-align:center;
+    }
+
+    .flow-step strong{
+      display:block;
+      font-size:15px;
+    }
+
+    .flow-step span{
+      color:var(--muted);
+      font-size:11px;
+    }
+
+    footer{
+      padding:38px 0 52px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
+    }
+
+    .footer-brand{color:var(--text);font-weight:900}
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:28px;
+      z-index:100;
+      transform:translate(-50%,18px);
+      padding:12px 16px;
+      border-radius:14px;
+      background:rgba(62,58,57,.95);
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      opacity:0;
+      pointer-events:none;
+      transition:.25s ease;
+      box-shadow:var(--shadow);
+    }
+
+    .toast.show{
+      opacity:1;
+      transform:translate(-50%,0);
+    }
+
+    @media(max-width:1050px){
+      .session-items{grid-template-columns:repeat(2,1fr)}
+      .retention-grid{grid-template-columns:1fr 1fr}
+      .retention-card:last-child{grid-column:1/-1}
+    }
+
+    @media(max-width:900px){
+      .library-grid{grid-template-columns:1fr}
+      .flow{grid-template-columns:1fr 1fr}
+      .flow-step:last-child{grid-column:1/-1}
+    }
+
+    @media(max-width:760px){
+      .nav-links{display:none}
+      .menu-btn{display:grid;place-items:center}
+
+      .time-tabs{grid-template-columns:1fr 1fr}
+
+      .session-plan{
+        grid-template-columns:1fr;
       }
 
-      .review-status {
-        grid-template-columns: 1fr;
+      .launch-group{
+        flex-direction:row;
+        flex-wrap:wrap;
       }
 
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
+      .launch-btn{
+        flex:1;
+      }
+
+      .retention-grid{grid-template-columns:1fr}
+      .retention-card:last-child{grid-column:auto}
+
+      .section-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
       }
     }
 
-    @media (max-width: 560px) {
-      .container {
-        width: min(calc(100% - 22px), var(--max));
-      }
-
-      .hero-card {
-        padding: 22px;
-      }
-
-      .quick-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .category-card,
-      .status-card,
-      .topic-strip {
-        padding: 18px;
-      }
-
-      .category-footer {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+    @media(max-width:520px){
+      .container{width:min(calc(100% - 22px),var(--max))}
+      .hero-card,.session-shell,.flow-card{padding:18px}
+      .time-tabs{grid-template-columns:1fr}
+      .session-items{grid-template-columns:1fr}
+      .flow{grid-template-columns:1fr}
+      .flow-step:last-child{grid-column:auto}
+      .library-card,.retention-card{padding:18px}
     }
   </style>
 </head>
@@ -613,7 +712,7 @@
         <a href="index.html">Home</a>
         <a href="n5.html">N5 Course</a>
         <a class="active" href="review.html">Quick Review</a>
-        <a class="n4-link" href="n4.html">N4 <span class="soon-dot"></span></a>
+        <a href="n4.html">N4</a>
       </nav>
 
       <button class="menu-btn" id="menuBtn" aria-label="Mở menu" aria-expanded="false">☰</button>
@@ -631,22 +730,22 @@
     <section class="hero">
       <div class="container">
         <div class="hero-card">
-          <span class="eyebrow">N5 · Quick Review</span>
+          <span class="eyebrow">N5 Retention System</span>
 
-          <h1>Ôn đúng thứ bạn cần.</h1>
-          <div class="hero-jp">さっと復習しよう。</div>
+          <h1>Học 90 ngày. Giữ được lâu.</h1>
+          <div class="hero-jp">覚えるだけじゃない。使えるまで。</div>
 
           <p class="hero-lead">
-            Không cần nhớ kiến thức nằm ở Day nào. Chọn Vocabulary, Grammar,
-            Expressions, Situations, Listening, Speaking, Kana hoặc Kanji
-            và vào thẳng phần muốn ôn.
+            Quick Review không phải bản tóm tắt của khóa học. Đây là hệ thống duy trì N5 sau Day 90:
+            ôn theo thời gian bạn có, theo kỹ năng, theo tình huống và theo những gì bạn thực sự hay quên.
           </p>
 
           <div class="hero-pills">
-            <span class="pill">5–15 phút / lượt</span>
-            <span class="pill">Theo chủ đề</span>
-            <span class="pill">N5 Beginner</span>
-            <span class="pill">Favorites hỗ trợ localStorage</span>
+            <span class="pill">5 / 15 / 30 phút</span>
+            <span class="pill">Full N5 Review 45–60 phút</span>
+            <span class="pill">Weak Items</span>
+            <span class="pill">Favorites</span>
+            <span class="pill">Mixed Review</span>
           </div>
         </div>
       </div>
@@ -656,228 +755,211 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Ôn nhanh 5–10 phút</h2>
-            <p>Chọn một mục nếu bạn chỉ có ít thời gian.</p>
+            <h2>Hôm nay bạn có bao nhiêu thời gian?</h2>
+            <p>Chọn thời lượng trước. App sẽ gợi ý lượng ôn vừa đủ, không nhồi quá nhiều.</p>
           </div>
         </div>
 
-        <div class="quick-grid">
-          <a class="quick-card" href="review-expressions.html">
-            <div>
-              <small>Quick pick 01</small>
-              <h3>10 câu giao tiếp thiết yếu</h3>
-              <p>Chào hỏi, xin lỗi, nhờ vả, không hiểu, gọi nhân viên.</p>
-            </div>
-            <div class="quick-arrow">Expressions →</div>
-          </a>
+        <div class="session-shell">
+          <div class="time-tabs">
+            <button class="time-btn active" data-time="5">
+              <strong>5 phút</strong>
+              <span>Quick Refresh</span>
+            </button>
 
-          <a class="quick-card" href="review-vocabulary.html">
-            <div>
-              <small>Quick pick 02</small>
-              <h3>Flashcard từ vựng</h3>
-              <p>Ẩn nghĩa, nghe lại và tự nhớ theo chủ đề.</p>
-            </div>
-            <div class="quick-arrow">Vocabulary →</div>
-          </a>
+            <button class="time-btn" data-time="15">
+              <strong>15 phút</strong>
+              <span>Daily Review</span>
+            </button>
 
-          <a class="quick-card" href="review-grammar.html">
-            <div>
-              <small>Quick pick 03</small>
-              <h3>1 điểm ngữ pháp</h3>
-              <p>Công thức ngắn + ví dụ + mẹo tiếng Việt.</p>
-            </div>
-            <div class="quick-arrow">Grammar →</div>
-          </a>
+            <button class="time-btn" data-time="30">
+              <strong>30 phút</strong>
+              <span>Focus Review</span>
+            </button>
 
-          <a class="quick-card" href="review-situations.html">
+            <button class="time-btn" data-time="60">
+              <strong>45–60 phút</strong>
+              <span>Full N5 Review</span>
+            </button>
+          </div>
+
+          <div class="session-plan">
             <div>
-              <small>Quick pick 04</small>
-              <h3>1 tình huống sinh tồn</h3>
-              <p>Restaurant, station, shopping, hotel hoặc airport.</p>
+              <h3 id="sessionTitle">Quick Refresh · 5 phút</h3>
+              <p id="sessionDesc">
+                Một lượt ngắn để “đánh thức” tiếng Nhật: nhận diện nhanh, nói vài câu và kết thúc trước khi thấy mệt.
+              </p>
+
+              <div class="session-items" id="sessionItems"></div>
             </div>
-            <div class="quick-arrow">Situations →</div>
-          </a>
+
+            <div class="launch-group">
+              <a class="launch-btn primary" id="primaryLaunch" href="review-expressions.html">Bắt đầu session →</a>
+              <a class="launch-btn" href="#library">Chọn kỹ năng</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="block">
+    <section class="block" id="library">
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Quick Review Library</h2>
-            <p>8 nhóm ôn tập độc lập, có thể mở bất kỳ lúc nào trong lộ trình 90 ngày.</p>
+            <h2>N5 Knowledge Library</h2>
+            <p>Toàn bộ kiến thức N5 được tái tổ chức theo kỹ năng, không phụ thuộc Day nào.</p>
           </div>
         </div>
 
-        <div class="category-grid">
-          <a class="category-card" href="review-vocabulary.html">
-            <div class="category-top">
-              <div class="category-icon">あ</div>
-              <div class="category-copy">
+        <div class="library-grid">
+          <a class="library-card" href="review-vocabulary.html">
+            <div class="library-top">
+              <div class="library-icon">あ</div>
+              <div class="library-copy">
                 <h3>Vocabulary</h3>
-                <p>Từ vựng theo chủ đề, nghe, flashcard và ẩn nghĩa.</p>
+                <span class="scope">~500 words & chunks</span>
+                <p>Từ vựng thực dụng theo chủ đề, flashcard, nghe, recall và Weak Items.</p>
               </div>
             </div>
-            <div class="topic-chips">
-              <span class="topic-chip">Greetings</span>
-              <span class="topic-chip">Family</span>
-              <span class="topic-chip">Food</span>
-              <span class="topic-chip">Shopping</span>
-              <span class="topic-chip">Transport</span>
-              <span class="topic-chip">Travel</span>
+            <div class="library-tags">
+              <span class="tag">Daily Life</span><span class="tag">Food</span><span class="tag">Shopping</span>
+              <span class="tag">Transport</span><span class="tag">Travel</span>
             </div>
-            <div class="category-footer">
-              <span>Dùng khi muốn ôn nhanh từ/cụm từ.</span>
+            <div class="library-footer">
+              <span>5 / 15 / 30 min modes</span>
               <strong class="open-link">Mở Vocabulary →</strong>
             </div>
           </a>
 
-          <a class="category-card" href="review-grammar.html">
-            <div class="category-top">
-              <div class="category-icon">文</div>
-              <div class="category-copy">
+          <a class="library-card" href="review-grammar.html">
+            <div class="library-top">
+              <div class="library-icon">文</div>
+              <div class="library-copy">
                 <h3>Grammar</h3>
-                <p>Ngữ pháp N5 giải thích ngắn, rõ và có mẹo tiếng Việt.</p>
+                <span class="scope">~50 grammar points</span>
+                <p>Mẫu câu N5, cách dùng, lỗi người Việt hay mắc và mini production drill.</p>
               </div>
             </div>
-            <div class="topic-chips">
-              <span class="topic-chip">です</span>
-              <span class="topic-chip">は / も / の</span>
-              <span class="topic-chip">あります / います</span>
-              <span class="topic-chip">て-form</span>
-              <span class="topic-chip">〜たい</span>
-              <span class="topic-chip">〜から</span>
+            <div class="library-tags">
+              <span class="tag">Particles</span><span class="tag">て-form</span><span class="tag">Past</span>
+              <span class="tag">Requests</span><span class="tag">Plans</span>
             </div>
-            <div class="category-footer">
-              <span>Dùng khi quên cấu trúc hoặc muốn tra nhanh.</span>
+            <div class="library-footer">
+              <span>5 / 15 / 30 min modes</span>
               <strong class="open-link">Mở Grammar →</strong>
             </div>
           </a>
 
-          <a class="category-card" href="review-expressions.html">
-            <div class="category-top">
-              <div class="category-icon">会</div>
-              <div class="category-copy">
+          <a class="library-card" href="review-expressions.html">
+            <div class="library-top">
+              <div class="library-icon">会</div>
+              <div class="library-copy">
                 <h3>Expressions</h3>
-                <p>Câu và cụm người Nhật dùng thật trong giao tiếp hằng ngày.</p>
+                <span class="scope">~200 expressions</span>
+                <p>Cụm câu dùng ngay trong giao tiếp, chia theo tình huống và mức độ cần nhớ.</p>
               </div>
             </div>
-            <div class="topic-chips">
-              <span class="topic-chip">Greeting</span>
-              <span class="topic-chip">Thanks</span>
-              <span class="topic-chip">Apology</span>
-              <span class="topic-chip">Requests</span>
-              <span class="topic-chip">Permission</span>
-              <span class="topic-chip">Not understanding</span>
+            <div class="library-tags">
+              <span class="tag">Core</span><span class="tag">Useful</span><span class="tag">Survival+</span>
+              <span class="tag">Favorites</span>
             </div>
-            <div class="category-footer">
-              <span>Dùng khi muốn tăng phản xạ nói nhanh.</span>
+            <div class="library-footer">
+              <span>5 / 15 / 30 min modes</span>
               <strong class="open-link">Mở Expressions →</strong>
             </div>
           </a>
 
-          <a class="category-card" href="review-situations.html">
-            <div class="category-top">
-              <div class="category-icon">場</div>
-              <div class="category-copy">
+          <a class="library-card" href="review-situations.html">
+            <div class="library-top">
+              <div class="library-icon">場</div>
+              <div class="library-copy">
                 <h3>Situations</h3>
-                <p>Ôn theo tình huống thực tế trước khi đi Nhật hoặc cần dùng ngay.</p>
+                <span class="scope">15–18 real-life situations</span>
+                <p>Mini dialogue + phrase bank + listening + role-play cho từng tình huống.</p>
               </div>
             </div>
-            <div class="topic-chips">
-              <span class="topic-chip">Café</span>
-              <span class="topic-chip">Restaurant</span>
-              <span class="topic-chip">Shopping</span>
-              <span class="topic-chip">Train Station</span>
-              <span class="topic-chip">Hotel</span>
-              <span class="topic-chip">Airport</span>
+            <div class="library-tags">
+              <span class="tag">Restaurant</span><span class="tag">Station</span><span class="tag">Hotel</span>
+              <span class="tag">Airport</span><span class="tag">Emergency</span>
             </div>
-            <div class="category-footer">
-              <span>Dùng khi cần “survival Japanese”.</span>
+            <div class="library-footer">
+              <span>15 / 30 min focus sessions</span>
               <strong class="open-link">Mở Situations →</strong>
             </div>
           </a>
 
-          <a class="category-card" href="review-listening.html">
-            <div class="category-top">
-              <div class="category-icon">聴</div>
-              <div class="category-copy">
+          <a class="library-card" href="review-listening.html">
+            <div class="library-top">
+              <div class="library-icon">聴</div>
+              <div class="library-copy">
                 <h3>Listening</h3>
-                <p>Nghe chọn đáp án, nhận diện câu và nghe chép ngắn.</p>
+                <span class="scope">120+ prompts</span>
+                <p>Easy → Normal → Challenge, nhận diện ý, chọn phản hồi và nghe chép ngắn.</p>
               </div>
             </div>
-            <div class="topic-chips">
-              <span class="topic-chip">Easy</span>
-              <span class="topic-chip">Normal</span>
-              <span class="topic-chip">Challenge</span>
-              <span class="topic-chip">Daily Life</span>
-              <span class="topic-chip">Travel</span>
+            <div class="library-tags">
+              <span class="tag">Recognition</span><span class="tag">Meaning</span><span class="tag">Dictation</span>
+              <span class="tag">Response</span>
             </div>
-            <div class="category-footer">
-              <span>Dùng khi muốn luyện tai riêng.</span>
+            <div class="library-footer">
+              <span>5 / 15 / 30 min modes</span>
               <strong class="open-link">Mở Listening →</strong>
             </div>
           </a>
 
-          <a class="category-card" href="review-speaking.html">
-            <div class="category-top">
-              <div class="category-icon">話</div>
-              <div class="category-copy">
+          <a class="library-card" href="review-speaking.html">
+            <div class="library-top">
+              <div class="library-icon">話</div>
+              <div class="library-copy">
                 <h3>Speaking</h3>
-                <p>Repeat, shadowing, role-play và rapid response.</p>
+                <span class="scope">140+ prompts</span>
+                <p>Repeat, shadowing, answer, rapid response và role-play để bật phản xạ.</p>
               </div>
             </div>
-            <div class="topic-chips">
-              <span class="topic-chip">Repeat</span>
-              <span class="topic-chip">Shadow</span>
-              <span class="topic-chip">Answer</span>
-              <span class="topic-chip">Role Play</span>
-              <span class="topic-chip">Rapid Response</span>
+            <div class="library-tags">
+              <span class="tag">Repeat</span><span class="tag">Shadow</span><span class="tag">Answer</span>
+              <span class="tag">Role Play</span>
             </div>
-            <div class="category-footer">
-              <span>Dùng khi muốn bật phản xạ nói.</span>
+            <div class="library-footer">
+              <span>5 / 15 / 30 min modes</span>
               <strong class="open-link">Mở Speaking →</strong>
             </div>
           </a>
 
-          <a class="category-card" href="review-kana.html">
-            <div class="category-top">
-              <div class="category-icon">かな</div>
-              <div class="category-copy">
+          <a class="library-card" href="review-kana.html">
+            <div class="library-top">
+              <div class="library-icon">かな</div>
+              <div class="library-copy">
                 <h3>Kana</h3>
-                <p>Hiragana, Katakana, nghe âm và nhóm chữ dễ nhầm.</p>
+                <span class="scope">Expanded Kana system</span>
+                <p>92 basic kana + dakuten, handakuten, small ゃゅょ, small っ, long vowels và âm dài Katakana.</p>
               </div>
             </div>
-            <div class="topic-chips">
-              <span class="topic-chip">Hiragana</span>
-              <span class="topic-chip">Katakana</span>
-              <span class="topic-chip">Confusing Kana</span>
-              <span class="topic-chip">Mini Quiz</span>
+            <div class="library-tags">
+              <span class="tag">Hiragana</span><span class="tag">Katakana</span><span class="tag">Combo</span>
+              <span class="tag">Confusing Kana</span>
             </div>
-            <div class="category-footer">
-              <span>Dùng khi muốn đọc nhanh hơn, bớt lệ thuộc Romaji.</span>
+            <div class="library-footer">
+              <span>5 / 15 min refresh</span>
               <strong class="open-link">Mở Kana →</strong>
             </div>
           </a>
 
-          <a class="category-card" href="review-kanji.html">
-            <div class="category-top">
-              <div class="category-icon">日</div>
-              <div class="category-copy">
+          <a class="library-card" href="review-kanji.html">
+            <div class="library-top">
+              <div class="library-icon">日</div>
+              <div class="library-copy">
                 <h3>Kanji</h3>
-                <p>Kanji N5 thiết yếu, học qua từ và tình huống quen thuộc.</p>
+                <span class="scope">~100–120 practical kanji</span>
+                <p>Kanji qua từ quen thuộc và ngữ cảnh, tránh học On/Kun rời rạc quá sớm.</p>
               </div>
             </div>
-            <div class="topic-chips">
-              <span class="topic-chip">Numbers</span>
-              <span class="topic-chip">Time</span>
-              <span class="topic-chip">People</span>
-              <span class="topic-chip">Places</span>
-              <span class="topic-chip">Daily Life</span>
+            <div class="library-tags">
+              <span class="tag">Numbers</span><span class="tag">Time</span><span class="tag">People</span>
+              <span class="tag">Places</span><span class="tag">Daily Life</span>
             </div>
-            <div class="category-footer">
-              <span>Dùng khi muốn ghi nhớ chữ trong ngữ cảnh.</span>
+            <div class="library-footer">
+              <span>5 / 15 / 30 min modes</span>
               <strong class="open-link">Mở Kanji →</strong>
             </div>
           </a>
@@ -889,24 +971,30 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Your Review</h2>
-            <p>Thông tin được đọc trực tiếp từ tiến độ và Favorites của N5.</p>
+            <h2>Your Retention</h2>
+            <p>Review nên ưu tiên những gì bạn hay quên, không chỉ những gì bạn thích.</p>
           </div>
         </div>
 
-        <div class="review-status">
-          <div class="status-card">
-            <h3>Tiến độ N5 hiện tại</h3>
-            <p>Quick Review không thay thế lộ trình, mà giúp củng cố những gì đã học.</p>
-            <div class="status-number">
-              <span id="completedCount">0</span><small>/ 90 days</small>
-            </div>
+        <div class="retention-grid">
+          <div class="retention-card">
+            <h3>N5 Course Progress</h3>
+            <p>Tiến độ học theo Day 01–90.</p>
+            <div class="big-number"><span id="completedCount">0</span><small>/ 90 days</small></div>
           </div>
 
-          <div class="status-card">
-            <h3>Favorites gần đây</h3>
-            <p>Các Day bạn đã đánh dấu ★ sẽ xuất hiện ở đây.</p>
-            <div class="favorite-preview" id="favoritePreview"></div>
+          <div class="retention-card">
+            <h3>Favorites</h3>
+            <p>Các nội dung bạn chủ động lưu để quay lại.</p>
+            <div class="big-number"><span id="favoriteCount">0</span><small>saved items</small></div>
+            <div class="mini-list" id="favoritePreview"></div>
+          </div>
+
+          <div class="retention-card">
+            <h3>Weak Items</h3>
+            <p>Các item bạn từng làm sai hoặc phải xem đáp án nhiều lần.</p>
+            <div class="big-number"><span id="weakCount">0</span><small>need review</small></div>
+            <div class="mini-list" id="weakPreview"></div>
           </div>
         </div>
       </div>
@@ -914,22 +1002,16 @@
 
     <section class="block">
       <div class="container">
-        <div class="topic-strip">
-          <h3>Ôn theo “nhu cầu thật” cũng được</h3>
-          <p>
-            Nếu sắp đi Nhật, bạn không cần học tuần tự. Hãy mở Situations hoặc Expressions
-            và chọn đúng hoàn cảnh cần dùng.
-          </p>
+        <div class="flow-card">
+          <h3>Một item nên được ôn theo 5 bước</h3>
+          <p>Review không chỉ kiểm tra “có nhớ nghĩa không”, mà phải đi tới phản xạ sử dụng.</p>
 
-          <div class="topic-chips">
-            <a class="topic-chip" href="review-situations.html">☕ Café</a>
-            <a class="topic-chip" href="review-situations.html">🍜 Restaurant</a>
-            <a class="topic-chip" href="review-situations.html">🛍 Shopping</a>
-            <a class="topic-chip" href="review-situations.html">🚉 Train Station</a>
-            <a class="topic-chip" href="review-situations.html">🏨 Hotel</a>
-            <a class="topic-chip" href="review-situations.html">✈ Airport</a>
-            <a class="topic-chip" href="review-expressions.html">❓ Không hiểu</a>
-            <a class="topic-chip" href="review-expressions.html">🙏 Nhờ giúp đỡ</a>
+          <div class="flow">
+            <div class="flow-step"><strong>Recognize</strong><span>Nhìn / nghe và nhận ra</span></div>
+            <div class="flow-step"><strong>Recall</strong><span>Tự nhớ trước khi xem đáp án</span></div>
+            <div class="flow-step"><strong>Listen</strong><span>Nghe ở tốc độ tự nhiên</span></div>
+            <div class="flow-step"><strong>Respond</strong><span>Chọn phản hồi phù hợp</span></div>
+            <div class="flow-step"><strong>Produce</strong><span>Tự nói / tự tạo câu</span></div>
           </div>
         </div>
       </div>
@@ -938,185 +1020,225 @@
 
   <footer>
     <div class="container footer-inner">
-      <div>
-        <span class="footer-brand">🌸 Nihongo 90</span>
-        <span> · Quick Review</span>
-      </div>
-      <div>Review little. Remember longer.</div>
+      <div><span class="footer-brand">🌸 Nihongo 90</span> · N5 Retention System</div>
+      <div>Review less randomly. Remember more deliberately.</div>
     </div>
   </footer>
 
+  <div class="toast" id="toast"></div>
+
   <script>
-    const LESSON_TITLES = {
-      1:"はじめまして — Nice to Meet You",
-      2:"わたしは〜です — Introducing Yourself",
-      3:"〜ですか — Simple Questions",
-      4:"これは何ですか — What's This?",
-      5:"Numbers & Age",
-      6:"どこから来ましたか — Where Are You From?",
-      7:"仕事は何ですか — Jobs & Study",
-      8:"My Family",
-      9:"好きです — Likes & Dislikes",
-      10:"Survival Conversation #1",
-      11:"What Time Is It?",
-      12:"My Daily Routine",
-      13:"Morning to Evening",
-      14:"Days & Dates",
-      15:"My Schedule",
-      16:"Where Are You Going?",
-      17:"What Are You Doing?",
-      18:"Let's Go Together",
-      19:"Weekend Plans",
-      20:"Daily Life Challenge",
-      21:"At a Café",
-      22:"Ordering Food",
-      23:"What Would You Like?",
-      24:"Food I Like",
-      25:"How Much Is It?",
-      26:"Shopping",
-      27:"Sizes & Colors",
-      28:"Numbers & Quantities",
-      29:"Convenience Store Japanese",
-      30:"Restaurant & Shopping Challenge",
-      31:"Where Is It?",
-      32:"Here / There / Over There",
-      33:"Asking for Directions",
-      34:"Right / Left / Straight",
-      35:"At the Train Station",
-      36:"Which Train?",
-      37:"Buying a Ticket",
-      38:"Taking a Taxi",
-      39:"How Long Does It Take?",
-      40:"Transport Challenge",
-      41:"Weather",
-      42:"Hot / Cold / Beautiful",
-      43:"Describing Places",
-      44:"Describing People",
-      45:"My Room",
-      46:"There Is / There Are",
-      47:"Work & Office",
-      48:"School & Study",
-      49:"Simple Opinions",
-      50:"Everyday Conversation Challenge",
-      51:"What Do You Like Doing?",
-      52:"I Want to...",
-      53:"Where Do You Want to Go?",
-      54:"Shall We...?",
-      55:"Would You Like to...?",
-      56:"Making Plans",
-      57:"Meeting a Friend",
-      58:"Café with Friends",
-      59:"Changing Plans",
-      60:"Social Conversation Challenge",
-      61:"て-form Introduction",
-      62:"Please Do...",
-      63:"May I...?",
-      64:"You Mustn't...",
-      65:"Please Don't...",
-      66:"Can You Help Me?",
-      67:"Please Wait",
-      68:"Please Say It Again",
-      69:"I Don't Understand",
-      70:"Communication Challenge",
-      71:"Past Tense",
-      72:"What Did You Do Yesterday?",
-      73:"How Was It?",
-      74:"Weekend Story",
-      75:"Because...",
-      76:"I Think...",
-      77:"Tomorrow's Plan",
-      78:"Next Week",
-      79:"Travel Plans",
-      80:"Tell Me About Your Week",
-      81:"Airport",
-      82:"Hotel Check-in",
-      83:"Restaurant",
-      84:"Shopping",
-      85:"Train Station",
-      86:"Asking for Help",
-      87:"Meeting Japanese Friends",
-      88:"One Day in Tokyo",
-      89:"Full Survival Conversation",
-      90:"FINAL N5 Conversation Challenge"
+    const SESSION_PLANS = {
+      5:{
+        title:"Quick Refresh · 5 phút",
+        desc:"Một lượt rất ngắn để đánh thức trí nhớ và phản xạ, phù hợp ngày bận.",
+        items:[
+          ["Expressions","5 câu"],
+          ["Vocabulary","5 từ"],
+          ["Listening","1–2 câu"],
+          ["Speaking","2 phản xạ"]
+        ],
+        launch:"review-expressions.html"
+      },
+      15:{
+        title:"Daily Review · 15 phút",
+        desc:"Phiên ôn mặc định sau Day 90: đủ để chạm vào từ vựng, ngữ pháp, nghe và nói.",
+        items:[
+          ["Vocabulary","10–12 từ"],
+          ["Grammar","3 điểm"],
+          ["Expressions","8 câu"],
+          ["Listen + Speak","5 + 5"]
+        ],
+        launch:"review-vocabulary.html"
+      },
+      30:{
+        title:"Focus Review · 30 phút",
+        desc:"Chọn một mảng hoặc một tình huống và đi sâu hơn: recall, nghe, phản hồi và tự nói.",
+        items:[
+          ["Vocabulary","15 từ"],
+          ["Grammar","5 điểm"],
+          ["Expressions","12 câu"],
+          ["Situation","1 role-play"]
+        ],
+        launch:"review-situations.html"
+      },
+      60:{
+        title:"Full N5 Review · 45–60 phút",
+        desc:"Buổi bảo trì N5 toàn diện: kiến thức + nghe + nói + tình huống. Dùng 1–3 lần mỗi tuần sau khi hoàn thành 90 ngày.",
+        items:[
+          ["Vocabulary","25 từ"],
+          ["Grammar","8 điểm"],
+          ["Expressions","20 câu"],
+          ["Listening","15 prompts"],
+          ["Speaking","15 prompts"],
+          ["Situations","2 role-plays"],
+          ["Kana / Kanji","10–15 items"],
+          ["Weak Items","ưu tiên trước"]
+        ],
+        launch:"review-vocabulary.html"
+      }
     };
 
-    const pad = n => String(n).padStart(2, "0");
+    const LESSON_TITLES = {
+      1:"はじめまして",2:"わたしは〜です",3:"〜ですか",4:"これは何ですか",
+      5:"Numbers & Age",6:"Where Are You From?",7:"Jobs & Study",8:"My Family",
+      9:"好きです",10:"Survival Conversation #1"
+    };
 
-    function isCompleted(day) {
-      const d = pad(day);
-      const keys = [
+    function pad(n){return String(n).padStart(2,"0")}
+
+    function setupMenu(){
+      const btn=document.getElementById("menuBtn");
+      const menu=document.getElementById("mobileMenu");
+
+      btn.addEventListener("click",()=>{
+        const open=menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded",open?"true":"false");
+        btn.textContent=open?"✕":"☰";
+      });
+    }
+
+    function setupSessions(){
+      document.querySelectorAll(".time-btn").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+          document.querySelectorAll(".time-btn").forEach(b=>b.classList.remove("active"));
+          btn.classList.add("active");
+          const time=btn.dataset.time;
+          localStorage.setItem("nihongo90-review-duration",time);
+          renderSession(time);
+        });
+      });
+
+      const saved=localStorage.getItem("nihongo90-review-duration") || "5";
+      const savedBtn=document.querySelector(`.time-btn[data-time="${saved}"]`);
+      if(savedBtn){
+        document.querySelectorAll(".time-btn").forEach(b=>b.classList.remove("active"));
+        savedBtn.classList.add("active");
+      }
+      renderSession(saved);
+    }
+
+    function renderSession(time){
+      const plan=SESSION_PLANS[time] || SESSION_PLANS[5];
+
+      document.getElementById("sessionTitle").textContent=plan.title;
+      document.getElementById("sessionDesc").textContent=plan.desc;
+      document.getElementById("sessionItems").innerHTML=plan.items.map(([name,count])=>`
+        <div class="session-item">
+          <strong>${name}</strong>
+          <span>${count}</span>
+        </div>
+      `).join("");
+
+      document.getElementById("primaryLaunch").href=plan.launch;
+      document.getElementById("primaryLaunch").textContent=
+        time==="60" ? "Bắt đầu Full N5 Review →" : "Bắt đầu session →";
+    }
+
+    function isCompleted(day){
+      const d=pad(day);
+      const keys=[
         `n5-day-${d}`,
         `n5-day-${day}`,
         `n5-day-${d}-completed`,
         `day${d}-completed`
       ];
 
-      return keys.some(key => {
-        const value = localStorage.getItem(key);
-        return value === "completed" || value === "true" || value === "1";
+      return keys.some(key=>{
+        const value=localStorage.getItem(key);
+        return value==="completed" || value==="true" || value==="1";
       });
     }
 
-    function isFavorite(day) {
-      return localStorage.getItem(`n5-favorite-day-${pad(day)}`) === "true";
+    function readJson(key,fallback){
+      try{
+        const value=JSON.parse(localStorage.getItem(key));
+        return value ?? fallback;
+      }catch(_){
+        return fallback;
+      }
     }
 
-    function renderStatus() {
-      let completed = 0;
-      const favorites = [];
+    function renderRetention(){
+      let completed=0;
+      let lessonFavorites=[];
 
-      for (let day = 1; day <= 90; day++) {
-        if (isCompleted(day)) completed++;
-        if (isFavorite(day)) favorites.push(day);
+      for(let day=1;day<=90;day++){
+        if(isCompleted(day)) completed++;
+
+        if(localStorage.getItem(`n5-favorite-day-${pad(day)}`)==="true"){
+          lessonFavorites.push(day);
+        }
       }
 
-      document.getElementById("completedCount").textContent = completed;
+      document.getElementById("completedCount").textContent=completed;
 
-      const wrap = document.getElementById("favoritePreview");
+      const exprFavs=readJson("nihongo90-expression-favorites-v2",[]);
+      const olderExprFavs=readJson("nihongo90-expression-favorites",[]);
+      const combinedExpr=[...new Set([...exprFavs,...olderExprFavs])];
 
-      if (!favorites.length) {
-        wrap.innerHTML = `
-          <div class="empty-copy">
-            Chưa có Favorite. Trong mỗi Day, bấm ☆ Favorite để lưu bài muốn ôn lại.
-          </div>
+      const favoriteCount=lessonFavorites.length + combinedExpr.length;
+      document.getElementById("favoriteCount").textContent=favoriteCount;
+
+      const favPreview=document.getElementById("favoritePreview");
+      const recentDays=lessonFavorites.slice(-3).reverse();
+
+      if(recentDays.length){
+        favPreview.innerHTML=recentDays.map(day=>`
+          <a href="day${pad(day)}.html">★ Day ${pad(day)} · ${LESSON_TITLES[day] || "N5 Lesson"}</a>
+        `).join("");
+      }else if(combinedExpr.length){
+        favPreview.innerHTML=`<a href="review-expressions.html">★ ${combinedExpr.length} Expressions đã lưu</a>`;
+      }else{
+        favPreview.innerHTML=`<div>Chưa có Favorite. Hãy lưu những item bạn muốn quay lại.</div>`;
+      }
+
+      const weakKeys=[
+        "nihongo90-weak-items",
+        "nihongo90-vocab-weak",
+        "nihongo90-grammar-weak",
+        "nihongo90-listening-weak",
+        "nihongo90-speaking-weak",
+        "nihongo90-expression-weak"
+      ];
+
+      let weakCount=0;
+      weakKeys.forEach(key=>{
+        const val=readJson(key,[]);
+        if(Array.isArray(val)) weakCount+=val.length;
+        else if(val && typeof val==="object") weakCount+=Object.keys(val).length;
+      });
+
+      document.getElementById("weakCount").textContent=weakCount;
+
+      const weakPreview=document.getElementById("weakPreview");
+      if(weakCount){
+        weakPreview.innerHTML=`
+          <a href="review-vocabulary.html">Review Weak Vocabulary / Grammar</a>
+          <a href="review-listening.html">Review Weak Listening</a>
         `;
-        return;
+      }else{
+        weakPreview.innerHTML=`
+          <div>Weak Items sẽ tự xuất hiện khi bạn làm sai hoặc cần xem đáp án nhiều lần.</div>
+        `;
       }
-
-      const recent = favorites.slice(-4).reverse();
-
-      wrap.innerHTML = recent.map(day => `
-        <a class="favorite-item" href="day${pad(day)}.html">
-          ★ Day ${pad(day)} · ${LESSON_TITLES[day]}
-        </a>
-      `).join("");
     }
 
-    function setupMenu() {
-      const btn = document.getElementById("menuBtn");
-      const menu = document.getElementById("mobileMenu");
-
-      btn.addEventListener("click", () => {
-        const open = menu.classList.toggle("open");
-        btn.setAttribute("aria-expanded", open ? "true" : "false");
-        btn.textContent = open ? "✕" : "☰";
-      });
-
-      menu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-          menu.classList.remove("open");
-          btn.setAttribute("aria-expanded", "false");
-          btn.textContent = "☰";
-        });
-      });
+    function showToast(message){
+      const toast=document.getElementById("toast");
+      toast.textContent=message;
+      toast.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer=setTimeout(()=>toast.classList.remove("show"),2000);
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded",()=>{
       setupMenu();
-      renderStatus();
+      setupSessions();
+      renderRetention();
 
-      window.addEventListener("focus", renderStatus);
-      window.addEventListener("storage", renderStatus);
+      window.addEventListener("focus",renderRetention);
+      window.addEventListener("storage",renderRetention);
     });
   </script>
 </body>
