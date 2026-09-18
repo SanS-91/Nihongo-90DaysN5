@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#fffaf7">
+<title>N5 Expressions Retention — Nihongo 90</title>
+<style>
+:root{
+ --bg:#fffaf7;--text:#3e3a39;--muted:#7d7572;--line:#eee5e1;
+ --sakura:#efa6b5;--sakura-deep:#db8195;--sakura-soft:#fde7ec;
+ --mint:#bfded4;--mint-soft:#e8f6f1;--blue:#c9def1;--blue-soft:#edf5fb;
+ --butter:#f3e4ae;--butter-soft:#fff7db;--lavender:#d9cdec;--lavender-soft:#f4eefb;
+ --coral:#f4c8bd;--coral-soft:#fff0ec;--shadow:0 18px 45px rgba(91,67,61,.08);
+ --shadow-soft:0 10px 28px rgba(91,67,61,.06);--radius-xl:28px;--max:1180px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);background:
+radial-gradient(circle at 8% 4%,rgba(239,166,181,.17),transparent 28%),
+radial-gradient(circle at 92% 9%,rgba(191,222,212,.2),transparent 28%),
+radial-gradient(circle at 70% 94%,rgba(201,222,241,.16),transparent 31%),var(--bg);
+font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none} button,input,select{font:inherit} button{cursor:pointer}
+.container{width:min(calc(100% - 32px),var(--max));margin:auto}
+
+.topbar{position:sticky;top:0;z-index:70;backdrop-filter:blur(18px);background:rgba(255,250,247,.82);border-bottom:1px solid var(--line)}
+.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800}
+.brand-mark{width:40px;height:40px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,var(--sakura-soft),#fff);box-shadow:var(--shadow-soft)}
+.brand-copy{display:flex;flex-direction:column;line-height:1.05} .brand-copy small{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;gap:6px;padding:6px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7)}
+.nav-links a{padding:9px 14px;border-radius:999px;color:var(--muted);font-size:14px;font-weight:700}
+.nav-links a.active,.nav-links a:hover{background:#fff;color:var(--text);box-shadow:0 5px 18px rgba(77,55,50,.07)}
+.menu-btn{display:none;width:44px;height:44px;border:0;border-radius:14px;background:#fff;box-shadow:var(--shadow-soft)}
+.mobile-menu{display:none;padding:0 16px 18px} .mobile-menu.open{display:grid;gap:8px}
+.mobile-menu a{padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);font-weight:700;color:var(--muted)}
+
+.hero{padding:42px 0 20px} .hero-card{padding:clamp(30px,4vw,50px);border-radius:var(--radius-xl);background:
+radial-gradient(circle at 90% 0%,rgba(239,166,181,.22),transparent 27%),
+radial-gradient(circle at 8% 100%,rgba(191,222,212,.24),transparent 33%),rgba(255,255,255,.86);
+border:1px solid var(--line);box-shadow:var(--shadow)}
+.eyebrow{display:inline-flex;padding:8px 12px;border-radius:999px;background:var(--blue-soft);color:#5a7892;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{margin:18px 0 8px;font-size:clamp(42px,6vw,68px);line-height:1;letter-spacing:-.055em}
+.hero-jp{color:var(--sakura-deep);font-size:clamp(21px,2.5vw,30px);font-weight:800}
+.hero-lead{max-width:900px;margin:17px 0 0;color:var(--muted);font-size:17px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px} .pill{padding:7px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted);font-size:12px;font-weight:800}
+
+.block{padding:27px 0} .section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:18px}
+.section-head h2{margin:0;font-size:clamp(28px,3.5vw,40px);line-height:1.06;letter-spacing:-.04em} .section-head p{margin:6px 0 0;color:var(--muted)}
+
+.session-shell{padding:20px;border-radius:var(--radius-xl);background:rgba(255,255,255,.84);border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+.time-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.time-btn{padding:17px;border-radius:19px;border:1px solid var(--line);background:#fff;text-align:left}
+.time-btn.active{background:var(--sakura-soft);border-color:#f0cad2} .time-btn strong{display:block;font-size:23px;line-height:1} .time-btn span{display:block;margin-top:7px;color:var(--muted);font-size:12px;font-weight:700}
+.session-plan{margin-top:16px;padding:18px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.session-plan h3{margin:0 0 5px;font-size:22px} .session-plan p{margin:0;color:var(--muted)}
+.session-items{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.session-item{padding:11px 12px;border-radius:14px;background:#faf7f5;border:1px solid var(--line)} .session-item strong{display:block;font-size:14px} .session-item span{color:var(--muted);font-size:11px}
+
+.toolbar-wrap{position:sticky;top:74px;z-index:50;padding:12px 0;background:linear-gradient(to bottom,rgba(255,250,247,.96),rgba(255,250,247,.78),transparent);backdrop-filter:blur(10px)}
+.toolbar{display:grid;grid-template-columns:1fr 240px auto;gap:10px;padding:12px;border-radius:20px;background:rgba(255,255,255,.9);border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+.toolbar input,.toolbar select{height:44px;width:100%;padding:0 13px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text);outline:none}
+.toolbar input:focus,.toolbar select:focus{border-color:#dfb1bc;box-shadow:0 0 0 4px rgba(239,166,181,.14)}
+.tier-filters{display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end}
+.filter-btn{height:40px;padding:0 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);font-size:12px;font-weight:800}
+.filter-btn.active{background:var(--sakura-soft);color:#99596a;border-color:#f0cad2}
+
+.coverage{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.coverage-card{padding:16px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+.coverage-card strong{display:block;font-size:22px} .coverage-card span{color:var(--muted);font-size:11px;font-weight:700}
+
+.expression-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.expression-card{padding:20px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-soft);transition:.2s}
+.expression-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.expression-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.expression-jp{font-size:25px;line-height:1.45;font-weight:800} .romaji{margin-top:3px;color:#9a8d88;font-size:12px;font-style:italic}
+.vi{margin-top:9px;color:var(--muted);font-size:14px} .topic-line{margin-top:10px;color:#9a6170;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px} .badge{padding:5px 8px;border-radius:999px;background:#f8f4f2;color:var(--muted);font-size:10px;font-weight:800}
+.badge.core{background:var(--sakura-soft);color:#99596a} .badge.useful{background:var(--mint-soft);color:#5b8174} .badge.survival{background:var(--coral-soft);color:#986254}
+.fav-btn{flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;color:#bbb0ac;font-size:17px} .fav-btn.active{background:var(--butter-soft);color:#b68d27;border-color:#ebdba3}
+.card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px} .action-btn{min-height:38px;padding:7px 11px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--text);font-size:12px;font-weight:800}
+.action-btn.primary{background:var(--blue-soft);color:#58758d} .action-btn.weak{background:var(--coral-soft);color:#966354}
+.recall{display:none;margin-top:13px;padding:13px;border-radius:15px;background:var(--mint-soft);color:#51786d;font-size:13px} .recall.show{display:block}
+
+.explain-box{display:none;margin-top:13px;padding:15px;border-radius:16px;background:#faf7f5;border:1px solid var(--line)}
+.explain-box.show{display:block}
+.explain-section + .explain-section{margin-top:10px}
+.explain-title{font-size:12px;font-weight:900;color:var(--text);margin-bottom:3px}
+.explain-text{font-size:13px;color:var(--muted)}
+.tone-box{margin-top:10px;padding:11px 12px;border-radius:13px;background:var(--mint-soft);color:#587f73;font-size:12px}
+.mistake-box{margin-top:8px;padding:11px 12px;border-radius:13px;background:var(--coral-soft);color:#936456;font-size:12px}
+.pattern-box{margin-top:8px;padding:11px 12px;border-radius:13px;background:var(--blue-soft);color:#58758d;font-size:12px}
+
+.practice-shell{padding:22px;border-radius:var(--radius-xl);background:rgba(255,255,255,.84);border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+.practice-tabs{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-bottom:15px}
+.mode-btn{min-height:38px;padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);font-size:12px;font-weight:800}
+.mode-btn.active{background:var(--sakura-soft);color:#99596a;border-color:#f0cad2}
+.practice-card{min-height:330px;display:grid;place-items:center;padding:28px;border-radius:24px;background:
+radial-gradient(circle at 88% 10%,rgba(239,166,181,.18),transparent 26%),
+radial-gradient(circle at 10% 88%,rgba(191,222,212,.2),transparent 31%),#fff;border:1px solid var(--line);text-align:center}
+.practice-topic{color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+.practice-jp{font-size:clamp(30px,5vw,48px);font-weight:800;line-height:1.35;margin-top:8px}
+.practice-answer{min-height:85px;margin-top:18px} .practice-answer .vi-a{font-size:20px;font-weight:800;color:#9b6070} .practice-answer .r-a{color:var(--muted);font-size:13px;margin-top:5px;font-style:italic}
+.practice-controls{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:16px} .progress-text{margin-top:13px;text-align:center;color:var(--muted);font-size:12px;font-weight:800}
+
+.quiz-shell{padding:22px;border-radius:var(--radius-xl);background:rgba(255,255,255,.84);border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+.quiz-prompt{text-align:center;padding:18px} .quiz-prompt .qjp{font-size:36px;font-weight:800} .quiz-prompt .qhint{color:var(--muted);font-size:13px;margin-top:5px}
+.quiz-choices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px} .choice{padding:13px;border-radius:14px;border:1px solid var(--line);background:#fff;text-align:left;font-weight:700}
+.choice.correct{background:var(--mint-soft);border-color:#b9d9cf;color:#4d806f} .choice.wrong{background:var(--coral-soft);border-color:#efcfc6;color:#9e6152}
+.quiz-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap} .quiz-score{font-weight:900;color:#7b6799}
+
+.retention-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px} .retention-card{padding:20px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+.retention-card h3{margin:0 0 5px;font-size:20px} .retention-card p{margin:0;color:var(--muted);font-size:13px} .big-number{margin-top:16px;font-size:38px;font-weight:900;line-height:1}
+.weak-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px} .weak-chip{padding:7px 9px;border-radius:999px;border:1px solid #efd3cb;background:var(--coral-soft);color:#8e6257;font-size:11px;font-weight:800}
+
+.empty{display:none;padding:30px;text-align:center;color:var(--muted);border:1px dashed #dfd3ce;border-radius:20px;background:#fff} .empty.show{display:block}
+footer{padding:38px 0 52px;color:var(--muted);font-size:13px} .footer-inner{display:flex;justify-content:space-between;gap:20px;padding-top:20px;border-top:1px solid var(--line)} .footer-brand{color:var(--text);font-weight:900}
+.toast{position:fixed;left:50%;bottom:28px;z-index:100;transform:translate(-50%,18px);padding:12px 16px;border-radius:14px;background:rgba(62,58,57,.95);color:#fff;font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:.25s;box-shadow:var(--shadow)} .toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:1000px){.toolbar{grid-template-columns:1fr 220px}.tier-filters{grid-column:1/-1;justify-content:flex-start}.coverage{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.expression-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.nav-links{display:none}.menu-btn{display:grid;place-items:center}.time-tabs{grid-template-columns:1fr}.session-items{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr}.coverage,.retention-grid{grid-template-columns:1fr}.section-head{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column}}
+@media(max-width:520px){.container{width:min(calc(100% - 22px),var(--max))}.hero-card,.session-shell,.practice-shell,.quiz-shell{padding:18px}.session-items{grid-template-columns:1fr}.quiz-choices{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="container nav">
+<a class="brand" href="index.html"><span class="brand-mark">🌸</span><span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span></a>
+<nav class="nav-links"><a href="index.html">Home</a><a href="n5.html">N5 Course</a><a class="active" href="review.html">Quick Review</a><a href="n4.html">N4</a></nav>
+<button class="menu-btn" id="menuBtn">☰</button>
+</div>
+<nav class="mobile-menu container" id="mobileMenu"><a href="index.html">Home</a><a href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4 · Coming Soon</a></nav>
+</header>
+
+<main>
+<section class="hero"><div class="container"><div class="hero-card">
+<span class="eyebrow">N5 Retention · Expressions</span>
+<h1>200 expressions để giữ phản xạ sau Day 90.</h1>
+<div class="hero-jp">覚える → 聞く → 返す → 使う。</div>
+<p class="hero-lead">Không chỉ “biết nghĩa”. Mỗi expression cần đi qua <strong>Understand → Recall → Listen → Respond → Use</strong>. Bộ này phủ toàn bộ 25 nhóm tình huống N5 và chia thành <strong>Core / Useful / Survival+</strong> để bạn biết câu nào cần phản xạ ngay.</p>
+<div class="hero-pills"><span class="pill">200 expressions</span><span class="pill">25 topics</span><span class="pill">Core / Useful / Survival+</span><span class="pill">5 / 15 / 30 min</span><span class="pill">Weak Items</span></div>
+</div></div></section>
+
+<section class="block"><div class="container">
+<div class="section-head"><div><h2>Chọn thời lượng ôn</h2><p>Mỗi session có lượng câu vừa đủ để không biến review thành học lại cả khóa.</p></div></div>
+<div class="session-shell">
+<div class="time-tabs">
+<button class="time-btn active" data-time="5"><strong>5 phút</strong><span>Quick Refresh</span></button>
+<button class="time-btn" data-time="15"><strong>15 phút</strong><span>Daily Review</span></button>
+<button class="time-btn" data-time="30"><strong>30 phút</strong><span>Deep Review</span></button>
+</div>
+<div class="session-plan"><h3 id="sessionTitle"></h3><p id="sessionDesc"></p><div class="session-items" id="sessionItems"></div></div>
+</div>
+</div></section>
+
+<div class="toolbar-wrap"><div class="container"><div class="toolbar">
+<input id="searchInput" type="search" placeholder="Tìm: train, xin lỗi, すみません, hotel...">
+<select id="topicSelect"><option value="all">Tất cả 25 chủ đề</option></select>
+<div class="tier-filters">
+<button class="filter-btn active" data-tier="all">All</button>
+<button class="filter-btn" data-tier="core">Core</button>
+<button class="filter-btn" data-tier="useful">Useful</button>
+<button class="filter-btn" data-tier="survival">Survival+</button>
+<button class="filter-btn" data-tier="favorite">★</button>
+<button class="filter-btn" data-tier="weak">⚠ Weak</button>
+</div>
+</div></div></div>
+
+<section class="block"><div class="container">
+<div class="coverage">
+<div class="coverage-card"><strong id="coreCount">0</strong><span>Core · phải phản xạ</span></div>
+<div class="coverage-card"><strong id="usefulCount">0</strong><span>Useful · rất nên nhớ</span></div>
+<div class="coverage-card"><strong id="survivalCount">0</strong><span>Survival+ · đi Nhật / sự cố</span></div>
+<div class="coverage-card"><strong id="visibleCount">0</strong><span>Đang hiển thị</span></div>
+</div>
+</div></section>
+
+<section class="block"><div class="container">
+<div class="section-head"><div><h2>Expression Library</h2><p>Review nhanh bằng Recall; khi cần hiểu sâu hơn, mở “Giải thích” để xem cách dùng, mẫu câu, sắc thái và lỗi dễ hiểu sai.</p></div></div>
+<div class="expression-grid" id="expressionGrid"></div>
+<div class="empty" id="emptyState">Không tìm thấy expression phù hợp 🌱</div>
+</div></section>
+
+<section class="block"><div class="container">
+<div class="section-head"><div><h2>Recall → Listen → Respond</h2><p>Ôn theo bộ lọc hiện tại, Favorites, Weak Items hoặc toàn bộ 200 câu.</p></div></div>
+<div class="practice-shell">
+<div class="practice-tabs">
+<button class="mode-btn active" data-mode="filtered">Theo bộ lọc</button>
+<button class="mode-btn" data-mode="favorites">Favorites</button>
+<button class="mode-btn" data-mode="weak">Weak</button>
+<button class="mode-btn" data-mode="all">Random All</button>
+</div>
+<div class="practice-card"><div>
+<div class="practice-topic" id="practiceTopic"></div>
+<div class="practice-jp" id="practiceJp"></div>
+<div class="practice-answer" id="practiceAnswer"></div>
+</div></div>
+<div class="practice-controls">
+<button class="action-btn primary" onclick="listenPractice()">▶ Nghe</button>
+<button class="action-btn" onclick="revealPractice()">Hiện nghĩa</button>
+<button class="action-btn weak" onclick="markPracticeWeak()">⚠ Weak</button>
+<button class="action-btn" onclick="nextPractice()">Tiếp theo →</button>
+</div>
+<div class="progress-text" id="practiceProgress"></div>
+</div>
+</div></section>
+
+<section class="block"><div class="container">
+<div class="section-head"><div><h2>Mini Quiz · Response Check</h2><p>10 câu. Câu sai tự động vào Weak Items.</p></div></div>
+<div class="quiz-shell">
+<div class="quiz-prompt"><div class="qjp" id="quizJp"></div><div class="qhint">Chọn nghĩa đúng nhất.</div></div>
+<div class="quiz-choices" id="quizChoices"></div>
+<div class="quiz-footer"><div class="quiz-score" id="quizScore"></div><button class="action-btn" onclick="restartQuiz()">Làm lại</button></div>
+</div>
+</div></section>
+
+<section class="block"><div class="container">
+<div class="section-head"><div><h2>Your Retention</h2><p>Favorites là thứ bạn muốn lưu; Weak Items là thứ bạn thực sự cần ôn.</p></div></div>
+<div class="retention-grid">
+<div class="retention-card"><h3>Favorites</h3><p>Câu bạn chủ động lưu.</p><div class="big-number" id="favCount">0</div></div>
+<div class="retention-card"><h3>Weak Items</h3><p>Câu từng làm sai hoặc tự đánh dấu yếu.</p><div class="big-number" id="weakCount">0</div><div class="weak-list" id="weakList"></div></div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="container footer-inner"><div><span class="footer-brand">🌸 Nihongo 90</span> · Expressions Retention</div><div>Recognize. Recall. Respond. Use.</div></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const EXPRESSIONS=[{"id": "e001", "topic": "first-meeting", "topicLabel": "01 · Greeting & First Meeting", "jp": "はじめまして。", "romaji": "Hajimemashite.", "vi": "Rất vui được gặp bạn.", "tier": "core", "cue": "Lần đầu gặp nhau"}, {"id": "e002", "topic": "first-meeting", "topicLabel": "01 · Greeting & First Meeting", "jp": "よろしくお願いします。", "romaji": "Yoroshiku onegaishimasu.", "vi": "Rất vui được làm quen / mong được giúp đỡ.", "tier": "core", "cue": "Cuối phần tự giới thiệu"}, {"id": "e003", "topic": "first-meeting", "topicLabel": "01 · Greeting & First Meeting", "jp": "こちらこそ、よろしくお願いします。", "romaji": "Kochira koso, yoroshiku onegaishimasu.", "vi": "Tôi cũng vậy, rất vui được làm quen.", "tier": "useful", "cue": "Đáp lại よろしくお願いします"}, {"id": "e004", "topic": "first-meeting", "topicLabel": "01 · Greeting & First Meeting", "jp": "おはようございます。", "romaji": "Ohayō gozaimasu.", "vi": "Chào buổi sáng.", "tier": "core", "cue": "Chào buổi sáng lịch sự"}, {"id": "e005", "topic": "first-meeting", "topicLabel": "01 · Greeting & First Meeting", "jp": "こんにちは。", "romaji": "Konnichiwa.", "vi": "Xin chào.", "tier": "core", "cue": "Chào ban ngày"}, {"id": "e006", "topic": "first-meeting", "topicLabel": "01 · Greeting & First Meeting", "jp": "こんばんは。", "romaji": "Konbanwa.", "vi": "Chào buổi tối.", "tier": "core", "cue": "Chào buổi tối"}, {"id": "e007", "topic": "first-meeting", "topicLabel": "01 · Greeting & First Meeting", "jp": "お元気ですか。", "romaji": "Ogenki desu ka?", "vi": "Bạn khỏe không?", "tier": "useful", "cue": "Hỏi thăm đơn giản"}, {"id": "e008", "topic": "first-meeting", "topicLabel": "01 · Greeting & First Meeting", "jp": "元気です。", "romaji": "Genki desu.", "vi": "Tôi khỏe.", "tier": "core", "cue": "Trả lời hỏi thăm"}, {"id": "e009", "topic": "self-intro", "topicLabel": "02 · Self Introduction", "jp": "トゥイです。", "romaji": "Tui desu.", "vi": "Tôi là Thuy.", "tier": "core", "cue": "Nói tên"}, {"id": "e010", "topic": "self-intro", "topicLabel": "02 · Self Introduction", "jp": "ベトナム人です。", "romaji": "Betonamu-jin desu.", "vi": "Tôi là người Việt Nam.", "tier": "core", "cue": "Nói quốc tịch"}, {"id": "e011", "topic": "self-intro", "topicLabel": "02 · Self Introduction", "jp": "会社員です。", "romaji": "Kaishain desu.", "vi": "Tôi là nhân viên công ty.", "tier": "core", "cue": "Nói nghề"}, {"id": "e012", "topic": "self-intro", "topicLabel": "02 · Self Introduction", "jp": "学生ではありません。", "romaji": "Gakusei dewa arimasen.", "vi": "Tôi không phải sinh viên.", "tier": "core", "cue": "Phủ định danh từ"}, {"id": "e013", "topic": "self-intro", "topicLabel": "02 · Self Introduction", "jp": "ホーチミン市に住んでいます。", "romaji": "Hōchimin-shi ni sundeimasu.", "vi": "Tôi sống ở TP.HCM.", "tier": "useful", "cue": "Nói nơi ở"}, {"id": "e014", "topic": "self-intro", "topicLabel": "02 · Self Introduction", "jp": "日本語を勉強しています。", "romaji": "Nihongo o benkyō shiteimasu.", "vi": "Tôi đang học tiếng Nhật.", "tier": "core", "cue": "Nói việc đang học"}, {"id": "e015", "topic": "self-intro", "topicLabel": "02 · Self Introduction", "jp": "日本語はまだ上手ではありません。", "romaji": "Nihongo wa mada jōzu dewa arimasen.", "vi": "Tiếng Nhật của tôi vẫn chưa giỏi.", "tier": "useful", "cue": "Nói trình độ khiêm tốn"}, {"id": "e016", "topic": "self-intro", "topicLabel": "02 · Self Introduction", "jp": "少し日本語が話せます。", "romaji": "Sukoshi Nihongo ga hanasemasu.", "vi": "Tôi nói được một chút tiếng Nhật.", "tier": "useful", "cue": "Nói khả năng"}, {"id": "e017", "topic": "basic-questions", "topicLabel": "03 · Basic Questions", "jp": "お名前は？", "romaji": "Onamae wa?", "vi": "Tên bạn là gì?", "tier": "core", "cue": "Hỏi tên tự nhiên"}, {"id": "e018", "topic": "basic-questions", "topicLabel": "03 · Basic Questions", "jp": "ベトナム人ですか。", "romaji": "Betonamu-jin desu ka?", "vi": "Bạn là người Việt Nam phải không?", "tier": "core", "cue": "Câu hỏi xác nhận"}, {"id": "e019", "topic": "basic-questions", "topicLabel": "03 · Basic Questions", "jp": "会社員ですか。", "romaji": "Kaishain desu ka?", "vi": "Bạn là nhân viên công ty phải không?", "tier": "core", "cue": "Hỏi nghề"}, {"id": "e020", "topic": "basic-questions", "topicLabel": "03 · Basic Questions", "jp": "はい、そうです。", "romaji": "Hai, sō desu.", "vi": "Vâng, đúng vậy.", "tier": "core", "cue": "Trả lời xác nhận"}, {"id": "e021", "topic": "basic-questions", "topicLabel": "03 · Basic Questions", "jp": "いいえ、ちがいます。", "romaji": "Iie, chigaimasu.", "vi": "Không, không phải.", "tier": "core", "cue": "Phủ nhận"}, {"id": "e022", "topic": "basic-questions", "topicLabel": "03 · Basic Questions", "jp": "これは何ですか。", "romaji": "Kore wa nan desu ka?", "vi": "Cái này là gì?", "tier": "core", "cue": "Hỏi vật"}, {"id": "e023", "topic": "basic-questions", "topicLabel": "03 · Basic Questions", "jp": "どなたですか。", "romaji": "Donata desu ka?", "vi": "Ai vậy ạ?", "tier": "useful", "cue": "Hỏi người, lịch sự"}, {"id": "e024", "topic": "basic-questions", "topicLabel": "03 · Basic Questions", "jp": "どちらから来ましたか。", "romaji": "Dochira kara kimashita ka?", "vi": "Bạn đến từ đâu?", "tier": "useful", "cue": "Hỏi xuất xứ lịch sự"}, {"id": "e025", "topic": "time-date", "topicLabel": "04 · Time & Dates", "jp": "今、何時ですか。", "romaji": "Ima, nanji desu ka?", "vi": "Bây giờ là mấy giờ?", "tier": "core", "cue": "Hỏi giờ"}, {"id": "e026", "topic": "time-date", "topicLabel": "04 · Time & Dates", "jp": "七時です。", "romaji": "Shichiji desu.", "vi": "Bảy giờ.", "tier": "core", "cue": "Trả lời giờ"}, {"id": "e027", "topic": "time-date", "topicLabel": "04 · Time & Dates", "jp": "今日は何曜日ですか。", "romaji": "Kyō wa nan-yōbi desu ka?", "vi": "Hôm nay là thứ mấy?", "tier": "core", "cue": "Hỏi thứ"}, {"id": "e028", "topic": "time-date", "topicLabel": "04 · Time & Dates", "jp": "今日は月曜日です。", "romaji": "Kyō wa getsuyōbi desu.", "vi": "Hôm nay là thứ Hai.", "tier": "core", "cue": "Trả lời thứ"}, {"id": "e029", "topic": "time-date", "topicLabel": "04 · Time & Dates", "jp": "今日は何日ですか。", "romaji": "Kyō wa nan-nichi desu ka?", "vi": "Hôm nay ngày mấy?", "tier": "core", "cue": "Hỏi ngày"}, {"id": "e030", "topic": "time-date", "topicLabel": "04 · Time & Dates", "jp": "誕生日はいつですか。", "romaji": "Tanjōbi wa itsu desu ka?", "vi": "Sinh nhật bạn khi nào?", "tier": "useful", "cue": "Hỏi ngày sinh"}, {"id": "e031", "topic": "time-date", "topicLabel": "04 · Time & Dates", "jp": "九月十九日です。", "romaji": "Kugatsu jūkunichi desu.", "vi": "Ngày 19 tháng 9.", "tier": "useful", "cue": "Nói ngày tháng"}, {"id": "e032", "topic": "time-date", "topicLabel": "04 · Time & Dates", "jp": "三時ごろです。", "romaji": "Sanji goro desu.", "vi": "Khoảng 3 giờ.", "tier": "core", "cue": "Nói giờ xấp xỉ"}, {"id": "e033", "topic": "daily-routine", "topicLabel": "05 · Daily Routine", "jp": "毎朝六時に起きます。", "romaji": "Maiasa rokuji ni okimasu.", "vi": "Mỗi sáng tôi dậy lúc 6 giờ.", "tier": "core", "cue": "Nói routine"}, {"id": "e034", "topic": "daily-routine", "topicLabel": "05 · Daily Routine", "jp": "朝ごはんを食べます。", "romaji": "Asagohan o tabemasu.", "vi": "Tôi ăn sáng.", "tier": "core", "cue": "Hoạt động buổi sáng"}, {"id": "e035", "topic": "daily-routine", "topicLabel": "05 · Daily Routine", "jp": "会社へ行きます。", "romaji": "Kaisha e ikimasu.", "vi": "Tôi đi công ty.", "tier": "core", "cue": "Di chuyển"}, {"id": "e036", "topic": "daily-routine", "topicLabel": "05 · Daily Routine", "jp": "何時に寝ますか。", "romaji": "Nanji ni nemasu ka?", "vi": "Bạn ngủ lúc mấy giờ?", "tier": "core", "cue": "Hỏi giờ ngủ"}, {"id": "e037", "topic": "daily-routine", "topicLabel": "05 · Daily Routine", "jp": "十一時ごろ寝ます。", "romaji": "Jūichiji goro nemasu.", "vi": "Tôi ngủ khoảng 11 giờ.", "tier": "core", "cue": "Trả lời giờ ngủ"}, {"id": "e038", "topic": "daily-routine", "topicLabel": "05 · Daily Routine", "jp": "毎日コーヒーを飲みます。", "romaji": "Mainichi kōhī o nomimasu.", "vi": "Ngày nào tôi cũng uống cà phê.", "tier": "useful", "cue": "Thói quen"}, {"id": "e039", "topic": "daily-routine", "topicLabel": "05 · Daily Routine", "jp": "週に三回運動します。", "romaji": "Shū ni sankai undō shimasu.", "vi": "Tôi tập thể dục 3 lần/tuần.", "tier": "useful", "cue": "Tần suất"}, {"id": "e040", "topic": "daily-routine", "topicLabel": "05 · Daily Routine", "jp": "日曜日は休みます。", "romaji": "Nichiyōbi wa yasumimasu.", "vi": "Chủ nhật tôi nghỉ.", "tier": "useful", "cue": "Nói lịch nghỉ"}, {"id": "e041", "topic": "plans-invitations", "topicLabel": "06 · Plans & Invitations", "jp": "明日、何をしますか。", "romaji": "Ashita, nani o shimasu ka?", "vi": "Ngày mai bạn làm gì?", "tier": "core", "cue": "Hỏi kế hoạch"}, {"id": "e042", "topic": "plans-invitations", "topicLabel": "06 · Plans & Invitations", "jp": "映画を見ます。", "romaji": "Eiga o mimasu.", "vi": "Tôi sẽ xem phim.", "tier": "core", "cue": "Nói kế hoạch"}, {"id": "e043", "topic": "plans-invitations", "topicLabel": "06 · Plans & Invitations", "jp": "一緒に行きませんか。", "romaji": "Issho ni ikimasen ka?", "vi": "Bạn đi cùng nhé?", "tier": "core", "cue": "Rủ lịch sự"}, {"id": "e044", "topic": "plans-invitations", "topicLabel": "06 · Plans & Invitations", "jp": "行きましょう。", "romaji": "Ikimashō.", "vi": "Chúng ta đi nhé.", "tier": "core", "cue": "Đề nghị"}, {"id": "e045", "topic": "plans-invitations", "topicLabel": "06 · Plans & Invitations", "jp": "すみません、ちょっと…。", "romaji": "Sumimasen, chotto...", "vi": "Xin lỗi, hơi khó một chút…", "tier": "core", "cue": "Từ chối mềm"}, {"id": "e046", "topic": "plans-invitations", "topicLabel": "06 · Plans & Invitations", "jp": "何時に会いますか。", "romaji": "Nanji ni aimasu ka?", "vi": "Mấy giờ gặp nhau?", "tier": "useful", "cue": "Chốt giờ hẹn"}, {"id": "e047", "topic": "plans-invitations", "topicLabel": "06 · Plans & Invitations", "jp": "駅で会いましょう。", "romaji": "Eki de aimashō.", "vi": "Gặp nhau ở ga nhé.", "tier": "useful", "cue": "Chốt địa điểm"}, {"id": "e048", "topic": "plans-invitations", "topicLabel": "06 · Plans & Invitations", "jp": "また今度お願いします。", "romaji": "Mata kondo onegaishimasu.", "vi": "Hẹn lần sau nhé.", "tier": "useful", "cue": "Từ chối lịch sự"}, {"id": "e049", "topic": "cafe", "topicLabel": "07 · Café", "jp": "コーヒーをお願いします。", "romaji": "Kōhī o onegaishimasu.", "vi": "Cho tôi cà phê.", "tier": "core", "cue": "Gọi đồ uống"}, {"id": "e050", "topic": "cafe", "topicLabel": "07 · Café", "jp": "これをお願いします。", "romaji": "Kore o onegaishimasu.", "vi": "Cho tôi cái này.", "tier": "core", "cue": "Chỉ món"}, {"id": "e051", "topic": "cafe", "topicLabel": "07 · Café", "jp": "アイスコーヒーを一つお願いします。", "romaji": "Aisu kōhī o hitotsu onegaishimasu.", "vi": "Cho tôi một cà phê đá.", "tier": "core", "cue": "Gọi số lượng"}, {"id": "e052", "topic": "cafe", "topicLabel": "07 · Café", "jp": "店内でお願いします。", "romaji": "Tennai de onegaishimasu.", "vi": "Tôi dùng tại quán.", "tier": "useful", "cue": "Dine-in"}, {"id": "e053", "topic": "cafe", "topicLabel": "07 · Café", "jp": "持ち帰りでお願いします。", "romaji": "Mochikaeri de onegaishimasu.", "vi": "Cho tôi mang đi.", "tier": "useful", "cue": "Takeaway"}, {"id": "e054", "topic": "cafe", "topicLabel": "07 · Café", "jp": "砂糖はいりません。", "romaji": "Satō wa irimasen.", "vi": "Tôi không cần đường.", "tier": "useful", "cue": "Bỏ thành phần"}, {"id": "e055", "topic": "cafe", "topicLabel": "07 · Café", "jp": "ミルクをください。", "romaji": "Miruku o kudasai.", "vi": "Cho tôi sữa.", "tier": "useful", "cue": "Yêu cầu thêm"}, {"id": "e056", "topic": "cafe", "topicLabel": "07 · Café", "jp": "これは甘いですか。", "romaji": "Kore wa amai desu ka?", "vi": "Cái này có ngọt không?", "tier": "useful", "cue": "Hỏi vị"}, {"id": "e057", "topic": "restaurant", "topicLabel": "08 · Restaurant", "jp": "おすすめは何ですか。", "romaji": "Osusume wa nan desu ka?", "vi": "Món được đề xuất là gì?", "tier": "core", "cue": "Hỏi món nên thử"}, {"id": "e058", "topic": "restaurant", "topicLabel": "08 · Restaurant", "jp": "これ、おいしいですか。", "romaji": "Kore, oishii desu ka?", "vi": "Món này ngon không?", "tier": "useful", "cue": "Hỏi món"}, {"id": "e059", "topic": "restaurant", "topicLabel": "08 · Restaurant", "jp": "水をお願いします。", "romaji": "Mizu o onegaishimasu.", "vi": "Cho tôi nước.", "tier": "core", "cue": "Xin nước"}, {"id": "e060", "topic": "restaurant", "topicLabel": "08 · Restaurant", "jp": "お会計をお願いします。", "romaji": "Okaikei o onegaishimasu.", "vi": "Cho tôi thanh toán.", "tier": "core", "cue": "Xin tính tiền"}, {"id": "e061", "topic": "restaurant", "topicLabel": "08 · Restaurant", "jp": "ごちそうさまでした。", "romaji": "Gochisōsama deshita.", "vi": "Cảm ơn vì bữa ăn.", "tier": "core", "cue": "Sau khi ăn"}, {"id": "e062", "topic": "restaurant", "topicLabel": "08 · Restaurant", "jp": "辛くないものはありますか。", "romaji": "Karakunai mono wa arimasu ka?", "vi": "Có món nào không cay không?", "tier": "useful", "cue": "Hỏi món không cay"}, {"id": "e063", "topic": "restaurant", "topicLabel": "08 · Restaurant", "jp": "肉は食べません。", "romaji": "Niku wa tabemasen.", "vi": "Tôi không ăn thịt.", "tier": "useful", "cue": "Nói hạn chế ăn uống"}, {"id": "e064", "topic": "restaurant", "topicLabel": "08 · Restaurant", "jp": "もう一つお願いします。", "romaji": "Mō hitotsu onegaishimasu.", "vi": "Cho tôi thêm một cái/món nữa.", "tier": "useful", "cue": "Gọi thêm"}, {"id": "e065", "topic": "shopping", "topicLabel": "09 · Shopping", "jp": "これはいくらですか。", "romaji": "Kore wa ikura desu ka?", "vi": "Cái này bao nhiêu tiền?", "tier": "core", "cue": "Hỏi giá"}, {"id": "e066", "topic": "shopping", "topicLabel": "09 · Shopping", "jp": "もう少し安いのはありますか。", "romaji": "Mō sukoshi yasui no wa arimasu ka?", "vi": "Có loại rẻ hơn một chút không?", "tier": "useful", "cue": "Hỏi lựa chọn khác"}, {"id": "e067", "topic": "shopping", "topicLabel": "09 · Shopping", "jp": "大きいサイズはありますか。", "romaji": "Ōkii saizu wa arimasu ka?", "vi": "Có size lớn hơn không?", "tier": "core", "cue": "Hỏi size"}, {"id": "e068", "topic": "shopping", "topicLabel": "09 · Shopping", "jp": "これを試着してもいいですか。", "romaji": "Kore o shichaku shite mo ii desu ka?", "vi": "Tôi thử cái này được không?", "tier": "useful", "cue": "Xin thử đồ"}, {"id": "e069", "topic": "shopping", "topicLabel": "09 · Shopping", "jp": "これにします。", "romaji": "Kore ni shimasu.", "vi": "Tôi chọn cái này.", "tier": "core", "cue": "Chốt mua"}, {"id": "e070", "topic": "shopping", "topicLabel": "09 · Shopping", "jp": "赤はありますか。", "romaji": "Aka wa arimasu ka?", "vi": "Có màu đỏ không?", "tier": "useful", "cue": "Hỏi màu"}, {"id": "e071", "topic": "shopping", "topicLabel": "09 · Shopping", "jp": "別の色はありますか。", "romaji": "Betsu no iro wa arimasu ka?", "vi": "Có màu khác không?", "tier": "useful", "cue": "Hỏi màu khác"}, {"id": "e072", "topic": "shopping", "topicLabel": "09 · Shopping", "jp": "カードは使えますか。", "romaji": "Kādo wa tsukaemasu ka?", "vi": "Có dùng thẻ được không?", "tier": "core", "cue": "Hỏi thanh toán"}, {"id": "e073", "topic": "convenience-store", "topicLabel": "10 · Convenience Store", "jp": "袋をお願いします。", "romaji": "Fukuro o onegaishimasu.", "vi": "Cho tôi một cái túi.", "tier": "core", "cue": "Xin túi"}, {"id": "e074", "topic": "convenience-store", "topicLabel": "10 · Convenience Store", "jp": "袋はいりません。", "romaji": "Fukuro wa irimasen.", "vi": "Tôi không cần túi.", "tier": "core", "cue": "Từ chối túi"}, {"id": "e075", "topic": "convenience-store", "topicLabel": "10 · Convenience Store", "jp": "温めてください。", "romaji": "Atatamete kudasai.", "vi": "Làm ơn hâm nóng.", "tier": "core", "cue": "Hâm đồ ăn"}, {"id": "e076", "topic": "convenience-store", "topicLabel": "10 · Convenience Store", "jp": "カードで払います。", "romaji": "Kādo de haraimasu.", "vi": "Tôi trả bằng thẻ.", "tier": "core", "cue": "Thanh toán"}, {"id": "e077", "topic": "convenience-store", "topicLabel": "10 · Convenience Store", "jp": "レシートをお願いします。", "romaji": "Reshīto o onegaishimasu.", "vi": "Cho tôi hóa đơn.", "tier": "useful", "cue": "Xin receipt"}, {"id": "e078", "topic": "convenience-store", "topicLabel": "10 · Convenience Store", "jp": "お箸をお願いします。", "romaji": "Ohashi o onegaishimasu.", "vi": "Cho tôi đũa.", "tier": "useful", "cue": "Xin đũa"}, {"id": "e079", "topic": "convenience-store", "topicLabel": "10 · Convenience Store", "jp": "スプーンをください。", "romaji": "Supūn o kudasai.", "vi": "Cho tôi thìa.", "tier": "useful", "cue": "Xin thìa"}, {"id": "e080", "topic": "convenience-store", "topicLabel": "10 · Convenience Store", "jp": "ここで食べてもいいですか。", "romaji": "Koko de tabete mo ii desu ka?", "vi": "Tôi ăn ở đây được không?", "tier": "useful", "cue": "Xin phép ăn tại chỗ"}, {"id": "e081", "topic": "directions", "topicLabel": "11 · Directions", "jp": "すみません、駅はどこですか。", "romaji": "Sumimasen, eki wa doko desu ka?", "vi": "Xin lỗi, ga ở đâu?", "tier": "core", "cue": "Hỏi đường"}, {"id": "e082", "topic": "directions", "topicLabel": "11 · Directions", "jp": "まっすぐ行ってください。", "romaji": "Massugu itte kudasai.", "vi": "Hãy đi thẳng.", "tier": "core", "cue": "Chỉ đường"}, {"id": "e083", "topic": "directions", "topicLabel": "11 · Directions", "jp": "右に曲がってください。", "romaji": "Migi ni magatte kudasai.", "vi": "Hãy rẽ phải.", "tier": "core", "cue": "Chỉ đường"}, {"id": "e084", "topic": "directions", "topicLabel": "11 · Directions", "jp": "左に曲がってください。", "romaji": "Hidari ni magatte kudasai.", "vi": "Hãy rẽ trái.", "tier": "core", "cue": "Chỉ đường"}, {"id": "e085", "topic": "directions", "topicLabel": "11 · Directions", "jp": "ここから近いですか。", "romaji": "Koko kara chikai desu ka?", "vi": "Từ đây có gần không?", "tier": "useful", "cue": "Hỏi khoảng cách"}, {"id": "e086", "topic": "directions", "topicLabel": "11 · Directions", "jp": "歩いて何分ですか。", "romaji": "Aruite nanpun desu ka?", "vi": "Đi bộ mất mấy phút?", "tier": "useful", "cue": "Hỏi thời gian đi bộ"}, {"id": "e087", "topic": "directions", "topicLabel": "11 · Directions", "jp": "この道でいいですか。", "romaji": "Kono michi de ii desu ka?", "vi": "Đi đường này đúng không?", "tier": "useful", "cue": "Xác nhận đường"}, {"id": "e088", "topic": "directions", "topicLabel": "11 · Directions", "jp": "地図で見せてください。", "romaji": "Chizu de misete kudasai.", "vi": "Làm ơn chỉ trên bản đồ.", "tier": "survival", "cue": "Nhờ chỉ bản đồ"}, {"id": "e089", "topic": "train", "topicLabel": "12 · Train Station", "jp": "この電車は新宿に行きますか。", "romaji": "Kono densha wa Shinjuku ni ikimasu ka?", "vi": "Tàu này có đi Shinjuku không?", "tier": "core", "cue": "Xác nhận tàu"}, {"id": "e090", "topic": "train", "topicLabel": "12 · Train Station", "jp": "何番線ですか。", "romaji": "Nan-bansen desu ka?", "vi": "Sân ga số mấy?", "tier": "core", "cue": "Hỏi platform"}, {"id": "e091", "topic": "train", "topicLabel": "12 · Train Station", "jp": "次の電車は何時ですか。", "romaji": "Tsugi no densha wa nanji desu ka?", "vi": "Tàu tiếp theo lúc mấy giờ?", "tier": "core", "cue": "Hỏi giờ tàu"}, {"id": "e092", "topic": "train", "topicLabel": "12 · Train Station", "jp": "切符を一枚お願いします。", "romaji": "Kippu o ichimai onegaishimasu.", "vi": "Cho tôi một vé.", "tier": "core", "cue": "Mua vé"}, {"id": "e093", "topic": "train", "topicLabel": "12 · Train Station", "jp": "ここで乗り換えますか。", "romaji": "Koko de norikaemasu ka?", "vi": "Có đổi tàu ở đây không?", "tier": "useful", "cue": "Hỏi transfer"}, {"id": "e094", "topic": "train", "topicLabel": "12 · Train Station", "jp": "急行ですか。", "romaji": "Kyūkō desu ka?", "vi": "Đây là tàu nhanh phải không?", "tier": "useful", "cue": "Xác nhận loại tàu"}, {"id": "e095", "topic": "train", "topicLabel": "12 · Train Station", "jp": "この電車でいいですか。", "romaji": "Kono densha de ii desu ka?", "vi": "Đi tàu này đúng không?", "tier": "core", "cue": "Xác nhận"}, {"id": "e096", "topic": "train", "topicLabel": "12 · Train Station", "jp": "乗り過ごしました。", "romaji": "Norisugoshimashita.", "vi": "Tôi đã đi quá ga.", "tier": "survival", "cue": "Khi lỡ quá ga"}, {"id": "e097", "topic": "taxi", "topicLabel": "13 · Taxi & Transport", "jp": "東京駅までお願いします。", "romaji": "Tōkyō-eki made onegaishimasu.", "vi": "Cho tôi đến ga Tokyo.", "tier": "core", "cue": "Nói điểm đến"}, {"id": "e098", "topic": "taxi", "topicLabel": "13 · Taxi & Transport", "jp": "ここで止めてください。", "romaji": "Koko de tomete kudasai.", "vi": "Làm ơn dừng ở đây.", "tier": "core", "cue": "Yêu cầu dừng"}, {"id": "e099", "topic": "taxi", "topicLabel": "13 · Taxi & Transport", "jp": "どのくらいかかりますか。", "romaji": "Dono kurai kakarimasu ka?", "vi": "Mất khoảng bao lâu?", "tier": "core", "cue": "Hỏi thời gian"}, {"id": "e100", "topic": "taxi", "topicLabel": "13 · Taxi & Transport", "jp": "いくらぐらいですか。", "romaji": "Ikura gurai desu ka?", "vi": "Khoảng bao nhiêu tiền?", "tier": "core", "cue": "Hỏi chi phí"}, {"id": "e101", "topic": "taxi", "topicLabel": "13 · Taxi & Transport", "jp": "急いでいます。", "romaji": "Isoide imasu.", "vi": "Tôi đang vội.", "tier": "useful", "cue": "Báo đang vội"}, {"id": "e102", "topic": "taxi", "topicLabel": "13 · Taxi & Transport", "jp": "この住所までお願いします。", "romaji": "Kono jūsho made onegaishimasu.", "vi": "Cho tôi đến địa chỉ này.", "tier": "useful", "cue": "Đưa địa chỉ"}, {"id": "e103", "topic": "taxi", "topicLabel": "13 · Taxi & Transport", "jp": "カードで払えますか。", "romaji": "Kādo de haraemasu ka?", "vi": "Có trả bằng thẻ được không?", "tier": "useful", "cue": "Hỏi thanh toán"}, {"id": "e104", "topic": "taxi", "topicLabel": "13 · Taxi & Transport", "jp": "領収書をお願いします。", "romaji": "Ryōshūsho o onegaishimasu.", "vi": "Cho tôi biên lai.", "tier": "useful", "cue": "Xin receipt chính thức"}, {"id": "e105", "topic": "weather", "topicLabel": "14 · Weather & Small Talk", "jp": "今日は暑いですね。", "romaji": "Kyō wa atsui desu ne.", "vi": "Hôm nay nóng nhỉ.", "tier": "core", "cue": "Small talk"}, {"id": "e106", "topic": "weather", "topicLabel": "14 · Weather & Small Talk", "jp": "寒いですね。", "romaji": "Samui desu ne.", "vi": "Lạnh nhỉ.", "tier": "core", "cue": "Small talk"}, {"id": "e107", "topic": "weather", "topicLabel": "14 · Weather & Small Talk", "jp": "いい天気ですね。", "romaji": "Ii tenki desu ne.", "vi": "Thời tiết đẹp nhỉ.", "tier": "core", "cue": "Mở chuyện"}, {"id": "e108", "topic": "weather", "topicLabel": "14 · Weather & Small Talk", "jp": "雨が降っています。", "romaji": "Ame ga futteimasu.", "vi": "Trời đang mưa.", "tier": "core", "cue": "Mô tả thời tiết"}, {"id": "e109", "topic": "weather", "topicLabel": "14 · Weather & Small Talk", "jp": "明日は晴れです。", "romaji": "Ashita wa hare desu.", "vi": "Ngày mai trời nắng.", "tier": "useful", "cue": "Nói dự báo"}, {"id": "e110", "topic": "weather", "topicLabel": "14 · Weather & Small Talk", "jp": "今日は涼しいですね。", "romaji": "Kyō wa suzushii desu ne.", "vi": "Hôm nay mát nhỉ.", "tier": "useful", "cue": "Small talk"}, {"id": "e111", "topic": "weather", "topicLabel": "14 · Weather & Small Talk", "jp": "雨が降りそうです。", "romaji": "Ame ga furisō desu.", "vi": "Có vẻ sắp mưa.", "tier": "useful", "cue": "Nhận xét"}, {"id": "e112", "topic": "weather", "topicLabel": "14 · Weather & Small Talk", "jp": "傘を持っていますか。", "romaji": "Kasa o motteimasu ka?", "vi": "Bạn có mang ô không?", "tier": "useful", "cue": "Hỏi đồ mang theo"}, {"id": "e113", "topic": "work-study", "topicLabel": "15 · Work & Study", "jp": "仕事は何ですか。", "romaji": "Shigoto wa nan desu ka?", "vi": "Bạn làm nghề gì?", "tier": "core", "cue": "Hỏi nghề"}, {"id": "e114", "topic": "work-study", "topicLabel": "15 · Work & Study", "jp": "会社で働いています。", "romaji": "Kaisha de hataraiteimasu.", "vi": "Tôi làm ở công ty.", "tier": "core", "cue": "Nói nơi làm"}, {"id": "e115", "topic": "work-study", "topicLabel": "15 · Work & Study", "jp": "大学で勉強しています。", "romaji": "Daigaku de benkyō shiteimasu.", "vi": "Tôi học ở đại học.", "tier": "core", "cue": "Nói nơi học"}, {"id": "e116", "topic": "work-study", "topicLabel": "15 · Work & Study", "jp": "日本語の先生です。", "romaji": "Nihongo no sensei desu.", "vi": "Tôi là giáo viên tiếng Nhật.", "tier": "useful", "cue": "Nói nghề cụ thể"}, {"id": "e117", "topic": "work-study", "topicLabel": "15 · Work & Study", "jp": "毎日忙しいです。", "romaji": "Mainichi isogashii desu.", "vi": "Ngày nào tôi cũng bận.", "tier": "useful", "cue": "Small talk công việc"}, {"id": "e118", "topic": "work-study", "topicLabel": "15 · Work & Study", "jp": "今日は仕事があります。", "romaji": "Kyō wa shigoto ga arimasu.", "vi": "Hôm nay tôi có việc.", "tier": "useful", "cue": "Nói lịch làm"}, {"id": "e119", "topic": "work-study", "topicLabel": "15 · Work & Study", "jp": "明日は休みです。", "romaji": "Ashita wa yasumi desu.", "vi": "Ngày mai tôi nghỉ.", "tier": "core", "cue": "Nói ngày nghỉ"}, {"id": "e120", "topic": "work-study", "topicLabel": "15 · Work & Study", "jp": "何時まで働きますか。", "romaji": "Nanji made hatarakimasu ka?", "vi": "Bạn làm đến mấy giờ?", "tier": "useful", "cue": "Hỏi giờ làm"}, {"id": "e121", "topic": "hobbies-social", "topicLabel": "16 · Hobbies & Social", "jp": "趣味は何ですか。", "romaji": "Shumi wa nan desu ka?", "vi": "Sở thích của bạn là gì?", "tier": "core", "cue": "Hỏi sở thích"}, {"id": "e122", "topic": "hobbies-social", "topicLabel": "16 · Hobbies & Social", "jp": "映画が好きです。", "romaji": "Eiga ga suki desu.", "vi": "Tôi thích phim.", "tier": "core", "cue": "Nói sở thích"}, {"id": "e123", "topic": "hobbies-social", "topicLabel": "16 · Hobbies & Social", "jp": "音楽をよく聞きます。", "romaji": "Ongaku o yoku kikimasu.", "vi": "Tôi thường nghe nhạc.", "tier": "useful", "cue": "Nói thói quen"}, {"id": "e124", "topic": "hobbies-social", "topicLabel": "16 · Hobbies & Social", "jp": "週末は何をしますか。", "romaji": "Shūmatsu wa nani o shimasu ka?", "vi": "Cuối tuần bạn làm gì?", "tier": "core", "cue": "Hỏi cuối tuần"}, {"id": "e125", "topic": "hobbies-social", "topicLabel": "16 · Hobbies & Social", "jp": "一緒にコーヒーを飲みませんか。", "romaji": "Issho ni kōhī o nomimasen ka?", "vi": "Đi uống cà phê cùng nhé?", "tier": "core", "cue": "Rủ"}, {"id": "e126", "topic": "hobbies-social", "topicLabel": "16 · Hobbies & Social", "jp": "旅行が好きです。", "romaji": "Ryokō ga suki desu.", "vi": "Tôi thích du lịch.", "tier": "useful", "cue": "Nói sở thích"}, {"id": "e127", "topic": "hobbies-social", "topicLabel": "16 · Hobbies & Social", "jp": "写真を撮るのが好きです。", "romaji": "Shashin o toru no ga suki desu.", "vi": "Tôi thích chụp ảnh.", "tier": "useful", "cue": "Nói hoạt động yêu thích"}, {"id": "e128", "topic": "hobbies-social", "topicLabel": "16 · Hobbies & Social", "jp": "また会いましょう。", "romaji": "Mata aimashō.", "vi": "Hẹn gặp lại nhé.", "tier": "core", "cue": "Kết thúc buổi gặp"}, {"id": "e129", "topic": "requests", "topicLabel": "17 · Requests", "jp": "ちょっと待ってください。", "romaji": "Chotto matte kudasai.", "vi": "Xin chờ một chút.", "tier": "core", "cue": "Yêu cầu đợi"}, {"id": "e130", "topic": "requests", "topicLabel": "17 · Requests", "jp": "見せてください。", "romaji": "Misete kudasai.", "vi": "Làm ơn cho tôi xem.", "tier": "core", "cue": "Nhờ cho xem"}, {"id": "e131", "topic": "requests", "topicLabel": "17 · Requests", "jp": "書いてください。", "romaji": "Kaite kudasai.", "vi": "Làm ơn viết ra.", "tier": "core", "cue": "Nhờ viết"}, {"id": "e132", "topic": "requests", "topicLabel": "17 · Requests", "jp": "もう一度言ってください。", "romaji": "Mō ichido itte kudasai.", "vi": "Làm ơn nói lại.", "tier": "core", "cue": "Nhờ lặp lại"}, {"id": "e133", "topic": "requests", "topicLabel": "17 · Requests", "jp": "ゆっくり話してください。", "romaji": "Yukkuri hanashite kudasai.", "vi": "Làm ơn nói chậm.", "tier": "core", "cue": "Nhờ nói chậm"}, {"id": "e134", "topic": "requests", "topicLabel": "17 · Requests", "jp": "ここに名前を書いてください。", "romaji": "Koko ni namae o kaite kudasai.", "vi": "Làm ơn viết tên ở đây.", "tier": "useful", "cue": "Hướng dẫn"}, {"id": "e135", "topic": "requests", "topicLabel": "17 · Requests", "jp": "手伝ってください。", "romaji": "Tetsudatte kudasai.", "vi": "Làm ơn giúp tôi.", "tier": "survival", "cue": "Xin giúp"}, {"id": "e136", "topic": "requests", "topicLabel": "17 · Requests", "jp": "少し待ってもらえますか。", "romaji": "Sukoshi matte moraemasu ka?", "vi": "Bạn có thể chờ một chút không?", "tier": "useful", "cue": "Yêu cầu mềm hơn"}, {"id": "e137", "topic": "permission", "topicLabel": "18 · Permission", "jp": "ここに座ってもいいですか。", "romaji": "Koko ni suwatte mo ii desu ka?", "vi": "Tôi ngồi ở đây được không?", "tier": "core", "cue": "Xin phép ngồi"}, {"id": "e138", "topic": "permission", "topicLabel": "18 · Permission", "jp": "写真を撮ってもいいですか。", "romaji": "Shashin o totte mo ii desu ka?", "vi": "Tôi chụp ảnh được không?", "tier": "core", "cue": "Xin phép chụp"}, {"id": "e139", "topic": "permission", "topicLabel": "18 · Permission", "jp": "入ってもいいですか。", "romaji": "Haitte mo ii desu ka?", "vi": "Tôi vào được không?", "tier": "core", "cue": "Xin phép vào"}, {"id": "e140", "topic": "permission", "topicLabel": "18 · Permission", "jp": "使ってもいいですか。", "romaji": "Tsukatte mo ii desu ka?", "vi": "Tôi dùng được không?", "tier": "core", "cue": "Xin phép dùng"}, {"id": "e141", "topic": "permission", "topicLabel": "18 · Permission", "jp": "ここで食べてもいいですか。", "romaji": "Koko de tabete mo ii desu ka?", "vi": "Tôi ăn ở đây được không?", "tier": "core", "cue": "Xin phép ăn"}, {"id": "e142", "topic": "permission", "topicLabel": "18 · Permission", "jp": "窓を開けてもいいですか。", "romaji": "Mado o akete mo ii desu ka?", "vi": "Tôi mở cửa sổ được không?", "tier": "useful", "cue": "Xin phép"}, {"id": "e143", "topic": "permission", "topicLabel": "18 · Permission", "jp": "トイレを使ってもいいですか。", "romaji": "Toire o tsukatte mo ii desu ka?", "vi": "Tôi dùng nhà vệ sinh được không?", "tier": "survival", "cue": "Xin dùng toilet"}, {"id": "e144", "topic": "permission", "topicLabel": "18 · Permission", "jp": "はい、いいですよ。", "romaji": "Hai, ii desu yo.", "vi": "Vâng, được chứ.", "tier": "core", "cue": "Cho phép"}, {"id": "e145", "topic": "rules", "topicLabel": "19 · Rules & Prohibition", "jp": "ここで写真を撮ってはいけません。", "romaji": "Koko de shashin o totte wa ikemasen.", "vi": "Không được chụp ảnh ở đây.", "tier": "core", "cue": "Quy định cấm"}, {"id": "e146", "topic": "rules", "topicLabel": "19 · Rules & Prohibition", "jp": "ここに入ってはいけません。", "romaji": "Koko ni haitte wa ikemasen.", "vi": "Không được vào đây.", "tier": "core", "cue": "Cấm vào"}, {"id": "e147", "topic": "rules", "topicLabel": "19 · Rules & Prohibition", "jp": "ここで食べてはいけません。", "romaji": "Koko de tabete wa ikemasen.", "vi": "Không được ăn ở đây.", "tier": "core", "cue": "Cấm ăn"}, {"id": "e148", "topic": "rules", "topicLabel": "19 · Rules & Prohibition", "jp": "触らないでください。", "romaji": "Sawaranaide kudasai.", "vi": "Xin đừng chạm.", "tier": "core", "cue": "Yêu cầu không làm"}, {"id": "e149", "topic": "rules", "topicLabel": "19 · Rules & Prohibition", "jp": "忘れないでください。", "romaji": "Wasurenaide kudasai.", "vi": "Xin đừng quên.", "tier": "useful", "cue": "Nhắc nhở"}, {"id": "e150", "topic": "rules", "topicLabel": "19 · Rules & Prohibition", "jp": "走らないでください。", "romaji": "Hashiranaide kudasai.", "vi": "Xin đừng chạy.", "tier": "useful", "cue": "Biển nhắc nhở"}, {"id": "e151", "topic": "rules", "topicLabel": "19 · Rules & Prohibition", "jp": "ここでタバコを吸わないでください。", "romaji": "Koko de tabako o suwanaide kudasai.", "vi": "Xin đừng hút thuốc ở đây.", "tier": "useful", "cue": "Quy định"}, {"id": "e152", "topic": "rules", "topicLabel": "19 · Rules & Prohibition", "jp": "静かにしてください。", "romaji": "Shizuka ni shite kudasai.", "vi": "Xin giữ yên lặng.", "tier": "useful", "cue": "Yêu cầu"}, {"id": "e153", "topic": "understanding", "topicLabel": "20 · Help & Understanding", "jp": "わかりません。", "romaji": "Wakarimasen.", "vi": "Tôi không hiểu / không biết.", "tier": "core", "cue": "Khi không hiểu"}, {"id": "e154", "topic": "understanding", "topicLabel": "20 · Help & Understanding", "jp": "もう一度お願いします。", "romaji": "Mō ichido onegaishimasu.", "vi": "Làm ơn nói lại.", "tier": "core", "cue": "Xin lặp lại"}, {"id": "e155", "topic": "understanding", "topicLabel": "20 · Help & Understanding", "jp": "ゆっくりお願いします。", "romaji": "Yukkuri onegaishimasu.", "vi": "Làm ơn nói chậm.", "tier": "core", "cue": "Xin nói chậm"}, {"id": "e156", "topic": "understanding", "topicLabel": "20 · Help & Understanding", "jp": "これはどういう意味ですか。", "romaji": "Kore wa dō iu imi desu ka?", "vi": "Cái này nghĩa là gì?", "tier": "useful", "cue": "Hỏi nghĩa"}, {"id": "e157", "topic": "understanding", "topicLabel": "20 · Help & Understanding", "jp": "英語は話せますか。", "romaji": "Eigo wa hanasemasu ka?", "vi": "Bạn có nói tiếng Anh không?", "tier": "survival", "cue": "Xin hỗ trợ ngôn ngữ"}, {"id": "e158", "topic": "understanding", "topicLabel": "20 · Help & Understanding", "jp": "日本語が少しわかります。", "romaji": "Nihongo ga sukoshi wakarimasu.", "vi": "Tôi hiểu một chút tiếng Nhật.", "tier": "core", "cue": "Nói khả năng"}, {"id": "e159", "topic": "understanding", "topicLabel": "20 · Help & Understanding", "jp": "紙に書いてください。", "romaji": "Kami ni kaite kudasai.", "vi": "Làm ơn viết ra giấy.", "tier": "survival", "cue": "Khi nghe không rõ"}, {"id": "e160", "topic": "understanding", "topicLabel": "20 · Help & Understanding", "jp": "もう少し簡単にお願いします。", "romaji": "Mō sukoshi kantan ni onegaishimasu.", "vi": "Làm ơn nói đơn giản hơn một chút.", "tier": "useful", "cue": "Xin diễn đạt đơn giản"}, {"id": "e161", "topic": "past", "topicLabel": "21 · Past Experiences", "jp": "昨日、何をしましたか。", "romaji": "Kinō, nani o shimashita ka?", "vi": "Hôm qua bạn làm gì?", "tier": "core", "cue": "Hỏi quá khứ"}, {"id": "e162", "topic": "past", "topicLabel": "21 · Past Experiences", "jp": "映画を見ました。", "romaji": "Eiga o mimashita.", "vi": "Tôi đã xem phim.", "tier": "core", "cue": "Kể việc đã làm"}, {"id": "e163", "topic": "past", "topicLabel": "21 · Past Experiences", "jp": "楽しかったです。", "romaji": "Tanoshikatta desu.", "vi": "Đã rất vui.", "tier": "core", "cue": "Cảm nhận quá khứ"}, {"id": "e164", "topic": "past", "topicLabel": "21 · Past Experiences", "jp": "おいしかったです。", "romaji": "Oishikatta desu.", "vi": "Đã rất ngon.", "tier": "core", "cue": "Nhận xét món"}, {"id": "e165", "topic": "past", "topicLabel": "21 · Past Experiences", "jp": "先週、京都へ行きました。", "romaji": "Senshū, Kyōto e ikimashita.", "vi": "Tuần trước tôi đi Kyoto.", "tier": "useful", "cue": "Kể chuyến đi"}, {"id": "e166", "topic": "past", "topicLabel": "21 · Past Experiences", "jp": "昨日は忙しかったです。", "romaji": "Kinō wa isogashikatta desu.", "vi": "Hôm qua tôi bận.", "tier": "useful", "cue": "Tính từ quá khứ"}, {"id": "e167", "topic": "past", "topicLabel": "21 · Past Experiences", "jp": "何を食べましたか。", "romaji": "Nani o tabemashita ka?", "vi": "Bạn đã ăn gì?", "tier": "core", "cue": "Hỏi quá khứ"}, {"id": "e168", "topic": "past", "topicLabel": "21 · Past Experiences", "jp": "何も買いませんでした。", "romaji": "Nani mo kaimasen deshita.", "vi": "Tôi không mua gì cả.", "tier": "useful", "cue": "Phủ định quá khứ"}, {"id": "e169", "topic": "reasons-opinions", "topicLabel": "22 · Reasons & Opinions", "jp": "日本語が好きです。", "romaji": "Nihongo ga suki desu.", "vi": "Tôi thích tiếng Nhật.", "tier": "core", "cue": "Nói sở thích"}, {"id": "e170", "topic": "reasons-opinions", "topicLabel": "22 · Reasons & Opinions", "jp": "日本が好きだからです。", "romaji": "Nihon ga suki dakara desu.", "vi": "Vì tôi thích Nhật Bản.", "tier": "useful", "cue": "Nêu lý do"}, {"id": "e171", "topic": "reasons-opinions", "topicLabel": "22 · Reasons & Opinions", "jp": "いいと思います。", "romaji": "Ii to omoimasu.", "vi": "Tôi nghĩ là tốt.", "tier": "useful", "cue": "Nói ý kiến"}, {"id": "e172", "topic": "reasons-opinions", "topicLabel": "22 · Reasons & Opinions", "jp": "ちょっと高いと思います。", "romaji": "Chotto takai to omoimasu.", "vi": "Tôi nghĩ hơi đắt.", "tier": "useful", "cue": "Ý kiến mềm"}, {"id": "e173", "topic": "reasons-opinions", "topicLabel": "22 · Reasons & Opinions", "jp": "便利だと思います。", "romaji": "Benri da to omoimasu.", "vi": "Tôi nghĩ là tiện.", "tier": "useful", "cue": "Nói ý kiến"}, {"id": "e174", "topic": "reasons-opinions", "topicLabel": "22 · Reasons & Opinions", "jp": "どう思いますか。", "romaji": "Dō omoimasu ka?", "vi": "Bạn nghĩ thế nào?", "tier": "useful", "cue": "Hỏi ý kiến"}, {"id": "e175", "topic": "reasons-opinions", "topicLabel": "22 · Reasons & Opinions", "jp": "忙しいから、行きません。", "romaji": "Isogashii kara, ikimasen.", "vi": "Vì bận nên tôi không đi.", "tier": "core", "cue": "Nêu lý do"}, {"id": "e176", "topic": "reasons-opinions", "topicLabel": "22 · Reasons & Opinions", "jp": "たぶん大丈夫です。", "romaji": "Tabun daijōbu desu.", "vi": "Có lẽ ổn.", "tier": "useful", "cue": "Nói mức chắc chắn"}, {"id": "e177", "topic": "hotel", "topicLabel": "23 · Hotel", "jp": "予約があります。", "romaji": "Yoyaku ga arimasu.", "vi": "Tôi có đặt phòng.", "tier": "core", "cue": "Check-in"}, {"id": "e178", "topic": "hotel", "topicLabel": "23 · Hotel", "jp": "チェックインをお願いします。", "romaji": "Chekku-in o onegaishimasu.", "vi": "Tôi muốn check-in.", "tier": "core", "cue": "Nhận phòng"}, {"id": "e179", "topic": "hotel", "topicLabel": "23 · Hotel", "jp": "Wi-Fiはありますか。", "romaji": "Waifai wa arimasu ka?", "vi": "Có Wi-Fi không?", "tier": "core", "cue": "Hỏi tiện ích"}, {"id": "e180", "topic": "hotel", "topicLabel": "23 · Hotel", "jp": "タオルをもう一枚お願いします。", "romaji": "Taoru o mō ichimai onegaishimasu.", "vi": "Cho tôi thêm một khăn.", "tier": "useful", "cue": "Xin thêm đồ"}, {"id": "e181", "topic": "hotel", "topicLabel": "23 · Hotel", "jp": "チェックアウトは何時ですか。", "romaji": "Chekku-auto wa nanji desu ka?", "vi": "Mấy giờ check-out?", "tier": "core", "cue": "Hỏi giờ trả phòng"}, {"id": "e182", "topic": "hotel", "topicLabel": "23 · Hotel", "jp": "部屋の鍵がありません。", "romaji": "Heya no kagi ga arimasen.", "vi": "Tôi không thấy chìa khóa phòng.", "tier": "survival", "cue": "Báo mất khóa"}, {"id": "e183", "topic": "hotel", "topicLabel": "23 · Hotel", "jp": "エアコンが動きません。", "romaji": "Eakon ga ugokimasen.", "vi": "Máy lạnh không hoạt động.", "tier": "survival", "cue": "Báo sự cố"}, {"id": "e184", "topic": "hotel", "topicLabel": "23 · Hotel", "jp": "荷物を預かってもらえますか。", "romaji": "Nimotsu o azukatte moraemasu ka?", "vi": "Có thể giữ hành lý giúp tôi không?", "tier": "useful", "cue": "Gửi hành lý"}, {"id": "e185", "topic": "airport", "topicLabel": "24 · Airport & Travel", "jp": "空港へ行きたいです。", "romaji": "Kūkō e ikitai desu.", "vi": "Tôi muốn đi sân bay.", "tier": "core", "cue": "Nói điểm đến"}, {"id": "e186", "topic": "airport", "topicLabel": "24 · Airport & Travel", "jp": "この便は何時ですか。", "romaji": "Kono bin wa nanji desu ka?", "vi": "Chuyến bay này lúc mấy giờ?", "tier": "core", "cue": "Hỏi giờ bay"}, {"id": "e187", "topic": "airport", "topicLabel": "24 · Airport & Travel", "jp": "搭乗口はどこですか。", "romaji": "Tōjōguchi wa doko desu ka?", "vi": "Cửa lên máy bay ở đâu?", "tier": "core", "cue": "Hỏi gate"}, {"id": "e188", "topic": "airport", "topicLabel": "24 · Airport & Travel", "jp": "荷物を預けたいです。", "romaji": "Nimotsu o azuketai desu.", "vi": "Tôi muốn ký gửi hành lý.", "tier": "core", "cue": "Ký gửi"}, {"id": "e189", "topic": "airport", "topicLabel": "24 · Airport & Travel", "jp": "パスポートを見せてください。", "romaji": "Pasupōto o misete kudasai.", "vi": "Vui lòng cho xem hộ chiếu.", "tier": "core", "cue": "Câu thường nghe"}, {"id": "e190", "topic": "airport", "topicLabel": "24 · Airport & Travel", "jp": "この荷物は機内に持ち込めますか。", "romaji": "Kono nimotsu wa kinai ni mochikomemasu ka?", "vi": "Hành lý này mang lên cabin được không?", "tier": "useful", "cue": "Hỏi hành lý"}, {"id": "e191", "topic": "airport", "topicLabel": "24 · Airport & Travel", "jp": "飛行機が遅れています。", "romaji": "Hikōki ga okureteimasu.", "vi": "Máy bay đang bị trễ.", "tier": "survival", "cue": "Thông tin delay"}, {"id": "e192", "topic": "airport", "topicLabel": "24 · Airport & Travel", "jp": "どこでチェックインしますか。", "romaji": "Doko de chekku-in shimasu ka?", "vi": "Check-in ở đâu?", "tier": "core", "cue": "Hỏi quầy"}, {"id": "e193", "topic": "emergency", "topicLabel": "25 · Emergency & Survival", "jp": "助けてください。", "romaji": "Tasukete kudasai.", "vi": "Làm ơn giúp tôi.", "tier": "survival", "cue": "Cần giúp khẩn"}, {"id": "e194", "topic": "emergency", "topicLabel": "25 · Emergency & Survival", "jp": "病院はどこですか。", "romaji": "Byōin wa doko desu ka?", "vi": "Bệnh viện ở đâu?", "tier": "survival", "cue": "Hỏi bệnh viện"}, {"id": "e195", "topic": "emergency", "topicLabel": "25 · Emergency & Survival", "jp": "気分が悪いです。", "romaji": "Kibun ga warui desu.", "vi": "Tôi cảm thấy không khỏe.", "tier": "survival", "cue": "Báo không khỏe"}, {"id": "e196", "topic": "emergency", "topicLabel": "25 · Emergency & Survival", "jp": "警察を呼んでください。", "romaji": "Keisatsu o yonde kudasai.", "vi": "Làm ơn gọi cảnh sát.", "tier": "survival", "cue": "Khẩn cấp"}, {"id": "e197", "topic": "emergency", "topicLabel": "25 · Emergency & Survival", "jp": "道に迷いました。", "romaji": "Michi ni mayoimashita.", "vi": "Tôi bị lạc.", "tier": "survival", "cue": "Bị lạc"}, {"id": "e198", "topic": "emergency", "topicLabel": "25 · Emergency & Survival", "jp": "財布をなくしました。", "romaji": "Saifu o nakushimashita.", "vi": "Tôi bị mất ví.", "tier": "survival", "cue": "Mất đồ"}, {"id": "e199", "topic": "emergency", "topicLabel": "25 · Emergency & Survival", "jp": "パスポートをなくしました。", "romaji": "Pasupōto o nakushimashita.", "vi": "Tôi bị mất hộ chiếu.", "tier": "survival", "cue": "Mất hộ chiếu"}, {"id": "e200", "topic": "emergency", "topicLabel": "25 · Emergency & Survival", "jp": "救急車を呼んでください。", "romaji": "Kyūkyūsha o yonde kudasai.", "vi": "Làm ơn gọi xe cấp cứu.", "tier": "survival", "cue": "Khẩn cấp y tế"}];
+const TOPICS=[{"key": "first-meeting", "label": "01 · Greeting & First Meeting"}, {"key": "self-intro", "label": "02 · Self Introduction"}, {"key": "basic-questions", "label": "03 · Basic Questions"}, {"key": "time-date", "label": "04 · Time & Dates"}, {"key": "daily-routine", "label": "05 · Daily Routine"}, {"key": "plans-invitations", "label": "06 · Plans & Invitations"}, {"key": "cafe", "label": "07 · Café"}, {"key": "restaurant", "label": "08 · Restaurant"}, {"key": "shopping", "label": "09 · Shopping"}, {"key": "convenience-store", "label": "10 · Convenience Store"}, {"key": "directions", "label": "11 · Directions"}, {"key": "train", "label": "12 · Train Station"}, {"key": "taxi", "label": "13 · Taxi & Transport"}, {"key": "weather", "label": "14 · Weather & Small Talk"}, {"key": "work-study", "label": "15 · Work & Study"}, {"key": "hobbies-social", "label": "16 · Hobbies & Social"}, {"key": "requests", "label": "17 · Requests"}, {"key": "permission", "label": "18 · Permission"}, {"key": "rules", "label": "19 · Rules & Prohibition"}, {"key": "understanding", "label": "20 · Help & Understanding"}, {"key": "past", "label": "21 · Past Experiences"}, {"key": "reasons-opinions", "label": "22 · Reasons & Opinions"}, {"key": "hotel", "label": "23 · Hotel"}, {"key": "airport", "label": "24 · Airport & Travel"}, {"key": "emergency", "label": "25 · Emergency & Survival"}];
+const FAV_KEY="nihongo90-expression-favorites-v3";
+const WEAK_KEY="nihongo90-expression-weak";
+let tier="all", topic="all", searchText="", voiceCache=[], practiceMode="filtered", practicePool=[], practiceIndex=0;
+let quizRound=[], quizIndex=0, quizPoints=0;
+
+const SESSION={
+  5:{title:"Quick Refresh · 5 phút",desc:"Một lượt rất ngắn để giữ phản xạ.",items:[["Core","5 câu"],["Useful","3 câu"],["Listen","2 câu"],["Respond","2 câu"]]},
+  15:{title:"Daily Review · 15 phút",desc:"Phiên mặc định sau Day 90.",items:[["Core","10 câu"],["Useful","8 câu"],["Survival+","3 câu"],["Quiz","5 câu"]]},
+  30:{title:"Deep Review · 30 phút",desc:"Ôn sâu một chủ đề hoặc mixed review.",items:[["Core","15 câu"],["Useful","12 câu"],["Survival+","5 câu"],["Quiz / Recall","10–15 câu"]]}
+};
+
+function readJson(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch(_ ){return f}}
+function favs(){return readJson(FAV_KEY,[])} function weaks(){return readJson(WEAK_KEY,[])}
+function saveFavs(v){localStorage.setItem(FAV_KEY,JSON.stringify([...new Set(v)]))}
+function saveWeaks(v){localStorage.setItem(WEAK_KEY,JSON.stringify([...new Set(v)]))}
+function isFav(id){return favs().includes(id)} function isWeak(id){return weaks().includes(id)}
+
+function setupMenu(){
+ const b=document.getElementById("menuBtn"),m=document.getElementById("mobileMenu");
+ b.onclick=()=>{const o=m.classList.toggle("open");b.textContent=o?"✕":"☰"};
+}
+function setupSession(){
+ const saved=localStorage.getItem("nihongo90-expression-duration")||"5";
+ document.querySelectorAll(".time-btn").forEach(b=>{
+   b.classList.toggle("active",b.dataset.time===saved);
+   b.onclick=()=>{document.querySelectorAll(".time-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");localStorage.setItem("nihongo90-expression-duration",b.dataset.time);renderSession(b.dataset.time)}
+ });
+ renderSession(saved);
+}
+function renderSession(t){const p=SESSION[t]||SESSION[5];sessionTitle.textContent=p.title;sessionDesc.textContent=p.desc;sessionItems.innerHTML=p.items.map(x=>`<div class="session-item"><strong>${x[0]}</strong><span>${x[1]}</span></div>`).join("")}
+
+function populateTopics(){TOPICS.forEach(t=>{const o=document.createElement("option");o.value=t.key;o.textContent=t.label;topicSelect.appendChild(o)})}
+
+function filtered(){
+ return EXPRESSIONS.filter(x=>{
+  if(topic!=="all"&&x.topic!==topic)return false;
+  if(tier==="favorite"&&!isFav(x.id))return false;
+  if(tier==="weak"&&!isWeak(x.id))return false;
+  if(!["all","favorite","weak"].includes(tier)&&x.tier!==tier)return false;
+  if(!searchText)return true;
+  const hay=[x.jp,x.romaji,x.vi,x.cue,x.topicLabel,x.tier].join(" ").toLowerCase();
+  return hay.includes(searchText);
+ });
+}
+
+function renderLibrary(){
+ const items=filtered();
+ expressionGrid.innerHTML=items.map(x=>`
+ <article class="expression-card">
+  <div class="expression-top">
+   <div>
+    <div class="expression-jp">${x.jp}</div>
+    <div class="romaji">${x.romaji}</div>
+    <div class="vi">${x.vi}</div>
+    <div class="topic-line">${x.topicLabel}</div>
+    <div class="badges"><span class="badge ${x.tier}">${x.tier==="survival"?"Survival+":x.tier[0].toUpperCase()+x.tier.slice(1)}</span><span class="badge">${x.cue}</span></div>
+   </div>
+   <button class="fav-btn ${isFav(x.id)?"active":""}" onclick="toggleFav('${x.id}')">${isFav(x.id)?"★":"☆"}</button>
+  </div>
+  <div class="card-actions">
+   <button class="action-btn primary" onclick='speakJapanese(${JSON.stringify(x.jp)})'>▶ Nghe</button>
+   <button class="action-btn" onclick="toggleRecall('${x.id}')">Recall</button>
+   <button class="action-btn" onclick="toggleExplain('${x.id}')">Giải thích</button>
+   <button class="action-btn weak" onclick="toggleWeak('${x.id}')">${isWeak(x.id)?"✓ Weak":"⚠ Weak"}</button>
+  </div>
+  <div class="recall" id="recall-${x.id}">Nhìn tiếng Việt và tự nói lại: <strong>${x.vi}</strong><br><span style="color:var(--muted)">${x.cue}</span></div>
+  <div class="explain-box" id="explain-${x.id}">
+    <div class="explain-section">
+      <div class="explain-title">Cách dùng</div>
+      <div class="explain-text">${getUsage(x)}</div>
+    </div>
+    <div class="pattern-box"><strong>Mẫu / điểm ngữ pháp:</strong> ${getPattern(x)}</div>
+    <div class="tone-box"><strong>🇯🇵 Sắc thái:</strong> ${getTone(x)}</div>
+    <div class="mistake-box"><strong>⚠ Dễ hiểu sai:</strong> ${getMistake(x)}</div>
+  </div>
+ </article>`).join("");
+ emptyState.classList.toggle("show",!items.length);
+ visibleCount.textContent=items.length;
+ coreCount.textContent=EXPRESSIONS.filter(x=>x.tier==="core").length;
+ usefulCount.textContent=EXPRESSIONS.filter(x=>x.tier==="useful").length;
+ survivalCount.textContent=EXPRESSIONS.filter(x=>x.tier==="survival").length;
+ renderRetention(); rebuildPractice();
+}
+
+function getUsage(x){
+ const j=x.jp;
+ if(j.includes("ませんか")) return "Dùng để mời/rủ người khác một cách mềm và lịch sự. Phù hợp khi chưa chắc người kia có muốn tham gia hay không.";
+ if(j.includes("ましょう")) return "Dùng khi đề nghị cùng làm một việc hoặc chốt một hành động chung với người nghe.";
+ if(j.includes("てください")) return "Dùng để yêu cầu hoặc nhờ người khác làm một việc. Trong tình huống dịch vụ hoặc hướng dẫn, đây là mẫu rất thường gặp.";
+ if(j.includes("ないでください")) return "Dùng để yêu cầu ai đó đừng làm một hành động.";
+ if(j.includes("てもいいですか")) return "Dùng để xin phép làm một việc. Đây là một trong các mẫu xin phép quan trọng nhất ở N5.";
+ if(j.includes("てはいけません")) return "Dùng để diễn đạt quy định hoặc cấm đoán: không được làm việc gì.";
+ if(j.includes("たいです")) return "Dùng để nói mong muốn của chính mình: muốn làm một việc.";
+ if(j.includes("と思います")) return "Dùng để nêu ý kiến hoặc suy nghĩ theo cách mềm hơn so với khẳng định trực tiếp.";
+ if(j.includes("から")) return "Dùng để nêu lý do: 'vì... nên...'.";
+ if(j.includes("ではありません")) return "Phủ định lịch sự của danh từ hoặc tính từ な.";
+ if(j.includes("ですか")) return "Câu hỏi lịch sự. Trong hội thoại thường không cần lặp chủ ngữ nếu ngữ cảnh đã rõ.";
+ if(j.includes("お願いします")) return "Cụm rất hữu ích để yêu cầu, gọi món hoặc xin dịch vụ theo cách lịch sự mà không cần nói câu dài.";
+ if(j.includes("ください")) return "Dùng để xin một vật hoặc nhờ người khác làm một hành động, tùy cấu trúc đứng trước.";
+ if(j.includes("ました")) return "Dùng để kể một hành động đã xảy ra trong quá khứ.";
+ if(j.includes("かったです")) return "Dùng để mô tả trạng thái/cảm nhận trong quá khứ với tính từ い.";
+ if(x.topic==="first-meeting") return "Dùng trong chào hỏi và lần đầu gặp nhau. Nên học nguyên cụm thay vì dịch từng từ.";
+ if(x.topic==="restaurant"||x.topic==="cafe") return "Dùng trực tiếp trong tình huống ăn uống; câu thường ngắn vì ngữ cảnh đã rõ.";
+ if(x.topic==="shopping"||x.topic==="convenience-store") return "Dùng khi mua sắm hoặc thanh toán. Chủ ngữ thường được lược bỏ trong hội thoại thực tế.";
+ if(x.topic==="directions"||x.topic==="train"||x.topic==="taxi") return "Dùng khi di chuyển hoặc hỏi đường. Có thể mở đầu bằng すみません để câu tự nhiên và lịch sự hơn.";
+ if(x.topic==="hotel"||x.topic==="airport") return "Dùng trong tình huống du lịch/dịch vụ; nói ngắn, rõ và đúng từ khóa là đủ.";
+ if(x.topic==="emergency") return "Dùng khi cần trợ giúp. Ưu tiên nói ngắn, rõ, trực tiếp để người nghe hiểu ngay.";
+ return `Dùng khi ${x.cue.toLowerCase()}. Hãy nhớ cả cụm như một phản xạ thay vì dịch từng từ.`;
+}
+
+function getPattern(x){
+ const j=x.jp;
+ if(j.includes("ませんか")) return "V-ませんか = Bạn có muốn...?/Chúng ta... nhé?";
+ if(j.includes("ましょう")) return "V-ましょう = Chúng ta hãy...";
+ if(j.includes("てください")) return "Vて + ください = Xin hãy...";
+ if(j.includes("ないでください")) return "Vない + でください = Xin đừng...";
+ if(j.includes("てもいいですか")) return "Vて + もいいですか = Tôi... được không?";
+ if(j.includes("てはいけません")) return "Vて + はいけません = Không được...";
+ if(j.includes("たいです")) return "Vます bỏ ます + たいです = muốn làm...";
+ if(j.includes("と思います")) return "Plain form + と思います = tôi nghĩ rằng...";
+ if(j.includes("から")) return "Reason + から = vì...";
+ if(j.includes("ではありません")) return "N / な-adj + ではありません = không phải/không...";
+ if(j.includes("ですか")) return "Statement + か = câu hỏi lịch sự.";
+ if(j.includes("が好きです")) return "N + が好きです = thích N.";
+ if(j.includes("があります")) return "N + があります = có N.";
+ if(j.includes("に住んでいます")) return "Place + に住んでいます = sống ở...";
+ if(j.includes("で働いています")) return "Place + で働いています = làm việc tại...";
+ if(j.includes("で勉強しています")) return "Place + で勉強しています = học tại...";
+ if(j.includes("まで")) return "Place + まで = đến/tới địa điểm.";
+ if(j.includes("ごろ")) return "Time + ごろ = khoảng thời điểm.";
+ if(j.includes("ぐらい")) return "Amount/time + ぐらい = khoảng...";
+ return "Học nguyên cụm rồi thay phần thông tin chính để tự tạo câu mới.";
+}
+
+function getTone(x){
+ const j=x.jp;
+ if(j==="すみません、ちょっと…。") return "Rất tự nhiên khi từ chối mềm. Người Nhật thường để phần từ chối còn lại được hiểu ngầm.";
+ if(j==="よろしくお願いします。") return "Không có một bản dịch cố định; thể hiện thiện chí và mong mối quan hệ/hợp tác diễn ra tốt đẹp.";
+ if(j==="こちらこそ、よろしくお願いします。") return "Lịch sự và ấm áp; dùng để đáp lại thiện chí của đối phương.";
+ if(j.includes("お願いします")) return "Lịch sự, mềm và cực kỳ phổ biến trong dịch vụ, mua sắm, nhà hàng và giao tiếp hằng ngày.";
+ if(j.includes("ください")) return "Lịch sự nhưng khá trực tiếp; phù hợp khi yêu cầu rõ ràng, hướng dẫn hoặc cần trợ giúp.";
+ if(j.includes("ませんか")) return "Mềm hơn lời đề nghị trực tiếp; tạo không gian để người kia từ chối.";
+ if(j.includes("ましょう")) return "Chủ động hơn 〜ませんか; thường dùng khi hai bên đã khá đồng thuận.";
+ if(j.includes("と思います")) return "Mềm hơn phát biểu trực tiếp và phù hợp khi nêu ý kiến cá nhân.";
+ if(x.tier==="survival") return "Ưu tiên rõ ràng và dễ hiểu hơn việc cố nói quá trang trọng.";
+ if(x.tier==="core") return "Đây là câu nên luyện thành phản xạ và có thể dùng nguyên cụm trong nhiều tình huống.";
+ return "Lịch sự cơ bản và phù hợp với người học N5 trong giao tiếp hằng ngày.";
+}
+
+function getMistake(x){
+ const j=x.jp;
+ if(j==="こんにちは。"||j==="こんばんは。") return "は ở cuối こんにちは / こんばんは đọc là 'wa', không đọc 'ha'.";
+ if(j.includes("学生ではありません")) return "Không nói 学生ですありません. Phủ định đúng là ではありません / じゃありません.";
+ if(j.includes("好きです")) return "Ở mẫu cơ bản, 好き thường đi với が: 映画が好きです.";
+ if(j.includes("へ行")) return "Trợ từ へ trong mẫu chỉ hướng được đọc là 'e'.";
+ if(j.includes("ませんか")) return "Đừng dịch máy móc là 'không... à?'. Trong ngữ cảnh này đây là lời mời.";
+ if(j.includes("ちょっと…")) return "ちょっと không chỉ có nghĩa 'một chút'; khi bỏ lửng nó thường là cách từ chối mềm.";
+ if(j.includes("てもいいですか")) return "Đây là mẫu xin phép, không phải hỏi 'có tốt không'.";
+ if(j.includes("てはいけません")) return "Không nhầm với 〜てもいいですか; một bên là xin phép, một bên là cấm.";
+ if(j.includes("ないでください")) return "Đừng gắn trực tiếp ください vào dạng từ điển; cần dùng Vない + でください.";
+ if(j.includes("たいです")) return "〜たいです chủ yếu dùng cho mong muốn của người nói; khi nói mong muốn người khác cần chú ý ngữ cảnh.";
+ if(j.includes("と思います")) return "Với な-adjective/danh từ thường cần だ trước と思います, ví dụ 便利だと思います.";
+ if(j.includes("何時")) return "何時 đọc là なんじ (nanji), không đọc nani-toki.";
+ if(j.includes("何日")) return "Ngày trong tháng có nhiều cách đọc đặc biệt; không phải lúc nào cũng ghép số + にち.";
+ if(j.includes("一つ")) return "一つ là bộ đếm chung; nhiều đồ vật có counter riêng nhưng ở N5 có thể dùng trong nhiều tình huống đơn giản.";
+ if(j.includes("ごろ")) return "ごろ dùng với thời điểm; ぐらい thường dùng với khoảng lượng hoặc thời lượng.";
+ if(j.includes("まで")) return "まで = đến/tới; khác から = từ.";
+ if(x.topic==="emergency") return "Trong tình huống khẩn cấp, câu ngắn và rõ quan trọng hơn cấu trúc phức tạp.";
+ if(x.topic==="train") return "Khi hỏi tàu, nên chỉ rõ この電車 / 何番線 / どこ để tránh nhầm tuyến.";
+ if(x.topic==="hotel"||x.topic==="airport") return "Không cần cố dùng câu dài. Noun + お願いします / どこですか thường đã đủ.";
+ return "Đừng dịch từng từ sang tiếng Việt. Hãy ghi nhớ cả cụm cùng tình huống sử dụng.";
+}
+
+function toggleExplain(id){document.getElementById("explain-"+id).classList.toggle("show")}
+function toggleRecall(id){document.getElementById("recall-"+id).classList.toggle("show")}
+function toggleFav(id){let a=favs();a=a.includes(id)?a.filter(x=>x!==id):[...a,id];saveFavs(a);renderLibrary();showToast(a.includes(id)?"Đã thêm Favorite ★":"Đã bỏ Favorite")}
+function toggleWeak(id){let a=weaks();a=a.includes(id)?a.filter(x=>x!==id):[...a,id];saveWeaks(a);renderLibrary();showToast(a.includes(id)?"Đã thêm Weak Item":"Đã bỏ Weak Item")}
+
+function setupFilters(){
+ searchInput.oninput=e=>{searchText=e.target.value.trim().toLowerCase();renderLibrary()};
+ topicSelect.onchange=e=>{topic=e.target.value;renderLibrary()};
+ document.querySelectorAll(".filter-btn").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");tier=b.dataset.tier;renderLibrary()});
+}
+
+function loadVoices(){voiceCache=speechSynthesis.getVoices()||[]}
+function pickVoice(){const a=voiceCache.filter(v=>/^ja/i.test(v.lang));const p=["Kyoko","Otoya","Nanami","Keita","Haruka","Google 日本語","Microsoft Nanami","Microsoft Keita","Natural","Premium","Enhanced"];for(const n of p){const f=a.find(v=>v.name.toLowerCase().includes(n.toLowerCase()));if(f)return f}return a[0]||null}
+function speakJapanese(t){if(!("speechSynthesis" in window))return showToast("Trình duyệt không hỗ trợ TTS.");speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="ja-JP";u.rate=.9;const v=pickVoice();if(v)u.voice=v;speechSynthesis.speak(u)}
+
+function setupPracticeModes(){document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-mode]").forEach(x=>x.classList.remove("active"));b.classList.add("active");practiceMode=b.dataset.mode;rebuildPractice()})}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function rebuildPractice(){
+ if(practiceMode==="favorites")practicePool=EXPRESSIONS.filter(x=>isFav(x.id));
+ else if(practiceMode==="weak")practicePool=EXPRESSIONS.filter(x=>isWeak(x.id));
+ else if(practiceMode==="all")practicePool=shuffle(EXPRESSIONS);
+ else practicePool=filtered();
+ if(!practicePool.length)practicePool=EXPRESSIONS.slice(0,1);
+ practiceIndex=0;renderPractice();
+}
+function renderPractice(){const x=practicePool[practiceIndex%practicePool.length];practiceTopic.textContent=x.topicLabel+" · "+x.tier;practiceJp.textContent=x.jp;practiceAnswer.innerHTML="";practiceProgress.textContent=`${practiceIndex+1} / ${practicePool.length}`}
+function revealPractice(){const x=practicePool[practiceIndex%practicePool.length];practiceAnswer.innerHTML=`<div class="vi-a">${x.vi}</div><div class="r-a">${x.romaji} · ${x.cue}</div>`}
+function listenPractice(){speakJapanese(practicePool[practiceIndex%practicePool.length].jp)}
+function markPracticeWeak(){const x=practicePool[practiceIndex%practicePool.length];if(!isWeak(x.id))saveWeaks([...weaks(),x.id]);renderRetention();showToast("Đã thêm Weak Item")}
+function nextPractice(){practiceIndex=(practiceIndex+1)%practicePool.length;renderPractice()}
+
+function restartQuiz(){quizRound=shuffle(EXPRESSIONS).slice(0,10);quizIndex=0;quizPoints=0;renderQuiz()}
+function renderQuiz(){
+ if(quizIndex>=quizRound.length){quizJp.textContent="🌸";quizChoices.innerHTML="";quizScore.textContent=`Hoàn thành · ${quizPoints}/10`;return}
+ const x=quizRound[quizIndex];
+ const wrongs=shuffle(EXPRESSIONS.filter(y=>y.id!==x.id&&y.topic!==x.topic)).slice(0,3);
+ const choices=shuffle([x,...wrongs]);
+ quizJp.textContent=x.jp;
+ quizChoices.innerHTML=choices.map(y=>`<button class="choice" data-id="${y.id}" onclick="answerQuiz(this,'${y.id}','${x.id}')">${y.vi}</button>`).join("");
+ quizScore.textContent=`Câu ${quizIndex+1} / 10 · Điểm ${quizPoints}`;
+}
+function answerQuiz(btn,choice,correct){
+ const bs=[...quizChoices.querySelectorAll(".choice")];bs.forEach(b=>b.disabled=true);
+ if(choice===correct){btn.classList.add("correct");quizPoints++}else{btn.classList.add("wrong");bs.find(b=>b.dataset.id===correct)?.classList.add("correct");if(!isWeak(correct))saveWeaks([...weaks(),correct])}
+ setTimeout(()=>{quizIndex++;renderQuiz();renderRetention()},700);
+}
+
+function renderRetention(){
+ favCount.textContent=favs().length;weakCount.textContent=weaks().length;
+ const ids=weaks().slice(-15).reverse();weakList.innerHTML=ids.length?ids.map(id=>{const x=EXPRESSIONS.find(e=>e.id===id);return x?`<button class="weak-chip" onclick="toggleWeak('${id}')">${x.jp} ×</button>`:""}).join(""):`<span style="color:var(--muted);font-size:12px">Chưa có Weak Item.</span>`;
+}
+function showToast(m){toast.textContent=m;toast.classList.add("show");clearTimeout(window.__toast);window.__toast=setTimeout(()=>toast.classList.remove("show"),1800)}
+
+document.addEventListener("DOMContentLoaded",()=>{
+ setupMenu();setupSession();populateTopics();setupFilters();setupPracticeModes();renderLibrary();restartQuiz();
+ if("speechSynthesis" in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices}
+});
+</script>
+</body>
+</html>
