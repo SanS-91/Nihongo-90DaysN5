@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 24: Food I Like — 好きな食べ物." />
+  <title>Day 24 — 好きな食べ物 | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">🌸</span>
+        <span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="n5.html">N5 Course</a>
+        <a href="review.html">Quick Review</a>
+        <a href="n4.html">N4</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button>
+    </div>
+    <nav class="mobile-menu container" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="n5.html">N5 Course</a>
+      <a href="review.html">Quick Review</a>
+      <a href="n4.html">N4 · Coming Soon</a>
+    </nav>
+  </header>
+
+  <div class="lessonbar">
+    <div class="container lessonbar-inner">
+      <div class="lesson-position">
+        <a href="day23.html">← Day 23</a>
+        <span>·</span>
+        <strong>Day 24 / 90</strong>
+      </div>
+      <div class="lesson-actions">
+        <a class="tiny-btn" href="review.html">Quick Review</a>
+        <button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <article class="hero-card">
+          <span class="eyebrow">Day 24 · Food & Shopping</span>
+
+          <h1><ruby>好<rt>す</rt></ruby>きな<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby></h1>
+          <div class="hero-en">Food I Like</div>
+
+          <div class="hero-vi">
+            Nói về sở thích ăn uống một cách tự nhiên:
+            <strong>thích món gì → thích nhất món gì → thích loại đồ ăn nào → món nào không thích lắm</strong>.
+            Đây là bài mở rộng trực tiếp từ `好きです` của Day 9.
+          </div>
+
+          <div class="hero-meta">
+            <span class="meta-chip">N5 Beginner</span>
+            <span class="meta-chip">65–80 phút</span>
+            <span class="meta-chip">X が好きです</span>
+            <span class="meta-chip">好きな X</span>
+            <span class="meta-chip">一番好き</span>
+            <span class="meta-chip">Food preferences</span>
+          </div>
+
+          <div class="goal-box">
+            <strong>Mục tiêu hôm nay</strong>
+            <p>
+              Sau bài này, bạn có thể nói
+              <span class="jp-inline">寿司が好きです。</span>,
+              hỏi
+              <span class="jp-inline">好きな食べ物は何ですか。</span>,
+              nói
+              <span class="jp-inline">一番好きな食べ物はラーメンです。</span>,
+              và diễn đạt nhẹ nhàng
+              <span class="jp-inline">辛い食べ物はあまり好きじゃないです。</span>.
+            </p>
+          </div>
+
+          <div class="tip memory" style="margin-top:16px;">
+            <strong>🌱 Hôm nay quan trọng nhất là “好きです” vs “好きな + noun”</strong>
+            <span class="jp-inline">寿司が好きです</span>
+            = tôi thích sushi.<br>
+            <span class="jp-inline">好きな食べ物</span>
+            = món ăn mình thích.<br>
+            Kanji chỉ học theo cụm, không cần viết nhiều.
+          </div>
+
+          <div class="display-panel">
+            <div class="display-title">表示 · Hiển thị</div>
+            <div class="display-toggles">
+              <button class="toggle-btn active" data-toggle="furigana">Furigana</button>
+              <button class="toggle-btn active" data-toggle="romaji">Romaji</button>
+              <button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="container lesson-layout">
+      <aside class="toc">
+        <div class="toc-title">Trong bài này</div>
+        <a href="#warmup">01 · Warm-up</a>
+        <a href="#conversation">02 · Main Conversation</a>
+        <a href="#suki">03 · X が好きです</a>
+        <a href="#sukina">04 · 好きな + Noun</a>
+        <a href="#favorite">05 · 一番好き</a>
+        <a href="#negative">06 · あまり好きじゃない</a>
+        <a href="#categories">07 · Food Categories</a>
+        <a href="#kanji">08 · Kanji Helper</a>
+        <a href="#expressions">09 · Key Expressions</a>
+        <a href="#grammar">10 · Grammar Made Easy</a>
+        <a href="#natural">11 · Natural Japanese</a>
+        <a href="#listening">12 · Listening Ladder</a>
+        <a href="#builder">13 · Preference Builder</a>
+        <a href="#speaking">14 · Speaking</a>
+        <a href="#roleplay">15 · Food Talk Role-play</a>
+        <a href="#quiz">16 · Mini Quiz</a>
+        <a href="#mission">17 · Today's Mission</a>
+      </aside>
+
+      <div class="lesson-content">
+
+        <section class="section-card" id="warmup">
+          <div class="section-kicker">01 · Warm-up</div>
+          <h2>Day 9 quay lại — nhưng lần này nói sâu hơn về đồ ăn</h2>
+
+          <p class="section-intro">
+            Bạn đã biết mẫu cơ bản
+            <span class="jp-inline">N が好きです</span>.
+            Hôm nay ta mở rộng để nói thành một đoạn hội thoại thật.
+          </p>
+
+          <div class="warmup-grid">
+            <div class="warmup-item">
+              <div class="jp"><ruby>寿司<rt>すし</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです。</div>
+              <div class="romaji">Sushi ga suki desu.</div>
+              <div class="vi">Tôi thích sushi.</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('寿司が好きです。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp"><ruby>何<rt>なに</rt></ruby>が<ruby>好<rt>す</rt></ruby>きですか。</div>
+              <div class="romaji">Nani ga suki desu ka?</div>
+              <div class="vi">Bạn thích gì?</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('何が好きですか。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp"><ruby>日本料理<rt>にほんりょうり</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです。</div>
+              <div class="romaji">Nihon ryōri ga suki desu.</div>
+              <div class="vi">Tôi thích món Nhật.</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('日本料理が好きです。',1)">▶ Nghe</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Day 24 không học lại từ đầu</strong>
+            Mục tiêu là biến
+            <span class="jp-inline">寿司が好きです</span>
+            thành một cuộc trò chuyện:
+            <strong>what → favorite → category → not really like → reaction</strong>.
+          </div>
+        </section>
+
+        <section class="section-card" id="conversation">
+          <div class="section-kicker">02 · Main Conversation</div>
+          <h2>Bạn thích món gì nhất?</h2>
+
+          <p class="section-intro">
+            Lần 1 nghe tổng thể.
+            Lần 2 chú ý cách chuyển từ
+            <strong>好きです</strong> sang <strong>好きな食べ物</strong>.
+          </p>
+
+          <div class="audio-controls">
+            <button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button>
+            <button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+          <div class="audio-status" id="audioStatus"></div>
+
+          <div class="dialogue-shell" style="margin-top:16px;">
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line"><ruby>好<rt>す</rt></ruby>きな<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。</div>
+                <div class="romaji">Suki na tabemono wa nan desu ka?</div>
+                <div class="vi line-note">Món ăn bạn thích là gì?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('好きな食べ物は何ですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line"><ruby>寿司<rt>すし</rt></ruby>とラーメンが<ruby>好<rt>す</rt></ruby>きです。</div>
+                <div class="romaji">Sushi to rāmen ga suki desu.</div>
+                <div class="vi line-note">Tôi thích sushi và ramen.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('寿司とラーメンが好きです。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line"><ruby>一番<rt>いちばん</rt></ruby><ruby>好<rt>す</rt></ruby>きな<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は？</div>
+                <div class="romaji">Ichiban suki na tabemono wa?</div>
+                <div class="vi line-note">Món bạn thích nhất thì sao?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('一番好きな食べ物は？',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line"><ruby>一番<rt>いちばん</rt></ruby><ruby>好<rt>す</rt></ruby>きなのは<ruby>寿司<rt>すし</rt></ruby>です。</div>
+                <div class="romaji">Ichiban suki na no wa sushi desu.</div>
+                <div class="vi line-note">Món tôi thích nhất là sushi.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('一番好きなのは寿司です。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line"><ruby>辛<rt>から</rt></ruby>い<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は<ruby>好<rt>す</rt></ruby>きですか。</div>
+                <div class="romaji">Karai tabemono wa suki desu ka?</div>
+                <div class="vi line-note">Bạn có thích đồ ăn cay không?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('辛い食べ物は好きですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">あまり<ruby>好<rt>す</rt></ruby>きじゃないです。</div>
+                <div class="romaji">Amari suki janai desu.</div>
+                <div class="vi line-note">Tôi không thích lắm.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('あまり好きじゃないです。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">そうですか。じゃ、<ruby>甘<rt>あま</rt></ruby>い<ruby>物<rt>もの</rt></ruby>は？</div>
+                <div class="romaji">Sō desu ka. Ja, amai mono wa?</div>
+                <div class="vi line-note">À vậy à. Còn đồ ngọt?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('そうですか。じゃ、甘い物は？',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line"><ruby>大好<rt>だいす</rt></ruby>きです。</div>
+                <div class="romaji">Daisuki desu.</div>
+                <div class="vi line-note">Tôi rất thích / mê lắm.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('大好きです。',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Hội thoại tự nhiên hay lược phần đã rõ</strong>
+            <span class="jp-inline">一番好きな食べ物は何ですか。</span>
+            có thể rút thành
+            <span class="jp-inline">一番好きな食べ物は？</span>.<br>
+            Day 24 cần nhận ra cả hai.
+          </div>
+        </section>
+
+        <section class="section-card" id="suki">
+          <div class="section-kicker">03 · X が好きです</div>
+          <h2>Thích một món / loại đồ ăn</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">X + が + 好きです</div>
+            <p>
+              <span class="jp-inline">寿司が好きです。</span>
+              = Tôi thích sushi.<br>
+              <span class="jp-inline">日本料理が好きです。</span>
+              = Tôi thích đồ ăn Nhật.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">X と Y + が + 好きです</div>
+            <p>
+              <span class="jp-inline">寿司とラーメンが好きです。</span>
+              = Tôi thích sushi và ramen.
+            </p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ Beginner hay nói を好きです</strong>
+            <span class="jp-inline">寿司を好きです</span> ✕<br>
+            Target:
+            <span class="jp-inline">寿司<strong>が</strong>好きです</span> ✓
+          </div>
+        </section>
+
+        <section class="section-card" id="sukina">
+          <div class="section-kicker">04 · 好きな + Noun</div>
+          <h2>Tại sao 好きです lại thành 好きな食べ物?</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">好きです → 好きな + Noun</div>
+            <p>
+              Khi <span class="jp-inline">好き</span> đứng cuối câu:
+              <span class="jp-inline">寿司が好きです。</span><br><br>
+              Khi <span class="jp-inline">好き</span> đứng trước một danh từ:
+              <span class="jp-inline">好き<strong>な</strong>食べ物</span>
+              = món ăn yêu thích / món mình thích.
+            </p>
+          </div>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>Sentence</h3>
+              <p><span class="jp-inline">日本料理が好きです。</span><br>Tôi thích đồ ăn Nhật.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>Before a noun</h3>
+              <p><span class="jp-inline">好きな日本料理</span><br>món Nhật mình thích.</p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡好き behaves like a な-adjective</strong>
+            <strong>end of sentence:</strong> 好きです<br>
+            <strong>before noun:</strong> 好き<strong>な</strong> + noun
+          </div>
+        </section>
+
+        <section class="section-card" id="favorite">
+          <div class="section-kicker">05 · 一番好き</div>
+          <h2>一番 = “nhất” trong một lựa chọn/nhóm</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">一番好きです</div>
+            <p>
+              <span class="jp-inline">寿司が一番好きです。</span>
+              = Tôi thích sushi nhất.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">一番好きな + Noun</div>
+            <p>
+              <span class="jp-inline">一番好きな食べ物</span>
+              = món ăn thích nhất.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">一番好きな食べ物は X です</div>
+            <p>
+              <span class="jp-inline">一番好きな食べ物は寿司です。</span>
+              = Món tôi thích nhất là sushi.
+            </p>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Hai câu đều dùng được</strong>
+            <span class="jp-inline">寿司が一番好きです。</span><br>
+            <span class="jp-inline">一番好きな食べ物は寿司です。</span><br>
+            Câu 1 focus vào sushi; câu 2 focus vào “favorite food”.
+          </div>
+        </section>
+
+        <section class="section-card" id="negative">
+          <div class="section-kicker">06 · あまり好きじゃない</div>
+          <h2>Không thích lắm — mềm hơn 嫌いです</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">あまり + 好きじゃないです</div>
+            <p>
+              <span class="jp-inline">辛い食べ物はあまり好きじゃないです。</span>
+              = Tôi không thích đồ cay lắm.
+            </p>
+          </div>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>好きです</h3>
+              <p>thích</p>
+            </div>
+            <div class="explain-card">
+              <h3>大好きです</h3>
+              <p>rất thích / mê</p>
+            </div>
+            <div class="explain-card">
+              <h3>あまり好きじゃないです</h3>
+              <p>không thích lắm</p>
+            </div>
+            <div class="explain-card">
+              <h3>嫌いです</h3>
+              <p>ghét / không thích mạnh — hôm nay chỉ recognition.</p>
+            </div>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ あまり thường đi với dạng phủ định</strong>
+            <span class="jp-inline">あまり好きです</span> ✕<br>
+            <span class="jp-inline">あまり好きじゃないです</span> ✓
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Khi nói về đồ ăn, “あまり好きじゃないです” nghe mềm hơn</strong>
+            Nếu chỉ muốn nói “không hợp khẩu vị lắm”, đây thường là lựa chọn an toàn hơn
+            <span class="jp-inline">嫌いです</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="categories">
+          <div class="section-kicker">07 · Food Categories</div>
+          <h2>14 từ/cụm để nói sở thích</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>日本料理<rt>にほんりょうり</rt></ruby></div><div class="romaji vocab-reading">Nihon ryōri</div><div class="vi vocab-vi">món Nhật</div></div><button class="line-audio" onclick="speakJapanese('日本料理',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>韓国料理<rt>かんこくりょうり</rt></ruby></div><div class="romaji vocab-reading">Kankoku ryōri</div><div class="vi vocab-vi">món Hàn</div></div><button class="line-audio" onclick="speakJapanese('韓国料理',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>中華料理<rt>ちゅうかりょうり</rt></ruby></div><div class="romaji vocab-reading">Chūka ryōri</div><div class="vi vocab-vi">món Hoa/Chinese cuisine</div></div><button class="line-audio" onclick="speakJapanese('中華料理',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">ベトナム<ruby>料理<rt>りょうり</rt></ruby></div><div class="romaji vocab-reading">Betonamu ryōri</div><div class="vi vocab-vi">món Việt</div></div><button class="line-audio" onclick="speakJapanese('ベトナム料理',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>寿司<rt>すし</rt></ruby></div><div class="romaji vocab-reading">sushi</div><div class="vi vocab-vi">sushi</div></div><button class="line-audio" onclick="speakJapanese('寿司',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">ラーメン</div><div class="romaji vocab-reading">rāmen</div><div class="vi vocab-vi">ramen</div></div><button class="line-audio" onclick="speakJapanese('ラーメン',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">カレー</div><div class="romaji vocab-reading">karē</div><div class="vi vocab-vi">cà ri</div></div><button class="line-audio" onclick="speakJapanese('カレー',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>魚<rt>さかな</rt></ruby></div><div class="romaji vocab-reading">sakana</div><div class="vi vocab-vi">cá</div></div><button class="line-audio" onclick="speakJapanese('魚',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>肉<rt>にく</rt></ruby></div><div class="romaji vocab-reading">niku</div><div class="vi vocab-vi">thịt</div></div><button class="line-audio" onclick="speakJapanese('肉',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>野菜<rt>やさい</rt></ruby></div><div class="romaji vocab-reading">yasai</div><div class="vi vocab-vi">rau</div></div><button class="line-audio" onclick="speakJapanese('野菜',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>辛<rt>から</rt></ruby>い<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby></div><div class="romaji vocab-reading">karai tabemono</div><div class="vi vocab-vi">đồ ăn cay</div></div><button class="line-audio" onclick="speakJapanese('辛い食べ物',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>甘<rt>あま</rt></ruby>い<ruby>物<rt>もの</rt></ruby></div><div class="romaji vocab-reading">amai mono</div><div class="vi vocab-vi">đồ ngọt</div></div><button class="line-audio" onclick="speakJapanese('甘い物',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>果物<rt>くだもの</rt></ruby></div><div class="romaji vocab-reading">kudamono</div><div class="vi vocab-vi">trái cây</div></div><button class="line-audio" onclick="speakJapanese('果物',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby></div><div class="romaji vocab-reading">tabemono</div><div class="vi vocab-vi">đồ ăn / thức ăn</div></div><button class="line-audio" onclick="speakJapanese('食べ物',1)">▶</button></div>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ 辛い・甘い chưa phải trọng tâm adjective</strong>
+            Day 24 chỉ dùng như <strong>cụm từ cố định</strong>:
+            <span class="jp-inline">辛い食べ物</span> / <span class="jp-inline">甘い物</span>.
+            Adjective sẽ được học có hệ thống sau.
+          </div>
+        </section>
+
+        <section class="section-card" id="kanji">
+          <div class="section-kicker">08 · Kanji Helper</div>
+          <h2>Kanji học theo “word family”</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3><ruby>好<rt>す</rt></ruby>き</h3>
+              <p><strong>thích</strong>. Học nguyên từ 好き, không cần đoán âm chữ 好 khi đứng riêng.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby></h3>
+              <p><strong>đồ ăn</strong>. 食べる = ăn, 物 = vật/thứ → “thứ để ăn”.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>料理<rt>りょうり</rt></ruby></h3>
+              <p><strong>món ăn / ẩm thực</strong>. Dùng sau tên quốc gia: 日本料理, 韓国料理.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>一番<rt>いちばん</rt></ruby></h3>
+              <p><strong>số một / nhất</strong>. Trong bài: 一番好き = thích nhất.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>辛<rt>から</rt></ruby>い</h3>
+              <p><strong>cay</strong>. Recognition theo từ 辛い.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>甘<rt>あま</rt></ruby>い</h3>
+              <p><strong>ngọt</strong>. Recognition theo từ 甘い.</p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>🌱 Must recognize</strong>
+            好き・食べ物・料理・一番.<br>
+            <strong>Recognition only:</strong>
+            辛い・甘い nếu còn mới.
+          </div>
+        </section>
+
+        <section class="section-card" id="expressions">
+          <div class="section-kicker">09 · Key Expressions</div>
+          <h2>10 mẫu câu cần phản xạ</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>好<rt>す</rt></ruby>きな<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。</div><div class="romaji vocab-reading">Suki na tabemono wa nan desu ka?</div><div class="vi vocab-vi">Món ăn bạn thích là gì?</div></div><button class="line-audio" onclick="speakJapanese('好きな食べ物は何ですか。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>寿司<rt>すし</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです。</div><div class="romaji vocab-reading">Sushi ga suki desu.</div><div class="vi vocab-vi">Tôi thích sushi.</div></div><button class="line-audio" onclick="speakJapanese('寿司が好きです。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>寿司<rt>すし</rt></ruby>とラーメンが<ruby>好<rt>す</rt></ruby>きです。</div><div class="romaji vocab-reading">Sushi to rāmen ga suki desu.</div><div class="vi vocab-vi">Tôi thích sushi và ramen.</div></div><button class="line-audio" onclick="speakJapanese('寿司とラーメンが好きです。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>一番<rt>いちばん</rt></ruby><ruby>好<rt>す</rt></ruby>きな<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。</div><div class="romaji vocab-reading">Ichiban suki na tabemono wa nan desu ka?</div><div class="vi vocab-vi">Món bạn thích nhất là gì?</div></div><button class="line-audio" onclick="speakJapanese('一番好きな食べ物は何ですか。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>寿司<rt>すし</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby><ruby>好<rt>す</rt></ruby>きです。</div><div class="romaji vocab-reading">Sushi ga ichiban suki desu.</div><div class="vi vocab-vi">Tôi thích sushi nhất.</div></div><button class="line-audio" onclick="speakJapanese('寿司が一番好きです。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>一番<rt>いちばん</rt></ruby><ruby>好<rt>す</rt></ruby>きな<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は<ruby>寿司<rt>すし</rt></ruby>です。</div><div class="romaji vocab-reading">Ichiban suki na tabemono wa sushi desu.</div><div class="vi vocab-vi">Món tôi thích nhất là sushi.</div></div><button class="line-audio" onclick="speakJapanese('一番好きな食べ物は寿司です。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>日本料理<rt>にほんりょうり</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです。</div><div class="romaji vocab-reading">Nihon ryōri ga suki desu.</div><div class="vi vocab-vi">Tôi thích món Nhật.</div></div><button class="line-audio" onclick="speakJapanese('日本料理が好きです。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>辛<rt>から</rt></ruby>い<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は<ruby>好<rt>す</rt></ruby>きですか。</div><div class="romaji vocab-reading">Karai tabemono wa suki desu ka?</div><div class="vi vocab-vi">Bạn có thích đồ cay không?</div></div><button class="line-audio" onclick="speakJapanese('辛い食べ物は好きですか。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp">あまり<ruby>好<rt>す</rt></ruby>きじゃないです。</div><div class="romaji vocab-reading">Amari suki janai desu.</div><div class="vi vocab-vi">Tôi không thích lắm.</div></div><button class="line-audio" onclick="speakJapanese('あまり好きじゃないです。',1)">▶</button></div>
+
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>甘<rt>あま</rt></ruby>い<ruby>物<rt>もの</rt></ruby>が<ruby>大好<rt>だいす</rt></ruby>きです。</div><div class="romaji vocab-reading">Amai mono ga daisuki desu.</div><div class="vi vocab-vi">Tôi rất thích đồ ngọt.</div></div><button class="line-audio" onclick="speakJapanese('甘い物が大好きです。',1)">▶</button></div>
+          </div>
+        </section>
+
+        <section class="section-card" id="grammar">
+          <div class="section-kicker">10 · Grammar Made Easy</div>
+          <h2>5 pattern cốt lõi</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">X が 好きです</div>
+            <p><span class="jp-inline">寿司が好きです。</span></p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">好きな + Noun</div>
+            <p><span class="jp-inline">好きな食べ物</span> = món ăn thích.</p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">一番好き</div>
+            <p><span class="jp-inline">ラーメンが一番好きです。</span></p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">X は 好きですか</div>
+            <p><span class="jp-inline">辛い食べ物は好きですか。</span></p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">あまり + 好きじゃないです</div>
+            <p><span class="jp-inline">魚はあまり好きじゃないです。</span></p>
+          </div>
+        </section>
+
+        <section class="section-card" id="natural">
+          <div class="section-kicker">11 · Natural Japanese</div>
+          <h2>Không phải lúc nào cũng cần 私は</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>Full</h3>
+              <p><span class="jp-inline">私は寿司が好きです。</span></p>
+            </div>
+
+            <div class="explain-card">
+              <h3>Natural in context</h3>
+              <p><span class="jp-inline">寿司が好きです。</span></p>
+            </div>
+
+            <div class="explain-card">
+              <h3>Question</h3>
+              <p><span class="jp-inline">好きな食べ物は何ですか。</span></p>
+            </div>
+
+            <div class="explain-card">
+              <h3>Short follow-up</h3>
+              <p><span class="jp-inline">一番好きなのは？</span><br><span class="vi">Còn món thích nhất?</span></p>
+            </div>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ “好きな食べ物” không phải “好き食べ物”</strong>
+            Vì <span class="jp-inline">好き</span> đứng trước noun nên cần
+            <strong>な</strong>:
+            <span class="jp-inline">好き<strong>な</strong>食べ物</span>.
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 ちょっと苦手です — useful recognition</strong>
+            Bạn có thể nghe người Nhật nói
+            <span class="jp-inline">辛い物はちょっと苦手です。</span>
+            = đồ cay thì tôi hơi không hợp / không giỏi ăn lắm.<br>
+            Cụm này tự nhiên và mềm, nhưng Day 24 chưa bắt buộc sản xuất.
+          </div>
+        </section>
+
+        <section class="section-card" id="listening">
+          <div class="section-kicker">12 · Listening Ladder</div>
+          <h2>Nghe preference level: like / favorite / not really like</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 1 · Like</div>
+            <button class="audio-btn primary" onclick="speakJapanese('寿司が好きです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Tôi gọi sushi</button>
+              <button class="choice-btn" data-value="b">B. Tôi thích sushi</button>
+              <button class="choice-btn" data-value="c">C. Tôi đang ăn sushi</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 2 · Favorite</div>
+            <button class="audio-btn primary" onclick="speakJapanese('ラーメンが一番好きです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="a">
+              <button class="choice-btn" data-value="a">A. Tôi thích ramen nhất</button>
+              <button class="choice-btn" data-value="b">B. Tôi không thích ramen</button>
+              <button class="choice-btn" data-value="c">C. Tôi chọn ramen</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 3 · Question</div>
+            <button class="audio-btn primary" onclick="speakJapanese('好きな食べ物は何ですか。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Bạn chọn món gì?</button>
+              <button class="choice-btn" data-value="b">B. Bạn đang ăn gì?</button>
+              <button class="choice-btn" data-value="c">C. Món ăn bạn thích là gì?</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 4 · Not really</div>
+            <button class="audio-btn primary" onclick="speakJapanese('辛い食べ物はあまり好きじゃないです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Tôi rất thích đồ cay</button>
+              <button class="choice-btn" data-value="b">B. Tôi không thích đồ cay lắm</button>
+              <button class="choice-btn" data-value="c">C. Tôi muốn đồ cay</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 5 · Cuisine</div>
+            <button class="audio-btn primary" onclick="speakJapanese('日本料理とベトナム料理が好きです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="a">
+              <button class="choice-btn" data-value="a">A. Thích món Nhật và món Việt</button>
+              <button class="choice-btn" data-value="b">B. Chỉ thích món Hàn</button>
+              <button class="choice-btn" data-value="c">C. Không thích món Nhật</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 6 · Full preference</div>
+            <button class="audio-btn primary" onclick="speakJapanese('好きな食べ物は何ですか。寿司が好きです。一番好きな食べ物はラーメンです。辛い食べ物はあまり好きじゃないです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Thích đồ cay nhất</button>
+              <button class="choice-btn" data-value="b">B. Không thích sushi, thích curry nhất</button>
+              <button class="choice-btn" data-value="c">C. Thích sushi, thích ramen nhất, không thích đồ cay lắm</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Shadowing · Preference mini-talk</div>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="speakJapanese('寿司とラーメンが好きです。ラーメンが一番好きです。辛い食べ物はあまり好きじゃないです。甘い物が大好きです。',.76)">🐢 Slow</button>
+              <button class="audio-btn primary" onclick="speakJapanese('寿司とラーメンが好きです。ラーメンが一番好きです。辛い食べ物はあまり好きじゃないです。甘い物が大好きです。',1)">▶ Natural</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="builder">
+          <div class="section-kicker">13 · Preference Builder</div>
+          <h2>Từ 1 món → một profile sở thích hoàn chỉnh</h2>
+
+          <div class="breakdown">
+            <div class="break-row">
+              <div class="break-label">Like</div>
+              <div>寿司 → <strong>寿司が好きです。</strong></div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">Two</div>
+              <div>寿司 + ラーメン → <strong>寿司とラーメンが好きです。</strong></div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">Favorite</div>
+              <div>ラーメン → <strong>ラーメンが一番好きです。</strong></div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">Not much</div>
+              <div>辛い食べ物 → <strong>辛い食べ物はあまり好きじゃないです。</strong></div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">Strong like</div>
+              <div>甘い物 → <strong>甘い物が大好きです。</strong></div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 5-step preference profile</strong>
+            <strong>LIKE → SECOND LIKE → FAVORITE → NOT REALLY LIKE → LOVE</strong>
+          </div>
+        </section>
+
+        <section class="section-card" id="speaking">
+          <div class="section-kicker">14 · Speaking Practice</div>
+          <h2>Tự nói trước khi mở đáp án</h2>
+
+          <div class="speaking-grid">
+            <div class="speaking-card">
+              <div class="prompt">1. “Tôi thích sushi.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a1')">Xem đáp án</button>
+              <div class="answer" id="a1">
+                <div class="jp"><ruby>寿司<rt>すし</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです。</div>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">2. “Món ăn bạn thích là gì?”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a2')">Xem đáp án</button>
+              <div class="answer" id="a2">
+                <div class="jp"><ruby>好<rt>す</rt></ruby>きな<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。</div>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">3. “Tôi thích ramen nhất.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a3')">Xem đáp án</button>
+              <div class="answer" id="a3">
+                <div class="jp">ラーメンが<ruby>一番<rt>いちばん</rt></ruby><ruby>好<rt>す</rt></ruby>きです。</div>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">4. “Món tôi thích nhất là sushi.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a4')">Xem đáp án</button>
+              <div class="answer" id="a4">
+                <div class="jp"><ruby>一番<rt>いちばん</rt></ruby><ruby>好<rt>す</rt></ruby>きな<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>は<ruby>寿司<rt>すし</rt></ruby>です。</div>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">5. “Tôi không thích đồ cay lắm.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a5')">Xem đáp án</button>
+              <div class="answer" id="a5">
+                <div class="jp"><ruby>辛<rt>から</rt></ruby>い<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>はあまり<ruby>好<rt>す</rt></ruby>きじゃないです。</div>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">6. “Tôi rất thích đồ ngọt.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a6')">Xem đáp án</button>
+              <div class="answer" id="a6">
+                <div class="jp"><ruby>甘<rt>あま</rt></ruby>い<ruby>物<rt>もの</rt></ruby>が<ruby>大好<rt>だいす</rt></ruby>きです。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="roleplay">
+          <div class="section-kicker">15 · Food Talk Role-play</div>
+          <h2>Audio hỏi — bạn trả lời thật về mình</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 1 · Favorite food</div>
+            <button class="audio-btn primary" onclick="speakJapanese('好きな食べ物は何ですか。',1)">▶ Nghe</button>
+            <p class="vi">Trả lời bằng 1–2 món.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r1')">Mẫu</button>
+            <div class="answer" id="r1"><div class="jp">寿司とラーメンが好きです。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 2 · Number one</div>
+            <button class="audio-btn primary" onclick="speakJapanese('一番好きな食べ物は何ですか。',1)">▶ Nghe</button>
+            <p class="vi">Nói món thích nhất.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r2')">Mẫu</button>
+            <div class="answer" id="r2"><div class="jp">ラーメンが一番好きです。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 3 · Spicy?</div>
+            <button class="audio-btn primary" onclick="speakJapanese('辛い食べ物は好きですか。',1)">▶ Nghe</button>
+            <p class="vi">Trả lời thật: thích / rất thích / không thích lắm.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r3')">Mẫu</button>
+            <div class="answer" id="r3"><div class="jp">あまり好きじゃないです。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 4 · Cuisine</div>
+            <button class="audio-btn primary" onclick="speakJapanese('何料理が好きですか。',1)">▶ Nghe</button>
+            <p class="vi">Nói 1–2 nền ẩm thực bạn thích.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r4')">Mẫu</button>
+            <div class="answer" id="r4"><div class="jp">日本料理とベトナム料理が好きです。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Free round · 45 seconds</div>
+            <p class="vi">
+              Tự nói:
+              <strong>2 món thích + 1 món thích nhất + 1 loại không thích lắm + 1 loại rất thích</strong>.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-card" id="quiz">
+          <div class="section-kicker">16 · Mini Quiz</div>
+          <h2>Kiểm tra nhanh Day 24</h2>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>1. “Tôi thích sushi.”</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 寿司を好きです。</button>
+              <button class="choice-btn" data-value="b">B. 寿司が好きです。</button>
+              <button class="choice-btn" data-value="c">C. 寿司に好きです。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>2. “Món ăn mình thích” là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 好きな食べ物</button>
+              <button class="choice-btn" data-value="b">B. 好き食べ物</button>
+              <button class="choice-btn" data-value="c">C. 好きの食べ物</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>3. “Tôi thích ramen nhất.”</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. ラーメンがもっと好きです。</button>
+              <button class="choice-btn" data-value="b">B. ラーメンが一つ好きです。</button>
+              <button class="choice-btn" data-value="c">C. ラーメンが一番好きです。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>4. “Món tôi thích nhất là sushi.”</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 一番好き食べ物は寿司です。</button>
+              <button class="choice-btn" data-value="b">B. 一番好きな食べ物は寿司です。</button>
+              <button class="choice-btn" data-value="c">C. 一番食べ物が寿司好きです。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>5. あまり thường đi với?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. phủ định</button>
+              <button class="choice-btn" data-value="b">B. ます-form bắt buộc</button>
+              <button class="choice-btn" data-value="c">C. số đếm</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>6. “Tôi không thích đồ cay lắm.”</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 辛い食べ物が大好きです。</button>
+              <button class="choice-btn" data-value="b">B. 辛い食べ物を好きじゃないです。</button>
+              <button class="choice-btn" data-value="c">C. 辛い食べ物はあまり好きじゃないです。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>7. 大好きです nghĩa là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. không thích</button>
+              <button class="choice-btn" data-value="b">B. rất thích / mê</button>
+              <button class="choice-btn" data-value="c">C. muốn mua</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>8. “Món ăn bạn thích là gì?”</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 好きな食べ物は何ですか。</button>
+              <button class="choice-btn" data-value="b">B. 食べ物はどこですか。</button>
+              <button class="choice-btn" data-value="c">C. 何にしますか。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>9. 辛い / 甘い trong Day 24 được học ở mức nào?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. phải học toàn bộ adjective conjugation</button>
+              <button class="choice-btn" data-value="b">B. không cần hiểu nghĩa</button>
+              <button class="choice-btn" data-value="c">C. dùng như cụm từ thực dụng, adjective sẽ học sâu sau</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>10. Câu nào tự nhiên hơn nếu chỉ muốn nói “không thích lắm”?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 絶対嫌いです。</button>
+              <button class="choice-btn" data-value="b">B. あまり好きじゃないです。</button>
+              <button class="choice-btn" data-value="c">C. 大好きです。</button>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button>
+            <button class="audio-btn" onclick="resetQuiz()">Làm lại</button>
+          </div>
+
+          <div class="score-box" id="scoreBox"></div>
+        </section>
+
+        <section class="section-card mission-card" id="mission">
+          <div class="section-kicker">17 · Today's Mission</div>
+          <h2>My Food Profile — 60–90 seconds</h2>
+
+          <p class="section-intro">
+            Không nói theo mẫu máy móc. Hãy dùng món bạn thật sự thích nếu có thể.
+          </p>
+
+          <div class="mission-lines">
+            <div class="mission-line">
+              <div class="vi">1. Nói 2 món bạn thích.</div>
+              <div class="jp">寿司とラーメンが好きです。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">2. Nói món thích nhất.</div>
+              <div class="jp">ラーメンが一番好きです。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">3. Nói 1 nền ẩm thực thích.</div>
+              <div class="jp">日本料理が好きです。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">4. Nói 1 loại không thích lắm.</div>
+              <div class="jp">辛い食べ物はあまり好きじゃないです。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">5. Nói 1 loại rất thích.</div>
+              <div class="jp">甘い物が大好きです。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">6. Hỏi lại người nghe.</div>
+              <div class="jp">好きな食べ物は何ですか。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">7. Làm lại hoàn toàn bằng món thật của bạn.</div>
+              <div class="jp">自分の答えで話してみましょう。</div>
+            </div>
+          </div>
+
+          <div class="audio-controls">
+            <button class="audio-btn" onclick="playMission(.76)">🐢 Food Talk Slow</button>
+            <button class="audio-btn primary" onclick="playMission(1)">▶ Food Talk Natural</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+
+          <div class="tip memory">
+            <strong>✅ Pass standard</strong>
+            Bạn nói được:
+            <strong>like + favorite + not really like + love</strong>
+            và dùng đúng
+            <span class="jp-inline">が好きです / 好きな + noun</span>.
+          </div>
+
+          <div class="complete-box">
+            <p id="completeMessage" style="margin-top:0;color:var(--muted);">
+              Hoàn thành khi bạn có thể nói một “food profile” ngắn mà không lẫn が好きです và 好きな + noun.
+            </p>
+            <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 24</button>
+          </div>
+        </section>
+
+        <div class="day-nav">
+          <a href="day23.html">← Day 23 · What Would You Like?</a>
+          <a class="next" href="day25.html">Day 25 · How Much Is It? →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><span class="footer-brand">🌸 Nihongo 90</span> · Day 24</div>
+      <div>Food & Shopping · Talk about what you really like.</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DAY_KEY = "n5-day-24";
+    const FAVORITE_KEY = "n5-favorite-day-24";
+    const DISPLAY_KEY = "nihongo90-display";
+
+    const dialogueLines = [
+      "好きな食べ物は何ですか。",
+      "寿司とラーメンが好きです。",
+      "一番好きな食べ物は？",
+      "一番好きなのは寿司です。",
+      "辛い食べ物は好きですか。",
+      "あまり好きじゃないです。",
+      "そうですか。じゃ、甘い物は？",
+      "大好きです。"
+    ];
+
+    const missionPrompts = [
+      "好きな食べ物は何ですか。",
+      "一番好きな食べ物は何ですか。",
+      "何料理が好きですか。",
+      "辛い食べ物は好きですか。"
+    ];
+
+    let voiceCache = [];
+    let japaneseVoice = null;
+    let dialogueRunId = 0;
+    let playToken = 0;
+
+    function setupMenu() {
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "✕" : "☰";
+      });
+    }
+
+    function loadDisplaySettings() {
+      let saved = { furigana: true, romaji: true, vi: true };
+      try {
+        const parsed = JSON.parse(localStorage.getItem(DISPLAY_KEY));
+        if (parsed && typeof parsed === "object") saved = { ...saved, ...parsed };
+      } catch (_) {}
+      applyDisplaySettings(saved);
+    }
+
+    function applyDisplaySettings(settings) {
+      document.body.classList.toggle("hide-furigana", !settings.furigana);
+      document.body.classList.toggle("hide-romaji", !settings.romaji);
+      document.body.classList.toggle("hide-vi", !settings.vi);
+
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.classList.toggle("active", !!settings[btn.dataset.toggle]);
+      });
+
+      localStorage.setItem(DISPLAY_KEY, JSON.stringify(settings));
+    }
+
+    function setupDisplayToggles() {
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          let saved = { furigana: true, romaji: true, vi: true };
+          try {
+            saved = { ...saved, ...JSON.parse(localStorage.getItem(DISPLAY_KEY)) };
+          } catch (_) {}
+
+          const key = btn.dataset.toggle;
+          saved[key] = !saved[key];
+          applyDisplaySettings(saved);
+        });
+      });
+    }
+
+    function loadVoices() {
+      if (!("speechSynthesis" in window)) return;
+      voiceCache = speechSynthesis.getVoices() || [];
+      japaneseVoice = pickJapaneseVoice();
+    }
+
+    function pickJapaneseVoice() {
+      const voices = voiceCache.filter(v =>
+        /^ja(-|_)?JP/i.test(v.lang) || /^ja/i.test(v.lang)
+      );
+
+      if (!voices.length) return null;
+
+      const preferred = [
+        "Kyoko","Otoya","Nanami","Keita","Haruka",
+        "Google 日本語","Microsoft Nanami","Microsoft Keita",
+        "Natural","Premium","Enhanced"
+      ];
+
+      for (const name of preferred) {
+        const found = voices.find(v =>
+          v.name.toLowerCase().includes(name.toLowerCase())
+        );
+        if (found) return found;
+      }
+
+      return voices[0];
+    }
+
+    async function ensureVoice() {
+      if (!("speechSynthesis" in window)) return null;
+
+      loadVoices();
+      if (japaneseVoice) return japaneseVoice;
+
+      for (const delay of [120,220,360,520]) {
+        await new Promise(r => setTimeout(r, delay));
+        loadVoices();
+        if (japaneseVoice) return japaneseVoice;
+      }
+
+      return null;
+    }
+
+    function setAudioStatus(text) {
+      const el = document.getElementById("audioStatus");
+      if (el) el.textContent = text || "";
+    }
+
+    function stopAudio() {
+      dialogueRunId++;
+      playToken++;
+
+      if ("speechSynthesis" in window) {
+        try {
+          speechSynthesis.cancel();
+          speechSynthesis.resume();
+        } catch (_) {}
+      }
+
+      setAudioStatus("");
+    }
+
+    async function speakJapanese(text, rate=1) {
+      stopAudio();
+
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+
+      const voice = await ensureVoice();
+      const token = ++playToken;
+
+      try {
+        speechSynthesis.cancel();
+        speechSynthesis.resume();
+      } catch (_) {}
+
+      await new Promise(r => setTimeout(r,70));
+      if (token !== playToken) return;
+
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "ja-JP";
+      u.rate = rate < 1 ? Math.max(.65,rate) : .92;
+      u.pitch = 1;
+      u.volume = 1;
+
+      if (voice) u.voice = voice;
+
+      u.onerror = () => showToast("Audio TTS không phát được. Hãy thử lại.");
+      speechSynthesis.speak(u);
+    }
+
+    async function playSequence(lines, rate=1, pause=220) {
+      stopAudio();
+
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+
+      const runId = ++dialogueRunId;
+      const localToken = ++playToken;
+      const voice = await ensureVoice();
+
+      for (const line of lines) {
+        if (runId !== dialogueRunId || localToken !== playToken) return;
+
+        await new Promise(resolve => {
+          const u = new SpeechSynthesisUtterance(line);
+          u.lang = "ja-JP";
+          u.rate = rate < 1 ? Math.max(.65,rate) : .92;
+          u.pitch = 1;
+
+          if (voice) u.voice = voice;
+
+          u.onend = resolve;
+          u.onerror = resolve;
+
+          try { speechSynthesis.resume(); } catch (_) {}
+          speechSynthesis.speak(u);
+        });
+
+        await new Promise(resolve => setTimeout(resolve,pause));
+      }
+    }
+
+    function playDialogue(rate=1) {
+      setAudioStatus(rate < 1
+        ? "Playing slow conversation…"
+        : "Playing full conversation…");
+
+      playSequence(dialogueLines, rate, 180).then(() => setAudioStatus(""));
+    }
+
+    function playMission(rate=1) {
+      showToast("Trả lời thật về bạn trước prompt tiếp theo.");
+      playSequence(missionPrompts, rate, rate < 1 ? 4200 : 3400);
+    }
+
+    function setupChoiceGroups() {
+      document.querySelectorAll(".practice-box .choices").forEach(group => {
+        const answer = group.dataset.answer;
+        const feedback = group.parentElement.querySelector(".feedback");
+
+        group.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            group.querySelectorAll(".choice-btn").forEach(b =>
+              b.classList.remove("correct","wrong")
+            );
+
+            if (btn.dataset.value === answer) {
+              btn.classList.add("correct");
+              feedback.textContent = "✓ Chính xác!";
+            } else {
+              btn.classList.add("wrong");
+              const correct = group.querySelector(`[data-value="${answer}"]`);
+              if (correct) correct.classList.add("correct");
+
+              feedback.textContent =
+                "Chưa đúng. Hãy nghe xem đó là like, favorite hay not really like.";
+            }
+          });
+        });
+      });
+    }
+
+    function toggleAnswer(id) {
+      document.getElementById(id).classList.toggle("show");
+    }
+
+    function setupQuiz() {
+      document.querySelectorAll(".quiz-q").forEach(q => {
+        q.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            q.querySelectorAll(".choice-btn").forEach(b => {
+              b.dataset.selected = "false";
+              b.style.outline = "none";
+              b.style.background = "#fff";
+            });
+
+            btn.dataset.selected = "true";
+            btn.style.outline = "2px solid rgba(239,166,181,.65)";
+            btn.style.background = "#fff8fa";
+          });
+        });
+      });
+    }
+
+    function gradeQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll(".quiz-q");
+
+      questions.forEach(q => {
+        const answer = q.dataset.answer;
+        const selected = q.querySelector('.choice-btn[data-selected="true"]');
+
+        q.querySelectorAll(".choice-btn").forEach(b =>
+          b.classList.remove("correct","wrong")
+        );
+
+        const correct = q.querySelector(`[data-value="${answer}"]`);
+        if (correct) correct.classList.add("correct");
+
+        if (selected) {
+          if (selected.dataset.value === answer) score++;
+          else selected.classList.add("wrong");
+        }
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.add("show");
+
+      if (score === 10) {
+        box.textContent =
+          "10/10 ✨ Excellent. Bạn đã nắm chắc 好きです / 好きな + noun / 一番好き.";
+      } else if (score >= 8) {
+        box.textContent =
+          `${score}/10 — Rất tốt. Review nhẹ が好きです hoặc 好きな + noun.`;
+      } else if (score >= 6) {
+        box.textContent =
+          `${score}/10 — Có nền. Làm lại Preference Builder + Listening.`;
+      } else {
+        box.textContent =
+          `${score}/10 — Xem lại Xが好きです / 好きなN / 一番 / あまり〜ない trước khi làm lại.`;
+      }
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll(".quiz-q .choice-btn").forEach(btn => {
+        btn.dataset.selected = "false";
+        btn.classList.remove("correct","wrong");
+        btn.style.outline = "none";
+        btn.style.background = "#fff";
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.remove("show");
+      box.textContent = "";
+    }
+
+    function isCompleted() {
+      return localStorage.getItem(DAY_KEY) === "completed";
+    }
+
+    function updateCompleteUI() {
+      const btn = document.getElementById("completeBtn");
+      const msg = document.getElementById("completeMessage");
+
+      if (isCompleted()) {
+        btn.classList.add("completed");
+        btn.textContent = "✓ Day 24 Completed";
+        msg.textContent =
+          "Đã hoàn thành Day 24. Tiếp theo: Day 25 — How Much Is It?";
+      } else {
+        btn.classList.remove("completed");
+        btn.textContent = "✓ Complete Day 24";
+        msg.textContent =
+          "Hoàn thành khi bạn có thể nói một “food profile” ngắn mà không lẫn が好きです và 好きな + noun.";
+      }
+    }
+
+    function toggleComplete() {
+      if (isCompleted()) {
+        localStorage.removeItem(DAY_KEY);
+        showToast("Đã chuyển Day 24 về trạng thái chưa hoàn thành.");
+      } else {
+        localStorage.setItem(DAY_KEY,"completed");
+        localStorage.setItem("n5-last-opened-day","24");
+        showToast("Day 24 completed 🌸");
+      }
+
+      updateCompleteUI();
+    }
+
+    function isFavorite() {
+      return localStorage.getItem(FAVORITE_KEY) === "true";
+    }
+
+    function updateFavoriteUI() {
+      const btn = document.getElementById("favoriteBtn");
+      btn.classList.toggle("active",isFavorite());
+      btn.textContent = isFavorite() ? "★ Favorite" : "☆ Favorite";
+    }
+
+    function toggleFavorite() {
+      localStorage.setItem(FAVORITE_KEY,String(!isFavorite()));
+      updateFavoriteUI();
+
+      showToast(
+        isFavorite()
+          ? "Đã thêm Day 24 vào Favorites ★"
+          : "Đã bỏ Day 24 khỏi Favorites"
+      );
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(
+        () => toast.classList.remove("show"),
+        2200
+      );
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupMenu();
+      setupDisplayToggles();
+      loadDisplaySettings();
+      setupChoiceGroups();
+      setupQuiz();
+      updateCompleteUI();
+      updateFavoriteUI();
+
+      localStorage.setItem("n5-last-opened-day","24");
+
+      document
+        .getElementById("favoriteBtn")
+        .addEventListener("click",toggleFavorite);
+
+      if ("speechSynthesis" in window) {
+        loadVoices();
+        speechSynthesis.onvoiceschanged = loadVoices;
+      }
+
+      window.addEventListener("beforeunload",stopAudio);
+    });
+  </script>
+</body>
+</html>
