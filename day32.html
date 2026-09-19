@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 32: Here / There / Over There — ここ・そこ・あそこ." />
+  <title>Day 32 — ここ・そこ・あそこ | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">🌸</span>
+        <span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="n5.html">N5 Course</a>
+        <a href="review.html">Quick Review</a>
+        <a href="n4.html">N4</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button>
+    </div>
+
+    <nav class="mobile-menu container" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="n5.html">N5 Course</a>
+      <a href="review.html">Quick Review</a>
+      <a href="n4.html">N4 · Coming Soon</a>
+    </nav>
+  </header>
+
+  <div class="lessonbar">
+    <div class="container lessonbar-inner">
+      <div class="lesson-position">
+        <a href="day31.html">← Day 31</a>
+        <span>·</span>
+        <strong>Day 32 / 90</strong>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="tiny-btn" href="review.html">Quick Review</a>
+        <button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <article class="hero-card">
+          <span class="eyebrow">Day 32 · Getting Around Japan</span>
+
+          <h1>ここ・そこ・あそこ</h1>
+          <div class="hero-en">Here / There / Over There</div>
+
+          <div class="hero-vi">
+            Hiểu hệ vị trí theo khoảng cách:
+            <strong>gần tôi → gần bạn → xa cả hai</strong>.
+          </div>
+
+          <div class="hero-meta">
+            <span class="meta-chip">N5 Beginner</span>
+            <span class="meta-chip">65–80 phút</span>
+            <span class="meta-chip">ここ</span>
+            <span class="meta-chip">そこ</span>
+            <span class="meta-chip">あそこ</span>
+            <span class="meta-chip">どこ</span>
+          </div>
+
+          <div class="goal-box">
+            <strong>Mục tiêu hôm nay</strong>
+            <p>
+              Sau bài này, bạn có thể hiểu và dùng
+              <span class="jp-inline">ここ・そこ・あそこ・どこ</span>,
+              trả lời
+              <span class="jp-inline">トイレはそこです。</span>,
+              nói
+              <span class="jp-inline">ここは駅です。</span>,
+              và nhận diện phiên bản lịch sự hơn
+              <span class="jp-inline">こちら・そちら・あちら・どちら</span>.
+            </p>
+          </div>
+
+          <div class="tip memory" style="margin-top:16px;">
+            <strong>🌱 K-S-A-D system</strong>
+            <strong>こ</strong> = gần người nói ·
+            <strong>そ</strong> = gần người nghe ·
+            <strong>あ</strong> = xa cả hai ·
+            <strong>ど</strong> = câu hỏi.
+          </div>
+
+          <div class="display-panel">
+            <div class="display-title">表示 · Hiển thị</div>
+            <div class="display-toggles">
+              <button class="toggle-btn active" data-toggle="furigana">Furigana</button>
+              <button class="toggle-btn active" data-toggle="romaji">Romaji</button>
+              <button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="container lesson-layout">
+      <aside class="toc">
+        <div class="toc-title">Trong bài này</div>
+        <a href="#warmup">01 · Warm-up</a>
+        <a href="#conversation">02 · Main Conversation</a>
+        <a href="#system">03 · K-S-A-D Logic</a>
+        <a href="#koko">04 · ここ</a>
+        <a href="#soko">05 · そこ</a>
+        <a href="#asoko">06 · あそこ</a>
+        <a href="#doko">07 · どこ</a>
+        <a href="#compare">08 · これ vs ここ</a>
+        <a href="#polite">09 · こちら・そちら・あちら</a>
+        <a href="#kanji">10 · Kanji Helper</a>
+        <a href="#expressions">11 · Key Expressions</a>
+        <a href="#grammar">12 · Grammar Made Easy</a>
+        <a href="#listening">13 · Listening Ladder</a>
+        <a href="#builder">14 · Location Builder</a>
+        <a href="#speaking">15 · Speaking</a>
+        <a href="#roleplay">16 · Point & Respond</a>
+        <a href="#quiz">17 · Mini Quiz</a>
+        <a href="#mission">18 · Today's Mission</a>
+      </aside>
+
+      <div class="lesson-content">
+
+        <section class="section-card" id="warmup">
+          <div class="section-kicker">01 · Warm-up</div>
+          <h2>Day 31 hỏi “ở đâu?” — Day 32 trả lời “ở đây / ở đó / ở kia”</h2>
+
+          <div class="warmup-grid">
+            <div class="warmup-item">
+              <div class="jp">ここです。</div>
+              <div class="romaji">Koko desu.</div>
+              <div class="vi">Ở đây.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('ここです。',1)">▶ Nghe</button></div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp">そこです。</div>
+              <div class="romaji">Soko desu.</div>
+              <div class="vi">Ở đó, gần bạn.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('そこです。',1)">▶ Nghe</button></div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp">あそこです。</div>
+              <div class="romaji">Asoko desu.</div>
+              <div class="vi">Ở đằng kia, xa cả hai.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('あそこです。',1)">▶ Nghe</button></div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Một câu hỏi, ba kiểu trả lời</strong>
+            <span class="jp-inline">トイレはどこですか。</span><br>
+            → <span class="jp-inline">ここです / そこです / あそこです</span>
+          </div>
+        </section>
+
+        <section class="section-card" id="conversation">
+          <div class="section-kicker">02 · Main Conversation</div>
+          <h2>Hỏi và chỉ vị trí trong nhà ga</h2>
+
+          <p class="section-intro">
+            Lần 1 nghe tự nhiên.
+            Lần 2 để ý người nói đang đứng ở đâu so với vị trí được chỉ.
+          </p>
+
+          <div class="audio-controls">
+            <button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button>
+            <button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+          <div class="audio-status" id="audioStatus"></div>
+
+          <div class="dialogue-shell" style="margin-top:16px;">
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">すみません。ATMはどこですか。</div>
+                <div class="romaji">Sumimasen. Ētīemu wa doko desu ka?</div>
+                <div class="vi line-note">Xin lỗi, ATM ở đâu?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('すみません。ATMはどこですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">あそこです。</div>
+                <div class="romaji">Asoko desu.</div>
+                <div class="vi line-note">Ở đằng kia.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('あそこです。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">ありがとうございます。エレベーターは？</div>
+                <div class="romaji">Arigatō gozaimasu. Erebētā wa?</div>
+                <div class="vi line-note">Cảm ơn. Còn thang máy?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('ありがとうございます。エレベーターは？',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">そこです。</div>
+                <div class="romaji">Soko desu.</div>
+                <div class="vi line-note">Ngay chỗ đó, gần bạn.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('そこです。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">じゃ、トイレはどこですか。</div>
+                <div class="romaji">Ja, toire wa doko desu ka?</div>
+                <div class="vi line-note">Vậy toilet ở đâu?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('じゃ、トイレはどこですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">ここです。</div>
+                <div class="romaji">Koko desu.</div>
+                <div class="vi line-note">Ngay đây.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('ここです。',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 “エレベーターは？” rất tự nhiên khi đã rõ đang hỏi vị trí</strong>
+            Không cần lặp:
+            <span class="jp-inline">エレベーターはどこですか</span>
+            mọi lần.
+          </div>
+        </section>
+
+        <section class="section-card" id="system">
+          <div class="section-kicker">03 · K-S-A-D Logic</div>
+          <h2>Đây là hệ thống, không phải bốn từ rời</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>こ → ここ</h3>
+              <p><strong>gần người nói</strong> → ở đây</p>
+            </div>
+            <div class="explain-card">
+              <h3>そ → そこ</h3>
+              <p><strong>gần người nghe</strong> → ở đó</p>
+            </div>
+            <div class="explain-card">
+              <h3>あ → あそこ</h3>
+              <p><strong>xa cả hai</strong> → ở đằng kia</p>
+            </div>
+            <div class="explain-card">
+              <h3>ど → どこ</h3>
+              <p><strong>question</strong> → ở đâu?</p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 K-S-A-D</strong>
+            <strong>K</strong> near me ·
+            <strong>S</strong> near you ·
+            <strong>A</strong> away ·
+            <strong>D</strong> question.
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ そこ không đơn giản là “there”</strong>
+            Nó thường là <strong>vị trí gần người nghe</strong>,
+            nên góc nhìn người nói/người nghe rất quan trọng.
+          </div>
+        </section>
+
+        <section class="section-card" id="koko">
+          <div class="section-kicker">04 · ここ</div>
+          <h2>ここ = chỗ gần người nói</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">ここです。</div>
+            <p>= Ở đây.</p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">トイレはここです。</div>
+            <p>= Toilet ở đây.</p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">ここは駅です。</div>
+            <p>= Đây là ga / chỗ này là ga.</p>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 ここ = location</strong>
+            Nó chỉ <strong>nơi chốn</strong>, không phải “vật này”.
+          </div>
+        </section>
+
+        <section class="section-card" id="soko">
+          <div class="section-kicker">05 · そこ</div>
+          <h2>そこ = chỗ gần người nghe</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">そこです。</div>
+            <p>= Ở đó, gần bạn.</p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">ATMはそこです。</div>
+            <p>= ATM ở chỗ đó, gần bạn.</p>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Hình dung hai người đứng cách nhau</strong>
+            Vật ở sát người nghe → người nói có xu hướng dùng
+            <span class="jp-inline">そこ</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="asoko">
+          <div class="section-kicker">06 · あそこ</div>
+          <h2>あそこ = xa cả người nói lẫn người nghe</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">あそこです。</div>
+            <p>= Ở đằng kia.</p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">出口はあそこです。</div>
+            <p>= Lối ra ở đằng kia.</p>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 あ = away</strong>
+            Đây cũng là logic đã gặp ở
+            <span class="jp-inline">あれ</span>
+            = vật ở xa cả hai.
+          </div>
+        </section>
+
+        <section class="section-card" id="doko">
+          <div class="section-kicker">07 · どこ</div>
+          <h2>どこ = câu hỏi của cả hệ</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">X はどこですか。</div>
+            <p>
+              <span class="jp-inline">トイレはどこですか。</span><br>
+              = Toilet ở đâu?
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">どこですか。→ ここ / そこ / あそこです。</div>
+            <p>
+              Câu hỏi và câu trả lời thuộc cùng một hệ.
+            </p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ どこ không phải “which place” theo kiểu chọn option</strong>
+            Với beginner, cứ map trực tiếp:
+            <span class="jp-inline">どこ = ở đâu</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="compare">
+          <div class="section-kicker">08 · これ vs ここ</div>
+          <h2>Dễ nhầm nhất: object system và location system</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>これ</h3>
+              <p><strong>cái này</strong> · vật gần người nói</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>ここ</h3>
+              <p><strong>ở đây</strong> · chỗ gần người nói</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>それ</h3>
+              <p><strong>cái đó</strong> · vật gần người nghe</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>そこ</h3>
+              <p><strong>ở đó</strong> · chỗ gần người nghe</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>あれ</h3>
+              <p><strong>cái kia</strong> · vật xa cả hai</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>あそこ</h3>
+              <p><strong>ở đằng kia</strong> · nơi xa cả hai</p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 れ = thing · こ = place</strong>
+            <span class="jp-inline">これ / それ / あれ</span> → vật<br>
+            <span class="jp-inline">ここ / そこ / あそこ</span> → nơi
+          </div>
+        </section>
+
+        <section class="section-card" id="polite">
+          <div class="section-kicker">09 · こちら・そちら・あちら</div>
+          <h2>Phiên bản lịch sự hơn của hệ vị trí</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card"><h3>こちら</h3><p>phía/chỗ này · lịch sự</p></div>
+            <div class="explain-card"><h3>そちら</h3><p>phía/chỗ đó · lịch sự</p></div>
+            <div class="explain-card"><h3>あちら</h3><p>phía/chỗ kia · lịch sự</p></div>
+            <div class="explain-card"><h3>どちら</h3><p>phía/chỗ nào · lịch sự</p></div>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">トイレはあちらです。</div>
+            <p>= Toilet ở phía kia ạ.</p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">お手洗いはどちらですか。</div>
+            <p>= Nhà vệ sinh ở đâu ạ?</p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ Day 32: recognition trước</strong>
+            Target nói chủ động vẫn là
+            <span class="jp-inline">ここ・そこ・あそこ・どこ</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="kanji">
+          <div class="section-kicker">10 · Kanji Helper</div>
+          <h2>Kanji hôm nay chủ yếu là place words đã gặp</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3><ruby>駅<rt>えき</rt></ruby></h3>
+              <p>ga · must recognize</p>
+            </div>
+            <div class="explain-card">
+              <h3><ruby>入口<rt>いりぐち</rt></ruby></h3>
+              <p>lối vào · 入 + 口</p>
+            </div>
+            <div class="explain-card">
+              <h3><ruby>出口<rt>でぐち</rt></ruby></h3>
+              <p>lối ra · 出 + 口</p>
+            </div>
+            <div class="explain-card">
+              <h3><ruby>階<rt>かい</rt></ruby></h3>
+              <p>tầng · 一階 / 二階 / 三階</p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>🌱 Must recognize</strong>
+            駅・入口・出口・階.<br>
+            Không có Kanji mới nặng hôm nay; trọng tâm là logic vị trí.
+          </div>
+        </section>
+
+        <section class="section-card" id="expressions">
+          <div class="section-kicker">11 · Key Expressions</div>
+          <h2>12 mẫu câu cần phản xạ</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card"><div><div class="vocab-jp">ここです。</div><div class="romaji vocab-reading">Koko desu.</div><div class="vi vocab-vi">Ở đây.</div></div><button class="line-audio" onclick="speakJapanese('ここです。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">そこです。</div><div class="romaji vocab-reading">Soko desu.</div><div class="vi vocab-vi">Ở đó.</div></div><button class="line-audio" onclick="speakJapanese('そこです。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">あそこです。</div><div class="romaji vocab-reading">Asoko desu.</div><div class="vi vocab-vi">Ở đằng kia.</div></div><button class="line-audio" onclick="speakJapanese('あそこです。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">どこですか。</div><div class="romaji vocab-reading">Doko desu ka?</div><div class="vi vocab-vi">Ở đâu?</div></div><button class="line-audio" onclick="speakJapanese('どこですか。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">トイレはここです。</div><div class="romaji vocab-reading">Toire wa koko desu.</div><div class="vi vocab-vi">Toilet ở đây.</div></div><button class="line-audio" onclick="speakJapanese('トイレはここです。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">ATMはそこです。</div><div class="romaji vocab-reading">Ētīemu wa soko desu.</div><div class="vi vocab-vi">ATM ở đó.</div></div><button class="line-audio" onclick="speakJapanese('ATMはそこです。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>出口<rt>でぐち</rt></ruby>はあそこです。</div><div class="romaji vocab-reading">Deguchi wa asoko desu.</div><div class="vi vocab-vi">Lối ra ở đằng kia.</div></div><button class="line-audio" onclick="speakJapanese('出口はあそこです。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">ここは<ruby>駅<rt>えき</rt></ruby>です。</div><div class="romaji vocab-reading">Koko wa eki desu.</div><div class="vi vocab-vi">Chỗ này là ga.</div></div><button class="line-audio" onclick="speakJapanese('ここは駅です。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">エレベーターは？</div><div class="romaji vocab-reading">Erebētā wa?</div><div class="vi vocab-vi">Còn thang máy?</div></div><button class="line-audio" onclick="speakJapanese('エレベーターは？',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">あちらです。</div><div class="romaji vocab-reading">Achira desu.</div><div class="vi vocab-vi">Ở phía kia ạ.</div></div><button class="line-audio" onclick="speakJapanese('あちらです。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">こちらです。</div><div class="romaji vocab-reading">Kochira desu.</div><div class="vi vocab-vi">Ở phía này / lối này ạ.</div></div><button class="line-audio" onclick="speakJapanese('こちらです。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">わかりました。ありがとうございます。</div><div class="romaji vocab-reading">Wakarimashita. Arigatō gozaimasu.</div><div class="vi vocab-vi">Tôi hiểu rồi. Cảm ơn.</div></div><button class="line-audio" onclick="speakJapanese('わかりました。ありがとうございます。',1)">▶</button></div>
+          </div>
+        </section>
+
+        <section class="section-card" id="grammar">
+          <div class="section-kicker">12 · Grammar Made Easy</div>
+          <h2>5 khung cốt lõi</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">ここ / そこ / あそこ + です</div>
+            <p>Trả lời vị trí.</p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">X は ここ / そこ / あそこです</div>
+            <p><span class="jp-inline">ATMはそこです。</span></p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">ここ / そこ / あそこ は Xです</div>
+            <p><span class="jp-inline">ここは駅です。</span></p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">X は どこですか</div>
+            <p><span class="jp-inline">トイレはどこですか。</span></p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">X は？</div>
+            <p>
+              Khi context “ở đâu” đã rõ:
+              <span class="jp-inline">エレベーターは？</span>
+            </p>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Ask → Answer</strong>
+            <span class="jp-inline">Xはどこですか</span>
+            → <span class="jp-inline">ここ / そこ / あそこです</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="listening">
+          <div class="section-kicker">13 · Listening Ladder</div>
+          <h2>Nghe khoảng cách, không chỉ nghe từ</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 1 · Here</div>
+            <button class="audio-btn primary" onclick="speakJapanese('ここです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="a">
+              <button class="choice-btn" data-value="a">A. ở đây</button>
+              <button class="choice-btn" data-value="b">B. ở đó</button>
+              <button class="choice-btn" data-value="c">C. ở đâu</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 2 · Near listener</div>
+            <button class="audio-btn primary" onclick="speakJapanese('そこです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. gần người nói</button>
+              <button class="choice-btn" data-value="b">B. gần người nghe</button>
+              <button class="choice-btn" data-value="c">C. xa cả hai</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 3 · Far from both</div>
+            <button class="audio-btn primary" onclick="speakJapanese('あそこです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. ngay đây</button>
+              <button class="choice-btn" data-value="b">B. ngay chỗ bạn</button>
+              <button class="choice-btn" data-value="c">C. đằng kia, xa cả hai</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 4 · Where</div>
+            <button class="audio-btn primary" onclick="speakJapanese('トイレはどこですか。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="a">
+              <button class="choice-btn" data-value="a">A. Toilet ở đâu?</button>
+              <button class="choice-btn" data-value="b">B. Toilet ở đây.</button>
+              <button class="choice-btn" data-value="c">C. Đây là toilet.</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 5 · Answer with そこ</div>
+            <button class="audio-btn primary" onclick="speakJapanese('ATMはどこですか。そこです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. ATM ở đằng xa</button>
+              <button class="choice-btn" data-value="b">B. ATM ở chỗ gần người nghe</button>
+              <button class="choice-btn" data-value="c">C. Không có ATM</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 6 · Object vs place</div>
+            <button class="audio-btn primary" onclick="speakJapanese('これは何ですか。ここはどこですか。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Hai câu đều hỏi giá</button>
+              <button class="choice-btn" data-value="b">B. Hai câu đều hỏi người</button>
+              <button class="choice-btn" data-value="c">C. Câu 1 hỏi vật gì; câu 2 hỏi nơi đây là đâu</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 7 · Polite direction</div>
+            <button class="audio-btn primary" onclick="speakJapanese('お手洗いはどちらですか。あちらです。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Hỏi giá toilet</button>
+              <button class="choice-btn" data-value="b">B. Hỏi vị trí restroom và được chỉ phía kia</button>
+              <button class="choice-btn" data-value="c">C. Hỏi size</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 8 · Full mini exchange</div>
+            <button class="audio-btn primary" onclick="speakJapanese('すみません。出口はどこですか。あそこです。エレベーターは？そこです。ありがとうございます。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Lối ra gần người nghe, thang máy xa cả hai</button>
+              <button class="choice-btn" data-value="b">B. Không biết vị trí nào</button>
+              <button class="choice-btn" data-value="c">C. Lối ra ở đằng kia, thang máy gần người nghe</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Shadowing · K-S-A-D</div>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="speakJapanese('ここです。そこです。あそこです。どこですか。トイレはここです。出口はあそこです。',.76)">🐢 Slow</button>
+              <button class="audio-btn primary" onclick="speakJapanese('ここです。そこです。あそこです。どこですか。トイレはここです。出口はあそこです。',1)">▶ Natural</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="builder">
+          <div class="section-kicker">14 · Location Builder</div>
+          <h2>Question → distance → answer</h2>
+
+          <div class="breakdown">
+            <div class="break-row"><div class="break-label">Near me</div><div>トイレ → <strong>トイレはここです。</strong></div></div>
+            <div class="break-row"><div class="break-label">Near you</div><div>ATM → <strong>ATMはそこです。</strong></div></div>
+            <div class="break-row"><div class="break-label">Far</div><div>出口 → <strong>出口はあそこです。</strong></div></div>
+            <div class="break-row"><div class="break-label">Question</div><div>駅 → <strong>駅はどこですか。</strong></div></div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Think in distance, not translation</strong>
+            <strong>near me / near you / far / question</strong>
+            → ここ / そこ / あそこ / どこ
+          </div>
+        </section>
+
+        <section class="section-card" id="speaking">
+          <div class="section-kicker">15 · Speaking Practice</div>
+          <h2>Tự nói trước khi mở đáp án</h2>
+
+          <div class="speaking-grid">
+            <div class="speaking-card">
+              <div class="prompt">1. “Ở đây.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a1')">Xem đáp án</button>
+              <div class="answer" id="a1"><div class="jp">ここです。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">2. “Ở đó, gần bạn.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a2')">Xem đáp án</button>
+              <div class="answer" id="a2"><div class="jp">そこです。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">3. “Ở đằng kia.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a3')">Xem đáp án</button>
+              <div class="answer" id="a3"><div class="jp">あそこです。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">4. “Toilet ở đâu?”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a4')">Xem đáp án</button>
+              <div class="answer" id="a4"><div class="jp">トイレはどこですか。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">5. “ATM ở đó.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a5')">Xem đáp án</button>
+              <div class="answer" id="a5"><div class="jp">ATMはそこです。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">6. “Lối ra ở đằng kia.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a6')">Xem đáp án</button>
+              <div class="answer" id="a6"><div class="jp"><ruby>出口<rt>でぐち</rt></ruby>はあそこです。</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="roleplay">
+          <div class="section-kicker">16 · Point & Respond</div>
+          <h2>Audio hỏi — bạn chọn đúng khoảng cách</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 1 · Near you</div>
+            <button class="audio-btn primary" onclick="speakJapanese('ATMはどこですか。',1)">▶ Câu hỏi</button>
+            <p class="vi">Giả sử ATM ở ngay cạnh người hỏi.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r1')">Mẫu</button>
+            <div class="answer" id="r1"><div class="jp">そこです。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 2 · Far from both</div>
+            <button class="audio-btn primary" onclick="speakJapanese('出口はどこですか。',1)">▶ Câu hỏi</button>
+            <p class="vi">Giả sử lối ra ở xa cả hai.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r2')">Mẫu</button>
+            <div class="answer" id="r2"><div class="jp">あそこです。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 3 · Near me</div>
+            <button class="audio-btn primary" onclick="speakJapanese('トイレはどこですか。',1)">▶ Câu hỏi</button>
+            <p class="vi">Giả sử toilet ở ngay cạnh bạn, người trả lời.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r3')">Mẫu</button>
+            <div class="answer" id="r3"><div class="jp">ここです。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Rapid K-S-A-D</div>
+            <div class="audio-controls">
+              <button class="audio-btn primary" onclick="playRapid()">▶ Start Rapid Round</button>
+              <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+            </div>
+            <p class="vi">Nghe cue “near me / near you / far / question” bằng tiếng Nhật context và trả lời ngay.</p>
+          </div>
+        </section>
+
+        <section class="section-card" id="quiz">
+          <div class="section-kicker">17 · Mini Quiz</div>
+          <h2>Kiểm tra nhanh Day 32</h2>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>1. ここ là?</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. chỗ gần người nói</button><button class="choice-btn" data-value="b">B. chỗ gần người nghe</button><button class="choice-btn" data-value="c">C. chỗ xa cả hai</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>2. そこ là?</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. vật gần người nói</button><button class="choice-btn" data-value="b">B. chỗ gần người nghe</button><button class="choice-btn" data-value="c">C. câu hỏi</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>3. あそこ là?</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. gần người nói</button><button class="choice-btn" data-value="b">B. gần người nghe</button><button class="choice-btn" data-value="c">C. xa cả hai</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>4. どこ là?</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. cái nào</button><button class="choice-btn" data-value="b">B. ở đâu</button><button class="choice-btn" data-value="c">C. bao nhiêu</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>5. “ATM ở đó, gần bạn.”</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. ATMはそこです。</button><button class="choice-btn" data-value="b">B. ATMはあそこです。</button><button class="choice-btn" data-value="c">C. ATMはこれです。</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>6. これ vs ここ?</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. cả hai đều là nơi</button><button class="choice-btn" data-value="b">B. cả hai đều là vật</button><button class="choice-btn" data-value="c">C. vật này vs ở đây</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>7. “Lối ra ở đằng kia.”</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. 出口はここです。</button><button class="choice-btn" data-value="b">B. 出口はあそこです。</button><button class="choice-btn" data-value="c">C. 出口はどこです。</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>8. Phiên bản lịch sự của あそこ?</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. あちら</button><button class="choice-btn" data-value="b">B. どちら</button><button class="choice-btn" data-value="c">C. こちら</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>9. Xは？ khi context rõ có thể hiểu là?</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. X bao nhiêu tuổi?</button><button class="choice-btn" data-value="b">B. X thích gì?</button><button class="choice-btn" data-value="c">C. Còn X thì ở đâu?</button></div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>10. Logic đúng?</h3>
+            <div class="choices"><button class="choice-btn" data-value="a">A. こ = far, そ = near me</button><button class="choice-btn" data-value="b">B. こ = near me, そ = near you, あ = far, ど = question</button><button class="choice-btn" data-value="c">C. ど = far</button></div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button>
+            <button class="audio-btn" onclick="resetQuiz()">Làm lại</button>
+          </div>
+          <div class="score-box" id="scoreBox"></div>
+        </section>
+
+        <section class="section-card mission-card" id="mission">
+          <div class="section-kicker">18 · Today's Mission</div>
+          <h2>K-S-A-D Location Drill — 90 seconds</h2>
+
+          <p class="section-intro">
+            Tưởng tượng 3 vị trí khác nhau quanh bạn.
+            Đừng dịch; hãy quyết định khoảng cách.
+          </p>
+
+          <div class="mission-lines">
+            <div class="mission-line"><div class="vi">1. Toilet ngay cạnh bạn.</div><div class="jp">トイレはここです。</div></div>
+            <div class="mission-line"><div class="vi">2. ATM ngay cạnh người nghe.</div><div class="jp">ATMはそこです。</div></div>
+            <div class="mission-line"><div class="vi">3. Lối ra xa cả hai.</div><div class="jp">出口はあそこです。</div></div>
+            <div class="mission-line"><div class="vi">4. Hỏi ga ở đâu.</div><div class="jp">駅はどこですか。</div></div>
+            <div class="mission-line"><div class="vi">5. Dùng follow-up ngắn.</div><div class="jp">エレベーターは？</div></div>
+            <div class="mission-line"><div class="vi">6. Nhận diện câu lịch sự.</div><div class="jp">お手洗いはどちらですか。あちらです。</div></div>
+            <div class="mission-line"><div class="vi">7. Tạo thêm 5 câu với places tự chọn.</div><div class="jp">ホテル / コンビニ / 銀行 / カフェ / 交番...</div></div>
+          </div>
+
+          <div class="audio-controls">
+            <button class="audio-btn" onclick="playMission(.76)">🐢 K-S-A-D Simulation Slow</button>
+            <button class="audio-btn primary" onclick="playMission(1)">▶ K-S-A-D Simulation Natural</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+
+          <div class="tip memory">
+            <strong>✅ Pass standard</strong>
+            Bạn chọn đúng
+            <span class="jp-inline">ここ / そこ / あそこ / どこ</span>
+            dựa trên <strong>distance & perspective</strong>,
+            không chỉ nhớ bản dịch “here/there”.
+          </div>
+
+          <div class="complete-box">
+            <p id="completeMessage" style="margin-top:0;color:var(--muted);">
+              Hoàn thành khi bạn có thể chọn ここ・そこ・あそこ dựa trên góc nhìn người nói/người nghe.
+            </p>
+            <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 32</button>
+          </div>
+        </section>
+
+        <div class="day-nav">
+          <a href="day31.html">← Day 31 · Where Is It?</a>
+          <a class="next" href="day33.html">Day 33 · Asking for Directions →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><span class="footer-brand">🌸 Nihongo 90</span> · Day 32</div>
+      <div>Getting Around Japan · Near me, near you, far away, or where?</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DAY_KEY = "n5-day-32";
+    const FAVORITE_KEY = "n5-favorite-day-32";
+    const DISPLAY_KEY = "nihongo90-display";
+
+    const dialogueLines = [
+      "すみません。ATMはどこですか。",
+      "あそこです。",
+      "ありがとうございます。エレベーターは？",
+      "そこです。",
+      "じゃ、トイレはどこですか。",
+      "ここです。"
+    ];
+
+    const rapidPrompts = [
+      "トイレはどこですか。",
+      "ATMはどこですか。",
+      "出口はどこですか。",
+      "駅はどこですか。"
+    ];
+
+    const missionPrompts = [
+      "トイレはここです。",
+      "ATMはそこです。",
+      "出口はあそこです。",
+      "駅はどこですか。",
+      "エレベーターは？",
+      "お手洗いはどちらですか。あちらです。"
+    ];
+
+    let voiceCache = [];
+    let japaneseVoice = null;
+    let dialogueRunId = 0;
+    let playToken = 0;
+
+    function setupMenu() {
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "✕" : "☰";
+      });
+    }
+
+    function loadDisplaySettings() {
+      let saved = { furigana: true, romaji: true, vi: true };
+
+      try {
+        const parsed = JSON.parse(localStorage.getItem(DISPLAY_KEY));
+        if (parsed && typeof parsed === "object") saved = { ...saved, ...parsed };
+      } catch (_) {}
+
+      applyDisplaySettings(saved);
+    }
+
+    function applyDisplaySettings(settings) {
+      document.body.classList.toggle("hide-furigana", !settings.furigana);
+      document.body.classList.toggle("hide-romaji", !settings.romaji);
+      document.body.classList.toggle("hide-vi", !settings.vi);
+
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.classList.toggle("active", !!settings[btn.dataset.toggle]);
+      });
+
+      localStorage.setItem(DISPLAY_KEY, JSON.stringify(settings));
+    }
+
+    function setupDisplayToggles() {
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          let saved = { furigana: true, romaji: true, vi: true };
+
+          try {
+            saved = { ...saved, ...JSON.parse(localStorage.getItem(DISPLAY_KEY)) };
+          } catch (_) {}
+
+          const key = btn.dataset.toggle;
+          saved[key] = !saved[key];
+          applyDisplaySettings(saved);
+        });
+      });
+    }
+
+    function loadVoices() {
+      if (!("speechSynthesis" in window)) return;
+
+      voiceCache = speechSynthesis.getVoices() || [];
+      japaneseVoice = pickJapaneseVoice();
+    }
+
+    function pickJapaneseVoice() {
+      const voices = voiceCache.filter(v =>
+        /^ja(-|_)?JP/i.test(v.lang) || /^ja/i.test(v.lang)
+      );
+
+      if (!voices.length) return null;
+
+      const preferred = [
+        "Kyoko","Otoya","Nanami","Keita","Haruka",
+        "Google 日本語","Microsoft Nanami","Microsoft Keita",
+        "Natural","Premium","Enhanced"
+      ];
+
+      for (const name of preferred) {
+        const found = voices.find(v =>
+          v.name.toLowerCase().includes(name.toLowerCase())
+        );
+        if (found) return found;
+      }
+
+      return voices[0];
+    }
+
+    async function ensureVoice() {
+      if (!("speechSynthesis" in window)) return null;
+
+      loadVoices();
+      if (japaneseVoice) return japaneseVoice;
+
+      for (const delay of [120,220,360,520]) {
+        await new Promise(r => setTimeout(r, delay));
+        loadVoices();
+        if (japaneseVoice) return japaneseVoice;
+      }
+
+      return null;
+    }
+
+    function setAudioStatus(text) {
+      const el = document.getElementById("audioStatus");
+      if (el) el.textContent = text || "";
+    }
+
+    function stopAudio() {
+      dialogueRunId++;
+      playToken++;
+
+      if ("speechSynthesis" in window) {
+        try {
+          speechSynthesis.cancel();
+          speechSynthesis.resume();
+        } catch (_) {}
+      }
+
+      setAudioStatus("");
+    }
+
+    async function speakJapanese(text, rate=1) {
+      stopAudio();
+
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+
+      const voice = await ensureVoice();
+      const token = ++playToken;
+
+      try {
+        speechSynthesis.cancel();
+        speechSynthesis.resume();
+      } catch (_) {}
+
+      await new Promise(r => setTimeout(r,70));
+      if (token !== playToken) return;
+
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "ja-JP";
+      u.rate = rate < 1 ? Math.max(.65, rate) : .92;
+      u.pitch = 1;
+      u.volume = 1;
+
+      if (voice) u.voice = voice;
+      u.onerror = () => showToast("Audio TTS không phát được. Hãy thử lại.");
+
+      speechSynthesis.speak(u);
+    }
+
+    async function playSequence(lines, rate=1, pause=220) {
+      stopAudio();
+
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+
+      const runId = ++dialogueRunId;
+      const localToken = ++playToken;
+      const voice = await ensureVoice();
+
+      for (const line of lines) {
+        if (runId !== dialogueRunId || localToken !== playToken) return;
+
+        await new Promise(resolve => {
+          const u = new SpeechSynthesisUtterance(line);
+          u.lang = "ja-JP";
+          u.rate = rate < 1 ? Math.max(.65, rate) : .92;
+          u.pitch = 1;
+
+          if (voice) u.voice = voice;
+          u.onend = resolve;
+          u.onerror = resolve;
+
+          try { speechSynthesis.resume(); } catch (_) {}
+          speechSynthesis.speak(u);
+        });
+
+        await new Promise(resolve => setTimeout(resolve, pause));
+      }
+    }
+
+    function playDialogue(rate=1) {
+      setAudioStatus(
+        rate < 1
+          ? "Playing slow K-S-A-D conversation…"
+          : "Playing K-S-A-D conversation…"
+      );
+
+      playSequence(dialogueLines, rate, 180).then(() => setAudioStatus(""));
+    }
+
+    function playRapid() {
+      showToast("Rapid Round: chọn ここ / そこ / あそこ theo context.");
+      playSequence(rapidPrompts, 1, 3000);
+    }
+
+    function playMission(rate=1) {
+      showToast("Nghe và shadow theo distance logic.");
+      playSequence(missionPrompts, rate, rate < 1 ? 3900 : 3100);
+    }
+
+    function hasJapanese(text) {
+      return /[\u3040-\u30ff\u3400-\u9fff]/.test(text || "");
+    }
+
+    function baseText(node) {
+      const clone = node.cloneNode(true);
+      clone.querySelectorAll("rt, .romaji, .vi, .audio-btn, .line-audio, .feedback").forEach(el => el.remove());
+      return (clone.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
+    function getAutoAudioText(container) {
+      const priorities = [
+        ".jp",
+        ".jp-line",
+        ".vocab-jp",
+        ".mission-line .jp",
+        ".jp-inline"
+      ];
+
+      for (const selector of priorities) {
+        const nodes = [...container.querySelectorAll(selector)];
+        const parts = nodes
+          .map(baseText)
+          .filter(t => t && hasJapanese(t));
+
+        if (parts.length) {
+          return [...new Set(parts)].join("。").replace(/。。+/g, "。");
+        }
+      }
+
+      const rule = container.querySelector(".rule-form");
+      if (rule) {
+        const t = baseText(rule);
+        if (t && hasJapanese(t)) return t;
+      }
+
+      const strongs = [...container.querySelectorAll("strong")]
+        .map(baseText)
+        .filter(t => t && hasJapanese(t));
+
+      if (strongs.length) return [...new Set(strongs)].join("。");
+
+      const h3 = container.querySelector("h3");
+      if (h3) {
+        const t = baseText(h3);
+        if (t && hasJapanese(t)) return t;
+      }
+
+      return "";
+    }
+
+    function setupInlineAudioButtons() {
+      const selectors = [
+        ".grammar-rule",
+        ".explain-card",
+        ".break-row",
+        ".answer",
+        ".mission-line",
+        ".tip"
+      ];
+
+      document.querySelectorAll(selectors.join(",")).forEach(container => {
+        if (container.closest(".quiz-q")) return;
+        if (container.querySelector(".audio-btn, .line-audio")) return;
+
+        const text = getAutoAudioText(container);
+        if (!text) return;
+
+        const btn = document.createElement("button");
+        btn.className = "audio-btn auto-audio-btn";
+        btn.type = "button";
+        btn.textContent = "▶ Nghe";
+        btn.style.marginTop = "10px";
+
+        btn.addEventListener("click", event => {
+          event.preventDefault();
+          event.stopPropagation();
+          speakJapanese(text, 1);
+        });
+
+        container.appendChild(btn);
+      });
+    }
+
+    function setupChoiceGroups() {
+      document.querySelectorAll(".practice-box .choices").forEach(group => {
+        const answer = group.dataset.answer;
+        const feedback = group.parentElement.querySelector(".feedback");
+
+        group.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            group.querySelectorAll(".choice-btn").forEach(b =>
+              b.classList.remove("correct","wrong")
+            );
+
+            if (btn.dataset.value === answer) {
+              btn.classList.add("correct");
+              feedback.textContent = "✓ Chính xác!";
+            } else {
+              btn.classList.add("wrong");
+
+              const correct = group.querySelector(`[data-value="${answer}"]`);
+              if (correct) correct.classList.add("correct");
+
+              feedback.textContent =
+                "Chưa đúng. Hãy xác định: gần tôi / gần bạn / xa cả hai / câu hỏi.";
+            }
+          });
+        });
+      });
+    }
+
+    function toggleAnswer(id) {
+      document.getElementById(id).classList.toggle("show");
+    }
+
+    function setupQuiz() {
+      document.querySelectorAll(".quiz-q").forEach(q => {
+        q.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            q.querySelectorAll(".choice-btn").forEach(b => {
+              b.dataset.selected = "false";
+              b.style.outline = "none";
+              b.style.background = "#fff";
+            });
+
+            btn.dataset.selected = "true";
+            btn.style.outline = "2px solid rgba(239,166,181,.65)";
+            btn.style.background = "#fff8fa";
+          });
+        });
+      });
+    }
+
+    function gradeQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll(".quiz-q");
+
+      questions.forEach(q => {
+        const answer = q.dataset.answer;
+        const selected = q.querySelector('.choice-btn[data-selected="true"]');
+
+        q.querySelectorAll(".choice-btn").forEach(b =>
+          b.classList.remove("correct","wrong")
+        );
+
+        const correct = q.querySelector(`[data-value="${answer}"]`);
+        if (correct) correct.classList.add("correct");
+
+        if (selected) {
+          if (selected.dataset.value === answer) score++;
+          else selected.classList.add("wrong");
+        }
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.add("show");
+
+      if (score === 10) {
+        box.textContent =
+          "10/10 ✨ Excellent. Bạn đã nắm chắc logic K-S-A-D.";
+      } else if (score >= 8) {
+        box.textContent =
+          `${score}/10 — Rất tốt. Review nhẹ これ vs ここ hoặc polite set.`;
+      } else if (score >= 6) {
+        box.textContent =
+          `${score}/10 — Có nền. Làm lại K-S-A-D Logic + Listening.`;
+      } else {
+        box.textContent =
+          `${score}/10 — Xem lại near me / near you / far / question trước khi làm lại.`;
+      }
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll(".quiz-q .choice-btn").forEach(btn => {
+        btn.dataset.selected = "false";
+        btn.classList.remove("correct","wrong");
+        btn.style.outline = "none";
+        btn.style.background = "#fff";
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.remove("show");
+      box.textContent = "";
+    }
+
+    function isCompleted() {
+      return localStorage.getItem(DAY_KEY) === "completed";
+    }
+
+    function updateCompleteUI() {
+      const btn = document.getElementById("completeBtn");
+      const msg = document.getElementById("completeMessage");
+
+      if (isCompleted()) {
+        btn.classList.add("completed");
+        btn.textContent = "✓ Day 32 Completed";
+        msg.textContent =
+          "Đã hoàn thành Day 32. Tiếp theo: Day 33 — Asking for Directions.";
+      } else {
+        btn.classList.remove("completed");
+        btn.textContent = "✓ Complete Day 32";
+        msg.textContent =
+          "Hoàn thành khi bạn có thể chọn ここ・そこ・あそこ dựa trên góc nhìn người nói/người nghe.";
+      }
+    }
+
+    function toggleComplete() {
+      if (isCompleted()) {
+        localStorage.removeItem(DAY_KEY);
+        showToast("Đã chuyển Day 32 về trạng thái chưa hoàn thành.");
+      } else {
+        localStorage.setItem(DAY_KEY, "completed");
+        localStorage.setItem("n5-last-opened-day", "32");
+        showToast("Day 32 completed 🌸");
+      }
+
+      updateCompleteUI();
+    }
+
+    function isFavorite() {
+      return localStorage.getItem(FAVORITE_KEY) === "true";
+    }
+
+    function updateFavoriteUI() {
+      const btn = document.getElementById("favoriteBtn");
+      btn.classList.toggle("active", isFavorite());
+      btn.textContent = isFavorite() ? "★ Favorite" : "☆ Favorite";
+    }
+
+    function toggleFavorite() {
+      localStorage.setItem(FAVORITE_KEY, String(!isFavorite()));
+      updateFavoriteUI();
+
+      showToast(
+        isFavorite()
+          ? "Đã thêm Day 32 vào Favorites ★"
+          : "Đã bỏ Day 32 khỏi Favorites"
+      );
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(
+        () => toast.classList.remove("show"),
+        2200
+      );
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupMenu();
+      setupDisplayToggles();
+      loadDisplaySettings();
+      setupInlineAudioButtons();
+      setupChoiceGroups();
+      setupQuiz();
+      updateCompleteUI();
+      updateFavoriteUI();
+
+      localStorage.setItem("n5-last-opened-day", "32");
+
+      document
+        .getElementById("favoriteBtn")
+        .addEventListener("click", toggleFavorite);
+
+      if ("speechSynthesis" in window) {
+        loadVoices();
+        speechSynthesis.onvoiceschanged = loadVoices;
+      }
+
+      window.addEventListener("beforeunload", stopAudio);
+    });
+  </script>
+</body>
+</html>
