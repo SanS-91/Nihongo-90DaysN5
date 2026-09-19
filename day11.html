@@ -1046,6 +1046,15 @@
             </p>
           </div>
 
+
+          <div class="tip memory" style="margin-top:16px;">
+            <strong>🌱 Kanji hôm nay: nhận diện trước, chưa cần viết</strong>
+            Chỉ cần quen mặt các khối
+            <span class="jp-inline">時・分・半・午前・午後</span>.
+            Hãy đọc nhờ Furigana và nhớ <strong>cả từ/cả cụm</strong>;
+            chưa cần học tất cả âm đọc của từng Kanji.
+          </div>
+
           <div class="display-panel">
             <div class="display-title">表示 · Hiển thị</div>
             <div class="display-toggles">
@@ -1186,11 +1195,11 @@
             <div class="dialogue-line">
               <div class="speaker">B</div>
               <div>
-                <div class="jp-line">はい。コーヒーを<ruby>飲<rt>の</rt></ruby>みましょう。</div>
-                <div class="romaji">Hai. Kōhī o nomimashō.</div>
-                <div class="vi line-note">Vâng. Mình uống cà phê nhé.</div>
+                <div class="jp-line">はい、そうですね。</div>
+                <div class="romaji">Hai, sō desu ne.</div>
+                <div class="vi line-note">Vâng, đúng vậy nhỉ.</div>
               </div>
-              <button class="line-audio" onclick="speakJapanese('はい。コーヒーを飲みましょう。',1)">▶</button>
+              <button class="line-audio" onclick="speakJapanese('はい、そうですね。',1)">▶</button>
             </div>
           </div>
 
@@ -1231,6 +1240,25 @@
             <button class="audio-btn" onclick="speakJapanese('一時、二時、三時、四時、五時、六時、七時、八時、九時、十時、十一時、十二時',.76)">🐢 1–12 Slow</button>
             <button class="audio-btn primary" onclick="speakJapanese('一時、二時、三時、四時、五時、六時、七時、八時、九時、十時、十一時、十二時',1)">▶ 1–12 Natural</button>
           </div>
+
+          <div class="explain-grid" style="margin-top:16px;">
+            <div class="explain-card">
+              <h3><ruby>時<rt>じ</rt></ruby> · hour / time</h3>
+              <p>Trong giờ đồng hồ, số + <strong>時</strong>: 七時 = 7 giờ. Hôm nay chỉ cần nhận diện 時 như “giờ”.</p>
+            </div>
+            <div class="explain-card">
+              <h3><ruby>分<rt>ふん・ぷん</rt></ruby> · minute</h3>
+              <p>Kanji vẫn là một chữ 分 nhưng âm thay đổi: ごふん, ろっぷん, はっぷん… Học theo cả cụm âm.</p>
+            </div>
+            <div class="explain-card">
+              <h3><ruby>半<rt>はん</rt></ruby> · half</h3>
+              <p>Trong giờ: 七時半 = 7 giờ + nửa giờ → 7:30.</p>
+            </div>
+            <div class="explain-card">
+              <h3><ruby>午前<rt>ごぜん</rt></ruby> / <ruby>午後<rt>ごご</rt></ruby></h3>
+              <p>Học như hai “logo thời gian”: 午前 = AM, 午後 = PM. Chưa cần phân tích từng Kanji.</p>
+            </div>
+          </div>
         </section>
 
         <section class="section-card" id="minutes">
@@ -1253,6 +1281,15 @@
             <div class="break-row"><div class="break-label">8分</div><div><strong>はっぷん</strong></div></div>
             <div class="break-row"><div class="break-label">9分</div><div><strong>きゅうふん</strong></div></div>
             <div class="break-row"><div class="break-label">10分</div><div><strong>じゅっぷん</strong></div></div>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">何分 = なんぷん</div>
+            <p>
+              Khi hỏi “bao nhiêu phút?”, đọc
+              <span class="jp-inline">何分</span> là <strong>なんぷん</strong>.
+              Đây là cụm nên nhớ nguyên khối.
+            </p>
           </div>
 
           <div class="tip warning">
@@ -1463,6 +1500,12 @@
             Đừng đọc <em>なにじ</em>.
             Hãy nhớ nguyên cụm:
             <span class="jp-inline">何時ですか = なんじですか</span>.
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 そうですね = “đúng vậy nhỉ / đúng rồi”</strong>
+            Đây là phản hồi mềm khi đồng ý với điều người kia vừa nói.
+            Chỉ cần nhận diện hôm nay; chưa cần học sâu sắc thái của <span class="jp-inline">ね</span>.
           </div>
 
           <div class="tip real">
@@ -1865,7 +1908,7 @@
       "ありがとうございます。授業は何時からですか。",
       "午前八時からです。",
       "あと三十分ですね。",
-      "はい。コーヒーを飲みましょう。"
+      "はい、そうですね。"
     ];
 
     let voiceCache = [];
