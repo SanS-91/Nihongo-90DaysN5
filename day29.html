@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 29: Convenience Store Japanese — コンビニで." />
+  <title>Day 29 — コンビニで | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">🌸</span>
+        <span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="n5.html">N5 Course</a>
+        <a href="review.html">Quick Review</a>
+        <a href="n4.html">N4</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button>
+    </div>
+
+    <nav class="mobile-menu container" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="n5.html">N5 Course</a>
+      <a href="review.html">Quick Review</a>
+      <a href="n4.html">N4 · Coming Soon</a>
+    </nav>
+  </header>
+
+  <div class="lessonbar">
+    <div class="container lessonbar-inner">
+      <div class="lesson-position">
+        <a href="day28.html">← Day 28</a>
+        <span>·</span>
+        <strong>Day 29 / 90</strong>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="tiny-btn" href="review.html">Quick Review</a>
+        <button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <article class="hero-card">
+          <span class="eyebrow">Day 29 · Food & Shopping</span>
+
+          <h1>コンビニで</h1>
+          <div class="hero-en">Convenience Store Japanese</div>
+
+          <div class="hero-vi">
+            Xử lý quầy thanh toán ở konbini:
+            <strong>mua món → hâm nóng → túi → đũa/thìa → point card → thanh toán</strong>.
+          </div>
+
+          <div class="hero-meta">
+            <span class="meta-chip">N5 Beginner</span>
+            <span class="meta-chip">65–80 phút</span>
+            <span class="meta-chip">温めますか</span>
+            <span class="meta-chip">レジ袋</span>
+            <span class="meta-chip">いりません</span>
+            <span class="meta-chip">Konbini survival</span>
+          </div>
+
+          <div class="goal-box">
+            <strong>Mục tiêu hôm nay</strong>
+            <p>
+              Sau bài này, bạn có thể hiểu và phản hồi nhanh các câu:
+              <span class="jp-inline">温めますか。</span>,
+              <span class="jp-inline">レジ袋はご利用ですか。</span>,
+              <span class="jp-inline">お箸は？</span>,
+              <span class="jp-inline">ポイントカードはお持ちですか。</span>,
+              rồi thanh toán bằng
+              <span class="jp-inline">カードでお願いします。</span>.
+            </p>
+          </div>
+
+          <div class="tip memory" style="margin-top:16px;">
+            <strong>🌱 Konbini không cần hiểu từng chữ</strong>
+            Hãy nghe keyword:
+            <strong>温める / 袋 / 箸 / ポイントカード / 支払い</strong>
+            rồi dùng response ngắn:
+            <span class="jp-inline">はい、お願いします。</span> /
+            <span class="jp-inline">いいえ、いりません。</span>
+          </div>
+
+          <div class="display-panel">
+            <div class="display-title">表示 · Hiển thị</div>
+            <div class="display-toggles">
+              <button class="toggle-btn active" data-toggle="furigana">Furigana</button>
+              <button class="toggle-btn active" data-toggle="romaji">Romaji</button>
+              <button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="container lesson-layout">
+      <aside class="toc">
+        <div class="toc-title">Trong bài này</div>
+        <a href="#warmup">01 · Warm-up</a>
+        <a href="#conversation">02 · Main Conversation</a>
+        <a href="#flow">03 · Konbini Flow</a>
+        <a href="#heat">04 · 温めますか</a>
+        <a href="#bag">05 · レジ袋</a>
+        <a href="#utensils">06 · 箸 / スプーン</a>
+        <a href="#point">07 · Point Card</a>
+        <a href="#food">08 · Konbini Vocabulary</a>
+        <a href="#kanji">09 · Kanji Helper</a>
+        <a href="#expressions">10 · Key Expressions</a>
+        <a href="#grammar">11 · Grammar Made Easy</a>
+        <a href="#natural">12 · Natural Japanese</a>
+        <a href="#listening">13 · Listening Ladder</a>
+        <a href="#builder">14 · Checkout Builder</a>
+        <a href="#speaking">15 · Speaking</a>
+        <a href="#roleplay">16 · Register Role-play</a>
+        <a href="#quiz">17 · Mini Quiz</a>
+        <a href="#mission">18 · Today's Mission</a>
+      </aside>
+
+      <div class="lesson-content">
+
+        <section class="section-card" id="warmup">
+          <div class="section-kicker">01 · Warm-up</div>
+          <h2>Bạn đã có gần đủ “survival tools”</h2>
+
+          <div class="warmup-grid">
+            <div class="warmup-item">
+              <div class="jp">これを<ruby>二<rt>ふた</rt></ruby>つお<ruby>願<rt>ねが</rt></ruby>いします。</div>
+              <div class="romaji">Kore o futatsu onegaishimasu.</div>
+              <div class="vi">Cho tôi hai cái này.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('これを二つお願いします。',1)">▶ Nghe</button></div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp">カードでお<ruby>願<rt>ねが</rt></ruby>いします。</div>
+              <div class="romaji">Kādo de onegaishimasu.</div>
+              <div class="vi">Thanh toán bằng thẻ ạ.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('カードでお願いします。',1)">▶ Nghe</button></div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp"><ruby>以上<rt>いじょう</rt></ruby>です。</div>
+              <div class="romaji">Ijō desu.</div>
+              <div class="vi">Vậy là hết.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('以上です。',1)">▶ Nghe</button></div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Day 29 không mở thêm một hệ grammar lớn</strong>
+            Mục tiêu là <strong>survive the register</strong>:
+            nghe đúng keyword và trả lời ngay.
+          </div>
+        </section>
+
+        <section class="section-card" id="conversation">
+          <div class="section-kicker">02 · Main Conversation</div>
+          <h2>Một lượt thanh toán konbini hoàn chỉnh</h2>
+
+          <p class="section-intro">
+            Lần 1 nghe toàn đoạn.
+            Lần 2 chỉ bắt 5 keyword:
+            <strong>温める → 袋 → 箸 → カード → ありがとう</strong>.
+          </p>
+
+          <div class="audio-controls">
+            <button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button>
+            <button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+          <div class="audio-status" id="audioStatus"></div>
+
+          <div class="dialogue-shell" style="margin-top:16px;">
+            <div class="dialogue-line">
+              <div class="speaker">店</div>
+              <div>
+                <div class="jp-line">いらっしゃいませ。</div>
+                <div class="romaji">Irasshaimase.</div>
+                <div class="vi line-note">Xin chào / chào mừng quý khách.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('いらっしゃいませ。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">客</div>
+              <div>
+                <div class="jp-line">このお<ruby>弁当<rt>べんとう</rt></ruby>とお<ruby>茶<rt>ちゃ</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。</div>
+                <div class="romaji">Kono obentō to ocha o onegaishimasu.</div>
+                <div class="vi line-note">Cho tôi hộp cơm này và trà.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('このお弁当とお茶をお願いします。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">店</div>
+              <div>
+                <div class="jp-line">お<ruby>弁当<rt>べんとう</rt></ruby>、<ruby>温<rt>あたた</rt></ruby>めますか。</div>
+                <div class="romaji">Obentō, atatamemasu ka?</div>
+                <div class="vi line-note">Hộp cơm có hâm nóng không ạ?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('お弁当、温めますか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">客</div>
+              <div>
+                <div class="jp-line">はい、お<ruby>願<rt>ねが</rt></ruby>いします。</div>
+                <div class="romaji">Hai, onegaishimasu.</div>
+                <div class="vi line-note">Vâng, nhờ bạn ạ.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('はい、お願いします。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">店</div>
+              <div>
+                <div class="jp-line">レジ<ruby>袋<rt>ぶくろ</rt></ruby>はご<ruby>利用<rt>りよう</rt></ruby>ですか。</div>
+                <div class="romaji">Rejibukuro wa goriyō desu ka?</div>
+                <div class="vi line-note">Quý khách có dùng túi mua hàng không ạ?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('レジ袋はご利用ですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">客</div>
+              <div>
+                <div class="jp-line">いいえ、いりません。</div>
+                <div class="romaji">Iie, irimasen.</div>
+                <div class="vi line-note">Không, tôi không cần.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('いいえ、いりません。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">店</div>
+              <div>
+                <div class="jp-line">お<ruby>箸<rt>はし</rt></ruby>は？</div>
+                <div class="romaji">Ohashi wa?</div>
+                <div class="vi line-note">Còn đũa thì sao ạ?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('お箸は？',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">客</div>
+              <div>
+                <div class="jp-line">はい、お<ruby>願<rt>ねが</rt></ruby>いします。</div>
+                <div class="romaji">Hai, onegaishimasu.</div>
+                <div class="vi line-note">Vâng, cho tôi ạ.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('はい、お願いします。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">店</div>
+              <div>
+                <div class="jp-line">お<ruby>支払<rt>しはら</rt></ruby>いは？</div>
+                <div class="romaji">Oshiharai wa?</div>
+                <div class="vi line-note">Quý khách thanh toán thế nào ạ?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('お支払いは？',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">客</div>
+              <div>
+                <div class="jp-line">カードでお<ruby>願<rt>ねが</rt></ruby>いします。</div>
+                <div class="romaji">Kādo de onegaishimasu.</div>
+                <div class="vi line-note">Thanh toán bằng thẻ ạ.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('カードでお願いします。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">店</div>
+              <div>
+                <div class="jp-line">ありがとうございます。</div>
+                <div class="romaji">Arigatō gozaimasu.</div>
+                <div class="vi line-note">Xin cảm ơn.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('ありがとうございます。',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Staff speech thường dài hơn câu bạn cần trả lời</strong>
+            Bạn không cần tái tạo
+            <span class="jp-inline">レジ袋はご利用ですか</span>.
+            Chỉ cần nghe <span class="jp-inline">袋</span>
+            rồi đáp <span class="jp-inline">はい、お願いします</span>
+            hoặc <span class="jp-inline">いいえ、いりません</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="flow">
+          <div class="section-kicker">03 · Konbini Flow</div>
+          <h2>Quầy thanh toán = 6 checkpoint</h2>
+
+          <div class="breakdown">
+            <div class="break-row"><div class="break-label">1 · Items</div><div><strong>これとこれをお願いします。</strong></div></div>
+            <div class="break-row"><div class="break-label">2 · Heat</div><div><strong>温めますか。</strong> → はい / いいえ</div></div>
+            <div class="break-row"><div class="break-label">3 · Bag</div><div><strong>レジ袋…？</strong> → お願いします / いりません</div></div>
+            <div class="break-row"><div class="break-label">4 · Utensils</div><div><strong>お箸は？</strong></div></div>
+            <div class="break-row"><div class="break-label">5 · Point card</div><div><strong>ポイントカード…？</strong> → recognition</div></div>
+            <div class="break-row"><div class="break-label">6 · Pay</div><div><strong>カードでお願いします。</strong></div></div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 ITEMS → HEAT → BAG → UTENSILS → POINT CARD → PAY</strong>
+          </div>
+        </section>
+
+        <section class="section-card" id="heat">
+          <div class="section-kicker">04 · 温めますか</div>
+          <h2>“Có hâm nóng không?”</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">温めますか。</div>
+            <p>
+              <span class="jp-inline">温める（あたためる）</span>
+              = làm nóng / hâm nóng.<br>
+              Trong konbini:
+              <span class="jp-inline">温めますか。</span>
+              ≈ Có hâm nóng không?
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">はい、お願いします。</div>
+            <p>
+              = Vâng, nhờ bạn ạ.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">いいえ、いりません。</div>
+            <p>
+              = Không, tôi không cần.
+            </p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ Đừng dịch 温めますか thành “bạn có hâm không?” theo chủ ngữ</strong>
+            Trong service context, ý thực tế là:
+            <strong>“Quý khách có muốn hâm nóng món này không?”</strong>
+          </div>
+        </section>
+
+        <section class="section-card" id="bag">
+          <div class="section-kicker">05 · レジ袋</div>
+          <h2>Túi mua hàng — nghe keyword là đủ</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">レジ袋はご利用ですか。</div>
+            <p>
+              <strong>Recognition:</strong>
+              Quý khách có dùng/cần túi mua hàng không?
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">はい、お願いします。</div>
+            <p>= Vâng, cho tôi túi ạ.</p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">いいえ、いりません。</div>
+            <p>= Không, tôi không cần.</p>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 いります = cần</strong>
+            Day 29 chỉ cần nhớ:
+            <span class="jp-inline">いりません</span>
+            = <strong>không cần</strong>.<br>
+            Chưa cần học toàn bộ conjugation của 要る.
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Cách hỏi túi thay đổi theo cửa hàng</strong>
+            Bạn có thể nghe các biến thể như
+            <span class="jp-inline">袋は要りますか</span>,
+            <span class="jp-inline">レジ袋はご利用ですか</span>.<br>
+            Keyword quan trọng nhất là
+            <span class="jp-inline">袋（ふくろ / ぶくろ）</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="utensils">
+          <div class="section-kicker">06 · 箸 / スプーン</div>
+          <h2>“Đũa thì sao?” — câu ngắn nhưng rất thật</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>お<ruby>箸<rt>はし</rt></ruby>は？</h3>
+              <p>Đũa thì sao? / Có cần đũa không?</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>スプーンは？</h3>
+              <p>Thìa thì sao? / Có cần thìa không?</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>フォークは？</h3>
+              <p>Nĩa thì sao?</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>はい、お願いします。</h3>
+              <p>Vâng, cho tôi ạ.</p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 X は？ là follow-up cực mạnh</strong>
+            Bạn đã gặp:
+            <span class="jp-inline">日曜日は？</span>,
+            <span class="jp-inline">お飲み物は？</span>.<br>
+            Hôm nay:
+            <span class="jp-inline">お箸は？</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="point">
+          <div class="section-kicker">07 · Point Card</div>
+          <h2>Recognition only — không cần học kính ngữ</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">ポイントカードはお持ちですか。</div>
+            <p>
+              = Quý khách có point card/thẻ tích điểm không?
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">いいえ、ありません。</div>
+            <p>
+              = Không, tôi không có.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">はい、あります。</div>
+            <p>
+              = Vâng, tôi có.
+            </p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ お持ちですか là staff Japanese</strong>
+            Không cần phân tích <span class="jp-inline">お + 持ち + です</span>
+            ở Day 29.
+            Chỉ map cả cụm:
+            <strong>POINT CARD + お持ちですか → có thẻ không?</strong>
+          </div>
+        </section>
+
+        <section class="section-card" id="food">
+          <div class="section-kicker">08 · Konbini Vocabulary</div>
+          <h2>14 từ/cụm có tần suất cao</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card"><div><div class="vocab-jp">コンビニ</div><div class="romaji vocab-reading">konbini</div><div class="vi vocab-vi">cửa hàng tiện lợi</div></div><button class="line-audio" onclick="speakJapanese('コンビニ',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">おにぎり</div><div class="romaji vocab-reading">onigiri</div><div class="vi vocab-vi">cơm nắm</div></div><button class="line-audio" onclick="speakJapanese('おにぎり',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">お<ruby>弁当<rt>べんとう</rt></ruby></div><div class="romaji vocab-reading">obentō</div><div class="vi vocab-vi">hộp cơm/bento</div></div><button class="line-audio" onclick="speakJapanese('お弁当',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">サンドイッチ</div><div class="romaji vocab-reading">sandoicchi</div><div class="vi vocab-vi">sandwich</div></div><button class="line-audio" onclick="speakJapanese('サンドイッチ',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">お<ruby>茶<rt>ちゃ</rt></ruby></div><div class="romaji vocab-reading">ocha</div><div class="vi vocab-vi">trà</div></div><button class="line-audio" onclick="speakJapanese('お茶',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">レジ</div><div class="romaji vocab-reading">reji</div><div class="vi vocab-vi">quầy tính tiền / register</div></div><button class="line-audio" onclick="speakJapanese('レジ',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">レジ<ruby>袋<rt>ぶくろ</rt></ruby></div><div class="romaji vocab-reading">rejibukuro</div><div class="vi vocab-vi">túi mua hàng</div></div><button class="line-audio" onclick="speakJapanese('レジ袋',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">お<ruby>箸<rt>はし</rt></ruby></div><div class="romaji vocab-reading">ohashi</div><div class="vi vocab-vi">đũa</div></div><button class="line-audio" onclick="speakJapanese('お箸',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">スプーン</div><div class="romaji vocab-reading">supūn</div><div class="vi vocab-vi">thìa</div></div><button class="line-audio" onclick="speakJapanese('スプーン',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">フォーク</div><div class="romaji vocab-reading">fōku</div><div class="vi vocab-vi">nĩa</div></div><button class="line-audio" onclick="speakJapanese('フォーク',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">ポイントカード</div><div class="romaji vocab-reading">pointo kādo</div><div class="vi vocab-vi">thẻ tích điểm</div></div><button class="line-audio" onclick="speakJapanese('ポイントカード',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>現金<rt>げんきん</rt></ruby></div><div class="romaji vocab-reading">genkin</div><div class="vi vocab-vi">tiền mặt</div></div><button class="line-audio" onclick="speakJapanese('現金',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">カード</div><div class="romaji vocab-reading">kādo</div><div class="vi vocab-vi">thẻ thanh toán</div></div><button class="line-audio" onclick="speakJapanese('カード',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">レシート</div><div class="romaji vocab-reading">reshīto</div><div class="vi vocab-vi">hóa đơn/receipt</div></div><button class="line-audio" onclick="speakJapanese('レシート',1)">▶</button></div>
+          </div>
+        </section>
+
+        <section class="section-card" id="kanji">
+          <div class="section-kicker">09 · Kanji Helper</div>
+          <h2>Chỉ học Kanji xuất hiện nhiều ở quầy</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>お<ruby>弁当<rt>べんとう</rt></ruby></h3>
+              <p><strong>bento/hộp cơm</strong>. Học nguyên từ; không cần tách từng Kanji.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>温<rt>あたた</rt></ruby>めます</h3>
+              <p><strong>hâm nóng</strong>. Recognition rất quan trọng ở konbini.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>袋<rt>ふくろ</rt></ruby> / ぶくろ</h3>
+              <p><strong>túi</strong>. Trong レジ袋 đọc <strong>ぶくろ</strong>.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>お<ruby>箸<rt>はし</rt></ruby></h3>
+              <p><strong>đũa</strong>. Nhớ cả cụm お箸.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3>お<ruby>支払<rt>しはら</rt></ruby>い</h3>
+              <p><strong>thanh toán</strong>. Recycle Day 26.</p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>利用<rt>りよう</rt></ruby></h3>
+              <p><strong>sử dụng</strong>. Recognition only trong ご利用ですか.</p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>🌱 Must recognize</strong>
+            温める・袋・箸・支払い.<br>
+            <strong>Recognition only:</strong>
+            弁当・利用 nếu còn mới.
+          </div>
+        </section>
+
+        <section class="section-card" id="expressions">
+          <div class="section-kicker">10 · Key Expressions</div>
+          <h2>12 câu/cụm cần phản xạ</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card"><div><div class="vocab-jp">このお<ruby>弁当<rt>べんとう</rt></ruby>をお願いします。</div><div class="romaji vocab-reading">Kono obentō o onegaishimasu.</div><div class="vi vocab-vi">Cho tôi hộp cơm này.</div></div><button class="line-audio" onclick="speakJapanese('このお弁当をお願いします。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp"><ruby>温<rt>あたた</rt></ruby>めますか。</div><div class="romaji vocab-reading">Atatamemasu ka?</div><div class="vi vocab-vi">Có hâm nóng không?</div></div><button class="line-audio" onclick="speakJapanese('温めますか。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">はい、お願いします。</div><div class="romaji vocab-reading">Hai, onegaishimasu.</div><div class="vi vocab-vi">Vâng, nhờ bạn ạ.</div></div><button class="line-audio" onclick="speakJapanese('はい、お願いします。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">いいえ、いりません。</div><div class="romaji vocab-reading">Iie, irimasen.</div><div class="vi vocab-vi">Không, tôi không cần.</div></div><button class="line-audio" onclick="speakJapanese('いいえ、いりません。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">レジ<ruby>袋<rt>ぶくろ</rt></ruby>はご<ruby>利用<rt>りよう</rt></ruby>ですか。</div><div class="romaji vocab-reading">Rejibukuro wa goriyō desu ka?</div><div class="vi vocab-vi">Có dùng túi mua hàng không?</div></div><button class="line-audio" onclick="speakJapanese('レジ袋はご利用ですか。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">お<ruby>箸<rt>はし</rt></ruby>は？</div><div class="romaji vocab-reading">Ohashi wa?</div><div class="vi vocab-vi">Còn đũa?</div></div><button class="line-audio" onclick="speakJapanese('お箸は？',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">スプーンは？</div><div class="romaji vocab-reading">Supūn wa?</div><div class="vi vocab-vi">Còn thìa?</div></div><button class="line-audio" onclick="speakJapanese('スプーンは？',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">ポイントカードはお<ruby>持<rt>も</rt></ruby>ちですか。</div><div class="romaji vocab-reading">Pointo kādo wa omochi desu ka?</div><div class="vi vocab-vi">Có point card không?</div></div><button class="line-audio" onclick="speakJapanese('ポイントカードはお持ちですか。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">はい、あります。</div><div class="romaji vocab-reading">Hai, arimasu.</div><div class="vi vocab-vi">Vâng, có.</div></div><button class="line-audio" onclick="speakJapanese('はい、あります。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">いいえ、ありません。</div><div class="romaji vocab-reading">Iie, arimasen.</div><div class="vi vocab-vi">Không, không có.</div></div><button class="line-audio" onclick="speakJapanese('いいえ、ありません。',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">お<ruby>支払<rt>しはら</rt></ruby>いは？</div><div class="romaji vocab-reading">Oshiharai wa?</div><div class="vi vocab-vi">Thanh toán thế nào?</div></div><button class="line-audio" onclick="speakJapanese('お支払いは？',1)">▶</button></div>
+            <div class="vocab-card"><div><div class="vocab-jp">カードでお願いします。</div><div class="romaji vocab-reading">Kādo de onegaishimasu.</div><div class="vi vocab-vi">Thanh toán bằng thẻ ạ.</div></div><button class="line-audio" onclick="speakJapanese('カードでお願いします。',1)">▶</button></div>
+          </div>
+        </section>
+
+        <section class="section-card" id="grammar">
+          <div class="section-kicker">11 · Grammar Made Easy</div>
+          <h2>4 response patterns cứu bạn ở konbini</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">はい、お願いします</div>
+            <p>
+              Dùng khi <strong>có, cần, muốn staff làm giúp</strong>.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">いいえ、いりません</div>
+            <p>
+              Dùng khi <strong>không cần vật/dịch vụ</strong>.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">はい、あります / いいえ、ありません</div>
+            <p>
+              Dùng khi hỏi <strong>có / không có</strong>, ví dụ point card.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">Method で お願いします</div>
+            <p>
+              <span class="jp-inline">カードでお願いします。</span><br>
+              <span class="jp-inline">現金でお願いします。</span>
+            </p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ “いりません” và “ありません” không giống nhau</strong>
+            <span class="jp-inline">いりません</span>
+            = tôi <strong>không cần</strong>.<br>
+            <span class="jp-inline">ありません</span>
+            = <strong>không có</strong>.
+          </div>
+        </section>
+
+        <section class="section-card" id="natural">
+          <div class="section-kicker">12 · Natural Japanese</div>
+          <h2>Ở quầy, câu rất ngắn nhưng tốc độ nhanh</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>Staff</h3>
+              <p><span class="jp-inline">温めますか。</span></p>
+            </div>
+
+            <div class="explain-card">
+              <h3>You</h3>
+              <p><span class="jp-inline">はい、お願いします。</span></p>
+            </div>
+
+            <div class="explain-card">
+              <h3>Staff</h3>
+              <p><span class="jp-inline">袋は？</span></p>
+            </div>
+
+            <div class="explain-card">
+              <h3>You</h3>
+              <p><span class="jp-inline">いいえ、いりません。</span></p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Nghe keyword, không nghe từng mora</strong>
+            Nếu bắt được:
+            <span class="jp-inline">温め…</span> → heat<br>
+            <span class="jp-inline">袋…</span> → bag<br>
+            <span class="jp-inline">箸…</span> → chopsticks<br>
+            <span class="jp-inline">ポイントカード…</span> → point card<br>
+            là bạn đã đủ để trả lời.
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 “大丈夫です” cũng thường được dùng để từ chối</strong>
+            Bạn có thể nghe/người thật có thể nói
+            <span class="jp-inline">大丈夫です。</span>
+            để nói “không cần đâu / tôi ổn”.
+            Nhưng vì nghĩa phụ thuộc context, Day 29 target rõ hơn vẫn là
+            <span class="jp-inline">いりません。</span>
+          </div>
+        </section>
+
+        <section class="section-card" id="listening">
+          <div class="section-kicker">13 · Listening Ladder</div>
+          <h2>Nghe staff Japanese theo keyword</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 1 · Heat</div>
+            <button class="audio-btn primary" onclick="speakJapanese('温めますか。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Có cần túi không?</button>
+              <button class="choice-btn" data-value="b">B. Có hâm nóng không?</button>
+              <button class="choice-btn" data-value="c">C. Thanh toán thế nào?</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 2 · Bag</div>
+            <button class="audio-btn primary" onclick="speakJapanese('レジ袋はご利用ですか。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Có point card không?</button>
+              <button class="choice-btn" data-value="b">B. Có cần đũa không?</button>
+              <button class="choice-btn" data-value="c">C. Có dùng/cần túi không?</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 3 · No need</div>
+            <button class="audio-btn primary" onclick="speakJapanese('いいえ、いりません。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="a">
+              <button class="choice-btn" data-value="a">A. Không, tôi không cần</button>
+              <button class="choice-btn" data-value="b">B. Không, tôi không có</button>
+              <button class="choice-btn" data-value="c">C. Vâng, nhờ bạn</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 4 · Chopsticks</div>
+            <button class="audio-btn primary" onclick="speakJapanese('お箸は？',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Còn túi?</button>
+              <button class="choice-btn" data-value="b">B. Còn đũa?</button>
+              <button class="choice-btn" data-value="c">C. Còn tiền mặt?</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 5 · Point card</div>
+            <button class="audio-btn primary" onclick="speakJapanese('ポイントカードはお持ちですか。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Có muốn trả bằng card?</button>
+              <button class="choice-btn" data-value="b">B. Có muốn receipt?</button>
+              <button class="choice-btn" data-value="c">C. Có point card không?</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 6 · Payment</div>
+            <button class="audio-btn primary" onclick="speakJapanese('お支払いは？カードでお願いします。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="a">
+              <button class="choice-btn" data-value="a">A. Hỏi cách thanh toán; khách chọn thẻ</button>
+              <button class="choice-btn" data-value="b">B. Hỏi point card; khách không có</button>
+              <button class="choice-btn" data-value="c">C. Hỏi túi; khách cần túi</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 7 · Similar negatives</div>
+            <button class="audio-btn primary" onclick="speakJapanese('袋は？いいえ、いりません。ポイントカードはお持ちですか。いいえ、ありません。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Không có túi; không cần point card</button>
+              <button class="choice-btn" data-value="b">B. Không cần túi; không có point card</button>
+              <button class="choice-btn" data-value="c">C. Cần túi; có point card</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 8 · Full checkout</div>
+            <button class="audio-btn primary" onclick="speakJapanese('お弁当、温めますか。はい、お願いします。レジ袋はご利用ですか。いいえ、いりません。お箸は？はい、お願いします。お支払いは？カードでお願いします。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Không hâm, cần túi, trả tiền mặt</button>
+              <button class="choice-btn" data-value="b">B. Hâm, cần túi, không cần đũa</button>
+              <button class="choice-btn" data-value="c">C. Hâm, không cần túi, cần đũa, trả thẻ</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Shadowing · Customer responses</div>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="speakJapanese('はい、お願いします。いいえ、いりません。はい、お願いします。いいえ、ありません。カードでお願いします。',.76)">🐢 Slow</button>
+              <button class="audio-btn primary" onclick="speakJapanese('はい、お願いします。いいえ、いりません。はい、お願いします。いいえ、ありません。カードでお願いします。',1)">▶ Natural</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="builder">
+          <div class="section-kicker">14 · Checkout Builder</div>
+          <h2>Chỉ cần map prompt → response</h2>
+
+          <div class="breakdown">
+            <div class="break-row">
+              <div class="break-label">温める?</div>
+              <div><strong>はい、お願いします。</strong></div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">袋?</div>
+              <div><strong>いいえ、いりません。</strong></div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">箸?</div>
+              <div><strong>はい、お願いします。</strong></div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">Point card?</div>
+              <div><strong>いいえ、ありません。</strong></div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">支払い?</div>
+              <div><strong>カードでお願いします。</strong></div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 “Yes/No matrix”</strong>
+            <strong>Need service/item?</strong>
+            → お願いします / いりません<br>
+            <strong>Have something?</strong>
+            → あります / ありません
+          </div>
+        </section>
+
+        <section class="section-card" id="speaking">
+          <div class="section-kicker">15 · Speaking Practice</div>
+          <h2>Tự nói trước khi mở đáp án</h2>
+
+          <div class="speaking-grid">
+            <div class="speaking-card">
+              <div class="prompt">1. “Vâng, nhờ bạn hâm giúp.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a1')">Xem đáp án</button>
+              <div class="answer" id="a1"><div class="jp">はい、お願いします。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">2. “Không, tôi không cần túi.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a2')">Xem đáp án</button>
+              <div class="answer" id="a2"><div class="jp">いいえ、いりません。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">3. “Vâng, cho tôi đũa.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a3')">Xem đáp án</button>
+              <div class="answer" id="a3"><div class="jp">はい、お願いします。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">4. “Không, tôi không có point card.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a4')">Xem đáp án</button>
+              <div class="answer" id="a4"><div class="jp">いいえ、ありません。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">5. “Thanh toán bằng thẻ ạ.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a5')">Xem đáp án</button>
+              <div class="answer" id="a5"><div class="jp">カードでお願いします。</div></div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">6. “Cho tôi hộp cơm này và trà.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a6')">Xem đáp án</button>
+              <div class="answer" id="a6"><div class="jp">このお<ruby>弁当<rt>べんとう</rt></ruby>とお<ruby>茶<rt>ちゃ</rt></ruby>をお願いします。</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="roleplay">
+          <div class="section-kicker">16 · Register Role-play</div>
+          <h2>Audio là cashier — bạn phải đáp ngay</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 1 · Heat?</div>
+            <button class="audio-btn primary" onclick="speakJapanese('温めますか。',1)">▶ Cashier</button>
+            <p class="vi">Bạn muốn hâm.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r1')">Mẫu</button>
+            <div class="answer" id="r1"><div class="jp">はい、お願いします。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 2 · Bag?</div>
+            <button class="audio-btn primary" onclick="speakJapanese('レジ袋はご利用ですか。',1)">▶ Cashier</button>
+            <p class="vi">Bạn không cần túi.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r2')">Mẫu</button>
+            <div class="answer" id="r2"><div class="jp">いいえ、いりません。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 3 · Point card?</div>
+            <button class="audio-btn primary" onclick="speakJapanese('ポイントカードはお持ちですか。',1)">▶ Cashier</button>
+            <p class="vi">Bạn không có.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r3')">Mẫu</button>
+            <div class="answer" id="r3"><div class="jp">いいえ、ありません。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Prompt 4 · Payment?</div>
+            <button class="audio-btn primary" onclick="speakJapanese('お支払いは？',1)">▶ Cashier</button>
+            <p class="vi">Bạn trả bằng thẻ.</p>
+            <button class="audio-btn" onclick="toggleAnswer('r4')">Mẫu</button>
+            <div class="answer" id="r4"><div class="jp">カードでお願いします。</div></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Speed round · 5 prompts</div>
+            <div class="audio-controls">
+              <button class="audio-btn primary" onclick="playSpeedRound()">▶ Start Speed Round</button>
+              <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+            </div>
+            <p class="vi">Khoảng nghỉ ngắn hơn. Trả lời ngay, không dịch.</p>
+          </div>
+        </section>
+
+        <section class="section-card" id="quiz">
+          <div class="section-kicker">17 · Mini Quiz</div>
+          <h2>Kiểm tra nhanh Day 29</h2>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>1. 温めますか nghĩa gần nhất là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. Có cần túi không?</button>
+              <button class="choice-btn" data-value="b">B. Có hâm nóng không?</button>
+              <button class="choice-btn" data-value="c">C. Có point card không?</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>2. Bạn muốn staff hâm món. Đáp?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. はい、お願いします。</button>
+              <button class="choice-btn" data-value="b">B. いいえ、ありません。</button>
+              <button class="choice-btn" data-value="c">C. いくらですか。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>3. Bạn không cần túi. Đáp?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. はい、あります。</button>
+              <button class="choice-btn" data-value="b">B. いいえ、お願いします。</button>
+              <button class="choice-btn" data-value="c">C. いいえ、いりません。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>4. お箸 nghĩa là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. túi</button>
+              <button class="choice-btn" data-value="b">B. đũa</button>
+              <button class="choice-btn" data-value="c">C. thìa</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>5. Không có point card. Nên dùng?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. いいえ、ありません。</button>
+              <button class="choice-btn" data-value="b">B. いいえ、いりません。</button>
+              <button class="choice-btn" data-value="c">C. カードでお願いします。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>6. いりません vs ありません?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. cả hai là “đắt”</button>
+              <button class="choice-btn" data-value="b">B. cả hai giống nhau hoàn toàn</button>
+              <button class="choice-btn" data-value="c">C. không cần vs không có</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>7. レジ袋 là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. receipt</button>
+              <button class="choice-btn" data-value="b">B. túi mua hàng</button>
+              <button class="choice-btn" data-value="c">C. point card</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>8. “Thanh toán bằng thẻ.”</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. カードでお願いします。</button>
+              <button class="choice-btn" data-value="b">B. カードをあります。</button>
+              <button class="choice-btn" data-value="c">C. カードに温めます。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>9. ポイントカードはお持ちですか cần học ở mức?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. phải tự nói kính ngữ như cashier</button>
+              <button class="choice-btn" data-value="b">B. học chia お持ちです ngay</button>
+              <button class="choice-btn" data-value="c">C. recognition: “có point card không?”</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>10. Flow đúng của Day 29?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. PAY → HEAT → GO HOME</button>
+              <button class="choice-btn" data-value="b">B. ITEMS → HEAT → BAG → UTENSILS → POINT CARD → PAY</button>
+              <button class="choice-btn" data-value="c">C. SIZE → COLOR → TRAIN</button>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button>
+            <button class="audio-btn" onclick="resetQuiz()">Làm lại</button>
+          </div>
+          <div class="score-box" id="scoreBox"></div>
+        </section>
+
+        <section class="section-card mission-card" id="mission">
+          <div class="section-kicker">18 · Today's Mission</div>
+          <h2>Konbini Checkout — 90 seconds</h2>
+
+          <p class="section-intro">
+            Tự mô phỏng một lượt checkout.
+            Mục tiêu là <strong>phản xạ nhanh</strong>, không dịch từng câu.
+          </p>
+
+          <div class="mission-lines">
+            <div class="mission-line">
+              <div class="vi">1. Gọi một bento + trà.</div>
+              <div class="jp">このお弁当とお茶をお願いします。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">2. Đồng ý hâm nóng.</div>
+              <div class="jp">はい、お願いします。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">3. Từ chối túi.</div>
+              <div class="jp">いいえ、いりません。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">4. Nhận đũa.</div>
+              <div class="jp">はい、お願いします。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">5. Nói không có point card.</div>
+              <div class="jp">いいえ、ありません。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">6. Thanh toán bằng thẻ.</div>
+              <div class="jp">カードでお願いします。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">7. Làm lại và đảo lựa chọn: không hâm + cần túi + tiền mặt.</div>
+              <div class="jp">いいえ、いりません。はい、お願いします。現金でお願いします。</div>
+            </div>
+          </div>
+
+          <div class="audio-controls">
+            <button class="audio-btn" onclick="playMission(.76)">🐢 Konbini Simulation Slow</button>
+            <button class="audio-btn primary" onclick="playMission(1)">▶ Konbini Simulation Natural</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+
+          <div class="tip memory">
+            <strong>✅ Pass standard</strong>
+            Bạn nghe keyword và đáp đúng ít nhất
+            <strong>5/6 checkpoint</strong>
+            mà không cần nhìn tiếng Việt.
+          </div>
+
+          <div class="complete-box">
+            <p id="completeMessage" style="margin-top:0;color:var(--muted);">
+              Hoàn thành khi bạn có thể xử lý một lượt checkout konbini cơ bản bằng phản xạ ngắn.
+            </p>
+            <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 29</button>
+          </div>
+        </section>
+
+        <div class="day-nav">
+          <a href="day28.html">← Day 28 · Numbers & Quantities</a>
+          <a class="next" href="day30.html">Day 30 · Restaurant & Shopping Challenge →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><span class="footer-brand">🌸 Nihongo 90</span> · Day 29</div>
+      <div>Food & Shopping · Survive the convenience-store register.</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DAY_KEY = "n5-day-29";
+    const FAVORITE_KEY = "n5-favorite-day-29";
+    const DISPLAY_KEY = "nihongo90-display";
+
+    const dialogueLines = [
+      "いらっしゃいませ。",
+      "このお弁当とお茶をお願いします。",
+      "お弁当、温めますか。",
+      "はい、お願いします。",
+      "レジ袋はご利用ですか。",
+      "いいえ、いりません。",
+      "お箸は？",
+      "はい、お願いします。",
+      "お支払いは？",
+      "カードでお願いします。",
+      "ありがとうございます。"
+    ];
+
+    const missionPrompts = [
+      "お弁当、温めますか。",
+      "レジ袋はご利用ですか。",
+      "お箸は？",
+      "ポイントカードはお持ちですか。",
+      "お支払いは？"
+    ];
+
+    const speedPrompts = [
+      "温めますか。",
+      "袋は？",
+      "お箸は？",
+      "ポイントカードはお持ちですか。",
+      "お支払いは？"
+    ];
+
+    let voiceCache = [];
+    let japaneseVoice = null;
+    let dialogueRunId = 0;
+    let playToken = 0;
+
+    function setupMenu() {
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "✕" : "☰";
+      });
+    }
+
+    function loadDisplaySettings() {
+      let saved = { furigana: true, romaji: true, vi: true };
+
+      try {
+        const parsed = JSON.parse(localStorage.getItem(DISPLAY_KEY));
+        if (parsed && typeof parsed === "object") saved = { ...saved, ...parsed };
+      } catch (_) {}
+
+      applyDisplaySettings(saved);
+    }
+
+    function applyDisplaySettings(settings) {
+      document.body.classList.toggle("hide-furigana", !settings.furigana);
+      document.body.classList.toggle("hide-romaji", !settings.romaji);
+      document.body.classList.toggle("hide-vi", !settings.vi);
+
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.classList.toggle("active", !!settings[btn.dataset.toggle]);
+      });
+
+      localStorage.setItem(DISPLAY_KEY, JSON.stringify(settings));
+    }
+
+    function setupDisplayToggles() {
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          let saved = { furigana: true, romaji: true, vi: true };
+
+          try {
+            saved = { ...saved, ...JSON.parse(localStorage.getItem(DISPLAY_KEY)) };
+          } catch (_) {}
+
+          const key = btn.dataset.toggle;
+          saved[key] = !saved[key];
+          applyDisplaySettings(saved);
+        });
+      });
+    }
+
+    function loadVoices() {
+      if (!("speechSynthesis" in window)) return;
+
+      voiceCache = speechSynthesis.getVoices() || [];
+      japaneseVoice = pickJapaneseVoice();
+    }
+
+    function pickJapaneseVoice() {
+      const voices = voiceCache.filter(v =>
+        /^ja(-|_)?JP/i.test(v.lang) || /^ja/i.test(v.lang)
+      );
+
+      if (!voices.length) return null;
+
+      const preferred = [
+        "Kyoko","Otoya","Nanami","Keita","Haruka",
+        "Google 日本語","Microsoft Nanami","Microsoft Keita",
+        "Natural","Premium","Enhanced"
+      ];
+
+      for (const name of preferred) {
+        const found = voices.find(v =>
+          v.name.toLowerCase().includes(name.toLowerCase())
+        );
+        if (found) return found;
+      }
+
+      return voices[0];
+    }
+
+    async function ensureVoice() {
+      if (!("speechSynthesis" in window)) return null;
+
+      loadVoices();
+      if (japaneseVoice) return japaneseVoice;
+
+      for (const delay of [120,220,360,520]) {
+        await new Promise(r => setTimeout(r, delay));
+        loadVoices();
+        if (japaneseVoice) return japaneseVoice;
+      }
+
+      return null;
+    }
+
+    function setAudioStatus(text) {
+      const el = document.getElementById("audioStatus");
+      if (el) el.textContent = text || "";
+    }
+
+    function stopAudio() {
+      dialogueRunId++;
+      playToken++;
+
+      if ("speechSynthesis" in window) {
+        try {
+          speechSynthesis.cancel();
+          speechSynthesis.resume();
+        } catch (_) {}
+      }
+
+      setAudioStatus("");
+    }
+
+    async function speakJapanese(text, rate=1) {
+      stopAudio();
+
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+
+      const voice = await ensureVoice();
+      const token = ++playToken;
+
+      try {
+        speechSynthesis.cancel();
+        speechSynthesis.resume();
+      } catch (_) {}
+
+      await new Promise(r => setTimeout(r,70));
+      if (token !== playToken) return;
+
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "ja-JP";
+      u.rate = rate < 1 ? Math.max(.65, rate) : .92;
+      u.pitch = 1;
+      u.volume = 1;
+
+      if (voice) u.voice = voice;
+
+      u.onerror = () => showToast("Audio TTS không phát được. Hãy thử lại.");
+      speechSynthesis.speak(u);
+    }
+
+    async function playSequence(lines, rate=1, pause=220) {
+      stopAudio();
+
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+
+      const runId = ++dialogueRunId;
+      const localToken = ++playToken;
+      const voice = await ensureVoice();
+
+      for (const line of lines) {
+        if (runId !== dialogueRunId || localToken !== playToken) return;
+
+        await new Promise(resolve => {
+          const u = new SpeechSynthesisUtterance(line);
+          u.lang = "ja-JP";
+          u.rate = rate < 1 ? Math.max(.65, rate) : .92;
+          u.pitch = 1;
+
+          if (voice) u.voice = voice;
+
+          u.onend = resolve;
+          u.onerror = resolve;
+
+          try { speechSynthesis.resume(); } catch (_) {}
+          speechSynthesis.speak(u);
+        });
+
+        await new Promise(resolve => setTimeout(resolve, pause));
+      }
+    }
+
+    function playDialogue(rate=1) {
+      setAudioStatus(
+        rate < 1
+          ? "Playing slow conversation…"
+          : "Playing full conversation…"
+      );
+
+      playSequence(dialogueLines, rate, 180).then(() => setAudioStatus(""));
+    }
+
+    function playMission(rate=1) {
+      showToast("Trả lời thành tiếng trước prompt tiếp theo.");
+      playSequence(missionPrompts, rate, rate < 1 ? 4200 : 3400);
+    }
+
+    function playSpeedRound() {
+      showToast("Speed Round: nghe keyword và phản xạ ngay.");
+      playSequence(speedPrompts, 1, 2300);
+    }
+
+    function hasJapanese(text) {
+      return /[\u3040-\u30ff\u3400-\u9fff]/.test(text || "");
+    }
+
+    function baseText(node) {
+      const clone = node.cloneNode(true);
+      clone.querySelectorAll("rt, .romaji, .vi, .audio-btn, .line-audio, .feedback").forEach(el => el.remove());
+      return (clone.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
+    function getAutoAudioText(container) {
+      const priorities = [
+        ".jp",
+        ".jp-line",
+        ".vocab-jp",
+        ".mission-line .jp",
+        ".jp-inline"
+      ];
+
+      for (const selector of priorities) {
+        const nodes = [...container.querySelectorAll(selector)];
+        const parts = nodes
+          .map(baseText)
+          .filter(t => t && hasJapanese(t));
+
+        if (parts.length) {
+          return [...new Set(parts)].join("。").replace(/。。+/g, "。");
+        }
+      }
+
+      const rule = container.querySelector(".rule-form");
+      if (rule) {
+        const t = baseText(rule);
+        if (t && hasJapanese(t)) return t;
+      }
+
+      const strongs = [...container.querySelectorAll("strong")]
+        .map(baseText)
+        .filter(t => t && hasJapanese(t));
+
+      if (strongs.length) return [...new Set(strongs)].join("。");
+
+      const h3 = container.querySelector("h3");
+      if (h3) {
+        const t = baseText(h3);
+        if (t && hasJapanese(t)) return t;
+      }
+
+      return "";
+    }
+
+    function setupInlineAudioButtons() {
+      const selectors = [
+        ".grammar-rule",
+        ".explain-card",
+        ".break-row",
+        ".answer",
+        ".mission-line",
+        ".tip"
+      ];
+
+      document.querySelectorAll(selectors.join(",")).forEach(container => {
+        if (container.closest(".quiz-q")) return;
+        if (container.querySelector(".audio-btn, .line-audio")) return;
+
+        const text = getAutoAudioText(container);
+        if (!text) return;
+
+        const btn = document.createElement("button");
+        btn.className = "audio-btn auto-audio-btn";
+        btn.type = "button";
+        btn.textContent = "▶ Nghe";
+        btn.style.marginTop = "10px";
+
+        btn.addEventListener("click", event => {
+          event.preventDefault();
+          event.stopPropagation();
+          speakJapanese(text, 1);
+        });
+
+        container.appendChild(btn);
+      });
+    }
+
+    function setupChoiceGroups() {
+      document.querySelectorAll(".practice-box .choices").forEach(group => {
+        const answer = group.dataset.answer;
+        const feedback = group.parentElement.querySelector(".feedback");
+
+        group.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            group.querySelectorAll(".choice-btn").forEach(b =>
+              b.classList.remove("correct","wrong")
+            );
+
+            if (btn.dataset.value === answer) {
+              btn.classList.add("correct");
+              feedback.textContent = "✓ Chính xác!";
+            } else {
+              btn.classList.add("wrong");
+
+              const correct = group.querySelector(`[data-value="${answer}"]`);
+              if (correct) correct.classList.add("correct");
+
+              feedback.textContent =
+                "Chưa đúng. Hãy bắt keyword: 温める / 袋 / 箸 / ポイントカード / 支払い.";
+            }
+          });
+        });
+      });
+    }
+
+    function toggleAnswer(id) {
+      document.getElementById(id).classList.toggle("show");
+    }
+
+    function setupQuiz() {
+      document.querySelectorAll(".quiz-q").forEach(q => {
+        q.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            q.querySelectorAll(".choice-btn").forEach(b => {
+              b.dataset.selected = "false";
+              b.style.outline = "none";
+              b.style.background = "#fff";
+            });
+
+            btn.dataset.selected = "true";
+            btn.style.outline = "2px solid rgba(239,166,181,.65)";
+            btn.style.background = "#fff8fa";
+          });
+        });
+      });
+    }
+
+    function gradeQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll(".quiz-q");
+
+      questions.forEach(q => {
+        const answer = q.dataset.answer;
+        const selected = q.querySelector('.choice-btn[data-selected="true"]');
+
+        q.querySelectorAll(".choice-btn").forEach(b =>
+          b.classList.remove("correct","wrong")
+        );
+
+        const correct = q.querySelector(`[data-value="${answer}"]`);
+        if (correct) correct.classList.add("correct");
+
+        if (selected) {
+          if (selected.dataset.value === answer) score++;
+          else selected.classList.add("wrong");
+        }
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.add("show");
+
+      if (score === 10) {
+        box.textContent =
+          "10/10 ✨ Excellent. Bạn đã đủ phản xạ cho một lượt checkout konbini cơ bản.";
+      } else if (score >= 8) {
+        box.textContent =
+          `${score}/10 — Rất tốt. Review nhẹ いりません vs ありません hoặc staff keywords.`;
+      } else if (score >= 6) {
+        box.textContent =
+          `${score}/10 — Có nền. Làm lại Checkout Builder + Listening.`;
+      } else {
+        box.textContent =
+          `${score}/10 — Xem lại HEAT / BAG / UTENSILS / POINT CARD / PAY trước khi làm lại.`;
+      }
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll(".quiz-q .choice-btn").forEach(btn => {
+        btn.dataset.selected = "false";
+        btn.classList.remove("correct","wrong");
+        btn.style.outline = "none";
+        btn.style.background = "#fff";
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.remove("show");
+      box.textContent = "";
+    }
+
+    function isCompleted() {
+      return localStorage.getItem(DAY_KEY) === "completed";
+    }
+
+    function updateCompleteUI() {
+      const btn = document.getElementById("completeBtn");
+      const msg = document.getElementById("completeMessage");
+
+      if (isCompleted()) {
+        btn.classList.add("completed");
+        btn.textContent = "✓ Day 29 Completed";
+        msg.textContent =
+          "Đã hoàn thành Day 29. Tiếp theo: Day 30 — Restaurant & Shopping Challenge.";
+      } else {
+        btn.classList.remove("completed");
+        btn.textContent = "✓ Complete Day 29";
+        msg.textContent =
+          "Hoàn thành khi bạn có thể xử lý một lượt checkout konbini cơ bản bằng phản xạ ngắn.";
+      }
+    }
+
+    function toggleComplete() {
+      if (isCompleted()) {
+        localStorage.removeItem(DAY_KEY);
+        showToast("Đã chuyển Day 29 về trạng thái chưa hoàn thành.");
+      } else {
+        localStorage.setItem(DAY_KEY, "completed");
+        localStorage.setItem("n5-last-opened-day", "29");
+        showToast("Day 29 completed 🌸");
+      }
+
+      updateCompleteUI();
+    }
+
+    function isFavorite() {
+      return localStorage.getItem(FAVORITE_KEY) === "true";
+    }
+
+    function updateFavoriteUI() {
+      const btn = document.getElementById("favoriteBtn");
+      btn.classList.toggle("active", isFavorite());
+      btn.textContent = isFavorite() ? "★ Favorite" : "☆ Favorite";
+    }
+
+    function toggleFavorite() {
+      localStorage.setItem(FAVORITE_KEY, String(!isFavorite()));
+      updateFavoriteUI();
+
+      showToast(
+        isFavorite()
+          ? "Đã thêm Day 29 vào Favorites ★"
+          : "Đã bỏ Day 29 khỏi Favorites"
+      );
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(
+        () => toast.classList.remove("show"),
+        2200
+      );
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupMenu();
+      setupDisplayToggles();
+      loadDisplaySettings();
+      setupInlineAudioButtons();
+      setupChoiceGroups();
+      setupQuiz();
+      updateCompleteUI();
+      updateFavoriteUI();
+
+      localStorage.setItem("n5-last-opened-day", "29");
+
+      document
+        .getElementById("favoriteBtn")
+        .addEventListener("click", toggleFavorite);
+
+      if ("speechSynthesis" in window) {
+        loadVoices();
+        speechSynthesis.onvoiceschanged = loadVoices;
+      }
+
+      window.addEventListener("beforeunload", stopAudio);
+    });
+  </script>
+</body>
+</html>
