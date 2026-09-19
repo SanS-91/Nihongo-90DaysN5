@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 04: これは何ですか — What is this?" />
+  <title>Day 04 — これは何ですか | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">🌸</span>
+        <span class="brand-copy">
+          Nihongo 90
+          <small>Japanese for real life</small>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="n5.html">N5 Course</a>
+        <a href="review.html">Quick Review</a>
+        <a href="n4.html">N4</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button>
+    </div>
+
+    <nav class="mobile-menu container" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="n5.html">N5 Course</a>
+      <a href="review.html">Quick Review</a>
+      <a href="n4.html">N4 · Coming Soon</a>
+    </nav>
+  </header>
+
+  <div class="lessonbar">
+    <div class="container lessonbar-inner">
+      <div class="lesson-position">
+        <a href="day03.html">← Day 03</a>
+        <span>·</span>
+        <strong>Day 04 / 90</strong>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="tiny-btn" href="review.html">Quick Review</a>
+        <button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <article class="hero-card">
+          <span class="eyebrow">Day 04 · First Japanese</span>
+          <h1>これは<ruby>何<rt>なん</rt></ruby>ですか</h1>
+          <div class="hero-en">What is this?</div>
+          <div class="hero-vi">Hỏi tên đồ vật và dùng これ・それ・あれ theo đúng vị trí của người nói và người nghe.</div>
+
+          <div class="hero-meta">
+            <span class="meta-chip">N5 Beginner</span>
+            <span class="meta-chip">45–60 phút</span>
+            <span class="meta-chip">これ / それ / あれ</span>
+            <span class="meta-chip">何ですか</span>
+          </div>
+
+          <div class="goal-box">
+            <strong>Mục tiêu hôm nay</strong>
+            <p>
+              Sau bài này, bạn có thể hỏi <span class="jp-inline">これは何ですか。</span>,
+              gọi đúng đồ vật bằng <span class="jp-inline">これ・それ・あれ</span>,
+              và trả lời ngắn gọn như <span class="jp-inline">それはペンです。</span>
+              mà không phải dịch từng chữ trong đầu.
+            </p>
+          </div>
+
+          <div class="display-panel">
+            <div class="display-title">表示 · Hiển thị</div>
+            <div class="display-toggles">
+              <button class="toggle-btn active" data-toggle="furigana">Furigana</button>
+              <button class="toggle-btn active" data-toggle="romaji">Romaji</button>
+              <button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="container lesson-layout">
+      <aside class="toc">
+        <div class="toc-title">Trong bài này</div>
+        <a href="#warmup">01 · Warm-up</a>
+        <a href="#conversation">02 · Main Conversation</a>
+        <a href="#understand">03 · Hiểu hội thoại</a>
+        <a href="#expressions">04 · Key Expressions</a>
+        <a href="#vocabulary">05 · Vocabulary</a>
+        <a href="#grammar">06 · Grammar Made Easy</a>
+        <a href="#tips">07 · Mẹo & lỗi hay gặp</a>
+        <a href="#listening">08 · Listening</a>
+        <a href="#speaking">09 · Speaking</a>
+        <a href="#quiz">10 · Mini Quiz</a>
+        <a href="#mission">11 · Today's Mission</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="section-card" id="warmup">
+          <div class="section-kicker">01 · Warm-up</div>
+          <h2>Ôn Day 03 trong 3 phút</h2>
+          <p class="section-intro">Nghe câu hỏi và trả lời ngay, không nhìn romaji trước.</p>
+
+          <div class="warmup-grid">
+            <div class="warmup-item">
+              <div class="jp">ベトナム<ruby>人<rt>じん</rt></ruby>ですか。</div>
+              <div class="romaji">Betonamu-jin desu ka?</div>
+              <div class="vi">Bạn là người Việt Nam phải không?</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('ベトナム人ですか。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp">はい、そうです。</div>
+              <div class="romaji">Hai, sō desu.</div>
+              <div class="vi">Vâng, đúng vậy.</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('はい、そうです。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp">いいえ、ちがいます。</div>
+              <div class="romaji">Iie, chigaimasu.</div>
+              <div class="vi">Không, không phải.</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('いいえ、ちがいます。',1)">▶ Nghe</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Hôm nay chỉ đổi “người” thành “đồ vật”</strong>
+            Day 03: <span class="jp-inline">会社員ですか。</span> — “Có phải nhân viên công ty không?”<br>
+            Day 04: <span class="jp-inline">これは何ですか。</span> — “Cái này là gì?”
+            Cấu trúc lịch sự <span class="jp-inline">〜ですか</span> vẫn giữ nguyên.
+          </div>
+        </section>
+
+        <section class="section-card" id="conversation">
+          <div class="section-kicker">02 · Main Conversation</div>
+          <h2>Đây là gì?</h2>
+          <p class="section-intro">Nghe toàn bộ trước. Chú ý: cùng một đồ vật có thể là <strong>これ</strong> với A nhưng lại là <strong>それ</strong> với B.</p>
+
+          <div class="audio-controls">
+            <button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button>
+            <button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+          <div class="audio-status" id="audioStatus"></div>
+
+          <div class="dialogue-shell" style="margin-top:16px;">
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">すみません。これは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+                <div class="romaji">Sumimasen. Kore wa nan desu ka?</div>
+                <div class="vi line-note">Xin lỗi. Cái này là gì?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('すみません。これは何ですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">それはペンです。</div>
+                <div class="romaji">Sore wa pen desu.</div>
+                <div class="vi line-note">Cái đó là bút.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('それはペンです。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">これは？</div>
+                <div class="romaji">Kore wa?</div>
+                <div class="vi line-note">Còn cái này?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('これは？',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">それは<ruby>鍵<rt>かぎ</rt></ruby>です。</div>
+                <div class="romaji">Sore wa kagi desu.</div>
+                <div class="vi line-note">Cái đó là chìa khóa.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('それは鍵です。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">あれは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+                <div class="romaji">Are wa nan desu ka?</div>
+                <div class="vi line-note">Cái đằng kia là gì?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('あれは何ですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">あれは<ruby>傘<rt>かさ</rt></ruby>です。</div>
+                <div class="romaji">Are wa kasa desu.</div>
+                <div class="vi line-note">Cái đằng kia là ô.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('あれは傘です。',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Điểm rất quan trọng: これ ↔ それ đổi theo góc nhìn</strong>
+            A đang cầm cây bút nên A gọi nó là <span class="jp-inline">これ</span>.
+            Với B, cây bút ở gần A — tức gần người nghe — nên B gọi chính cây bút đó là
+            <span class="jp-inline">それ</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="understand">
+          <div class="section-kicker">03 · Understand the Conversation</div>
+          <h2>Ba khoảng cách bạn cần cảm được</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>これ · cái này</h3>
+              <p>
+                Vật ở <strong>gần người nói</strong>.<br>
+                <span class="jp-inline">これはペンです。</span><br>
+                “Cái này là bút.”
+              </p>
+            </div>
+
+            <div class="explain-card">
+              <h3>それ · cái đó</h3>
+              <p>
+                Vật ở <strong>gần người nghe</strong>, hoặc vật người kia vừa nhắc tới.<br>
+                <span class="jp-inline">それは本です。</span>
+              </p>
+            </div>
+
+            <div class="explain-card">
+              <h3>あれ · cái đằng kia</h3>
+              <p>
+                Vật <strong>xa cả người nói lẫn người nghe</strong>.<br>
+                <span class="jp-inline">あれは傘です。</span>
+              </p>
+            </div>
+
+            <div class="explain-card">
+              <h3><ruby>何<rt>なん</rt></ruby>ですか · là gì?</h3>
+              <p>
+                Trong mẫu <span class="jp-inline">何ですか</span>,
+                <span class="jp-inline">何</span> đọc là <strong>なん</strong>:
+                <span class="jp-inline">これは何ですか。</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Mẹo nhớ cực nhanh</strong>
+            <strong>こ</strong> = gần <strong>mình</strong> → これ.<br>
+            <strong>そ</strong> = phía <strong>bạn</strong> → それ.<br>
+            <strong>あ</strong> = <strong>xa cả hai</strong> → あれ.
+          </div>
+        </section>
+
+        <section class="section-card" id="expressions">
+          <div class="section-kicker">04 · Key Expressions</div>
+          <h2>4 mẫu câu cần phản xạ</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp">これは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+                <div class="romaji vocab-reading">Kore wa nan desu ka?</div>
+                <div class="vi vocab-vi">Cái này là gì?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('これは何ですか。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp">それは〇〇です。</div>
+                <div class="romaji vocab-reading">Sore wa ___ desu.</div>
+                <div class="vi vocab-vi">Cái đó là ___.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('それはペンです。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp">あれは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+                <div class="romaji vocab-reading">Are wa nan desu ka?</div>
+                <div class="vi vocab-vi">Cái đằng kia là gì?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('あれは何ですか。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp">これは？</div>
+                <div class="romaji vocab-reading">Kore wa?</div>
+                <div class="vi vocab-vi">Còn cái này? / Cái này thì sao?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('これは？',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Người Nhật thực sự nói thế nào?</strong>
+            Khi ngữ cảnh đã rõ, <span class="jp-inline">これは？</span> rất tự nhiên.
+            Bạn không cần lặp <span class="jp-inline">何ですか</span> với từng đồ vật.
+          </div>
+        </section>
+
+        <section class="section-card" id="vocabulary">
+          <div class="section-kicker">05 · Vocabulary</div>
+          <h2>10 từ/cụm của Day 04</h2>
+          <p class="section-intro">Bấm ▶ để nối mặt chữ với âm thanh. Với đồ vật, hãy chỉ vào vật thật quanh bạn khi đọc.</p>
+
+          <div class="vocab-grid">
+            <div class="vocab-card">
+              <div><div class="vocab-jp">これ</div><div class="romaji vocab-reading">kore</div><div class="vi vocab-vi">cái này</div></div>
+              <button class="line-audio" onclick="speakJapanese('これ',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp">それ</div><div class="romaji vocab-reading">sore</div><div class="vi vocab-vi">cái đó (gần người nghe)</div></div>
+              <button class="line-audio" onclick="speakJapanese('それ',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp">あれ</div><div class="romaji vocab-reading">are</div><div class="vi vocab-vi">cái đằng kia</div></div>
+              <button class="line-audio" onclick="speakJapanese('あれ',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>何<rt>なん</rt></ruby></div><div class="romaji vocab-reading">nan</div><div class="vi vocab-vi">gì / cái gì</div></div>
+              <button class="line-audio" onclick="speakJapanese('何ですか',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>本<rt>ほん</rt></ruby></div><div class="romaji vocab-reading">hon</div><div class="vi vocab-vi">sách</div></div>
+              <button class="line-audio" onclick="speakJapanese('本',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp">ペン</div><div class="romaji vocab-reading">pen</div><div class="vi vocab-vi">bút</div></div>
+              <button class="line-audio" onclick="speakJapanese('ペン',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp">かばん</div><div class="romaji vocab-reading">kaban</div><div class="vi vocab-vi">túi / cặp</div></div>
+              <button class="line-audio" onclick="speakJapanese('かばん',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>傘<rt>かさ</rt></ruby></div><div class="romaji vocab-reading">kasa</div><div class="vi vocab-vi">ô / dù</div></div>
+              <button class="line-audio" onclick="speakJapanese('傘',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>鍵<rt>かぎ</rt></ruby></div><div class="romaji vocab-reading">kagi</div><div class="vi vocab-vi">chìa khóa</div></div>
+              <button class="line-audio" onclick="speakJapanese('鍵',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp">スマホ</div><div class="romaji vocab-reading">sumaho</div><div class="vi vocab-vi">điện thoại thông minh</div></div>
+              <button class="line-audio" onclick="speakJapanese('スマホ',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Katakana mini-tip</strong>
+            <span class="jp-inline">ペン</span> là từ mượn “pen”.
+            <span class="jp-inline">スマホ</span> là cách rút gọn rất phổ biến của
+            <span class="jp-inline">スマートフォン</span>.
+            Gặp Katakana, hãy nghĩ “có thể đây là từ mượn hoặc tên nước ngoài”.
+          </div>
+        </section>
+
+        <section class="section-card" id="grammar">
+          <div class="section-kicker">06 · Grammar Made Easy</div>
+          <h2>Đừng dịch “これは” thành một khối cố định</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">これ + は + N + です</div>
+            <p>
+              <span class="jp-inline">これ</span> = cái này,
+              <span class="jp-inline">は</span> = đánh dấu chủ đề,
+              <span class="jp-inline">N</span> = tên đồ vật,
+              <span class="jp-inline">です</span> = kết thúc lịch sự.
+            </p>
+          </div>
+
+          <div class="breakdown">
+            <div class="break-row">
+              <div class="break-label">これは</div>
+              <div><strong>“Còn về cái này…”</strong> — đưa “cái này” thành chủ đề.</div>
+            </div>
+            <div class="break-row">
+              <div class="break-label">ペン</div>
+              <div>Tên đồ vật: bút.</div>
+            </div>
+            <div class="break-row">
+              <div class="break-label">です</div>
+              <div>Kết thúc câu lịch sự.</div>
+            </div>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">これは + 何 + ですか</div>
+            <p>
+              Thay tên đồ vật bằng <span class="jp-inline">何</span> và thêm
+              <span class="jp-inline">か</span> để hỏi:
+              <span class="jp-inline">これは何ですか。</span>
+            </p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ は vẫn đọc là “wa”</strong>
+            Trong <span class="jp-inline">これは</span>,
+            chữ <span class="jp-inline">は</span> là trợ từ nên đọc <strong>wa</strong>,
+            không đọc “ha”.
+          </div>
+        </section>
+
+        <section class="section-card" id="tips">
+          <div class="section-kicker">07 · Tips & Common Mistakes</div>
+          <h2>4 điểm người Việt rất dễ nhầm</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>⚠ これ và それ không cố định theo đồ vật</h3>
+              <p>
+                Một vật có thể là <span class="jp-inline">これ</span> với người A
+                nhưng thành <span class="jp-inline">それ</span> với người B.
+                Hãy nhìn <strong>vị trí tương đối</strong>, không học dịch máy móc.
+              </p>
+            </div>
+
+            <div class="explain-card">
+              <h3>💡 あれ = xa cả hai</h3>
+              <p>
+                Nếu đồ vật ở ngay cạnh người nghe thì dùng
+                <span class="jp-inline">それ</span>, không dùng <span class="jp-inline">あれ</span>.
+              </p>
+            </div>
+
+            <div class="explain-card">
+              <h3>🇯🇵 何ですか đọc “nan desu ka”</h3>
+              <p>
+                Đừng đọc từng chữ thành “nani desu ka”.
+                Ở mẫu hôm nay, hãy nhớ nguyên cụm
+                <span class="jp-inline">なんですか</span>.
+              </p>
+            </div>
+
+            <div class="explain-card">
+              <h3>⚠ “これは？” không phải câu thiếu</h3>
+              <p>
+                Trong hội thoại, khi đã rõ bạn đang hỏi tên đồ vật,
+                <span class="jp-inline">これは？</span> là câu rút gọn rất tự nhiên:
+                “Còn cái này?”
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="listening">
+          <div class="section-kicker">08 · Listening Practice</div>
+          <h2>Nghe trước — đừng nhìn chữ để đoán</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 1 · Meaning</div>
+            <button class="audio-btn primary" onclick="speakJapanese('これは何ですか。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Cái đó là bút.</button>
+              <button class="choice-btn" data-value="b">B. Cái này là gì?</button>
+              <button class="choice-btn" data-value="c">C. Cái đằng kia là ô.</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 2 · Response</div>
+            <button class="audio-btn primary" onclick="speakJapanese('あれは何ですか。',1)">▶ Nghe câu hỏi</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. はい、そうです。</button>
+              <button class="choice-btn" data-value="b">B. これはペンです。</button>
+              <button class="choice-btn" data-value="c">C. あれは傘です。</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 3 · Perspective</div>
+            <p class="vi">
+              A đang cầm một cây bút và hỏi B. Nghe câu của A, sau đó chọn cách B nên bắt đầu câu trả lời.
+            </p>
+            <button class="audio-btn primary" onclick="speakJapanese('これは何ですか。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. これは…</button>
+              <button class="choice-btn" data-value="b">B. それは…</button>
+              <button class="choice-btn" data-value="c">C. あれは…</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Shadowing mini</div>
+            <p class="vi">Nghe → nhắc lại ngay theo nhịp. Không cần dịch giữa hai bước.</p>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="speakJapanese('これは何ですか。それはペンです。これは？それは鍵です。あれは何ですか。あれは傘です。',.76)">🐢 Slow</button>
+              <button class="audio-btn primary" onclick="speakJapanese('これは何ですか。それはペンです。これは？それは鍵です。あれは何ですか。あれは傘です。',1)">▶ Natural</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="speaking">
+          <div class="section-kicker">09 · Speaking Practice</div>
+          <h2>Chỉ vào đồ vật và nói ngay</h2>
+          <p class="section-intro">Tự nói trước. Chỉ mở đáp án sau khi đã thử.</p>
+
+          <div class="speaking-grid">
+            <div class="speaking-card">
+              <div class="prompt">1. “Cái này là gì?”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a1')">Xem đáp án</button>
+              <div class="answer" id="a1">
+                <div class="jp">これは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+                <div class="romaji">Kore wa nan desu ka?</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('これは何ですか。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">2. “Cái đó là sách.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a2')">Xem đáp án</button>
+              <div class="answer" id="a2">
+                <div class="jp">それは<ruby>本<rt>ほん</rt></ruby>です。</div>
+                <div class="romaji">Sore wa hon desu.</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('それは本です。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">3. “Cái đằng kia là gì?”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a3')">Xem đáp án</button>
+              <div class="answer" id="a3">
+                <div class="jp">あれは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+                <div class="romaji">Are wa nan desu ka?</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('あれは何ですか。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">4. Sau khi đã hỏi một đồ vật, hỏi tiếp: “Còn cái này?”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a4')">Xem đáp án</button>
+              <div class="answer" id="a4">
+                <div class="jp">これは？</div>
+                <div class="romaji">Kore wa?</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('これは？',1)">▶ Nghe</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="quiz">
+          <div class="section-kicker">10 · Mini Quiz</div>
+          <h2>Kiểm tra nhanh Day 04</h2>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>1. Vật ở gần người nói dùng từ nào?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. これ</button>
+              <button class="choice-btn" data-value="b">B. それ</button>
+              <button class="choice-btn" data-value="c">C. あれ</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>2. A đang cầm cây bút và hỏi “これは何ですか”. B nên nói?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. これはペンです。</button>
+              <button class="choice-btn" data-value="b">B. それはペンです。</button>
+              <button class="choice-btn" data-value="c">C. あれはペンです。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>3. Đồ vật xa cả hai người dùng từ nào?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. これ</button>
+              <button class="choice-btn" data-value="b">B. それ</button>
+              <button class="choice-btn" data-value="c">C. あれ</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>4. “何ですか” trong mẫu hôm nay đọc tự nhiên là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. nani desu ka</button>
+              <button class="choice-btn" data-value="b">B. nan desu ka</button>
+              <button class="choice-btn" data-value="c">C. nai desu ka</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>5. Khi đã rõ đang hỏi tên từng đồ vật, câu nào tự nhiên để hỏi tiếp?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. これは？</button>
+              <button class="choice-btn" data-value="b">B. これはです。</button>
+              <button class="choice-btn" data-value="c">C. 何これは？</button>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button>
+            <button class="audio-btn" onclick="resetQuiz()">Làm lại</button>
+          </div>
+
+          <div class="score-box" id="scoreBox"></div>
+        </section>
+
+        <section class="section-card mission-card" id="mission">
+          <div class="section-kicker">11 · Today's Mission</div>
+          <h2>5 đồ vật quanh bạn</h2>
+          <p class="section-intro">
+            Chọn 5 đồ vật thật trong phòng. Mục tiêu là phản xạ theo vị trí, không phải đọc thuộc lòng.
+          </p>
+
+          <div class="mission-lines">
+            <div class="mission-line">
+              <div class="vi">1. Cầm một vật gần bạn và hỏi:</div>
+              <div class="jp">これは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">2. Tự trả lời bằng tên vật:</div>
+              <div class="jp">これは〇〇です。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">3. Tưởng tượng vật đang gần người đối diện:</div>
+              <div class="jp">それは〇〇です。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">4. Chỉ một vật ở xa:</div>
+              <div class="jp">あれは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">5. Hỏi nhanh vật tiếp theo:</div>
+              <div class="jp">これは？</div>
+            </div>
+          </div>
+
+          <div class="audio-controls">
+            <button class="audio-btn" onclick="speakJapanese('これは何ですか。これは本です。それはペンです。あれは何ですか。あれは傘です。これは？',.76)">🐢 Slow</button>
+            <button class="audio-btn primary" onclick="speakJapanese('これは何ですか。これは本です。それはペンです。あれは何ですか。あれは傘です。これは？',1)">▶ Natural</button>
+          </div>
+
+          <div class="complete-box">
+            <p id="completeMessage" style="margin-top:0;color:var(--muted);">
+              Khi bạn nhìn これ・それ・あれ và chọn đúng theo khoảng cách mà không dịch, hãy hoàn thành Day 04.
+            </p>
+            <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 04</button>
+          </div>
+        </section>
+
+        <div class="day-nav">
+          <a href="day03.html">← Day 03 · Simple Questions</a>
+          <a class="next" href="day05.html">Day 05 · Numbers & Age →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><span class="footer-brand">🌸 Nihongo 90</span> · Day 04</div>
+      <div>Learn gently. Speak naturally.</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DAY_KEY = "n5-day-04";
+    const FAVORITE_KEY = "n5-favorite-day-04";
+    const DISPLAY_KEY = "nihongo90-display";
+
+    const dialogueLines = [
+      "すみません。これは何ですか。",
+      "それはペンです。",
+      "これは？",
+      "それは鍵です。",
+      "あれは何ですか。",
+      "あれは傘です。"
+    ];
+
+    let voiceCache = [];
+    let japaneseVoice = null;
+    let dialogueRunId = 0;
+    let playToken = 0;
+
+    function setupMenu() {
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "✕" : "☰";
+      });
+    }
+
+    function loadDisplaySettings() {
+      let saved = { furigana: true, romaji: true, vi: true };
+      try {
+        const parsed = JSON.parse(localStorage.getItem(DISPLAY_KEY));
+        if (parsed && typeof parsed === "object") saved = { ...saved, ...parsed };
+      } catch (_) {}
+      applyDisplaySettings(saved);
+    }
+
+    function applyDisplaySettings(settings) {
+      document.body.classList.toggle("hide-furigana", !settings.furigana);
+      document.body.classList.toggle("hide-romaji", !settings.romaji);
+      document.body.classList.toggle("hide-vi", !settings.vi);
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.classList.toggle("active", !!settings[btn.dataset.toggle]);
+      });
+      localStorage.setItem(DISPLAY_KEY, JSON.stringify(settings));
+    }
+
+    function setupDisplayToggles() {
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          let saved = { furigana: true, romaji: true, vi: true };
+          try {
+            saved = { ...saved, ...JSON.parse(localStorage.getItem(DISPLAY_KEY)) };
+          } catch (_) {}
+          const key = btn.dataset.toggle;
+          saved[key] = !saved[key];
+          applyDisplaySettings(saved);
+        });
+      });
+    }
+
+    function loadVoices() {
+      if (!("speechSynthesis" in window)) return;
+      voiceCache = speechSynthesis.getVoices() || [];
+      japaneseVoice = pickJapaneseVoice();
+    }
+
+    function pickJapaneseVoice() {
+      const voices = voiceCache.filter(v => /^ja(-|_)?JP/i.test(v.lang) || /^ja/i.test(v.lang));
+      if (!voices.length) return null;
+      const preferred = [
+        "Kyoko","Otoya","Nanami","Keita","Haruka",
+        "Google 日本語","Microsoft Nanami","Microsoft Keita",
+        "Natural","Premium","Enhanced"
+      ];
+      for (const name of preferred) {
+        const found = voices.find(v => v.name.toLowerCase().includes(name.toLowerCase()));
+        if (found) return found;
+      }
+      return voices[0];
+    }
+
+    async function ensureVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      loadVoices();
+      if (japaneseVoice) return japaneseVoice;
+      for (const delay of [120, 220, 360, 520]) {
+        await new Promise(r => setTimeout(r, delay));
+        loadVoices();
+        if (japaneseVoice) return japaneseVoice;
+      }
+      return null;
+    }
+
+    function setAudioStatus(text) {
+      const el = document.getElementById("audioStatus");
+      if (el) el.textContent = text || "";
+    }
+
+    function stopAudio() {
+      dialogueRunId++;
+      playToken++;
+      if ("speechSynthesis" in window) {
+        try { speechSynthesis.cancel(); speechSynthesis.resume(); } catch (_) {}
+      }
+      setAudioStatus("");
+    }
+
+    async function speakOne(text, rate = 1, status = true) {
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+      const voice = await ensureVoice();
+      const token = ++playToken;
+      try {
+        speechSynthesis.cancel();
+        speechSynthesis.resume();
+      } catch (_) {}
+      await new Promise(r => setTimeout(r, 70));
+      if (token !== playToken) return;
+
+      return new Promise(resolve => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "ja-JP";
+        utterance.rate = rate < 1 ? Math.max(.65, rate) : .92;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        if (voice) utterance.voice = voice;
+        if (status) setAudioStatus(rate < 1 ? "Đang phát giọng Nhật chậm…" : "Đang phát giọng Nhật…");
+        utterance.onend = () => { if (status) setAudioStatus(""); resolve(); };
+        utterance.onerror = () => { if (status) setAudioStatus(""); showToast("Audio TTS không phát được. Hãy thử lại."); resolve(); };
+        speechSynthesis.speak(utterance);
+      });
+    }
+
+    function speakJapanese(text, rate = 1) {
+      stopAudio();
+      speakOne(text, rate, true);
+    }
+
+    async function playDialogue(rate = 1) {
+      stopAudio();
+      const runId = ++dialogueRunId;
+      const localToken = ++playToken;
+      setAudioStatus(rate < 1 ? "Playing slow conversation…" : "Playing full conversation…");
+
+      const voice = await ensureVoice();
+      for (const text of dialogueLines) {
+        if (runId !== dialogueRunId || localToken !== playToken) return;
+        await new Promise(resolve => {
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = "ja-JP";
+          utterance.rate = rate < 1 ? Math.max(.65, rate) : .92;
+          utterance.pitch = 1;
+          if (voice) utterance.voice = voice;
+          utterance.onend = resolve;
+          utterance.onerror = resolve;
+          try { speechSynthesis.resume(); } catch (_) {}
+          speechSynthesis.speak(utterance);
+        });
+        await new Promise(resolve => setTimeout(resolve, 160));
+      }
+      if (runId === dialogueRunId && localToken === playToken) setAudioStatus("");
+    }
+
+    function setupChoiceGroups() {
+      document.querySelectorAll(".practice-box .choices").forEach(group => {
+        const answer = group.dataset.answer;
+        const feedback = group.parentElement.querySelector(".feedback");
+        group.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            group.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("correct","wrong"));
+            if (btn.dataset.value === answer) {
+              btn.classList.add("correct");
+              feedback.textContent = "✓ Chính xác!";
+            } else {
+              btn.classList.add("wrong");
+              const correct = group.querySelector(`[data-value="${answer}"]`);
+              if (correct) correct.classList.add("correct");
+              feedback.textContent = "Chưa đúng. Nghe hoặc đọc lại ngữ cảnh một lần nữa nhé.";
+            }
+          });
+        });
+      });
+    }
+
+    function toggleAnswer(id) {
+      document.getElementById(id).classList.toggle("show");
+    }
+
+    function setupQuiz() {
+      document.querySelectorAll(".quiz-q").forEach(q => {
+        q.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            q.querySelectorAll(".choice-btn").forEach(b => {
+              b.dataset.selected = "false";
+              b.style.outline = "none";
+              b.style.background = "#fff";
+            });
+            btn.dataset.selected = "true";
+            btn.style.outline = "2px solid rgba(239,166,181,.65)";
+            btn.style.background = "#fff8fa";
+          });
+        });
+      });
+    }
+
+    function gradeQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll(".quiz-q");
+      questions.forEach(q => {
+        const answer = q.dataset.answer;
+        const selected = q.querySelector('.choice-btn[data-selected="true"]');
+        q.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("correct","wrong"));
+        const correct = q.querySelector(`[data-value="${answer}"]`);
+        if (correct) correct.classList.add("correct");
+        if (selected) {
+          if (selected.dataset.value === answer) score++;
+          else selected.classList.add("wrong");
+        }
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.add("show");
+      if (score === 5) box.textContent = "5/5 ✨ Rất tốt! Bạn đã nắm chắc これ・それ・あれ.";
+      else if (score >= 4) box.textContent = `${score}/5 — Tốt rồi. Xem lại góc nhìn これ ↔ それ một lần nữa.`;
+      else box.textContent = `${score}/5 — Hãy xem lại phần 3 khoảng cách + Grammar rồi thử lại nhé.`;
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll(".quiz-q .choice-btn").forEach(btn => {
+        btn.dataset.selected = "false";
+        btn.classList.remove("correct","wrong");
+        btn.style.outline = "none";
+        btn.style.background = "#fff";
+      });
+      const box = document.getElementById("scoreBox");
+      box.classList.remove("show");
+      box.textContent = "";
+    }
+
+    function isCompleted() {
+      return localStorage.getItem(DAY_KEY) === "completed";
+    }
+
+    function updateCompleteUI() {
+      const btn = document.getElementById("completeBtn");
+      const msg = document.getElementById("completeMessage");
+      if (isCompleted()) {
+        btn.classList.add("completed");
+        btn.textContent = "✓ Day 04 Completed";
+        msg.textContent = "Đã hoàn thành Day 04. Bạn có thể tiếp tục Day 05 hoặc quay lại ôn bất cứ lúc nào.";
+      } else {
+        btn.classList.remove("completed");
+        btn.textContent = "✓ Complete Day 04";
+        msg.textContent = "Khi bạn nhìn これ・それ・あれ và chọn đúng theo khoảng cách mà không dịch, hãy hoàn thành Day 04.";
+      }
+    }
+
+    function toggleComplete() {
+      if (isCompleted()) {
+        localStorage.removeItem(DAY_KEY);
+        showToast("Đã chuyển Day 04 về trạng thái chưa hoàn thành.");
+      } else {
+        localStorage.setItem(DAY_KEY, "completed");
+        localStorage.setItem("n5-last-opened-day", "4");
+        showToast("Day 04 completed 🌸");
+      }
+      updateCompleteUI();
+    }
+
+    function isFavorite() {
+      return localStorage.getItem(FAVORITE_KEY) === "true";
+    }
+
+    function updateFavoriteUI() {
+      const btn = document.getElementById("favoriteBtn");
+      btn.classList.toggle("active", isFavorite());
+      btn.textContent = isFavorite() ? "★ Favorite" : "☆ Favorite";
+    }
+
+    function toggleFavorite() {
+      localStorage.setItem(FAVORITE_KEY, String(!isFavorite()));
+      updateFavoriteUI();
+      showToast(isFavorite() ? "Đã thêm Day 04 vào Favorites ★" : "Đã bỏ Day 04 khỏi Favorites");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupMenu();
+      setupDisplayToggles();
+      loadDisplaySettings();
+      setupChoiceGroups();
+      setupQuiz();
+      updateCompleteUI();
+      updateFavoriteUI();
+
+      localStorage.setItem("n5-last-opened-day", "4");
+      document.getElementById("favoriteBtn").addEventListener("click", toggleFavorite);
+
+      if ("speechSynthesis" in window) {
+        loadVoices();
+        speechSynthesis.onvoiceschanged = loadVoices;
+      }
+      window.addEventListener("beforeunload", stopAudio);
+    });
+  </script>
+</body>
+</html>
