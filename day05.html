@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 05: Numbers & Age — 数字と年齢." />
+  <title>Day 05 — Numbers & Age | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">🌸</span>
+        <span class="brand-copy">
+          Nihongo 90
+          <small>Japanese for real life</small>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="n5.html">N5 Course</a>
+        <a href="review.html">Quick Review</a>
+        <a href="n4.html">N4</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button>
+    </div>
+
+    <nav class="mobile-menu container" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="n5.html">N5 Course</a>
+      <a href="review.html">Quick Review</a>
+      <a href="n4.html">N4 · Coming Soon</a>
+    </nav>
+  </header>
+
+  <div class="lessonbar">
+    <div class="container lessonbar-inner">
+      <div class="lesson-position">
+        <a href="day04.html">← Day 04</a>
+        <span>·</span>
+        <strong>Day 05 / 90</strong>
+      </div>
+
+      <div class="lesson-actions">
+        <a class="tiny-btn" href="review.html">Quick Review</a>
+        <button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <article class="hero-card">
+          <span class="eyebrow">Day 05 · Numbers & Age</span>
+          <h1><ruby>数字<rt>すうじ</rt></ruby>と<ruby>年齢<rt>ねんれい</rt></ruby></h1>
+          <div class="hero-en">Numbers & Age</div>
+          <div class="hero-vi">
+            Đếm số tự nhiên, ghép số lớn hơn 10 và hỏi tuổi một cách tự nhiên bằng
+            <strong>何歳ですか</strong> / <strong>おいくつですか</strong>.
+          </div>
+
+          <div class="hero-meta">
+            <span class="meta-chip">N5 Beginner</span>
+            <span class="meta-chip">45–60 phút</span>
+            <span class="meta-chip">1–99</span>
+            <span class="meta-chip">〜歳</span>
+            <span class="meta-chip">おいくつですか</span>
+          </div>
+
+          <div class="goal-box">
+            <strong>Mục tiêu hôm nay</strong>
+            <p>
+              Sau bài này, bạn có thể nghe và nói các số cơ bản,
+              tạo số như <span class="jp-inline">二十五</span>,
+              hỏi tuổi bằng <span class="jp-inline">何歳ですか。</span>,
+              và trả lời <span class="jp-inline">二十五歳です。</span>
+              với đúng cách đọc những tuổi đặc biệt.
+            </p>
+          </div>
+
+          <div class="display-panel">
+            <div class="display-title">表示 · Hiển thị</div>
+            <div class="display-toggles">
+              <button class="toggle-btn active" data-toggle="furigana">Furigana</button>
+              <button class="toggle-btn active" data-toggle="romaji">Romaji</button>
+              <button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="container lesson-layout">
+      <aside class="toc">
+        <div class="toc-title">Trong bài này</div>
+        <a href="#warmup">01 · Warm-up</a>
+        <a href="#conversation">02 · Main Conversation</a>
+        <a href="#understand">03 · Hiểu hội thoại</a>
+        <a href="#expressions">04 · Key Expressions</a>
+        <a href="#vocabulary">05 · Numbers & Age</a>
+        <a href="#grammar">06 · Grammar Made Easy</a>
+        <a href="#tips">07 · Mẹo & lỗi hay gặp</a>
+        <a href="#listening">08 · Listening</a>
+        <a href="#number-builder">09 · Number Builder</a>
+        <a href="#speaking">10 · Speaking</a>
+        <a href="#quiz">11 · Mini Quiz</a>
+        <a href="#mission">12 · Today's Mission</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="section-card" id="warmup">
+          <div class="section-kicker">01 · Warm-up</div>
+          <h2>Ôn Day 04 trong 3 phút</h2>
+          <p class="section-intro">Nghe và trả lời ngay bằng một đồ vật quen thuộc.</p>
+
+          <div class="warmup-grid">
+            <div class="warmup-item">
+              <div class="jp">これは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+              <div class="romaji">Kore wa nan desu ka?</div>
+              <div class="vi">Cái này là gì?</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('これは何ですか。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp">それはペンです。</div>
+              <div class="romaji">Sore wa pen desu.</div>
+              <div class="vi">Cái đó là bút.</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('それはペンです。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp">あれは<ruby>傘<rt>かさ</rt></ruby>です。</div>
+              <div class="romaji">Are wa kasa desu.</div>
+              <div class="vi">Cái đằng kia là ô.</div>
+              <div class="audio-controls">
+                <button class="audio-btn" onclick="speakJapanese('あれは傘です。',1)">▶ Nghe</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Day 05 nối thẳng với mẫu 〜です</strong>
+            Bạn đã biết <span class="jp-inline">私は会社員です。</span>.
+            Hôm nay chỉ thay danh từ bằng tuổi:
+            <span class="jp-inline">私は二十五歳です。</span>
+          </div>
+        </section>
+
+        <section class="section-card" id="conversation">
+          <div class="section-kicker">02 · Main Conversation</div>
+          <h2>Bạn bao nhiêu tuổi?</h2>
+          <p class="section-intro">
+            Nghe toàn bộ trước. Đừng cố nghe từng chữ — hãy bắt lấy
+            <strong>おいくつですか</strong> và con số tuổi.
+          </p>
+
+          <div class="audio-controls">
+            <button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button>
+            <button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+          <div class="audio-status" id="audioStatus"></div>
+
+          <div class="dialogue-shell" style="margin-top:16px;">
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">すみません。お<ruby>名前<rt>なまえ</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。</div>
+                <div class="romaji">Sumimasen. Onamae wa nan desu ka?</div>
+                <div class="vi line-note">Xin lỗi, bạn tên là gì?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('すみません。お名前は何ですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">ミンです。</div>
+                <div class="romaji">Min desu.</div>
+                <div class="vi line-note">Tôi là Minh.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('ミンです。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line">おいくつですか。</div>
+                <div class="romaji">Oikutsu desu ka?</div>
+                <div class="vi line-note">Bạn bao nhiêu tuổi?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('おいくつですか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line"><ruby>二十五歳<rt>にじゅうごさい</rt></ruby>です。</div>
+                <div class="romaji">Nijū-go sai desu.</div>
+                <div class="vi line-note">Tôi 25 tuổi.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('二十五歳です。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line">あなたは？</div>
+                <div class="romaji">Anata wa?</div>
+                <div class="vi line-note">Còn bạn?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('あなたは？',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line"><ruby>二十八歳<rt>にじゅうはっさい</rt></ruby>です。</div>
+                <div class="romaji">Nijū-hassai desu.</div>
+                <div class="vi line-note">Tôi 28 tuổi.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('二十八歳です。',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 何歳ですか vs おいくつですか</strong>
+            <span class="jp-inline">何歳ですか。</span> là trực tiếp: “Bao nhiêu tuổi?”.<br>
+            <span class="jp-inline">おいくつですか。</span> lịch sự và mềm hơn.
+            Với người lớn mới gặp, đây là cách nên nhận ra trước.
+          </div>
+        </section>
+
+        
+<section class="section-card" id="understand">
+  <div class="section-kicker">03 · Understand the Conversation</div>
+  <h2>Hiểu logic trước — rồi mới nhớ cách đọc</h2>
+  <p class="section-intro">
+    Số tiếng Nhật nhìn nhiều nhưng hệ thống khá đều. Chỉ cần nắm <strong>1–10</strong>,
+    sau đó ghép theo logic “hàng chục + hàng đơn vị”. Phần khó thực sự không phải số,
+    mà là <strong>cách âm thay đổi khi đi với counter như 歳</strong>.
+  </p>
+
+  <div class="explain-grid">
+    <div class="explain-card">
+      <h3>1–10 là “bộ Lego”</h3>
+      <p>
+        一 いち · 二 に · 三 さん · 四 よん · 五 ご · 六 ろく · 七 なな · 八 はち · 九 きゅう · 十 じゅう.
+        <br><br>
+        Khi đã thuộc bộ này, bạn không cần học riêng 11, 12, 13… như từ mới.
+      </p>
+    </div>
+
+    <div class="explain-card">
+      <h3>11–19 = 十 + số</h3>
+      <p>
+        <span class="jp-inline">十一</span> = じゅう + いち = 11<br>
+        <span class="jp-inline">十四</span> = じゅう + よん = 14<br>
+        <span class="jp-inline">十九</span> = じゅう + きゅう = 19
+        <br><br>
+        Nghĩ đơn giản: “mười + bốn”, “mười + chín”.
+      </p>
+    </div>
+
+    <div class="explain-card">
+      <h3>20, 30, 40… = số + 十</h3>
+      <p>
+        <span class="jp-inline">二十</span> = に + じゅう = 20<br>
+        <span class="jp-inline">三十</span> = さん + じゅう = 30<br>
+        <span class="jp-inline">四十</span> = よん + じゅう = 40
+        <br><br>
+        Tức là “hai chục”, “ba chục”, “bốn chục”.
+      </p>
+    </div>
+
+    <div class="explain-card">
+      <h3>25 = 20 + 5</h3>
+      <p>
+        <span class="jp-inline">二十五</span> = にじゅう + ご = 25.<br>
+        <span class="jp-inline">三十八</span> = さんじゅう + はち = 38.<br>
+        <span class="jp-inline">四十七</span> = よんじゅう + なな = 47.
+      </p>
+    </div>
+  </div>
+
+  <div class="grammar-rule" style="margin-top:18px;">
+    <div class="rule-form">Vì sao 4 / 7 / 9 có nhiều cách đọc?</div>
+    <p>
+      Một số kanji có hơn một cách đọc lịch sử, nên bạn sẽ gặp:
+      <strong>四 = よん / し</strong>,
+      <strong>七 = なな / しち</strong>,
+      <strong>九 = きゅう / く</strong>.
+      <br><br>
+      Ở Day 05, khi nói số độc lập hoặc ghép số bình thường, ưu tiên
+      <strong>よん・なな・きゅう</strong> vì an toàn và dễ nghe hơn.
+      Sau này trong giờ, tháng, từ ghép… bạn sẽ gặp し・しち・く.
+    </p>
+  </div>
+
+  <div class="grammar-rule">
+    <div class="rule-form">Tuổi = số + 歳（さい）</div>
+    <p>
+      <span class="jp-inline">二十五歳</span> = 25 tuổi.<br>
+      Nhưng khi số đứng trước <span class="jp-inline">歳</span>,
+      âm có thể biến để nói dễ hơn. Đây là hiện tượng rất phổ biến trong tiếng Nhật.
+    </p>
+  </div>
+
+  <div class="breakdown">
+    <div class="break-row">
+      <div class="break-label">1歳</div>
+      <div><strong>いっさい</strong> — âm ち trong いち rút lại thành っ.</div>
+    </div>
+    <div class="break-row">
+      <div class="break-label">8歳</div>
+      <div><strong>はっさい</strong> — はち → はっ trước さい.</div>
+    </div>
+    <div class="break-row">
+      <div class="break-label">10歳</div>
+      <div><strong>じゅっさい</strong> — じゅう → じゅっ trước さい.</div>
+    </div>
+    <div class="break-row">
+      <div class="break-label">20歳</div>
+      <div><strong>はたち</strong> — cách đọc đặc biệt, phải nhớ nguyên từ.</div>
+    </div>
+  </div>
+
+  <div class="tip memory">
+    <strong>💡 Đừng cố “tính” âm trong đầu khi nói tuổi</strong>
+    Hãy học <span class="jp-inline">いっさい・はっさい・じゅっさい・はたち</span>
+    như bốn cụm âm hoàn chỉnh. Nghe nhiều sẽ nhanh hơn việc cố suy ra từng chữ.
+  </div>
+</section>
+
+
+        <section class="section-card" id="expressions">
+          <div class="section-kicker">04 · Key Expressions</div>
+          <h2>5 mẫu câu cần phản xạ</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp"><ruby>何歳<rt>なんさい</rt></ruby>ですか。</div>
+                <div class="romaji vocab-reading">Nansai desu ka?</div>
+                <div class="vi vocab-vi">Bạn bao nhiêu tuổi?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('何歳ですか。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp">おいくつですか。</div>
+                <div class="romaji vocab-reading">Oikutsu desu ka?</div>
+                <div class="vi vocab-vi">Bạn bao nhiêu tuổi? (lịch sự hơn)</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('おいくつですか。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp"><ruby>二十五歳<rt>にじゅうごさい</rt></ruby>です。</div>
+                <div class="romaji vocab-reading">Nijū-go sai desu.</div>
+                <div class="vi vocab-vi">Tôi 25 tuổi.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('二十五歳です。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp">あなたは？</div>
+                <div class="romaji vocab-reading">Anata wa?</div>
+                <div class="vi vocab-vi">Còn bạn?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('あなたは？',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div>
+                <div class="vocab-jp"><ruby>二十歳<rt>はたち</rt></ruby>です。</div>
+                <div class="romaji vocab-reading">Hatachi desu.</div>
+                <div class="vi vocab-vi">Tôi 20 tuổi.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('二十歳です。',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ 20 tuổi là từ đặc biệt</strong>
+            <span class="jp-inline">二十歳</span> đọc là
+            <strong>はたち</strong>, không phải *にじゅうさい* trong cách nói tuổi thông thường.
+          </div>
+        </section>
+
+        <section class="section-card" id="vocabulary">
+          <div class="section-kicker">05 · Numbers & Age</div>
+          <h2>1–10 + những tuổi dễ đọc sai</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>一<rt>いち</rt></ruby></div><div class="romaji vocab-reading">ichi</div><div class="vi vocab-vi">1</div></div>
+              <button class="line-audio" onclick="speakJapanese('一',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>二<rt>に</rt></ruby></div><div class="romaji vocab-reading">ni</div><div class="vi vocab-vi">2</div></div>
+              <button class="line-audio" onclick="speakJapanese('二',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>三<rt>さん</rt></ruby></div><div class="romaji vocab-reading">san</div><div class="vi vocab-vi">3</div></div>
+              <button class="line-audio" onclick="speakJapanese('三',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>四<rt>よん</rt></ruby></div><div class="romaji vocab-reading">yon</div><div class="vi vocab-vi">4</div></div>
+              <button class="line-audio" onclick="speakJapanese('四',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>五<rt>ご</rt></ruby></div><div class="romaji vocab-reading">go</div><div class="vi vocab-vi">5</div></div>
+              <button class="line-audio" onclick="speakJapanese('五',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>六<rt>ろく</rt></ruby></div><div class="romaji vocab-reading">roku</div><div class="vi vocab-vi">6</div></div>
+              <button class="line-audio" onclick="speakJapanese('六',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>七<rt>なな</rt></ruby></div><div class="romaji vocab-reading">nana</div><div class="vi vocab-vi">7</div></div>
+              <button class="line-audio" onclick="speakJapanese('七',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>八<rt>はち</rt></ruby></div><div class="romaji vocab-reading">hachi</div><div class="vi vocab-vi">8</div></div>
+              <button class="line-audio" onclick="speakJapanese('八',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>九<rt>きゅう</rt></ruby></div><div class="romaji vocab-reading">kyū</div><div class="vi vocab-vi">9</div></div>
+              <button class="line-audio" onclick="speakJapanese('九',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>十<rt>じゅう</rt></ruby></div><div class="romaji vocab-reading">jū</div><div class="vi vocab-vi">10</div></div>
+              <button class="line-audio" onclick="speakJapanese('十',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="grammar-rule" style="margin-top:18px;">
+            <div class="rule-form">Tuổi đặc biệt cần nhớ bằng tai</div>
+            <p>
+              <strong>1歳</strong> いっさい ·
+              <strong>8歳</strong> はっさい ·
+              <strong>10歳</strong> じゅっさい ·
+              <strong>20歳</strong> はたち
+            </p>
+          </div>
+
+          <div class="vocab-grid">
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>一歳<rt>いっさい</rt></ruby></div><div class="romaji vocab-reading">issai</div><div class="vi vocab-vi">1 tuổi</div></div>
+              <button class="line-audio" onclick="speakJapanese('一歳',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>八歳<rt>はっさい</rt></ruby></div><div class="romaji vocab-reading">hassai</div><div class="vi vocab-vi">8 tuổi</div></div>
+              <button class="line-audio" onclick="speakJapanese('八歳',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>十歳<rt>じゅっさい</rt></ruby></div><div class="romaji vocab-reading">jussai</div><div class="vi vocab-vi">10 tuổi</div></div>
+              <button class="line-audio" onclick="speakJapanese('十歳',1)">▶</button>
+            </div>
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>二十歳<rt>はたち</rt></ruby></div><div class="romaji vocab-reading">hatachi</div><div class="vi vocab-vi">20 tuổi</div></div>
+              <button class="line-audio" onclick="speakJapanese('二十歳',1)">▶</button>
+            </div>
+          </div>
+        </section>
+
+        
+<section class="section-card" id="grammar">
+  <div class="section-kicker">06 · Grammar Made Easy</div>
+  <h2>Hỏi tuổi: cùng nghĩa, khác mức độ trực tiếp</h2>
+
+  <div class="grammar-rule">
+    <div class="rule-form">何歳ですか。= Bao nhiêu tuổi?</div>
+    <p>
+      <span class="jp-inline">何歳</span> đọc là <strong>なんさい</strong>.
+      Đây là cách hỏi trực tiếp và hoàn toàn đúng ngữ pháp.
+      Thường phù hợp với trẻ em, người quen, lớp học hoặc ngữ cảnh đã rõ.
+    </p>
+  </div>
+
+  <div class="grammar-rule">
+    <div class="rule-form">おいくつですか。= Bao nhiêu tuổi? (mềm/lịch sự hơn)</div>
+    <p>
+      <span class="jp-inline">いくつ</span> vốn nghĩa là “bao nhiêu cái / bao nhiêu”.
+      Thêm <span class="jp-inline">お</span> làm câu lịch sự hơn.
+      Trong ngữ cảnh hỏi tuổi, cả câu được hiểu là “Bạn bao nhiêu tuổi?”.
+    </p>
+  </div>
+
+  <div class="breakdown">
+    <div class="break-row">
+      <div class="break-label">A</div>
+      <div>
+        <span class="jp-inline">何歳ですか。</span><br>
+        Hỏi trực tiếp, bình thường.
+      </div>
+    </div>
+    <div class="break-row">
+      <div class="break-label">B</div>
+      <div>
+        <span class="jp-inline">おいくつですか。</span><br>
+        Mềm hơn, lịch sự hơn.
+      </div>
+    </div>
+  </div>
+
+  <div class="grammar-rule">
+    <div class="rule-form">Trả lời: [tuổi] + 歳です</div>
+    <p>
+      <span class="jp-inline">二十五歳です。</span> = Tôi 25 tuổi.<br>
+      Không cần lúc nào cũng nói
+      <span class="jp-inline">私は二十五歳です。</span>
+      vì chủ ngữ đã rõ trong hội thoại.
+    </p>
+  </div>
+
+  <div class="grammar-rule">
+    <div class="rule-form">あなたは？ = Còn bạn?</div>
+    <p>
+      Đây là cách rút gọn khi ngữ cảnh đã rõ.
+      Tuy nhiên trong tiếng Nhật thực tế, người ta thường bỏ
+      <span class="jp-inline">あなた</span> nếu đã biết tên người kia,
+      hoặc dùng tên + さん.
+      <br><br>
+      Ví dụ tự nhiên hơn khi biết tên:
+      <span class="jp-inline">田中さんは？</span> — “Còn Tanaka-san?”
+    </p>
+  </div>
+
+  <div class="tip real">
+    <strong>🇯🇵 Có nên hỏi tuổi ngay khi mới gặp?</strong>
+    Về ngữ pháp thì đúng, nhưng tuổi là thông tin cá nhân.
+    Trong lớp học, form đăng ký, giới thiệu có ngữ cảnh hoặc khi cuộc trò chuyện đã phù hợp thì dùng bình thường.
+    Với người lớn mới gặp ngoài đời, không nên mặc định hỏi tuổi ngay.
+  </div>
+</section>
+
+
+        
+<section class="section-card" id="tips">
+  <div class="section-kicker">07 · Tips & Common Mistakes</div>
+  <h2>Những chỗ người mới thường “đọc đúng chữ nhưng sai âm”</h2>
+
+  <div class="explain-grid">
+    <div class="explain-card">
+      <h3>⚠ 1歳 ≠ いちさい</h3>
+      <p>
+        Đúng là <span class="jp-inline">一 = いち</span> và
+        <span class="jp-inline">歳 = さい</span>, nhưng khi ghép lại thành tuổi,
+        người Nhật nói <strong>いっさい</strong>.
+        Nhịp nhỏ <strong>っ</strong> tạo một khoảng ngắt ngắn.
+      </p>
+    </div>
+
+    <div class="explain-card">
+      <h3>⚠ 8歳 ≠ はちさい</h3>
+      <p>
+        <span class="jp-inline">八</span> một mình là はち,
+        nhưng trước 歳 đổi thành <strong>はっさい</strong>.
+        Hãy nghe “ha-ssai”, không tách “hachi-sai”.
+      </p>
+    </div>
+
+    <div class="explain-card">
+      <h3>⚠ 10歳 = じゅっさい</h3>
+      <p>
+        <span class="jp-inline">十</span> là じゅう,
+        nhưng khi nói tuổi thường thành <strong>じゅっさい</strong>.
+        Đây là kiểu biến âm tương tự いっさい / はっさい.
+      </p>
+    </div>
+
+    <div class="explain-card">
+      <h3>⚠ 20歳 = はたち</h3>
+      <p>
+        Không suy ra được từ にじゅう + さい.
+        Đây là cách đọc truyền thống đặc biệt.
+        Nhớ nguyên từ <strong>はたち</strong>.
+      </p>
+    </div>
+
+    <div class="explain-card">
+      <h3>💡 28歳 = にじゅうはっさい</h3>
+      <p>
+        Phần hàng chục vẫn giữ nguyên:
+        <span class="jp-inline">二十</span> = にじゅう.
+        Chỉ phần <span class="jp-inline">八歳</span> biến thành はっさい.
+      </p>
+    </div>
+
+    <div class="explain-card">
+      <h3>💡 34歳 = さんじゅうよんさい</h3>
+      <p>
+        4 tuổi trong cách nói tuổi thường dùng
+        <strong>よんさい</strong>, không dùng しさい.
+        Vì vậy 34 tuổi = さんじゅうよんさい.
+      </p>
+    </div>
+  </div>
+
+  <div class="tip warning">
+    <strong>⚠ Đừng áp một cách đọc của 4 / 7 / 9 cho mọi tình huống</strong>
+    Ví dụ hôm nay bạn học <strong>よん・なな・きゅう</strong> trong số thường,
+    nhưng sau này:
+    <span class="jp-inline">四時</span> = よじ,
+    <span class="jp-inline">七時</span> = しちじ,
+    <span class="jp-inline">九時</span> = くじ.
+    Đây không phải ngoại lệ “vô lý”, mà là cách đọc cố định của từng cụm.
+  </div>
+</section>
+
+
+        <section class="section-card" id="listening">
+          <div class="section-kicker">08 · Listening Practice</div>
+          <h2>Nghe số — hiểu ngay, không viết ra trước</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 1 · Number</div>
+            <button class="audio-btn primary" onclick="speakJapanese('二十五',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. 15</button>
+              <button class="choice-btn" data-value="b">B. 25</button>
+              <button class="choice-btn" data-value="c">C. 52</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 2 · Age</div>
+            <button class="audio-btn primary" onclick="speakJapanese('二十八歳です。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. 18 tuổi</button>
+              <button class="choice-btn" data-value="b">B. 20 tuổi</button>
+              <button class="choice-btn" data-value="c">C. 28 tuổi</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 3 · Special reading</div>
+            <button class="audio-btn primary" onclick="speakJapanese('二十歳です。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="a">
+              <button class="choice-btn" data-value="a">A. 20 tuổi</button>
+              <button class="choice-btn" data-value="b">B. 12 tuổi</button>
+              <button class="choice-btn" data-value="c">C. 21 tuổi</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 4 · Response</div>
+            <button class="audio-btn primary" onclick="speakJapanese('おいくつですか。',1)">▶ Nghe câu hỏi</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. ミンです。</button>
+              <button class="choice-btn" data-value="b">B. 二十五歳です。</button>
+              <button class="choice-btn" data-value="c">C. ベトナム人です。</button>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Shadowing mini</div>
+            <p class="vi">Nghe → nhắc lại ngay. Giữ nhịp cho じゅう và っさい.</p>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="speakJapanese('おいくつですか。二十五歳です。あなたは？二十八歳です。',.76)">🐢 Slow</button>
+              <button class="audio-btn primary" onclick="speakJapanese('おいくつですか。二十五歳です。あなたは？二十八歳です。',1)">▶ Natural</button>
+            </div>
+          </div>
+        </section>
+
+        
+<section class="section-card" id="number-builder">
+  <div class="section-kicker">08.5 · Number Builder</div>
+  <h2>Học cách “xây” số thay vì thuộc lòng</h2>
+  <p class="section-intro">
+    Mỗi dòng dưới đây hãy tự phân tích thành “hàng chục + hàng đơn vị” trước khi bấm nghe.
+  </p>
+
+  <div class="breakdown">
+    <div class="break-row">
+      <div class="break-label">17</div>
+      <div>
+        十 + 七 → <strong>じゅうなな</strong>
+        <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('十七',1)">▶</button>
+      </div>
+    </div>
+    <div class="break-row">
+      <div class="break-label">25</div>
+      <div>
+        二十 + 五 → <strong>にじゅうご</strong>
+        <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('二十五',1)">▶</button>
+      </div>
+    </div>
+    <div class="break-row">
+      <div class="break-label">34</div>
+      <div>
+        三十 + 四 → <strong>さんじゅうよん</strong>
+        <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('三十四',1)">▶</button>
+      </div>
+    </div>
+    <div class="break-row">
+      <div class="break-label">48</div>
+      <div>
+        四十 + 八 → <strong>よんじゅうはち</strong>
+        <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('四十八',1)">▶</button>
+      </div>
+    </div>
+    <div class="break-row">
+      <div class="break-label">28歳</div>
+      <div>
+        二十 + 八歳 → <strong>にじゅうはっさい</strong>
+        <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('二十八歳',1)">▶</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip memory">
+    <strong>💡 Cách tự kiểm tra</strong>
+    Nếu bạn nhìn 47 và nói được
+    <strong>よんじゅうなな</strong> mà không phải dịch “bốn mươi bảy → bốn chục + bảy”
+    trong đầu, phản xạ số đã bắt đầu hình thành.
+  </div>
+</section>
+
+<section class="section-card" id="speaking">
+          <div class="section-kicker">10 · Speaking Practice</div>
+          <h2>Tự tạo số trước khi mở đáp án</h2>
+
+          <div class="speaking-grid">
+            <div class="speaking-card">
+              <div class="prompt">1. Nói “17”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a1')">Xem đáp án</button>
+              <div class="answer" id="a1">
+                <div class="jp"><ruby>十七<rt>じゅうなな</rt></ruby></div>
+                <div class="romaji">jū-nana</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('十七',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">2. Nói “34”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a2')">Xem đáp án</button>
+              <div class="answer" id="a2">
+                <div class="jp"><ruby>三十四<rt>さんじゅうよん</rt></ruby></div>
+                <div class="romaji">sanjū-yon</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('三十四',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">3. Hỏi lịch sự: “Bạn bao nhiêu tuổi?”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a3')">Xem đáp án</button>
+              <div class="answer" id="a3">
+                <div class="jp">おいくつですか。</div>
+                <div class="romaji">Oikutsu desu ka?</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('おいくつですか。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">4. Nói “28 tuổi”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a4')">Xem đáp án</button>
+              <div class="answer" id="a4">
+                <div class="jp"><ruby>二十八歳<rt>にじゅうはっさい</rt></ruby>です。</div>
+                <div class="romaji">Nijū-hassai desu.</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('二十八歳です。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">5. Nói “20 tuổi”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a5')">Xem đáp án</button>
+              <div class="answer" id="a5">
+                <div class="jp"><ruby>二十歳<rt>はたち</rt></ruby>です。</div>
+                <div class="romaji">Hatachi desu.</div>
+                <button class="audio-btn" style="margin-top:8px;" onclick="speakJapanese('二十歳です。',1)">▶ Nghe</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="quiz">
+          <div class="section-kicker">11 · Mini Quiz</div>
+          <h2>Kiểm tra nhanh Day 05</h2>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>1. 二十五 là số nào?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 15</button>
+              <button class="choice-btn" data-value="b">B. 25</button>
+              <button class="choice-btn" data-value="c">C. 52</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>2. Cách hỏi tuổi lịch sự hơn là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. おいくつですか。</button>
+              <button class="choice-btn" data-value="b">B. これは何ですか。</button>
+              <button class="choice-btn" data-value="c">C. どこですか。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>3. 8 tuổi đọc là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. はちさい</button>
+              <button class="choice-btn" data-value="b">B. やっさい</button>
+              <button class="choice-btn" data-value="c">C. はっさい</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>4. 20 tuổi đọc là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. にじゅうさい</button>
+              <button class="choice-btn" data-value="b">B. はたち</button>
+              <button class="choice-btn" data-value="c">C. にじゅっさい</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>5. 三十四歳 là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 34 tuổi</button>
+              <button class="choice-btn" data-value="b">B. 43 tuổi</button>
+              <button class="choice-btn" data-value="c">C. 24 tuổi</button>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button>
+            <button class="audio-btn" onclick="resetQuiz()">Làm lại</button>
+          </div>
+
+          <div class="score-box" id="scoreBox"></div>
+        </section>
+
+        <section class="section-card mission-card" id="mission">
+          <div class="section-kicker">12 · Today's Mission</div>
+          <h2>Number Sprint + Age</h2>
+          <p class="section-intro">
+            Không cần viết. Mục tiêu là nhìn con số và bật ra tiếng Nhật trong 1–2 giây.
+          </p>
+
+          <div class="mission-lines">
+            <div class="mission-line">
+              <div class="vi">1. Đếm 1 → 10 bằng tiếng Nhật.</div>
+              <div class="jp">一・二・三・四・五・六・七・八・九・十</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">2. Nói: 12 · 17 · 25 · 34 · 48.</div>
+              <div class="jp">十二・十七・二十五・三十四・四十八</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">3. Hỏi tuổi theo hai cách.</div>
+              <div class="jp"><ruby>何歳<rt>なんさい</rt></ruby>ですか。／ おいくつですか。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">4. Nói tuổi giả định: 25 tuổi.</div>
+              <div class="jp"><ruby>二十五歳<rt>にじゅうごさい</rt></ruby>です。</div>
+            </div>
+
+            <div class="mission-line">
+              <div class="vi">5. Đọc 4 tuổi đặc biệt.</div>
+              <div class="jp">一歳・八歳・十歳・二十歳</div>
+            </div>
+          </div>
+
+          <div class="audio-controls">
+            <button class="audio-btn" onclick="speakJapanese('一、二、三、四、五、六、七、八、九、十。十二、十七、二十五、三十四、四十八。何歳ですか。おいくつですか。二十五歳です。一歳、八歳、十歳、二十歳。',.76)">🐢 Slow</button>
+            <button class="audio-btn primary" onclick="speakJapanese('一、二、三、四、五、六、七、八、九、十。十二、十七、二十五、三十四、四十八。何歳ですか。おいくつですか。二十五歳です。一歳、八歳、十歳、二十歳。',1)">▶ Natural</button>
+          </div>
+
+          <div class="complete-box">
+            <p id="completeMessage" style="margin-top:0;color:var(--muted);">
+              Khi bạn nghe hoặc nhìn các số 1–99 và ghép được tuổi mà không cần dịch từng chữ, hãy hoàn thành Day 05.
+            </p>
+            <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 05</button>
+          </div>
+        </section>
+
+        <div class="day-nav">
+          <a href="day04.html">← Day 04 · What is this?</a>
+          <a class="next" href="day06.html">Day 06 · Where Are You From? →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><span class="footer-brand">🌸 Nihongo 90</span> · Day 05</div>
+      <div>Learn gently. Speak naturally.</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DAY_KEY = "n5-day-05";
+    const FAVORITE_KEY = "n5-favorite-day-05";
+    const DISPLAY_KEY = "nihongo90-display";
+
+    const dialogueLines = [
+      "すみません。お名前は何ですか。",
+      "ミンです。",
+      "おいくつですか。",
+      "二十五歳です。",
+      "あなたは？",
+      "二十八歳です。"
+    ];
+
+    let voiceCache = [];
+    let japaneseVoice = null;
+    let dialogueRunId = 0;
+    let playToken = 0;
+
+    function setupMenu() {
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "✕" : "☰";
+      });
+    }
+
+    function loadDisplaySettings() {
+      let saved = { furigana: true, romaji: true, vi: true };
+      try {
+        const parsed = JSON.parse(localStorage.getItem(DISPLAY_KEY));
+        if (parsed && typeof parsed === "object") saved = { ...saved, ...parsed };
+      } catch (_) {}
+      applyDisplaySettings(saved);
+    }
+
+    function applyDisplaySettings(settings) {
+      document.body.classList.toggle("hide-furigana", !settings.furigana);
+      document.body.classList.toggle("hide-romaji", !settings.romaji);
+      document.body.classList.toggle("hide-vi", !settings.vi);
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.classList.toggle("active", !!settings[btn.dataset.toggle]);
+      });
+      localStorage.setItem(DISPLAY_KEY, JSON.stringify(settings));
+    }
+
+    function setupDisplayToggles() {
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          let saved = { furigana: true, romaji: true, vi: true };
+          try {
+            saved = { ...saved, ...JSON.parse(localStorage.getItem(DISPLAY_KEY)) };
+          } catch (_) {}
+          const key = btn.dataset.toggle;
+          saved[key] = !saved[key];
+          applyDisplaySettings(saved);
+        });
+      });
+    }
+
+    function loadVoices() {
+      if (!("speechSynthesis" in window)) return;
+      voiceCache = speechSynthesis.getVoices() || [];
+      japaneseVoice = pickJapaneseVoice();
+    }
+
+    function pickJapaneseVoice() {
+      const voices = voiceCache.filter(v => /^ja(-|_)?JP/i.test(v.lang) || /^ja/i.test(v.lang));
+      if (!voices.length) return null;
+      const preferred = [
+        "Kyoko","Otoya","Nanami","Keita","Haruka",
+        "Google 日本語","Microsoft Nanami","Microsoft Keita",
+        "Natural","Premium","Enhanced"
+      ];
+      for (const name of preferred) {
+        const found = voices.find(v => v.name.toLowerCase().includes(name.toLowerCase()));
+        if (found) return found;
+      }
+      return voices[0];
+    }
+
+    async function ensureVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      loadVoices();
+      if (japaneseVoice) return japaneseVoice;
+      for (const delay of [120, 220, 360, 520]) {
+        await new Promise(r => setTimeout(r, delay));
+        loadVoices();
+        if (japaneseVoice) return japaneseVoice;
+      }
+      return null;
+    }
+
+    function setAudioStatus(text) {
+      const el = document.getElementById("audioStatus");
+      if (el) el.textContent = text || "";
+    }
+
+    function stopAudio() {
+      dialogueRunId++;
+      playToken++;
+      if ("speechSynthesis" in window) {
+        try { speechSynthesis.cancel(); speechSynthesis.resume(); } catch (_) {}
+      }
+      setAudioStatus("");
+    }
+
+    async function speakOne(text, rate = 1, status = true) {
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+      const voice = await ensureVoice();
+      const token = ++playToken;
+      try {
+        speechSynthesis.cancel();
+        speechSynthesis.resume();
+      } catch (_) {}
+      await new Promise(r => setTimeout(r, 70));
+      if (token !== playToken) return;
+
+      return new Promise(resolve => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "ja-JP";
+        utterance.rate = rate < 1 ? Math.max(.65, rate) : .92;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        if (voice) utterance.voice = voice;
+        if (status) setAudioStatus(rate < 1 ? "Đang phát giọng Nhật chậm…" : "Đang phát giọng Nhật…");
+        utterance.onend = () => { if (status) setAudioStatus(""); resolve(); };
+        utterance.onerror = () => { if (status) setAudioStatus(""); showToast("Audio TTS không phát được. Hãy thử lại."); resolve(); };
+        speechSynthesis.speak(utterance);
+      });
+    }
+
+    function speakJapanese(text, rate = 1) {
+      stopAudio();
+      speakOne(text, rate, true);
+    }
+
+    async function playDialogue(rate = 1) {
+      stopAudio();
+      const runId = ++dialogueRunId;
+      const localToken = ++playToken;
+      setAudioStatus(rate < 1 ? "Playing slow conversation…" : "Playing full conversation…");
+
+      const voice = await ensureVoice();
+      for (const text of dialogueLines) {
+        if (runId !== dialogueRunId || localToken !== playToken) return;
+        await new Promise(resolve => {
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = "ja-JP";
+          utterance.rate = rate < 1 ? Math.max(.65, rate) : .92;
+          utterance.pitch = 1;
+          if (voice) utterance.voice = voice;
+          utterance.onend = resolve;
+          utterance.onerror = resolve;
+          try { speechSynthesis.resume(); } catch (_) {}
+          speechSynthesis.speak(utterance);
+        });
+        await new Promise(resolve => setTimeout(resolve, 160));
+      }
+      if (runId === dialogueRunId && localToken === playToken) setAudioStatus("");
+    }
+
+    function setupChoiceGroups() {
+      document.querySelectorAll(".practice-box .choices").forEach(group => {
+        const answer = group.dataset.answer;
+        const feedback = group.parentElement.querySelector(".feedback");
+        group.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            group.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("correct","wrong"));
+            if (btn.dataset.value === answer) {
+              btn.classList.add("correct");
+              feedback.textContent = "✓ Chính xác!";
+            } else {
+              btn.classList.add("wrong");
+              const correct = group.querySelector(`[data-value="${answer}"]`);
+              if (correct) correct.classList.add("correct");
+              feedback.textContent = "Chưa đúng. Nghe lại một lần và bắt nhịp số.";
+            }
+          });
+        });
+      });
+    }
+
+    function toggleAnswer(id) {
+      document.getElementById(id).classList.toggle("show");
+    }
+
+    function setupQuiz() {
+      document.querySelectorAll(".quiz-q").forEach(q => {
+        q.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            q.querySelectorAll(".choice-btn").forEach(b => {
+              b.dataset.selected = "false";
+              b.style.outline = "none";
+              b.style.background = "#fff";
+            });
+            btn.dataset.selected = "true";
+            btn.style.outline = "2px solid rgba(239,166,181,.65)";
+            btn.style.background = "#fff8fa";
+          });
+        });
+      });
+    }
+
+    function gradeQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll(".quiz-q");
+      questions.forEach(q => {
+        const answer = q.dataset.answer;
+        const selected = q.querySelector('.choice-btn[data-selected="true"]');
+        q.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("correct","wrong"));
+        const correct = q.querySelector(`[data-value="${answer}"]`);
+        if (correct) correct.classList.add("correct");
+        if (selected) {
+          if (selected.dataset.value === answer) score++;
+          else selected.classList.add("wrong");
+        }
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.add("show");
+      if (score === 5) box.textContent = "5/5 ✨ Rất tốt! Bạn đã nắm được số và tuổi cơ bản.";
+      else if (score >= 4) box.textContent = `${score}/5 — Tốt rồi. Nghe lại nhóm tuổi đặc biệt một lần nữa.`;
+      else box.textContent = `${score}/5 — Xem lại 1歳・8歳・10歳・20歳 và cách ghép số nhé.`;
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll(".quiz-q .choice-btn").forEach(btn => {
+        btn.dataset.selected = "false";
+        btn.classList.remove("correct","wrong");
+        btn.style.outline = "none";
+        btn.style.background = "#fff";
+      });
+      const box = document.getElementById("scoreBox");
+      box.classList.remove("show");
+      box.textContent = "";
+    }
+
+    function isCompleted() {
+      return localStorage.getItem(DAY_KEY) === "completed";
+    }
+
+    function updateCompleteUI() {
+      const btn = document.getElementById("completeBtn");
+      const msg = document.getElementById("completeMessage");
+      if (isCompleted()) {
+        btn.classList.add("completed");
+        btn.textContent = "✓ Day 05 Completed";
+        msg.textContent = "Đã hoàn thành Day 05. Bạn có thể tiếp tục Day 06 hoặc quay lại luyện số bất cứ lúc nào.";
+      } else {
+        btn.classList.remove("completed");
+        btn.textContent = "✓ Complete Day 05";
+        msg.textContent = "Khi bạn nghe hoặc nhìn các số 1–99 và ghép được tuổi mà không cần dịch từng chữ, hãy hoàn thành Day 05.";
+      }
+    }
+
+    function toggleComplete() {
+      if (isCompleted()) {
+        localStorage.removeItem(DAY_KEY);
+        showToast("Đã chuyển Day 05 về trạng thái chưa hoàn thành.");
+      } else {
+        localStorage.setItem(DAY_KEY, "completed");
+        localStorage.setItem("n5-last-opened-day", "5");
+        showToast("Day 05 completed 🌸");
+      }
+      updateCompleteUI();
+    }
+
+    function isFavorite() {
+      return localStorage.getItem(FAVORITE_KEY) === "true";
+    }
+
+    function updateFavoriteUI() {
+      const btn = document.getElementById("favoriteBtn");
+      btn.classList.toggle("active", isFavorite());
+      btn.textContent = isFavorite() ? "★ Favorite" : "☆ Favorite";
+    }
+
+    function toggleFavorite() {
+      localStorage.setItem(FAVORITE_KEY, String(!isFavorite()));
+      updateFavoriteUI();
+      showToast(isFavorite() ? "Đã thêm Day 05 vào Favorites ★" : "Đã bỏ Day 05 khỏi Favorites");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupMenu();
+      setupDisplayToggles();
+      loadDisplaySettings();
+      setupChoiceGroups();
+      setupQuiz();
+      updateCompleteUI();
+      updateFavoriteUI();
+
+      localStorage.setItem("n5-last-opened-day", "5");
+      document.getElementById("favoriteBtn").addEventListener("click", toggleFavorite);
+
+      if ("speechSynthesis" in window) {
+        loadVoices();
+        speechSynthesis.onvoiceschanged = loadVoices;
+      }
+      window.addEventListener("beforeunload", stopAudio);
+    });
+  </script>
+</body>
+</html>
