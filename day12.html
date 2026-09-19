@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 12: My Daily Routine — 毎日の生活." />
+  <title>Day 12 — My Daily Routine | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">🌸</span>
+        <span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="n5.html">N5 Course</a>
+        <a href="review.html">Quick Review</a>
+        <a href="n4.html">N4</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button>
+    </div>
+    <nav class="mobile-menu container" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="n5.html">N5 Course</a>
+      <a href="review.html">Quick Review</a>
+      <a href="n4.html">N4 · Coming Soon</a>
+    </nav>
+  </header>
+
+  <div class="lessonbar">
+    <div class="container lessonbar-inner">
+      <div class="lesson-position">
+        <a href="day11.html">← Day 11</a>
+        <span>·</span>
+        <strong>Day 12 / 90</strong>
+      </div>
+      <div class="lesson-actions">
+        <a class="tiny-btn" href="review.html">Quick Review</a>
+        <button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <article class="hero-card">
+          <span class="eyebrow">Day 12 · Daily Life</span>
+          <h1><ruby>毎日<rt>まいにち</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby></h1>
+          <div class="hero-en">My Daily Routine</div>
+          <div class="hero-vi">
+            Nói một ngày của bạn bằng <strong>thời gian + に + động từ</strong>:
+            thức dậy, ăn sáng, đi làm/đi học, làm việc, về nhà và đi ngủ.
+          </div>
+
+          <div class="hero-meta">
+            <span class="meta-chip">N5 Beginner</span>
+            <span class="meta-chip">60–75 phút</span>
+            <span class="meta-chip">Time + に</span>
+            <span class="meta-chip">〜ます</span>
+            <span class="meta-chip">Daily verbs</span>
+            <span class="meta-chip">毎日</span>
+          </div>
+
+          <div class="goal-box">
+            <strong>Mục tiêu hôm nay</strong>
+            <p>
+              Sau bài này, bạn có thể nói
+              <span class="jp-inline">七時に起きます。</span>,
+              <span class="jp-inline">八時に会社へ行きます。</span>,
+              và nối 5–7 câu thành một đoạn routine khoảng <strong>45–60 giây</strong>.
+            </p>
+          </div>
+
+          <div class="display-panel">
+            <div class="display-title">表示 · Hiển thị</div>
+            <div class="display-toggles">
+              <button class="toggle-btn active" data-toggle="furigana">Furigana</button>
+              <button class="toggle-btn active" data-toggle="romaji">Romaji</button>
+              <button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="container lesson-layout">
+      <aside class="toc">
+        <div class="toc-title">Trong bài này</div>
+        <a href="#warmup">01 · Warm-up</a>
+        <a href="#conversation">02 · Main Conversation</a>
+        <a href="#understand">03 · Hiểu cấu trúc</a>
+        <a href="#verbs">04 · Daily Verbs</a>
+        <a href="#time-ni">05 · Time + に</a>
+        <a href="#objects">06 · を with Actions</a>
+        <a href="#movement">07 · Going Places</a>
+        <a href="#expressions">08 · Key Expressions</a>
+        <a href="#natural">09 · Natural Japanese</a>
+        <a href="#listening">10 · Listening Ladder</a>
+        <a href="#builder">11 · Routine Builder</a>
+        <a href="#speaking">12 · Speaking</a>
+        <a href="#roleplay">13 · Mini Role-play</a>
+        <a href="#quiz">14 · Mini Quiz</a>
+        <a href="#mission">15 · Today's Mission</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="section-card" id="warmup">
+          <div class="section-kicker">01 · Warm-up</div>
+          <h2>Ôn Day 11: nói giờ trước, rồi gắn hành động vào</h2>
+          <p class="section-intro">
+            Nghe và đọc nhanh 3 mốc giờ. Hôm nay mỗi mốc giờ sẽ được nối với một hành động.
+          </p>
+
+          <div class="warmup-grid">
+            <div class="warmup-item">
+              <div class="jp"><ruby>七時<rt>しちじ</rt></ruby>です。</div>
+              <div class="romaji">Shichiji desu.</div>
+              <div class="vi">7 giờ.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('七時です。',1)">▶ Nghe</button></div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp"><ruby>八時半<rt>はちじはん</rt></ruby>です。</div>
+              <div class="romaji">Hachiji-han desu.</div>
+              <div class="vi">8 giờ rưỡi.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('八時半です。',1)">▶ Nghe</button></div>
+            </div>
+
+            <div class="warmup-item">
+              <div class="jp"><ruby>午後六時<rt>ごごろくじ</rt></ruby>です。</div>
+              <div class="romaji">Gogo rokuji desu.</div>
+              <div class="vi">6 giờ chiều.</div>
+              <div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('午後六時です。',1)">▶ Nghe</button></div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Day 11 trả lời “mấy giờ”; Day 12 trả lời “mấy giờ làm gì”</strong>
+            <span class="jp-inline">七時です。</span> → 7 giờ.<br>
+            <span class="jp-inline">七時に起きます。</span> → Tôi thức dậy lúc 7 giờ.
+          </div>
+        </section>
+
+        <section class="section-card" id="conversation">
+          <div class="section-kicker">02 · Main Conversation</div>
+          <h2>Một ngày bình thường của bạn thế nào?</h2>
+          <p class="section-intro">
+            Nghe toàn đoạn trước. Hãy bắt <strong>mốc giờ</strong> và <strong>động từ cuối câu</strong>.
+            Đây là hai phần giúp bạn hiểu nhanh nhất.
+          </p>
+
+          <div class="audio-controls">
+            <button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button>
+            <button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button>
+            <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+          </div>
+          <div class="audio-status" id="audioStatus"></div>
+
+          <div class="dialogue-shell" style="margin-top:16px;">
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line"><ruby>毎日<rt>まいにち</rt></ruby>、<ruby>何時<rt>なんじ</rt></ruby>に<ruby>起<rt>お</rt></ruby>きますか。</div>
+                <div class="romaji">Mainichi, nanji ni okimasu ka?</div>
+                <div class="vi line-note">Mỗi ngày bạn thức dậy lúc mấy giờ?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('毎日、何時に起きますか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line"><ruby>七時<rt>しちじ</rt></ruby>に<ruby>起<rt>お</rt></ruby>きます。</div>
+                <div class="romaji">Shichiji ni okimasu.</div>
+                <div class="vi line-note">Tôi thức dậy lúc 7 giờ.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('七時に起きます。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line"><ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>は？</div>
+                <div class="romaji">Asagohan wa?</div>
+                <div class="vi line-note">Còn bữa sáng?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('朝ご飯は？',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line"><ruby>七時半<rt>しちじはん</rt></ruby>に<ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べます。</div>
+                <div class="romaji">Shichiji-han ni asagohan o tabemasu.</div>
+                <div class="vi line-note">Tôi ăn sáng lúc 7 giờ rưỡi.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('七時半に朝ご飯を食べます。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line"><ruby>何時<rt>なんじ</rt></ruby>に<ruby>会社<rt>かいしゃ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きますか。</div>
+                <div class="romaji">Nanji ni kaisha e ikimasu ka?</div>
+                <div class="vi line-note">Bạn đi đến công ty lúc mấy giờ?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('何時に会社へ行きますか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line"><ruby>八時<rt>はちじ</rt></ruby>に<ruby>会社<rt>かいしゃ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。<ruby>九時<rt>くじ</rt></ruby>から<ruby>働<rt>はたら</rt></ruby>きます。</div>
+                <div class="romaji">Hachiji ni kaisha e ikimasu. Kuji kara hatarakimasu.</div>
+                <div class="vi line-note">Tôi đi công ty lúc 8 giờ. Làm việc từ 9 giờ.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('八時に会社へ行きます。九時から働きます。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">A</div>
+              <div>
+                <div class="jp-line"><ruby>何時<rt>なんじ</rt></ruby>に<ruby>家<rt>いえ</rt></ruby>へ<ruby>帰<rt>かえ</rt></ruby>りますか。</div>
+                <div class="romaji">Nanji ni ie e kaerimasu ka?</div>
+                <div class="vi line-note">Bạn về nhà lúc mấy giờ?</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('何時に家へ帰りますか。',1)">▶</button>
+            </div>
+
+            <div class="dialogue-line">
+              <div class="speaker">B</div>
+              <div>
+                <div class="jp-line"><ruby>午後七時<rt>ごごしちじ</rt></ruby>ごろ<ruby>帰<rt>かえ</rt></ruby>ります。<ruby>十一時<rt>じゅういちじ</rt></ruby>に<ruby>寝<rt>ね</rt></ruby>ます。</div>
+                <div class="romaji">Gogo shichiji goro kaerimasu. Jūichiji ni nemasu.</div>
+                <div class="vi line-note">Tôi về khoảng 7 giờ tối. Tôi ngủ lúc 11 giờ.</div>
+              </div>
+              <button class="line-audio" onclick="speakJapanese('午後七時ごろ帰ります。十一時に寝ます。',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Khi nghe routine, hãy nghe động từ cuối câu</strong>
+            Tiếng Nhật thường đặt động từ ở cuối:
+            <span class="jp-inline">起きます・食べます・行きます・働きます・帰ります・寝ます</span>.
+            Nếu nghe được động từ cuối, bạn đã nắm được hành động chính.
+          </div>
+        </section>
+
+        <section class="section-card" id="understand">
+          <div class="section-kicker">03 · Understand the Structure</div>
+          <h2>Câu routine cơ bản = Time + に + Action</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">七時 に 起きます</div>
+            <p>
+              <span class="jp-inline">七時</span> = 7 giờ<br>
+              <span class="jp-inline">に</span> = đánh dấu mốc thời gian cụ thể<br>
+              <span class="jp-inline">起きます</span> = thức dậy
+              <br><br>
+              → <strong>Tôi thức dậy lúc 7 giờ.</strong>
+            </p>
+          </div>
+
+          <div class="breakdown">
+            <div class="break-row">
+              <div class="break-label">Time</div>
+              <div>七時・八時半・午後六時…</div>
+            </div>
+            <div class="break-row">
+              <div class="break-label">に</div>
+              <div>“tại/lúc” một mốc thời gian cụ thể.</div>
+            </div>
+            <div class="break-row">
+              <div class="break-label">Verb</div>
+              <div>起きます・食べます・行きます…</div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Hãy nghĩ に như một chiếc ghim trên timeline</strong>
+            <strong>7:00</strong> 📍 → 起きます<br>
+            <strong>8:00</strong> 📍 → 会社へ行きます<br>
+            Mốc càng cụ thể, cảm giác dùng に càng rõ.
+          </div>
+        </section>
+
+        <section class="section-card" id="verbs">
+          <div class="section-kicker">04 · Daily Verbs</div>
+          <h2>12 từ/cụm cho routine hàng ngày</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>起<rt>お</rt></ruby>きます</div><div class="romaji vocab-reading">okimasu</div><div class="vi vocab-vi">thức dậy</div></div>
+              <button class="line-audio" onclick="speakJapanese('起きます',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>寝<rt>ね</rt></ruby>ます</div><div class="romaji vocab-reading">nemasu</div><div class="vi vocab-vi">ngủ / đi ngủ</div></div>
+              <button class="line-audio" onclick="speakJapanese('寝ます',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>食<rt>た</rt></ruby>べます</div><div class="romaji vocab-reading">tabemasu</div><div class="vi vocab-vi">ăn</div></div>
+              <button class="line-audio" onclick="speakJapanese('食べます',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>飲<rt>の</rt></ruby>みます</div><div class="romaji vocab-reading">nomimasu</div><div class="vi vocab-vi">uống</div></div>
+              <button class="line-audio" onclick="speakJapanese('飲みます',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>行<rt>い</rt></ruby>きます</div><div class="romaji vocab-reading">ikimasu</div><div class="vi vocab-vi">đi</div></div>
+              <button class="line-audio" onclick="speakJapanese('行きます',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>帰<rt>かえ</rt></ruby>ります</div><div class="romaji vocab-reading">kaerimasu</div><div class="vi vocab-vi">về / trở về</div></div>
+              <button class="line-audio" onclick="speakJapanese('帰ります',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>働<rt>はたら</rt></ruby>きます</div><div class="romaji vocab-reading">hatarakimasu</div><div class="vi vocab-vi">làm việc</div></div>
+              <button class="line-audio" onclick="speakJapanese('働きます',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>勉強<rt>べんきょう</rt></ruby>します</div><div class="romaji vocab-reading">benkyō shimasu</div><div class="vi vocab-vi">học</div></div>
+              <button class="line-audio" onclick="speakJapanese('勉強します',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby></div><div class="romaji vocab-reading">asagohan</div><div class="vi vocab-vi">bữa sáng</div></div>
+              <button class="line-audio" onclick="speakJapanese('朝ご飯',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>昼<rt>ひる</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby></div><div class="romaji vocab-reading">hirugohan</div><div class="vi vocab-vi">bữa trưa</div></div>
+              <button class="line-audio" onclick="speakJapanese('昼ご飯',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>晩<rt>ばん</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby></div><div class="romaji vocab-reading">bangohan</div><div class="vi vocab-vi">bữa tối</div></div>
+              <button class="line-audio" onclick="speakJapanese('晩ご飯',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>毎日<rt>まいにち</rt></ruby></div><div class="romaji vocab-reading">mainichi</div><div class="vi vocab-vi">mỗi ngày</div></div>
+              <button class="line-audio" onclick="speakJapanese('毎日',1)">▶</button>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Động từ lịch sự thường kết thúc bằng ます</strong>
+            Day 12 chưa cần chia hết các dạng động từ.
+            Trước hết, hãy nhận diện <strong>〜ます</strong> như dạng lịch sự dùng trong hội thoại cơ bản.
+          </div>
+        </section>
+
+        <section class="section-card" id="time-ni">
+          <div class="section-kicker">05 · Time + に</div>
+          <h2>Khi nào dùng に, khi nào không cần?</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">Mốc giờ cụ thể + に</div>
+            <p>
+              <span class="jp-inline">七時に起きます。</span><br>
+              <span class="jp-inline">八時半に朝ご飯を食べます。</span><br>
+              <span class="jp-inline">十一時に寝ます。</span>
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">毎日 thường không cần に</div>
+            <p>
+              <span class="jp-inline">毎日、七時に起きます。</span><br>
+              Không nói <span class="jp-inline">毎日に</span> trong mẫu routine cơ bản này.
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">今日 / 明日 cũng thường không dùng に</div>
+            <p>
+              Những từ thời gian tương đối như
+              <span class="jp-inline">今日</span> (hôm nay),
+              <span class="jp-inline">明日</span> (ngày mai),
+              <span class="jp-inline">昨日</span> (hôm qua)
+              thường đứng trực tiếp, không cần に.
+            </p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ Đừng biến “time = luôn luôn + に”</strong>
+            Hãy nhớ mức N5 thực dụng:
+            <strong>giờ cụ thể → thường dùng に</strong>.<br>
+            <strong>毎日 / 今日 / 明日 → thường không dùng に</strong>.
+          </div>
+        </section>
+
+        <section class="section-card" id="objects">
+          <div class="section-kicker">06 · を with Actions</div>
+          <h2>食べます・飲みます cần biết “ăn/uống cái gì”</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">Object + を + Verb</div>
+            <p>
+              <span class="jp-inline">朝ご飯を食べます。</span> = ăn sáng<br>
+              <span class="jp-inline">コーヒーを飲みます。</span> = uống cà phê<br>
+              <span class="jp-inline">日本語を勉強します。</span> = học tiếng Nhật
+            </p>
+          </div>
+
+          <div class="breakdown">
+            <div class="break-row">
+              <div class="break-label">朝ご飯</div>
+              <div>đối tượng của hành động: bữa sáng</div>
+            </div>
+            <div class="break-row">
+              <div class="break-label">を</div>
+              <div>đánh dấu đối tượng trực tiếp của hành động</div>
+            </div>
+            <div class="break-row">
+              <div class="break-label">食べます</div>
+              <div>ăn</div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Với Day 12, hãy nhớ các “cặp tự nhiên”</strong>
+            <span class="jp-inline">朝ご飯を食べます</span><br>
+            <span class="jp-inline">コーヒーを飲みます</span><br>
+            <span class="jp-inline">日本語を勉強します</span>
+          </div>
+        </section>
+
+        <section class="section-card" id="movement">
+          <div class="section-kicker">07 · Going Places</div>
+          <h2>Place + へ + 行きます</h2>
+
+          <div class="grammar-rule">
+            <div class="rule-form">会社へ行きます</div>
+            <p>
+              <span class="jp-inline">会社</span> = công ty<br>
+              <span class="jp-inline">へ</span> = hướng đến / tới<br>
+              <span class="jp-inline">行きます</span> = đi
+              <br><br>
+              → <strong>Đi đến công ty.</strong>
+            </p>
+          </div>
+
+          <div class="grammar-rule">
+            <div class="rule-form">家へ帰ります</div>
+            <p>
+              <span class="jp-inline">家へ帰ります。</span>
+              = về nhà.
+            </p>
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ へ viết “he” nhưng đọc “e” khi là trợ từ</strong>
+            <span class="jp-inline">会社へ行きます</span>
+            đọc là <strong>かいしゃ え いきます</strong>.
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 に cũng có thể đánh dấu đích đến</strong>
+            Bạn sẽ gặp cả
+            <span class="jp-inline">会社に行きます</span>
+            và <span class="jp-inline">会社へ行きます</span>.
+            Ở Day 12, dùng <strong>へ</strong> để cảm nhận rõ ý “hướng đến”.
+          </div>
+        </section>
+
+        <section class="section-card" id="expressions">
+          <div class="section-kicker">08 · Key Expressions</div>
+          <h2>8 mẫu câu cần phản xạ</h2>
+
+          <div class="vocab-grid">
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>何時<rt>なんじ</rt></ruby>に<ruby>起<rt>お</rt></ruby>きますか。</div><div class="romaji vocab-reading">Nanji ni okimasu ka?</div><div class="vi vocab-vi">Bạn thức dậy lúc mấy giờ?</div></div>
+              <button class="line-audio" onclick="speakJapanese('何時に起きますか。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>七時<rt>しちじ</rt></ruby>に<ruby>起<rt>お</rt></ruby>きます。</div><div class="romaji vocab-reading">Shichiji ni okimasu.</div><div class="vi vocab-vi">Tôi thức dậy lúc 7 giờ.</div></div>
+              <button class="line-audio" onclick="speakJapanese('七時に起きます。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>七時半<rt>しちじはん</rt></ruby>に<ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べます。</div><div class="romaji vocab-reading">Shichiji-han ni asagohan o tabemasu.</div><div class="vi vocab-vi">Tôi ăn sáng lúc 7:30.</div></div>
+              <button class="line-audio" onclick="speakJapanese('七時半に朝ご飯を食べます。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>八時<rt>はちじ</rt></ruby>に<ruby>会社<rt>かいしゃ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。</div><div class="romaji vocab-reading">Hachiji ni kaisha e ikimasu.</div><div class="vi vocab-vi">Tôi đi công ty lúc 8 giờ.</div></div>
+              <button class="line-audio" onclick="speakJapanese('八時に会社へ行きます。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>九時<rt>くじ</rt></ruby>から<ruby>働<rt>はたら</rt></ruby>きます。</div><div class="romaji vocab-reading">Kuji kara hatarakimasu.</div><div class="vi vocab-vi">Tôi làm việc từ 9 giờ.</div></div>
+              <button class="line-audio" onclick="speakJapanese('九時から働きます。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>午後七時<rt>ごごしちじ</rt></ruby>ごろ<ruby>家<rt>いえ</rt></ruby>へ<ruby>帰<rt>かえ</rt></ruby>ります。</div><div class="romaji vocab-reading">Gogo shichiji goro ie e kaerimasu.</div><div class="vi vocab-vi">Tôi về nhà khoảng 7 giờ tối.</div></div>
+              <button class="line-audio" onclick="speakJapanese('午後七時ごろ家へ帰ります。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>十一時<rt>じゅういちじ</rt></ruby>に<ruby>寝<rt>ね</rt></ruby>ます。</div><div class="romaji vocab-reading">Jūichiji ni nemasu.</div><div class="vi vocab-vi">Tôi đi ngủ lúc 11 giờ.</div></div>
+              <button class="line-audio" onclick="speakJapanese('十一時に寝ます。',1)">▶</button>
+            </div>
+
+            <div class="vocab-card">
+              <div><div class="vocab-jp"><ruby>毎日<rt>まいにち</rt></ruby>、<ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>します。</div><div class="romaji vocab-reading">Mainichi, Nihongo o benkyō shimasu.</div><div class="vi vocab-vi">Mỗi ngày tôi học tiếng Nhật.</div></div>
+              <button class="line-audio" onclick="speakJapanese('毎日、日本語を勉強します。',1)">▶</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="natural">
+          <div class="section-kicker">09 · Natural Japanese</div>
+          <h2>Đừng biến routine thành một chuỗi 私は...</h2>
+
+          <div class="explain-grid">
+            <div class="explain-card">
+              <h3>Máy móc</h3>
+              <p>
+                私は七時に起きます。<br>
+                私は七時半に朝ご飯を食べます。<br>
+                私は八時に会社へ行きます。
+              </p>
+            </div>
+
+            <div class="explain-card">
+              <h3>Tự nhiên hơn</h3>
+              <p>
+                七時に起きます。<br>
+                七時半に朝ご飯を食べます。<br>
+                八時に会社へ行きます。
+              </p>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Chủ ngữ đã rõ thì bỏ</strong>
+            Khi cả đoạn đang nói về routine của bạn,
+            lặp <span class="jp-inline">私は</span> trước từng câu nghe nặng và không cần thiết.
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Mỗi câu routine chỉ cần nghe 2 thứ</strong>
+            <strong>WHEN?</strong> → thời gian<br>
+            <strong>WHAT?</strong> → động từ cuối câu
+          </div>
+
+          <div class="tip warning">
+            <strong>⚠ 9 giờ = くじ</strong>
+            Vì Day 12 dùng <span class="jp-inline">九時から働きます</span>,
+            đừng quay lại cách đọc số thường <em>きゅうじ</em>.
+          </div>
+        </section>
+
+        <section class="section-card" id="listening">
+          <div class="section-kicker">10 · Listening Ladder</div>
+          <h2>Nghe thời gian + hành động như một khối</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 1 · Wake up</div>
+            <button class="audio-btn primary" onclick="speakJapanese('七時に起きます。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Ngủ lúc 7 giờ</button>
+              <button class="choice-btn" data-value="b">B. Thức dậy lúc 7 giờ</button>
+              <button class="choice-btn" data-value="c">C. Ăn sáng lúc 7 giờ</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 2 · Breakfast</div>
+            <button class="audio-btn primary" onclick="speakJapanese('七時半に朝ご飯を食べます。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Uống cà phê lúc 7:30</button>
+              <button class="choice-btn" data-value="b">B. Đi làm lúc 7:30</button>
+              <button class="choice-btn" data-value="c">C. Ăn sáng lúc 7:30</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 3 · Work start</div>
+            <button class="audio-btn primary" onclick="speakJapanese('九時から働きます。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="a">
+              <button class="choice-btn" data-value="a">A. Làm việc từ 9 giờ</button>
+              <button class="choice-btn" data-value="b">B. Về nhà lúc 9 giờ</button>
+              <button class="choice-btn" data-value="c">C. Ngủ lúc 9 giờ</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 4 · Destination</div>
+            <button class="audio-btn primary" onclick="speakJapanese('八時に会社へ行きます。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="b">
+              <button class="choice-btn" data-value="a">A. Về nhà lúc 8 giờ</button>
+              <button class="choice-btn" data-value="b">B. Đi công ty lúc 8 giờ</button>
+              <button class="choice-btn" data-value="c">C. Làm việc từ 8 giờ</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Listening 5 · Two actions</div>
+            <button class="audio-btn primary" onclick="speakJapanese('午後七時ごろ帰ります。十一時に寝ます。',1)">▶ Nghe</button>
+            <div class="choices" data-answer="c">
+              <button class="choice-btn" data-value="a">A. Về lúc 11 giờ, ngủ lúc 7 giờ tối</button>
+              <button class="choice-btn" data-value="b">B. Làm việc lúc 7 giờ, về lúc 11 giờ</button>
+              <button class="choice-btn" data-value="c">C. Về khoảng 7 giờ tối, ngủ lúc 11 giờ</button>
+            </div><div class="feedback"></div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Shadowing mini</div>
+            <p class="vi">Nghe → nhắc lại ngay. Đừng ngắt sau từng từ; nói theo cụm thời gian + hành động.</p>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="speakJapanese('七時に起きます。七時半に朝ご飯を食べます。八時に会社へ行きます。九時から働きます。午後七時ごろ帰ります。十一時に寝ます。',.76)">🐢 Slow</button>
+              <button class="audio-btn primary" onclick="speakJapanese('七時に起きます。七時半に朝ご飯を食べます。八時に会社へ行きます。九時から働きます。午後七時ごろ帰ります。十一時に寝ます。',1)">▶ Natural</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="builder">
+          <div class="section-kicker">11 · Routine Builder</div>
+          <h2>Xây một ngày theo timeline</h2>
+
+          <div class="breakdown">
+            <div class="break-row">
+              <div class="break-label">07:00</div>
+              <div>
+                七時 + に + 起きます → <strong>七時に起きます。</strong>
+                <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('七時に起きます。',1)">▶</button>
+              </div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">07:30</div>
+              <div>
+                七時半 + に + 朝ご飯を食べます → <strong>七時半に朝ご飯を食べます。</strong>
+                <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('七時半に朝ご飯を食べます。',1)">▶</button>
+              </div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">08:00</div>
+              <div>
+                八時 + に + 会社へ行きます → <strong>八時に会社へ行きます。</strong>
+                <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('八時に会社へ行きます。',1)">▶</button>
+              </div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">09:00</div>
+              <div>
+                九時 + から + 働きます → <strong>九時から働きます。</strong>
+                <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('九時から働きます。',1)">▶</button>
+              </div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">19:00</div>
+              <div>
+                午後七時 + ごろ + 帰ります → <strong>午後七時ごろ帰ります。</strong>
+                <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('午後七時ごろ帰ります。',1)">▶</button>
+              </div>
+            </div>
+
+            <div class="break-row">
+              <div class="break-label">23:00</div>
+              <div>
+                十一時 + に + 寝ます → <strong>十一時に寝ます。</strong>
+                <button class="audio-btn" style="margin-left:8px;" onclick="speakJapanese('十一時に寝ます。',1)">▶</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tip memory">
+            <strong>💡 Xây theo timeline dễ hơn nhớ đoạn văn</strong>
+            Bạn chỉ cần nhớ 6 “điểm ghim” trong ngày.
+            Mỗi điểm ghim = <strong>thời gian + hành động</strong>.
+          </div>
+        </section>
+
+        <section class="section-card" id="speaking">
+          <div class="section-kicker">12 · Speaking Practice</div>
+          <h2>Tự nói trước khi mở đáp án</h2>
+
+          <div class="speaking-grid">
+            <div class="speaking-card">
+              <div class="prompt">1. “Tôi thức dậy lúc 6 giờ.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a1')">Xem đáp án</button>
+              <div class="answer" id="a1">
+                <div class="jp"><ruby>六時<rt>ろくじ</rt></ruby>に<ruby>起<rt>お</rt></ruby>きます。</div>
+                <div class="romaji">Rokuji ni okimasu.</div>
+                <button class="audio-btn" onclick="speakJapanese('六時に起きます。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">2. “Tôi ăn sáng lúc 7 giờ rưỡi.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a2')">Xem đáp án</button>
+              <div class="answer" id="a2">
+                <div class="jp"><ruby>七時半<rt>しちじはん</rt></ruby>に<ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べます。</div>
+                <div class="romaji">Shichiji-han ni asagohan o tabemasu.</div>
+                <button class="audio-btn" onclick="speakJapanese('七時半に朝ご飯を食べます。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">3. “Tôi đi công ty lúc 8 giờ.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a3')">Xem đáp án</button>
+              <div class="answer" id="a3">
+                <div class="jp"><ruby>八時<rt>はちじ</rt></ruby>に<ruby>会社<rt>かいしゃ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。</div>
+                <div class="romaji">Hachiji ni kaisha e ikimasu.</div>
+                <button class="audio-btn" onclick="speakJapanese('八時に会社へ行きます。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">4. “Tôi làm việc từ 9 giờ.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a4')">Xem đáp án</button>
+              <div class="answer" id="a4">
+                <div class="jp"><ruby>九時<rt>くじ</rt></ruby>から<ruby>働<rt>はたら</rt></ruby>きます。</div>
+                <div class="romaji">Kuji kara hatarakimasu.</div>
+                <button class="audio-btn" onclick="speakJapanese('九時から働きます。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">5. “Tôi về nhà khoảng 7 giờ tối.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a5')">Xem đáp án</button>
+              <div class="answer" id="a5">
+                <div class="jp"><ruby>午後七時<rt>ごごしちじ</rt></ruby>ごろ<ruby>家<rt>いえ</rt></ruby>へ<ruby>帰<rt>かえ</rt></ruby>ります。</div>
+                <div class="romaji">Gogo shichiji goro ie e kaerimasu.</div>
+                <button class="audio-btn" onclick="speakJapanese('午後七時ごろ家へ帰ります。',1)">▶ Nghe</button>
+              </div>
+            </div>
+
+            <div class="speaking-card">
+              <div class="prompt">6. “Mỗi ngày tôi học tiếng Nhật.”</div>
+              <button class="audio-btn" onclick="toggleAnswer('a6')">Xem đáp án</button>
+              <div class="answer" id="a6">
+                <div class="jp"><ruby>毎日<rt>まいにち</rt></ruby>、<ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>します。</div>
+                <div class="romaji">Mainichi, Nihongo o benkyō shimasu.</div>
+                <button class="audio-btn" onclick="speakJapanese('毎日、日本語を勉強します。',1)">▶ Nghe</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="roleplay">
+          <div class="section-kicker">13 · Mini Role-play</div>
+          <h2>Nghe câu hỏi → trả lời bằng routine của bạn</h2>
+
+          <div class="practice-box">
+            <div class="practice-title">Role-play A · Wake up</div>
+            <p class="vi">Trả lời bằng giờ thật hoặc giờ giả định.</p>
+            <button class="audio-btn primary" onclick="speakJapanese('毎日、何時に起きますか。',1)">▶ Hỏi</button>
+            <button class="audio-btn" onclick="toggleAnswer('r1')">Xem mẫu</button>
+            <div class="answer" id="r1">
+              <div class="jp">例：七時に起きます。</div>
+            </div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Role-play B · Breakfast</div>
+            <button class="audio-btn primary" onclick="speakJapanese('何時に朝ご飯を食べますか。',1)">▶ Hỏi</button>
+            <button class="audio-btn" onclick="toggleAnswer('r2')">Xem mẫu</button>
+            <div class="answer" id="r2">
+              <div class="jp">例：七時半に朝ご飯を食べます。</div>
+            </div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Role-play C · Go to work/school</div>
+            <button class="audio-btn primary" onclick="speakJapanese('何時に会社へ行きますか。',1)">▶ Hỏi</button>
+            <button class="audio-btn" onclick="toggleAnswer('r3')">Xem mẫu</button>
+            <div class="answer" id="r3">
+              <div class="jp">例：八時に会社へ行きます。</div>
+            </div>
+          </div>
+
+          <div class="practice-box">
+            <div class="practice-title">Role-play D · Bedtime</div>
+            <button class="audio-btn primary" onclick="speakJapanese('何時に寝ますか。',1)">▶ Hỏi</button>
+            <button class="audio-btn" onclick="toggleAnswer('r4')">Xem mẫu</button>
+            <div class="answer" id="r4">
+              <div class="jp">例：十一時に寝ます。</div>
+            </div>
+          </div>
+
+          <div class="tip real">
+            <strong>🇯🇵 Nếu người kia đã hỏi “何時に…”, bạn chỉ cần trả lời ngắn</strong>
+            <span class="jp-inline">七時です。</span> đôi khi đủ theo ngữ cảnh,
+            nhưng để luyện đúng pattern hôm nay, ưu tiên
+            <span class="jp-inline">七時に起きます。</span>.
+          </div>
+        </section>
+
+        <section class="section-card" id="quiz">
+          <div class="section-kicker">14 · Mini Quiz</div>
+          <h2>Kiểm tra nhanh Day 12</h2>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>1. “Tôi thức dậy lúc 7 giờ” là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 七時を起きます。</button>
+              <button class="choice-btn" data-value="b">B. 七時に起きます。</button>
+              <button class="choice-btn" data-value="c">C. 七時へ起きます。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>2. 毎日 đi với に thế nào trong routine cơ bản?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. Thường không cần に</button>
+              <button class="choice-btn" data-value="b">B. Luôn phải có に</button>
+              <button class="choice-btn" data-value="c">C. Luôn dùng を</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>3. “Ăn sáng” là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 朝ご飯に食べます</button>
+              <button class="choice-btn" data-value="b">B. 朝ご飯へ食べます</button>
+              <button class="choice-btn" data-value="c">C. 朝ご飯を食べます</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>4. 会社へ行きます nghĩa là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. Làm việc ở công ty</button>
+              <button class="choice-btn" data-value="b">B. Đi đến công ty</button>
+              <button class="choice-btn" data-value="c">C. Về từ công ty</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>5. へ khi là trợ từ đọc là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. e</button>
+              <button class="choice-btn" data-value="b">B. he</button>
+              <button class="choice-btn" data-value="c">C. wa</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="c">
+            <h3>6. 九時から働きます nghĩa là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. Làm việc đến 9 giờ</button>
+              <button class="choice-btn" data-value="b">B. Đi làm lúc 9 giờ</button>
+              <button class="choice-btn" data-value="c">C. Làm việc từ 9 giờ</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="b">
+            <h3>7. “Tôi đi ngủ lúc 11 giờ” là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 十一時に起きます。</button>
+              <button class="choice-btn" data-value="b">B. 十一時に寝ます。</button>
+              <button class="choice-btn" data-value="c">C. 十一時に帰ります。</button>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-answer="a">
+            <h3>8. “Mỗi ngày tôi học tiếng Nhật” là?</h3>
+            <div class="choices">
+              <button class="choice-btn" data-value="a">A. 毎日、日本語を勉強します。</button>
+              <button class="choice-btn" data-value="b">B. 毎日に日本語へ勉強します。</button>
+              <button class="choice-btn" data-value="c">C. 毎日を日本語に勉強します。</button>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button>
+            <button class="audio-btn" onclick="resetQuiz()">Làm lại</button>
+          </div>
+
+          <div class="score-box" id="scoreBox"></div>
+        </section>
+
+        <section class="section-card mission-card" id="mission">
+          <div class="section-kicker">15 · Today's Mission</div>
+          <h2>60-second Daily Routine</h2>
+          <p class="section-intro">
+            Nói 6–8 câu về một ngày của bạn. Không cần đúng 100% lịch thật; mục tiêu là phản xạ cấu trúc.
+          </p>
+
+          <div class="mission-lines">
+            <div class="mission-line">
+              <div class="vi">1. Giờ thức dậy.</div>
+              <div class="jp">七時に起きます。</div>
+            </div>
+            <div class="mission-line">
+              <div class="vi">2. Giờ ăn sáng.</div>
+              <div class="jp">七時半に朝ご飯を食べます。</div>
+            </div>
+            <div class="mission-line">
+              <div class="vi">3. Giờ đi làm/đi học.</div>
+              <div class="jp">八時に会社へ行きます。</div>
+            </div>
+            <div class="mission-line">
+              <div class="vi">4. Giờ bắt đầu làm việc/học.</div>
+              <div class="jp">九時から働きます。</div>
+            </div>
+            <div class="mission-line">
+              <div class="vi">5. Giờ về nhà.</div>
+              <div class="jp">午後七時ごろ家へ帰ります。</div>
+            </div>
+            <div class="mission-line">
+              <div class="vi">6. Một hoạt động buổi tối.</div>
+              <div class="jp">日本語を勉強します。</div>
+            </div>
+            <div class="mission-line">
+              <div class="vi">7. Giờ đi ngủ.</div>
+              <div class="jp">十一時に寝ます。</div>
+            </div>
+          </div>
+
+          <div class="audio-controls">
+            <button class="audio-btn" onclick="speakJapanese('毎日、七時に起きます。七時半に朝ご飯を食べます。八時に会社へ行きます。九時から働きます。午後七時ごろ家へ帰ります。日本語を勉強します。十一時に寝ます。',.76)">🐢 Slow model</button>
+            <button class="audio-btn primary" onclick="speakJapanese('毎日、七時に起きます。七時半に朝ご飯を食べます。八時に会社へ行きます。九時から働きます。午後七時ごろ家へ帰ります。日本語を勉強します。十一時に寝ます。',1)">▶ Natural model</button>
+          </div>
+
+          <div class="complete-box">
+            <p id="completeMessage" style="margin-top:0;color:var(--muted);">
+              Khi bạn có thể nói 45–60 giây về routine, dùng đúng time + に, を và へ trong các mẫu hôm nay, hãy hoàn thành Day 12.
+            </p>
+            <button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 12</button>
+          </div>
+        </section>
+
+        <div class="day-nav">
+          <a href="day11.html">← Day 11 · What Time Is It?</a>
+          <a class="next" href="day13.html">Day 13 · Morning to Evening →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><span class="footer-brand">🌸 Nihongo 90</span> · Day 12</div>
+      <div>Daily Life · Build your day.</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DAY_KEY = "n5-day-12";
+    const FAVORITE_KEY = "n5-favorite-day-12";
+    const DISPLAY_KEY = "nihongo90-display";
+
+    const dialogueLines = [
+      "毎日、何時に起きますか。",
+      "七時に起きます。",
+      "朝ご飯は？",
+      "七時半に朝ご飯を食べます。",
+      "何時に会社へ行きますか。",
+      "八時に会社へ行きます。九時から働きます。",
+      "何時に家へ帰りますか。",
+      "午後七時ごろ帰ります。十一時に寝ます。"
+    ];
+
+    let voiceCache = [];
+    let japaneseVoice = null;
+    let dialogueRunId = 0;
+    let playToken = 0;
+
+    function setupMenu() {
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "✕" : "☰";
+      });
+    }
+
+    function loadDisplaySettings() {
+      let saved = { furigana: true, romaji: true, vi: true };
+      try {
+        const parsed = JSON.parse(localStorage.getItem(DISPLAY_KEY));
+        if (parsed && typeof parsed === "object") saved = { ...saved, ...parsed };
+      } catch (_) {}
+      applyDisplaySettings(saved);
+    }
+
+    function applyDisplaySettings(settings) {
+      document.body.classList.toggle("hide-furigana", !settings.furigana);
+      document.body.classList.toggle("hide-romaji", !settings.romaji);
+      document.body.classList.toggle("hide-vi", !settings.vi);
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.classList.toggle("active", !!settings[btn.dataset.toggle]);
+      });
+      localStorage.setItem(DISPLAY_KEY, JSON.stringify(settings));
+    }
+
+    function setupDisplayToggles() {
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          let saved = { furigana: true, romaji: true, vi: true };
+          try { saved = { ...saved, ...JSON.parse(localStorage.getItem(DISPLAY_KEY)) }; } catch (_) {}
+          const key = btn.dataset.toggle;
+          saved[key] = !saved[key];
+          applyDisplaySettings(saved);
+        });
+      });
+    }
+
+    function loadVoices() {
+      if (!("speechSynthesis" in window)) return;
+      voiceCache = speechSynthesis.getVoices() || [];
+      japaneseVoice = pickJapaneseVoice();
+    }
+
+    function pickJapaneseVoice() {
+      const voices = voiceCache.filter(v => /^ja(-|_)?JP/i.test(v.lang) || /^ja/i.test(v.lang));
+      if (!voices.length) return null;
+      const preferred = ["Kyoko","Otoya","Nanami","Keita","Haruka","Google 日本語","Microsoft Nanami","Microsoft Keita","Natural","Premium","Enhanced"];
+      for (const name of preferred) {
+        const found = voices.find(v => v.name.toLowerCase().includes(name.toLowerCase()));
+        if (found) return found;
+      }
+      return voices[0];
+    }
+
+    async function ensureVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      loadVoices();
+      if (japaneseVoice) return japaneseVoice;
+      for (const delay of [120,220,360,520]) {
+        await new Promise(r => setTimeout(r, delay));
+        loadVoices();
+        if (japaneseVoice) return japaneseVoice;
+      }
+      return null;
+    }
+
+    function setAudioStatus(text) {
+      const el = document.getElementById("audioStatus");
+      if (el) el.textContent = text || "";
+    }
+
+    function stopAudio() {
+      dialogueRunId++;
+      playToken++;
+      if ("speechSynthesis" in window) {
+        try { speechSynthesis.cancel(); speechSynthesis.resume(); } catch (_) {}
+      }
+      setAudioStatus("");
+    }
+
+    async function speakOne(text, rate = 1, status = true) {
+      if (!("speechSynthesis" in window)) {
+        showToast("Trình duyệt này không hỗ trợ Japanese TTS.");
+        return;
+      }
+      const voice = await ensureVoice();
+      const token = ++playToken;
+      try { speechSynthesis.cancel(); speechSynthesis.resume(); } catch (_) {}
+      await new Promise(r => setTimeout(r,70));
+      if (token !== playToken) return;
+
+      return new Promise(resolve => {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = "ja-JP";
+        u.rate = rate < 1 ? Math.max(.65,rate) : .92;
+        u.pitch = 1;
+        u.volume = 1;
+        if (voice) u.voice = voice;
+        if (status) setAudioStatus(rate < 1 ? "Đang phát giọng Nhật chậm…" : "Đang phát giọng Nhật…");
+        u.onend = () => { if (status) setAudioStatus(""); resolve(); };
+        u.onerror = () => { if (status) setAudioStatus(""); showToast("Audio TTS không phát được. Hãy thử lại."); resolve(); };
+        speechSynthesis.speak(u);
+      });
+    }
+
+    function speakJapanese(text, rate = 1) {
+      stopAudio();
+      speakOne(text, rate, true);
+    }
+
+    async function playDialogue(rate = 1) {
+      stopAudio();
+      const runId = ++dialogueRunId;
+      const localToken = ++playToken;
+      setAudioStatus(rate < 1 ? "Playing slow conversation…" : "Playing full conversation…");
+      const voice = await ensureVoice();
+
+      for (const text of dialogueLines) {
+        if (runId !== dialogueRunId || localToken !== playToken) return;
+        await new Promise(resolve => {
+          const u = new SpeechSynthesisUtterance(text);
+          u.lang = "ja-JP";
+          u.rate = rate < 1 ? Math.max(.65,rate) : .92;
+          u.pitch = 1;
+          if (voice) u.voice = voice;
+          u.onend = resolve;
+          u.onerror = resolve;
+          try { speechSynthesis.resume(); } catch (_) {}
+          speechSynthesis.speak(u);
+        });
+        await new Promise(resolve => setTimeout(resolve,160));
+      }
+      if (runId === dialogueRunId && localToken === playToken) setAudioStatus("");
+    }
+
+    function setupChoiceGroups() {
+      document.querySelectorAll(".practice-box .choices").forEach(group => {
+        const answer = group.dataset.answer;
+        const feedback = group.parentElement.querySelector(".feedback");
+        group.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            group.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("correct","wrong"));
+            if (btn.dataset.value === answer) {
+              btn.classList.add("correct");
+              feedback.textContent = "✓ Chính xác!";
+            } else {
+              btn.classList.add("wrong");
+              const correct = group.querySelector(`[data-value="${answer}"]`);
+              if (correct) correct.classList.add("correct");
+              feedback.textContent = "Chưa đúng. Nghe lại mốc giờ và động từ cuối câu.";
+            }
+          });
+        });
+      });
+    }
+
+    function toggleAnswer(id) {
+      document.getElementById(id).classList.toggle("show");
+    }
+
+    function setupQuiz() {
+      document.querySelectorAll(".quiz-q").forEach(q => {
+        q.querySelectorAll(".choice-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            q.querySelectorAll(".choice-btn").forEach(b => {
+              b.dataset.selected = "false";
+              b.style.outline = "none";
+              b.style.background = "#fff";
+            });
+            btn.dataset.selected = "true";
+            btn.style.outline = "2px solid rgba(239,166,181,.65)";
+            btn.style.background = "#fff8fa";
+          });
+        });
+      });
+    }
+
+    function gradeQuiz() {
+      let score = 0;
+      const questions = document.querySelectorAll(".quiz-q");
+      questions.forEach(q => {
+        const answer = q.dataset.answer;
+        const selected = q.querySelector('.choice-btn[data-selected="true"]');
+        q.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("correct","wrong"));
+        const correct = q.querySelector(`[data-value="${answer}"]`);
+        if (correct) correct.classList.add("correct");
+        if (selected) {
+          if (selected.dataset.value === answer) score++;
+          else selected.classList.add("wrong");
+        }
+      });
+
+      const box = document.getElementById("scoreBox");
+      box.classList.add("show");
+      if (score === 8) box.textContent = "8/8 ✨ Rất tốt! Bạn đã nắm được cấu trúc routine cơ bản.";
+      else if (score >= 7) box.textContent = `${score}/8 — Tốt rồi. Xem lại に / を / へ một lần nữa.`;
+      else if (score >= 5) box.textContent = `${score}/8 — Đã có nền. Làm Routine Builder và Listening thêm một vòng.`;
+      else box.textContent = `${score}/8 — Hãy xem lại Time + に, Object + を và Place + へ trước khi làm lại.`;
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll(".quiz-q .choice-btn").forEach(btn => {
+        btn.dataset.selected = "false";
+        btn.classList.remove("correct","wrong");
+        btn.style.outline = "none";
+        btn.style.background = "#fff";
+      });
+      const box = document.getElementById("scoreBox");
+      box.classList.remove("show");
+      box.textContent = "";
+    }
+
+    function isCompleted() { return localStorage.getItem(DAY_KEY) === "completed"; }
+
+    function updateCompleteUI() {
+      const btn = document.getElementById("completeBtn");
+      const msg = document.getElementById("completeMessage");
+      if (isCompleted()) {
+        btn.classList.add("completed");
+        btn.textContent = "✓ Day 12 Completed";
+        msg.textContent = "Đã hoàn thành Day 12. Bạn có thể tiếp tục Day 13 — Morning to Evening.";
+      } else {
+        btn.classList.remove("completed");
+        btn.textContent = "✓ Complete Day 12";
+        msg.textContent = "Khi bạn có thể nói 45–60 giây về routine, dùng đúng time + に, を và へ trong các mẫu hôm nay, hãy hoàn thành Day 12.";
+      }
+    }
+
+    function toggleComplete() {
+      if (isCompleted()) {
+        localStorage.removeItem(DAY_KEY);
+        showToast("Đã chuyển Day 12 về trạng thái chưa hoàn thành.");
+      } else {
+        localStorage.setItem(DAY_KEY,"completed");
+        localStorage.setItem("n5-last-opened-day","12");
+        showToast("Day 12 completed 🌸");
+      }
+      updateCompleteUI();
+    }
+
+    function isFavorite() { return localStorage.getItem(FAVORITE_KEY) === "true"; }
+
+    function updateFavoriteUI() {
+      const btn = document.getElementById("favoriteBtn");
+      btn.classList.toggle("active",isFavorite());
+      btn.textContent = isFavorite() ? "★ Favorite" : "☆ Favorite";
+    }
+
+    function toggleFavorite() {
+      localStorage.setItem(FAVORITE_KEY,String(!isFavorite()));
+      updateFavoriteUI();
+      showToast(isFavorite() ? "Đã thêm Day 12 vào Favorites ★" : "Đã bỏ Day 12 khỏi Favorites");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove("show"),2200);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupMenu();
+      setupDisplayToggles();
+      loadDisplaySettings();
+      setupChoiceGroups();
+      setupQuiz();
+      updateCompleteUI();
+      updateFavoriteUI();
+      localStorage.setItem("n5-last-opened-day","12");
+      document.getElementById("favoriteBtn").addEventListener("click",toggleFavorite);
+
+      if ("speechSynthesis" in window) {
+        loadVoices();
+        speechSynthesis.onvoiceschanged = loadVoices;
+      }
+      window.addEventListener("beforeunload",stopAudio);
+    });
+  </script>
+</body>
+</html>
