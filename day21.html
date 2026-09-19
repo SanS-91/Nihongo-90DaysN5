@@ -2105,6 +2105,91 @@
       playSequence(missionPrompts, rate, rate < 1 ? 3800 : 3000);
     }
 
+
+    function hasJapanese(text) {
+      return /[\u3040-\u30ff\u3400-\u9fff]/.test(text || "");
+    }
+
+    function baseText(node) {
+      const clone = node.cloneNode(true);
+      clone.querySelectorAll("rt, .romaji, .vi, .audio-btn, .line-audio, .feedback").forEach(el => el.remove());
+      return (clone.textContent || "").replace(/\s+/g, " ").trim();
+    }
+
+    function getAutoAudioText(container) {
+      const priorities = [
+        ".jp",
+        ".jp-line",
+        ".vocab-jp",
+        ".mission-line .jp",
+        ".jp-inline"
+      ];
+
+      for (const selector of priorities) {
+        const nodes = [...container.querySelectorAll(selector)];
+        const parts = nodes
+          .map(baseText)
+          .filter(t => t && hasJapanese(t));
+
+        if (parts.length) {
+          return [...new Set(parts)].join("。").replace(/。。+/g, "。");
+        }
+      }
+
+      const rule = container.querySelector(".rule-form");
+      if (rule) {
+        const t = baseText(rule);
+        if (t && hasJapanese(t)) return t;
+      }
+
+      const strongs = [...container.querySelectorAll("strong")]
+        .map(baseText)
+        .filter(t => t && hasJapanese(t));
+
+      if (strongs.length) return [...new Set(strongs)].join("。");
+
+      const h3 = container.querySelector("h3");
+      if (h3) {
+        const t = baseText(h3);
+        if (t && hasJapanese(t)) return t;
+      }
+
+      return "";
+    }
+
+    function setupInlineAudioButtons() {
+      const selectors = [
+        ".grammar-rule",
+        ".explain-card",
+        ".break-row",
+        ".answer",
+        ".mission-line",
+        ".tip"
+      ];
+
+      document.querySelectorAll(selectors.join(",")).forEach(container => {
+        if (container.closest(".quiz-q")) return;
+        if (container.querySelector(".audio-btn, .line-audio")) return;
+
+        const text = getAutoAudioText(container);
+        if (!text) return;
+
+        const btn = document.createElement("button");
+        btn.className = "audio-btn auto-audio-btn";
+        btn.type = "button";
+        btn.textContent = "▶ Nghe";
+        btn.style.marginTop = "10px";
+
+        btn.addEventListener("click", event => {
+          event.preventDefault();
+          event.stopPropagation();
+          speakJapanese(text, 1);
+        });
+
+        container.appendChild(btn);
+      });
+    }
+
     function setupChoiceGroups() {
       document.querySelectorAll(".practice-box .choices").forEach(group => {
         const answer = group.dataset.answer;
@@ -2242,6 +2327,7 @@
       setupMenu();
       setupDisplayToggles();
       loadDisplaySettings();
+      setupInlineAudioButtons();
       setupChoiceGroups();
       setupQuiz();
       updateCompleteUI();
