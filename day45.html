@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 45: My Room — 私の部屋." />
+  <title>Day 45 — 私の部屋 | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand-mark">🌸</span><span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span></a>
+    <nav class="nav-links"><a href="index.html">Home</a><a class="active" href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4</a></nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button>
+  </div>
+  <nav class="mobile-menu container" id="mobileMenu"><a href="index.html">Home</a><a href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4 · Coming Soon</a></nav>
+</header>
+
+<div class="lessonbar"><div class="container lessonbar-inner">
+  <div class="lesson-position"><a href="day44.html">← Day 44</a><span>·</span><strong>Day 45 / 90</strong></div>
+  <div class="lesson-actions"><a class="tiny-btn" href="review.html">Quick Review</a><button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button></div>
+</div></div>
+
+<main>
+<section class="hero"><div class="container"><article class="hero-card">
+  <span class="eyebrow">Day 45 · Describe Your World</span>
+  <h1><ruby>私<rt>わたし</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby></h1>
+  <div class="hero-en">My Room</div>
+  <div class="hero-vi">
+    Mô tả căn phòng của bạn bằng Japanese:
+    <strong>phòng thế nào → đồ vật là gì → dùng adjective đúng loại</strong>.
+  </div>
+  <div class="hero-meta">
+    <span class="meta-chip">N5 Beginner</span><span class="meta-chip">70–85 phút</span>
+    <span class="meta-chip">私の部屋</span><span class="meta-chip">どんな部屋ですか</span>
+    <span class="meta-chip">これは〜です</span><span class="meta-chip">大きい / きれい / 静か / 明るい</span>
+  </div>
+  <div class="goal-box"><strong>Mục tiêu hôm nay</strong><p>
+    Bạn có thể nói <span class="jp-inline">私の部屋は小さいです。</span>,
+    <span class="jp-inline">部屋はきれいです。</span>,
+    nhận diện đồ vật bằng <span class="jp-inline">これは机です。</span>,
+    và trả lời <span class="jp-inline">どんな部屋ですか。</span>
+  </p></div>
+  <div class="tip memory" style="margin-top:16px;">
+    <strong>🌱 Day 45 prepares Day 46</strong>
+    Hôm nay mô tả <strong>room + objects</strong>.
+    Ngày mai mới mở chính thức <strong>あります / います</strong> để nói “có / tồn tại”.
+  </div>
+  <div class="display-panel"><div class="display-title">表示 · Hiển thị</div><div class="display-toggles">
+    <button class="toggle-btn active" data-toggle="furigana">Furigana</button>
+    <button class="toggle-btn" data-toggle="romaji">Romaji</button>
+    <button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+  </div></div>
+</article></div></section>
+
+<div class="container lesson-layout">
+<aside class="toc">
+  <div class="toc-title">Trong bài này</div>
+  <a href="#warmup">01 · Warm-up</a><a href="#conversation">02 · Main Conversation</a>
+  <a href="#watashino">03 · 私の部屋</a><a href="#donna">04 · どんな部屋ですか</a>
+  <a href="#objects">05 · Room Objects</a><a href="#iadj">06 · Room い-adjectives</a>
+  <a href="#naadj">07 · Room な-adjectives</a><a href="#natural">08 · Natural Room Description</a>
+  <a href="#vocab">09 · Room Vocabulary</a><a href="#kanji">10 · Kanji Helper</a>
+  <a href="#expressions">11 · Key Expressions</a><a href="#grammar">12 · Grammar Made Easy</a>
+  <a href="#listening">13 · Listening Ladder</a><a href="#builder">14 · Room Builder</a>
+  <a href="#japanese-first">15 · Japanese First</a><a href="#speaking">16 · Speaking & Role-play</a>
+  <a href="#quiz">17 · Mini Quiz</a><a href="#mission">18 · Today's Mission</a>
+</aside>
+
+<div class="lesson-content">
+
+<section class="section-card" id="warmup">
+  <div class="section-kicker">01 · Warm-up</div><h2>3 câu để bắt đầu mô tả phòng</h2>
+  <div class="warmup-grid">
+    <div class="warmup-item"><div class="jp"><ruby>私<rt>わたし</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>は<ruby>小<rt>ちい</rt></ruby>さいです。</div><div class="romaji">Watashi no heya wa chiisai desu.</div><div class="vi">Phòng của tôi nhỏ.</div><div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('私の部屋は小さいです。',1)">▶ Nghe</button></div></div>
+    <div class="warmup-item"><div class="jp"><ruby>部屋<rt>へや</rt></ruby>はきれいです。</div><div class="romaji">Heya wa kirei desu.</div><div class="vi">Phòng sạch/đẹp.</div><div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('部屋はきれいです。',1)">▶ Nghe</button></div></div>
+    <div class="warmup-item"><div class="jp">これは<ruby>机<rt>つくえ</rt></ruby>です。</div><div class="romaji">Kore wa tsukue desu.</div><div class="vi">Đây là bàn.</div><div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('これは机です。',1)">▶ Nghe</button></div></div>
+  </div>
+  <div class="tip memory"><strong>💡 Two jobs today</strong>
+    <strong>Describe the room</strong> + <strong>name the objects</strong>.
+  </div>
+</section>
+
+<section class="section-card" id="conversation">
+  <div class="section-kicker">02 · Main Conversation</div><h2>“Phòng của bạn như thế nào?”</h2>
+  <p class="section-intro">Nghe lần 1 toàn đoạn. Lần 2 bắt: <strong>room size → condition → brightness → object identification</strong>.</p>
+  <div class="audio-controls">
+    <button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button>
+    <button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button>
+    <button class="audio-btn" onclick="stopAudio()">■ Stop</button>
+  </div>
+  <div class="audio-status" id="audioStatus"></div>
+  <div class="dialogue-shell" style="margin-top:16px;">
+    <div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line"><ruby>部屋<rt>へや</rt></ruby>はどんな<ruby>部屋<rt>へや</rt></ruby>ですか。</div><div class="romaji">Heya wa donna heya desu ka?</div><div class="vi line-note">Phòng của bạn là phòng như thế nào?</div></div><button class="line-audio" onclick="speakJapanese('部屋はどんな部屋ですか。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line"><ruby>小<rt>ちい</rt></ruby>さい<ruby>部屋<rt>へや</rt></ruby>です。でも、きれいです。</div><div class="romaji">Chiisai heya desu. Demo, kirei desu.</div><div class="vi line-note">Là một phòng nhỏ. Nhưng sạch/đẹp.</div></div><button class="line-audio" onclick="speakJapanese('小さい部屋です。でも、きれいです。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line"><ruby>明<rt>あか</rt></ruby>るいですか。</div><div class="romaji">Akarui desu ka?</div><div class="vi line-note">Có sáng không?</div></div><button class="line-audio" onclick="speakJapanese('明るいですか。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line">はい。<ruby>明<rt>あか</rt></ruby>るいです。</div><div class="romaji">Hai. Akarui desu.</div><div class="vi line-note">Có. Sáng.</div></div><button class="line-audio" onclick="speakJapanese('はい。明るいです。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line">これは<ruby>何<rt>なん</rt></ruby>ですか。</div><div class="romaji">Kore wa nan desu ka?</div><div class="vi line-note">Đây là gì?</div></div><button class="line-audio" onclick="speakJapanese('これは何ですか。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line">これは<ruby>本棚<rt>ほんだな</rt></ruby>です。</div><div class="romaji">Kore wa hondana desu.</div><div class="vi line-note">Đây là kệ sách.</div></div><button class="line-audio" onclick="speakJapanese('これは本棚です。',1)">▶</button></div>
+  </div>
+  <div class="tip real"><strong>🇯🇵 Beginner room talk can stay simple</strong>
+    Mô tả phòng bằng vài câu ngắn trước.
+    Day 46 sẽ thêm “trong phòng có…” bằng
+    <span class="jp-inline">あります</span>.
+  </div>
+</section>
+
+<section class="section-card" id="watashino">
+  <div class="section-kicker">03 · 私の部屋</div><h2>の = kết nối “của / thuộc về”</h2>
+  <div class="grammar-rule"><div class="rule-form">私の部屋</div><p>= phòng của tôi.</p></div>
+  <div class="grammar-rule"><div class="rule-form">友達の部屋</div><p>= phòng của bạn tôi.</p></div>
+  <div class="grammar-rule"><div class="rule-form">ホテルの部屋</div><p>= phòng khách sạn.</p></div>
+  <div class="tip memory"><strong>💡 A の B</strong>
+    A bổ nghĩa / xác định B.
+    <span class="jp-inline">私の部屋</span> = “my room”.
+  </div>
+</section>
+
+<section class="section-card" id="donna">
+  <div class="section-kicker">04 · どんな部屋ですか</div><h2>Hỏi room character</h2>
+  <div class="grammar-rule"><div class="rule-form">どんな部屋ですか。</div><p>= Là căn phòng như thế nào?</p></div>
+  <div class="grammar-rule"><div class="rule-form">小さい部屋です。</div><p>= Là một căn phòng nhỏ.</p></div>
+  <div class="grammar-rule"><div class="rule-form">きれいな部屋です。</div><p>= Là một căn phòng đẹp/sạch.</p></div>
+  <div class="tip memory"><strong>💡 Recycle Day 43</strong>
+    <span class="jp-inline">どんな + noun</span> hỏi “loại/kiểu noun như thế nào?”.
+  </div>
+</section>
+
+<section class="section-card" id="objects">
+  <div class="section-kicker">05 · Room Objects</div><h2>Gọi tên đồ vật trước khi nói “có”</h2>
+  <div class="explain-grid">
+    <div class="explain-card"><h3><ruby>机<rt>つくえ</rt></ruby></h3><p>bàn học / bàn làm việc</p></div>
+    <div class="explain-card"><h3>いす</h3><p>ghế</p></div>
+    <div class="explain-card"><h3>ベッド</h3><p>giường</p></div>
+    <div class="explain-card"><h3><ruby>本棚<rt>ほんだな</rt></ruby></h3><p>kệ sách</p></div>
+    <div class="explain-card"><h3><ruby>窓<rt>まど</rt></ruby></h3><p>cửa sổ</p></div>
+    <div class="explain-card"><h3>ドア</h3><p>cửa ra vào</p></div>
+  </div>
+  <div class="grammar-rule"><div class="rule-form">これは机です。</div><p>= Đây là bàn.</p></div>
+  <div class="grammar-rule"><div class="rule-form">これはベッドです。</div><p>= Đây là giường.</p></div>
+  <div class="tip warning"><strong>⚠ Hôm nay chỉ identify</strong>
+    Day 46 mới chuyển sang:
+    “Trong phòng <strong>có</strong> bàn/giường…”.
+  </div>
+</section>
+
+<section class="section-card" id="iadj">
+  <div class="section-kicker">06 · Room い-adjectives</div><h2>大きい・小さい・明るい・暗い</h2>
+  <div class="grammar-rule"><div class="rule-form">大きい部屋</div><p>= phòng lớn.</p></div>
+  <div class="grammar-rule"><div class="rule-form">小さい部屋</div><p>= phòng nhỏ.</p></div>
+  <div class="grammar-rule"><div class="rule-form">明るい部屋</div><p>= phòng sáng.</p></div>
+  <div class="grammar-rule"><div class="rule-form">暗い部屋</div><p>= phòng tối.</p></div>
+  <div class="tip memory"><strong>💡 Keep い before noun</strong>
+    <span class="jp-inline">明るい部屋</span> ✓
+  </div>
+</section>
+
+<section class="section-card" id="naadj">
+  <div class="section-kicker">07 · Room な-adjectives</div><h2>きれい・静か</h2>
+  <div class="grammar-rule"><div class="rule-form">部屋はきれいです。</div><p>= Phòng sạch/đẹp.</p></div>
+  <div class="grammar-rule"><div class="rule-form">きれいな部屋</div><p>= một phòng sạch/đẹp.</p></div>
+  <div class="grammar-rule"><div class="rule-form">部屋は静かです。</div><p>= Phòng yên tĩnh.</p></div>
+  <div class="grammar-rule"><div class="rule-form">静かな部屋</div><p>= một phòng yên tĩnh.</p></div>
+  <div class="tip warning"><strong>⚠ Same Day 42 rule</strong>
+    <span class="jp-inline">きれい部屋</span> ✕ →
+    <span class="jp-inline">きれいな部屋</span> ✓
+  </div>
+</section>
+
+<section class="section-card" id="natural">
+  <div class="section-kicker">08 · Natural Room Description</div><h2>4 câu ngắn tốt hơn 1 câu dài</h2>
+  <div class="grammar-rule"><div class="rule-form">私の部屋は小さいです。きれいです。静かです。明るいです。</div><p>= Phòng tôi nhỏ. Sạch. Yên tĩnh. Sáng.</p></div>
+  <div class="grammar-rule"><div class="rule-form">これは机です。これは本棚です。</div><p>= Đây là bàn. Đây là kệ sách.</p></div>
+  <div class="tip real"><strong>🇯🇵 Beginner strategy</strong>
+    Chưa cần nối adjective bằng
+    <span class="jp-inline">〜くて</span> / <span class="jp-inline">〜で</span>.
+    Câu ngắn đúng và rõ là ưu tiên.
+  </div>
+</section>
+
+<section class="section-card" id="vocab">
+  <div class="section-kicker">09 · Room Vocabulary</div><h2>14 từ/cụm thực dụng</h2>
+  <div class="vocab-grid"><div class="vocab-card"><div><div class="vocab-jp"><ruby>部屋<rt>へや</rt></ruby></div>
+    <div class="romaji vocab-reading">heya</div><div class="vi vocab-vi">phòng</div></div>
+    <button class="line-audio" onclick="speakJapanese('部屋',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>机<rt>つくえ</rt></ruby></div>
+    <div class="romaji vocab-reading">tsukue</div><div class="vi vocab-vi">bàn học/bàn làm việc</div></div>
+    <button class="line-audio" onclick="speakJapanese('机',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">いす</div>
+    <div class="romaji vocab-reading">isu</div><div class="vi vocab-vi">ghế</div></div>
+    <button class="line-audio" onclick="speakJapanese('いす',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">ベッド</div>
+    <div class="romaji vocab-reading">beddo</div><div class="vi vocab-vi">giường</div></div>
+    <button class="line-audio" onclick="speakJapanese('ベッド',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>本棚<rt>ほんだな</rt></ruby></div>
+    <div class="romaji vocab-reading">hondana</div><div class="vi vocab-vi">kệ sách</div></div>
+    <button class="line-audio" onclick="speakJapanese('本棚',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>窓<rt>まど</rt></ruby></div>
+    <div class="romaji vocab-reading">mado</div><div class="vi vocab-vi">cửa sổ</div></div>
+    <button class="line-audio" onclick="speakJapanese('窓',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>ドア<rt>doa</rt></ruby></div>
+    <div class="romaji vocab-reading">door</div><div class="vi vocab-vi">cửa ra vào</div></div>
+    <button class="line-audio" onclick="speakJapanese('ドア',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>部屋<rt>へや</rt></ruby>の<ruby>中<rt>なか</rt></ruby></div>
+    <div class="romaji vocab-reading">heya no naka</div><div class="vi vocab-vi">bên trong phòng</div></div>
+    <button class="line-audio" onclick="speakJapanese('部屋の中',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>大<rt>おお</rt></ruby>きい</div>
+    <div class="romaji vocab-reading">ōkii</div><div class="vi vocab-vi">lớn</div></div>
+    <button class="line-audio" onclick="speakJapanese('大きい',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>小<rt>ちい</rt></ruby>さい</div>
+    <div class="romaji vocab-reading">chiisai</div><div class="vi vocab-vi">nhỏ</div></div>
+    <button class="line-audio" onclick="speakJapanese('小さい',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">きれい</div>
+    <div class="romaji vocab-reading">kirei</div><div class="vi vocab-vi">đẹp / sạch</div></div>
+    <button class="line-audio" onclick="speakJapanese('きれい',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>静<rt>しず</rt></ruby>か</div>
+    <div class="romaji vocab-reading">shizuka</div><div class="vi vocab-vi">yên tĩnh</div></div>
+    <button class="line-audio" onclick="speakJapanese('静か',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>明<rt>あか</rt></ruby>るい</div>
+    <div class="romaji vocab-reading">akarui</div><div class="vi vocab-vi">sáng sủa</div></div>
+    <button class="line-audio" onclick="speakJapanese('明るい',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>暗<rt>くら</rt></ruby>い</div>
+    <div class="romaji vocab-reading">kurai</div><div class="vi vocab-vi">tối</div></div>
+    <button class="line-audio" onclick="speakJapanese('暗い',1)">▶</button></div></div>
+  <div class="tip warning"><strong>⚠ Productive core</strong>
+    部屋・机・いす・ベッド・本棚・窓・大きい・小さい・きれい・静か・明るい.<br>
+    <strong>Recognition/useful:</strong> 暗い・ドア・部屋の中.
+  </div>
+</section>
+
+<section class="section-card" id="kanji">
+  <div class="section-kicker">10 · Kanji Helper</div><h2>Kanji theo room chunks</h2>
+  <div class="explain-grid">
+    <div class="explain-card"><h3><ruby>部屋<rt>へや</rt></ruby></h3><p><strong>room</strong>. Must recognize.</p></div>
+    <div class="explain-card"><h3><ruby>机<rt>つくえ</rt></ruby></h3><p><strong>desk</strong>. Whole word.</p></div>
+    <div class="explain-card"><h3><ruby>本棚<rt>ほんだな</rt></ruby></h3><p><strong>bookshelf</strong>. 本 = book, 棚 = shelf; học whole word.</p></div>
+    <div class="explain-card"><h3><ruby>窓<rt>まど</rt></ruby></h3><p><strong>window</strong>. Whole word.</p></div>
+    <div class="explain-card"><h3><ruby>明<rt>あか</rt></ruby>るい</h3><p><strong>bright</strong>. Must recognize.</p></div>
+    <div class="explain-card"><h3><ruby>暗<rt>くら</rt></ruby>い</h3><p><strong>dark</strong>. Recognition/useful.</p></div>
+  </div>
+  <div class="tip memory"><strong>🌱 Must recognize</strong>
+    部屋・机・本棚・窓・明るい.<br>
+    <strong>Recognition/useful:</strong> 暗い.
+  </div>
+</section>
+
+<section class="section-card" id="expressions">
+  <div class="section-kicker">11 · Key Expressions</div><h2>12 câu/cụm cần phản xạ</h2>
+  <div class="vocab-grid">
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>私<rt>わたし</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Watashi no heya desu.</div><div class="vi vocab-vi">Đây là phòng của tôi.</div></div>
+    <button class="line-audio" onclick="speakJapanese('私の部屋です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp">どんな<ruby>部屋<rt>へや</rt></ruby>ですか。</div>
+    <div class="romaji vocab-reading">Donna heya desu ka?</div><div class="vi vocab-vi">Là căn phòng như thế nào?</div></div>
+    <button class="line-audio" onclick="speakJapanese('どんな部屋ですか。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>小<rt>ちい</rt></ruby>さい<ruby>部屋<rt>へや</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Chiisai heya desu.</div><div class="vi vocab-vi">Là một phòng nhỏ.</div></div>
+    <button class="line-audio" onclick="speakJapanese('小さい部屋です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>大<rt>おお</rt></ruby>きい<ruby>部屋<rt>へや</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Ōkii heya desu.</div><div class="vi vocab-vi">Là một phòng lớn.</div></div>
+    <button class="line-audio" onclick="speakJapanese('大きい部屋です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>部屋<rt>へや</rt></ruby>はきれいです。</div>
+    <div class="romaji vocab-reading">Heya wa kirei desu.</div><div class="vi vocab-vi">Phòng sạch/đẹp.</div></div>
+    <button class="line-audio" onclick="speakJapanese('部屋はきれいです。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>部屋<rt>へや</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かです。</div>
+    <div class="romaji vocab-reading">Heya wa shizuka desu.</div><div class="vi vocab-vi">Phòng yên tĩnh.</div></div>
+    <button class="line-audio" onclick="speakJapanese('部屋は静かです。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>部屋<rt>へや</rt></ruby>は<ruby>明<rt>あか</rt></ruby>るいです。</div>
+    <div class="romaji vocab-reading">Heya wa akarui desu.</div><div class="vi vocab-vi">Phòng sáng.</div></div>
+    <button class="line-audio" onclick="speakJapanese('部屋は明るいです。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp">きれいな<ruby>部屋<rt>へや</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Kirei na heya desu.</div><div class="vi vocab-vi">Là một phòng sạch/đẹp.</div></div>
+    <button class="line-audio" onclick="speakJapanese('きれいな部屋です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>静<rt>しず</rt></ruby>かな<ruby>部屋<rt>へや</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Shizuka na heya desu.</div><div class="vi vocab-vi">Là một phòng yên tĩnh.</div></div>
+    <button class="line-audio" onclick="speakJapanese('静かな部屋です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp">これは<ruby>机<rt>つくえ</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Kore wa tsukue desu.</div><div class="vi vocab-vi">Đây là bàn.</div></div>
+    <button class="line-audio" onclick="speakJapanese('これは机です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp">これは<ruby>本棚<rt>ほんだな</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Kore wa hondana desu.</div><div class="vi vocab-vi">Đây là kệ sách.</div></div>
+    <button class="line-audio" onclick="speakJapanese('これは本棚です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp">これは<ruby>何<rt>なん</rt></ruby>ですか。</div>
+    <div class="romaji vocab-reading">Kore wa nan desu ka?</div><div class="vi vocab-vi">Đây là gì?</div></div>
+    <button class="line-audio" onclick="speakJapanese('これは何ですか。',1)">▶</button></div>
+  </div>
+</section>
+
+<section class="section-card" id="grammar">
+  <div class="section-kicker">12 · Grammar Made Easy</div><h2>5 patterns cốt lõi</h2>
+  <div class="grammar-rule"><div class="rule-form">A の B</div><p><span class="jp-inline">私の部屋</span> = phòng của tôi.</p></div>
+  <div class="grammar-rule"><div class="rule-form">どんな + Noun ですか</div><p><span class="jp-inline">どんな部屋ですか。</span></p></div>
+  <div class="grammar-rule"><div class="rule-form">Room は Adjective です</div><p><span class="jp-inline">部屋は明るいです。</span></p></div>
+  <div class="grammar-rule"><div class="rule-form">これは Noun です</div><p><span class="jp-inline">これは机です。</span></p></div>
+  <div class="grammar-rule"><div class="rule-form">い + noun / な + な + noun</div><p><span class="jp-inline">小さい部屋 / 静かな部屋</span></p></div>
+  <div class="tip memory"><strong>💡 Day 45 scope</strong>
+    <strong>describe + identify</strong>.<br>
+    Day 46 = <strong>existence: あります / います</strong>.
+  </div>
+</section>
+
+<section class="section-card" id="listening">
+  <div class="section-kicker">13 · Listening Ladder</div><h2>Nghe room quality + object noun</h2>
+  <div class="practice-box">
+      <div class="practice-title">Listening 1 · My room</div>
+      <button class="audio-btn primary" onclick="speakJapanese('私の部屋です。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Đây là phòng của tôi</button><button class="choice-btn" data-value="b">B. Đây là nhà ga</button><button class="choice-btn" data-value="c">C. Đây là phòng của bạn</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 2 · Small room</div>
+      <button class="audio-btn primary" onclick="speakJapanese('私の部屋は小さいです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="b"><button class="choice-btn" data-value="a">A. Phòng tôi lớn</button><button class="choice-btn" data-value="b">B. Phòng tôi nhỏ</button><button class="choice-btn" data-value="c">C. Phòng tôi tối</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 3 · Clean room</div>
+      <button class="audio-btn primary" onclick="speakJapanese('部屋はきれいです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Phòng sạch/đẹp</button><button class="choice-btn" data-value="b">B. Phòng ồn</button><button class="choice-btn" data-value="c">C. Phòng lạnh</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 4 · Quiet room</div>
+      <button class="audio-btn primary" onclick="speakJapanese('部屋は静かです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="b"><button class="choice-btn" data-value="a">A. Phòng nhỏ</button><button class="choice-btn" data-value="b">B. Phòng yên tĩnh</button><button class="choice-btn" data-value="c">C. Phòng sáng</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 5 · Bright</div>
+      <button class="audio-btn primary" onclick="speakJapanese('部屋は明るいです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Phòng sáng</button><button class="choice-btn" data-value="b">B. Phòng tối</button><button class="choice-btn" data-value="c">C. Phòng chật</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 6 · Furniture</div>
+      <button class="audio-btn primary" onclick="speakJapanese('これは机です。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="b"><button class="choice-btn" data-value="a">A. Đây là giường</button><button class="choice-btn" data-value="b">B. Đây là bàn</button><button class="choice-btn" data-value="c">C. Đây là ghế</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 7 · Another item</div>
+      <button class="audio-btn primary" onclick="speakJapanese('これは本棚です。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Đây là kệ sách</button><button class="choice-btn" data-value="b">B. Đây là cửa sổ</button><button class="choice-btn" data-value="c">C. Đây là bàn</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 8 · Integrated</div>
+      <button class="audio-btn primary" onclick="speakJapanese('私の部屋は小さいです。でも、きれいです。明るいです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Phòng nhỏ, sạch và sáng</button><button class="choice-btn" data-value="b">B. Phòng lớn, tối và ồn</button><button class="choice-btn" data-value="c">C. Phòng nhỏ và lạnh</button></div><div class="feedback"></div>
+    </div>
+  <div class="practice-box"><div class="practice-title">Shadowing · Room description</div>
+    <div class="audio-controls">
+      <button class="audio-btn" onclick="speakJapanese('私の部屋は小さいです。きれいです。静かです。明るいです。これは机です。これは本棚です。',.76)">🐢 Slow</button>
+      <button class="audio-btn primary" onclick="speakJapanese('私の部屋は小さいです。きれいです。静かです。明るいです。これは机です。これは本棚です。',1)">▶ Natural</button>
+    </div>
+  </div>
+</section>
+
+<section class="section-card" id="builder">
+  <div class="section-kicker">14 · Room Builder</div><h2>Owner → room → quality → object</h2>
+  <div class="breakdown">
+    <div class="break-row"><div class="break-label">Owner</div><div><strong>私の部屋</strong></div></div>
+    <div class="break-row"><div class="break-label">Ask</div><div><strong>どんな部屋ですか。</strong></div></div>
+    <div class="break-row"><div class="break-label">Size</div><div><strong>小さい部屋です。</strong></div></div>
+    <div class="break-row"><div class="break-label">Quality</div><div><strong>きれいです。静かです。</strong></div></div>
+    <div class="break-row"><div class="break-label">Light</div><div><strong>明るいです。</strong></div></div>
+    <div class="break-row"><div class="break-label">Object</div><div><strong>これは机です。</strong></div></div>
+  </div>
+  <div class="tip memory"><strong>💡 Builder order</strong>
+    <strong>Whose room? → what kind? → qualities → name objects.</strong>
+  </div>
+</section>
+
+<section class="section-card" id="japanese-first">
+  <div class="section-kicker">15 · Japanese First</div><h2>Romaji-Off Round</h2>
+  <p class="section-intro vi">Nghe → hiểu → tự mô tả. Không có Romaji.</p>
+  <div class="practice-box"><div class="practice-title">Round 1</div><button class="audio-btn primary" onclick="speakJapanese('どんな部屋ですか。',1)">▶ Nghe</button><p class="jp">どんな部屋ですか。</p><p class="vi">Trả lời bằng 小さい / 大きい / きれい / 静か.</p></div>
+  <div class="practice-box"><div class="practice-title">Round 2</div><button class="audio-btn primary" onclick="speakJapanese('私の部屋は明るいです。',1)">▶ Nghe</button><p class="jp">私の部屋は明るいです。</p><p class="vi">Nói lại.</p></div>
+  <div class="practice-box"><div class="practice-title">Round 3</div><button class="audio-btn primary" onclick="speakJapanese('これは机です。',1)">▶ Nghe</button><p class="jp">これは机です。</p><p class="vi">Đổi 机 thành ベッド / 本棚 / いす.</p></div>
+  <div class="practice-box"><div class="practice-title">Round 4</div><button class="audio-btn primary" onclick="speakJapanese('きれいな部屋です。',1)">▶ Nghe</button><p class="jp">きれいな部屋です。</p><p class="vi">Chú ý な.</p></div>
+</section>
+
+<section class="section-card" id="speaking">
+  <div class="section-kicker">16 · Speaking & Role-play</div><h2>Mô tả phòng của bạn</h2>
+  <div class="speaking-grid">
+    <div class="speaking-card"><div class="prompt">1. “Phòng của tôi.”</div><button class="audio-btn" onclick="toggleAnswer('a1')">Xem đáp án</button><div class="answer" id="a1"><div class="jp">私の部屋です。</div></div></div>
+    <div class="speaking-card"><div class="prompt">2. “Phòng của bạn như thế nào?”</div><button class="audio-btn" onclick="toggleAnswer('a2')">Xem đáp án</button><div class="answer" id="a2"><div class="jp">どんな部屋ですか。</div></div></div>
+    <div class="speaking-card"><div class="prompt">3. “Là một căn phòng nhỏ.”</div><button class="audio-btn" onclick="toggleAnswer('a3')">Xem đáp án</button><div class="answer" id="a3"><div class="jp">小さい部屋です。</div></div></div>
+    <div class="speaking-card"><div class="prompt">4. “Phòng yên tĩnh.”</div><button class="audio-btn" onclick="toggleAnswer('a4')">Xem đáp án</button><div class="answer" id="a4"><div class="jp">部屋は静かです。</div></div></div>
+    <div class="speaking-card"><div class="prompt">5. “Phòng sáng.”</div><button class="audio-btn" onclick="toggleAnswer('a5')">Xem đáp án</button><div class="answer" id="a5"><div class="jp">部屋は明るいです。</div></div></div>
+    <div class="speaking-card"><div class="prompt">6. “Đây là kệ sách.”</div><button class="audio-btn" onclick="toggleAnswer('a6')">Xem đáp án</button><div class="answer" id="a6"><div class="jp">これは本棚です。</div></div></div>
+  </div>
+  <div class="practice-box" style="margin-top:16px;"><div class="practice-title">Room Role-play</div><button class="audio-btn primary" onclick="playRoleplay()">▶ Start 5 Prompts</button><p class="vi">Audio hỏi về phòng/đồ vật. Bạn trả lời bằng 1–3 câu ngắn.</p></div>
+</section>
+
+<section class="section-card" id="quiz">
+  <div class="section-kicker">17 · Mini Quiz</div><h2>Kiểm tra nhanh Day 45</h2>
+  <div class="quiz-q" data-answer="b"><h3>1. 部屋 là?</h3><div class="choices"><button class="choice-btn" data-value="a">A. ga</button><button class="choice-btn" data-value="b">B. phòng</button><button class="choice-btn" data-value="c">C. ghế</button></div></div><div class="quiz-q" data-answer="b"><h3>2. “Phòng của tôi.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 私は部屋</button><button class="choice-btn" data-value="b">B. 私の部屋</button><button class="choice-btn" data-value="c">C. 部屋の私</button></div></div><div class="quiz-q" data-answer="a"><h3>3. “Phòng tôi nhỏ.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 私の部屋は小さいです。</button><button class="choice-btn" data-value="b">B. 私の部屋は小さいなです。</button><button class="choice-btn" data-value="c">C. 私の部屋を小さいです。</button></div></div><div class="quiz-q" data-answer="b"><h3>4. “Phòng yên tĩnh.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 部屋は静かなです。</button><button class="choice-btn" data-value="b">B. 部屋は静かです。</button><button class="choice-btn" data-value="c">C. 部屋は静かいです。</button></div></div><div class="quiz-q" data-answer="b"><h3>5. “Một căn phòng yên tĩnh.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 静か部屋</button><button class="choice-btn" data-value="b">B. 静かな部屋</button><button class="choice-btn" data-value="c">C. 静かい部屋</button></div></div><div class="quiz-q" data-answer="a"><h3>6. 明るい nghĩa là?</h3><div class="choices"><button class="choice-btn" data-value="a">A. sáng sủa</button><button class="choice-btn" data-value="b">B. tối</button><button class="choice-btn" data-value="c">C. lạnh</button></div></div><div class="quiz-q" data-answer="b"><h3>7. 暗い nghĩa là?</h3><div class="choices"><button class="choice-btn" data-value="a">A. sạch</button><button class="choice-btn" data-value="b">B. tối</button><button class="choice-btn" data-value="c">C. lớn</button></div></div><div class="quiz-q" data-answer="a"><h3>8. “Đây là bàn.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. これは机です。</button><button class="choice-btn" data-value="b">B. 机はこれですか。</button><button class="choice-btn" data-value="c">C. これの机です。</button></div></div><div class="quiz-q" data-answer="b"><h3>9. Day 45 chưa học sâu cấu trúc nào?</h3><div class="choices"><button class="choice-btn" data-value="a">A. これは〜です</button><button class="choice-btn" data-value="b">B. あります / います</button><button class="choice-btn" data-value="c">C. どんな部屋ですか</button></div></div><div class="quiz-q" data-answer="a"><h3>10. Rule đúng?</h3><div class="choices"><button class="choice-btn" data-value="a">A. い-adj + noun; な-adj + な + noun</button><button class="choice-btn" data-value="b">B. mọi adjective + な</button><button class="choice-btn" data-value="c">C. mọi adjective bỏ ending</button></div></div>
+  <div class="quiz-actions"><button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button><button class="audio-btn" onclick="resetQuiz()">Làm lại</button></div>
+  <div class="score-box" id="scoreBox"></div>
+</section>
+
+<section class="section-card mission-card" id="mission">
+  <div class="section-kicker">18 · Today's Mission</div><h2>My Room Tour — 2–3 minutes</h2>
+  <p class="section-intro">Tự giới thiệu căn phòng của bạn bằng Japanese mà chưa dùng あります / います.</p>
+  <div class="mission-lines">
+    <div class="mission-line"><div class="vi">1. Giới thiệu “phòng của tôi”.</div><div class="jp">私の部屋です。</div></div>
+    <div class="mission-line"><div class="vi">2. Nói lớn hoặc nhỏ.</div><div class="jp">大きい部屋です。 / 小さい部屋です。</div></div>
+    <div class="mission-line"><div class="vi">3. Nói sạch/đẹp.</div><div class="jp">きれいです。</div></div>
+    <div class="mission-line"><div class="vi">4. Nói yên tĩnh.</div><div class="jp">静かです。</div></div>
+    <div class="mission-line"><div class="vi">5. Nói sáng hoặc tối.</div><div class="jp">明るいです。 / 暗いです。</div></div>
+    <div class="mission-line"><div class="vi">6. Gọi tên bàn.</div><div class="jp">これは机です。</div></div>
+    <div class="mission-line"><div class="vi">7. Gọi tên kệ sách.</div><div class="jp">これは本棚です。</div></div>
+    <div class="mission-line"><div class="vi">8. Tự gọi tên thêm 2 đồ vật.</div><div class="jp">いす / ベッド / 窓 / ドア</div></div>
+  </div>
+  <div class="audio-controls"><button class="audio-btn" onclick="playMission(.76)">🐢 Room Tour Slow</button><button class="audio-btn primary" onclick="playMission(1)">▶ Room Tour Natural</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div>
+  <div class="tip memory"><strong>✅ Pass standard</strong>
+    Bạn mô tả được phòng bằng ít nhất <strong>4 qualities + 4 object names</strong>,
+    không cần Romaji.
+  </div>
+  <div class="complete-box"><p id="completeMessage" style="margin-top:0;color:var(--muted);">Hoàn thành khi bạn có thể giới thiệu phòng và gọi tên ít nhất 4 đồ vật.</p><button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 45</button></div>
+</section>
+
+<div class="day-nav"><a href="day44.html">← Day 44 · Describing People</a><a class="next" href="day46.html">Day 46 · There Is / There Are →</a></div>
+</div></div>
+</main>
+
+<footer><div class="container footer-inner"><div><span class="footer-brand">🌸 Nihongo 90</span> · Day 45</div><div>Describe Your World · Describe the room first; existence comes next.</div></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const DAY_KEY="n5-day-45";
+const FAVORITE_KEY="n5-favorite-day-45";
+const DISPLAY_KEY="nihongo90-display";
+
+const dialogueLines=[
+  "部屋はどんな部屋ですか。",
+  "小さい部屋です。でも、きれいです。",
+  "明るいですか。",
+  "はい。明るいです。",
+  "これは何ですか。",
+  "これは本棚です。"
+];
+
+const roleplayPrompts=[
+  "どんな部屋ですか。",
+  "大きいですか。小さいですか。",
+  "明るいですか。",
+  "これは何ですか。",
+  "部屋は静かですか。"
+];
+
+const missionPrompts=[
+  "私の部屋です。",
+  "小さい部屋です。",
+  "きれいです。",
+  "静かです。",
+  "明るいです。",
+  "これは机です。",
+  "これは本棚です。",
+  "これはベッドです。"
+];
+
+let voiceCache=[],japaneseVoice=null,dialogueRunId=0,playToken=0;
+
+function setupMenu(){
+  const btn=document.getElementById("menuBtn"),menu=document.getElementById("mobileMenu");
+  btn.addEventListener("click",()=>{const open=menu.classList.toggle("open");btn.setAttribute("aria-expanded",open?"true":"false");btn.textContent=open?"✕":"☰";});
+}
+function loadDisplaySettings(){
+  let saved={furigana:true,romaji:false,vi:true};
+  try{const p=JSON.parse(localStorage.getItem(DISPLAY_KEY));if(p&&typeof p==="object")saved={...saved,...p};}catch(_){}
+  applyDisplaySettings(saved);
+}
+function applyDisplaySettings(s){
+  document.body.classList.toggle("hide-furigana",!s.furigana);
+  document.body.classList.toggle("hide-romaji",!s.romaji);
+  document.body.classList.toggle("hide-vi",!s.vi);
+  document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.toggle("active",!!s[b.dataset.toggle]));
+  localStorage.setItem(DISPLAY_KEY,JSON.stringify(s));
+}
+function setupDisplayToggles(){
+  document.querySelectorAll(".toggle-btn").forEach(btn=>btn.addEventListener("click",()=>{
+    let s={furigana:true,romaji:false,vi:true};
+    try{s={...s,...JSON.parse(localStorage.getItem(DISPLAY_KEY))};}catch(_){}
+    s[btn.dataset.toggle]=!s[btn.dataset.toggle];applyDisplaySettings(s);
+  }));
+}
+function loadVoices(){if(!("speechSynthesis" in window))return;voiceCache=speechSynthesis.getVoices()||[];japaneseVoice=pickJapaneseVoice();}
+function pickJapaneseVoice(){
+  const vs=voiceCache.filter(v=>/^ja(-|_)?JP/i.test(v.lang)||/^ja/i.test(v.lang));if(!vs.length)return null;
+  const pref=["Kyoko","Otoya","Nanami","Keita","Haruka","Google 日本語","Microsoft Nanami","Microsoft Keita","Natural","Premium","Enhanced"];
+  for(const n of pref){const f=vs.find(v=>v.name.toLowerCase().includes(n.toLowerCase()));if(f)return f;}return vs[0];
+}
+async function ensureVoice(){if(!("speechSynthesis" in window))return null;loadVoices();if(japaneseVoice)return japaneseVoice;for(const d of [120,220,360,520]){await new Promise(r=>setTimeout(r,d));loadVoices();if(japaneseVoice)return japaneseVoice;}return null;}
+function setAudioStatus(t){const e=document.getElementById("audioStatus");if(e)e.textContent=t||"";}
+function stopAudio(){dialogueRunId++;playToken++;if("speechSynthesis" in window){try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}}setAudioStatus("");}
+async function speakJapanese(text,rate=1){
+  stopAudio();
+  if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}
+  const voice=await ensureVoice(),token=++playToken;
+  try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}
+  await new Promise(r=>setTimeout(r,70));if(token!==playToken)return;
+  const u=new SpeechSynthesisUtterance(text);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;u.volume=1;if(voice)u.voice=voice;u.onerror=()=>showToast("Audio TTS không phát được. Hãy thử lại.");speechSynthesis.speak(u);
+}
+async function playSequence(lines,rate=1,pause=220){
+  stopAudio();if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}
+  const runId=++dialogueRunId,localToken=++playToken,voice=await ensureVoice();
+  for(const line of lines){
+    if(runId!==dialogueRunId||localToken!==playToken)return;
+    await new Promise(resolve=>{const u=new SpeechSynthesisUtterance(line);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;if(voice)u.voice=voice;u.onend=resolve;u.onerror=resolve;try{speechSynthesis.resume();}catch(_){}speechSynthesis.speak(u);});
+    await new Promise(r=>setTimeout(r,pause));
+  }
+}
+function playDialogue(rate=1){setAudioStatus(rate<1?"Playing slow room conversation…":"Playing room conversation…");playSequence(dialogueLines,rate,180).then(()=>setAudioStatus(""));}
+function playRoleplay(){showToast("Room Role-play: tự trả lời trong khoảng nghỉ.");playSequence(roleplayPrompts,1,3700);}
+function playMission(rate=1){showToast("Room Tour: room qualities → object names.");playSequence(missionPrompts,rate,rate<1?3900:3000);}
+
+function hasJapanese(t){return /[\u3040-\u30ff\u3400-\u9fff]/.test(t||"");}
+function baseText(node){const c=node.cloneNode(true);c.querySelectorAll("rt,.romaji,.vi,.audio-btn,.line-audio,.feedback").forEach(e=>e.remove());return(c.textContent||"").replace(/\s+/g," ").trim();}
+function getAutoAudioText(c){
+  for(const s of [".jp",".jp-line",".vocab-jp",".mission-line .jp",".jp-inline"]){const p=[...c.querySelectorAll(s)].map(baseText).filter(t=>t&&hasJapanese(t));if(p.length)return[...new Set(p)].join("。").replace(/。。+/g,"。");}
+  const r=c.querySelector(".rule-form");if(r){const t=baseText(r);if(t&&hasJapanese(t))return t;}
+  const ss=[...c.querySelectorAll("strong")].map(baseText).filter(t=>t&&hasJapanese(t));if(ss.length)return[...new Set(ss)].join("。");
+  const h=c.querySelector("h3");if(h){const t=baseText(h);if(t&&hasJapanese(t))return t;}return"";
+}
+function setupInlineAudioButtons(){
+  document.querySelectorAll(".grammar-rule,.explain-card,.break-row,.answer,.mission-line,.tip").forEach(c=>{
+    if(c.closest(".quiz-q")||c.querySelector(".audio-btn,.line-audio"))return;const t=getAutoAudioText(c);if(!t)return;
+    const b=document.createElement("button");b.className="audio-btn auto-audio-btn";b.type="button";b.textContent="▶ Nghe";b.style.marginTop="10px";b.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();speakJapanese(t,1);});c.appendChild(b);
+  });
+}
+function setupChoiceGroups(){
+  document.querySelectorAll(".practice-box .choices").forEach(g=>{const a=g.dataset.answer,f=g.parentElement.querySelector(".feedback");g.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{g.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));if(btn.dataset.value===a){btn.classList.add("correct");f.textContent="✓ Chính xác!";}else{btn.classList.add("wrong");const c=g.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");f.textContent="Chưa đúng. Bắt room quality hoặc object noun trước.";}}));});
+}
+function toggleAnswer(id){document.getElementById(id).classList.toggle("show");}
+function setupQuiz(){
+  document.querySelectorAll(".quiz-q").forEach(q=>q.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{q.querySelectorAll(".choice-btn").forEach(b=>{b.dataset.selected="false";b.style.outline="none";b.style.background="#fff";});btn.dataset.selected="true";btn.style.outline="2px solid rgba(239,166,181,.65)";btn.style.background="#fff8fa";})));
+}
+function gradeQuiz(){
+  let score=0;document.querySelectorAll(".quiz-q").forEach(q=>{const a=q.dataset.answer,s=q.querySelector('.choice-btn[data-selected="true"]');q.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));const c=q.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");if(s){if(s.dataset.value===a)score++;else s.classList.add("wrong");}});
+  const b=document.getElementById("scoreBox");b.classList.add("show");b.textContent=score===10?"10/10 ✨ Excellent. Bạn đã mô tả room rất chắc.":score>=8?`${score}/10 — Rất tốt. Review nhẹ の và な + 部屋.`:score>=6?`${score}/10 — Có nền. Làm lại Grammar + Room Builder.`:`${score}/10 — Xem lại 私の部屋 / どんな部屋 / object names trước khi làm lại.`;
+}
+function resetQuiz(){document.querySelectorAll(".quiz-q .choice-btn").forEach(btn=>{btn.dataset.selected="false";btn.classList.remove("correct","wrong");btn.style.outline="none";btn.style.background="#fff";});const b=document.getElementById("scoreBox");b.classList.remove("show");b.textContent="";}
+function isCompleted(){return localStorage.getItem(DAY_KEY)==="completed";}
+function updateCompleteUI(){const b=document.getElementById("completeBtn"),m=document.getElementById("completeMessage");if(isCompleted()){b.classList.add("completed");b.textContent="✓ Day 45 Completed";m.textContent="Đã hoàn thành Day 45. Tiếp theo: Day 46 — There Is / There Are.";}else{b.classList.remove("completed");b.textContent="✓ Complete Day 45";m.textContent="Hoàn thành khi bạn có thể giới thiệu phòng và gọi tên ít nhất 4 đồ vật.";}}
+function toggleComplete(){if(isCompleted()){localStorage.removeItem(DAY_KEY);showToast("Đã chuyển Day 45 về trạng thái chưa hoàn thành.");}else{localStorage.setItem(DAY_KEY,"completed");localStorage.setItem("n5-last-opened-day","45");showToast("Day 45 completed 🌸");}updateCompleteUI();}
+function isFavorite(){return localStorage.getItem(FAVORITE_KEY)==="true";}
+function updateFavoriteUI(){const b=document.getElementById("favoriteBtn");b.classList.toggle("active",isFavorite());b.textContent=isFavorite()?"★ Favorite":"☆ Favorite";}
+function toggleFavorite(){localStorage.setItem(FAVORITE_KEY,String(!isFavorite()));updateFavoriteUI();showToast(isFavorite()?"Đã thêm Day 45 vào Favorites ★":"Đã bỏ Day 45 khỏi Favorites");}
+function showToast(message){const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove("show"),2200);}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  setupMenu();setupDisplayToggles();loadDisplaySettings();setupInlineAudioButtons();setupChoiceGroups();setupQuiz();updateCompleteUI();updateFavoriteUI();
+  localStorage.setItem("n5-last-opened-day","45");
+  document.getElementById("favoriteBtn").addEventListener("click",toggleFavorite);
+  if("speechSynthesis" in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+  window.addEventListener("beforeunload",stopAudio);
+});
+</script>
+</body>
+</html>

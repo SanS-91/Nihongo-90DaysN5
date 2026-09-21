@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 83: Restaurant — レストランで." />
+  <title>Day 83 — Restaurant | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<header class="topbar"><div class="container nav">
+<a class="brand" href="index.html"><span class="brand-mark">🌸</span><span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span></a>
+<nav class="nav-links"><a href="index.html">Home</a><a class="active" href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4</a></nav>
+<button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button></div>
+<nav class="mobile-menu container" id="mobileMenu"><a href="index.html">Home</a><a href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4 · Coming Soon</a></nav></header>
+
+<div class="lessonbar"><div class="container lessonbar-inner">
+<div class="lesson-position"><a href="day82.html">← Day 82</a><span>·</span><strong>Day 83 / 90</strong></div>
+<div class="lesson-actions"><a class="tiny-btn" href="review.html">Quick Review</a><button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button></div>
+</div></div>
+
+<main><section class="hero"><div class="container"><article class="hero-card">
+<span class="eyebrow">Day 83 · Japan Survival Simulation</span>
+<h1>レストランで</h1>
+<div class="hero-en">Restaurant</div>
+<div class="hero-vi">Hôm nay bạn luyện toàn bộ flow trong nhà hàng: <strong>vào quán → số người → menu → gọi món → hỏi món → gọi thêm → thanh toán</strong>. Mục tiêu là gọi được bữa ăn bằng tiếng Nhật mà không cần câu quá phức tạp.</div>
+<div class="hero-meta"><span class="meta-chip">Phase 9</span><span class="meta-chip">75–90 phút</span><span class="meta-chip">Restaurant Survival</span><span class="meta-chip">Ordering</span><span class="meta-chip">おすすめ</span><span class="meta-chip">お会計</span><span class="meta-chip">Repair</span></div>
+<div class="goal-box"><strong>Mục tiêu hôm nay</strong><p>Bạn có thể xử lý một restaurant flow cơ bản: <span class="jp-inline">二人です</span> → <span class="jp-inline">おすすめは何ですか</span> → <span class="jp-inline">これをお願いします</span> → <span class="jp-inline">水をください</span> → <span class="jp-inline">お会計お願いします</span>.</p></div>
+<div class="tip memory" style="margin-top:16px;"><strong>🌱 Restaurant map</strong><strong>Enter → Party size → Menu → Ask → Order → Add → Eat → Pay → Thank</strong>.</div>
+<div class="display-panel"><div class="display-title">表示 · Hiển thị</div><div class="display-toggles">
+<button class="toggle-btn active" data-toggle="furigana">Furigana</button><button class="toggle-btn" data-toggle="romaji">Romaji</button><button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+</div></div></article></div></section>
+
+<div class="container lesson-layout"><aside class="toc"><div class="toc-title">Trong bài này</div>
+<a href="#warmup">01 · Warm-up</a><a href="#conversation">02 · Main Conversation</a>
+<a href="#enter">03 · Entering the Restaurant</a><a href="#menu">04 · Menu & Recommendation</a>
+<a href="#order">05 · Ordering</a><a href="#add">06 · Ordering More</a>
+<a href="#questions">07 · Ask About Food</a><a href="#repair">08 · Communication Repair</a>
+<a href="#culture">09 · いただきます</a><a href="#payment">10 · Payment</a>
+<a href="#vocab">11 · Restaurant Vocabulary</a><a href="#kanji">12 · Kanji Helper</a>
+<a href="#natural">13 · Natural Japanese</a><a href="#traps">14 · Common Mistakes</a>
+<a href="#grammar">15 · Survival Patterns</a><a href="#listening">16 · Listening Ladder</a>
+<a href="#builder">17 · Order Builder</a><a href="#japanese-first">18 · Japanese First</a>
+<a href="#speaking">19 · Restaurant Role-play</a><a href="#quiz">20 · Mini Quiz</a>
+<a href="#mission">21 · Restaurant Simulation</a>
+</aside><div class="lesson-content">
+
+<section class="section-card" id="warmup"><div class="section-kicker">01 · Warm-up</div><h2>Four phrases can already get you through a meal</h2>
+<div class="warmup-grid">
+<div class="warmup-item"><div class="jp"><ruby>二人<rt>ふたり</rt></ruby>です。</div><div class="vi">Hai người.</div><button class="audio-btn" onclick="speakJapanese('二人です。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp">おすすめは<ruby>何<rt>なん</rt></ruby>ですか。</div><div class="vi">Món gợi ý là gì?</div><button class="audio-btn" onclick="speakJapanese('おすすめは何ですか。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp">これをお<ruby>願<rt>ねが</rt></ruby>いします。</div><div class="vi">Cho tôi món này.</div><button class="audio-btn" onclick="speakJapanese('これをお願いします。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp"><ruby>お会計<rt>おかいけい</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします。</div><div class="vi">Cho tôi thanh toán.</div><button class="audio-btn" onclick="speakJapanese('お会計お願いします。',1)">▶ Nghe</button></div>
+</div></section>
+
+<section class="section-card" id="conversation"><div class="section-kicker">02 · Main Conversation</div><h2>From entering to paying</h2>
+<div class="audio-controls"><button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button><button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div>
+<div class="dialogue-shell" style="margin-top:16px;">
+<div class="dialogue-line"><div class="speaker">Staff</div><div><div class="jp-line">いらっしゃいませ。<ruby>何名様<rt>なんめいさま</rt></ruby>ですか。</div><div class="vi line-note">Xin chào quý khách. Có mấy người ạ?</div></div><button class="line-audio" onclick="speakJapanese('いらっしゃいませ。何名様ですか。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line"><ruby>二人<rt>ふたり</rt></ruby>です。</div><div class="vi line-note">Hai người.</div></div><button class="line-audio" onclick="speakJapanese('二人です。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">Staff</div><div><div class="jp-line">こちらへどうぞ。メニューです。</div><div class="vi line-note">Mời đi lối này. Đây là menu.</div></div><button class="line-audio" onclick="speakJapanese('こちらへどうぞ。メニューです。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line">ありがとうございます。おすすめは<ruby>何<rt>なん</rt></ruby>ですか。</div><div class="vi line-note">Cảm ơn. Món gợi ý là gì?</div></div><button class="line-audio" onclick="speakJapanese('ありがとうございます。おすすめは何ですか。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">Staff</div><div><div class="jp-line">この<ruby>魚料理<rt>さかなりょうり</rt></ruby>がおすすめです。</div><div class="vi line-note">Món cá này là món gợi ý.</div></div><button class="line-audio" onclick="speakJapanese('この魚料理がおすすめです。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line">じゃあ、これをお<ruby>願<rt>ねが</rt></ruby>いします。それから、<ruby>水<rt>みず</rt></ruby>をください。</div><div class="vi line-note">Vậy cho tôi món này. Và cho tôi nước.</div></div><button class="line-audio" onclick="speakJapanese('じゃあ、これをお願いします。それから、水をください。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line">すみません。もう<ruby>一<rt>ひと</rt></ruby>つお<ruby>願<rt>ねが</rt></ruby>いします。</div><div class="vi line-note">Xin lỗi, cho thêm một phần nữa.</div></div><button class="line-audio" onclick="speakJapanese('すみません。もう一つお願いします。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line"><ruby>お会計<rt>おかいけい</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします。カードは<ruby>使<rt>つか</rt></ruby>えますか。</div><div class="vi line-note">Cho tôi thanh toán. Có dùng thẻ được không?</div></div><button class="line-audio" onclick="speakJapanese('お会計お願いします。カードは使えますか。',1)">▶</button></div>
+</div></section>
+
+<section class="section-card" id="enter"><div class="section-kicker">03 · Entering the Restaurant</div><h2>How many people?</h2>
+<div class="grammar-rule"><div class="rule-form">何名様ですか。</div><p>Service-style: How many people are in your party?</p></div>
+<div class="grammar-rule"><div class="rule-form">一人です。 / 二人です。 / 三人です。</div><p>One / two / three people.</p></div>
+<div class="grammar-rule"><div class="rule-form">予約はありますか。</div><p>= Do you have a reservation?</p></div>
+<div class="tip memory"><strong>💡 Recognition first</strong><span class="jp-inline">何名様ですか</span> is staff language. You mainly need to recognize it and answer with the number of people.</div></section>
+
+<section class="section-card" id="menu"><div class="section-kicker">04 · Menu & Recommendation</div><h2>Ask before you order</h2>
+<div class="grammar-rule"><div class="rule-form">メニューをお願いします。</div><p>= Menu, please.</p></div>
+<div class="grammar-rule"><div class="rule-form">おすすめは何ですか。</div><p>= What do you recommend?</p></div>
+<div class="grammar-rule"><div class="rule-form">これは何ですか。</div><p>= What is this?</p></div>
+<div class="tip real"><strong>🇯🇵 Pointing works</strong>Trong nhà hàng, <span class="jp-inline">これ / これは何ですか / これをお願いします</span> rất mạnh vì bạn có thể vừa nói vừa chỉ menu.</div></section>
+
+<section class="section-card" id="order"><div class="section-kicker">05 · Ordering</div><h2>これをお願いします</h2>
+<div class="grammar-rule"><div class="rule-form">これをお願いします。</div><p>= Cho tôi món này.</p></div>
+<div class="grammar-rule"><div class="rule-form">ラーメンをお願いします。</div><p>= Cho tôi ramen.</p></div>
+<div class="grammar-rule"><div class="rule-form">水をください。</div><p>= Cho tôi nước.</p></div>
+<div class="tip memory"><strong>💡 Two useful patterns</strong><span class="jp-inline">Nをお願いします</span> sounds broadly polite; <span class="jp-inline">Nをください</span> is also useful for simple requests.</div></section>
+
+<section class="section-card" id="add"><div class="section-kicker">06 · Ordering More</div><h2>もう一つ / もう一杯</h2>
+<div class="grammar-rule"><div class="rule-form">もう一つお願いします。</div><p>= Cho thêm một cái/phần nữa.</p></div>
+<div class="grammar-rule"><div class="rule-form">水をもう一杯お願いします。</div><p>= Cho thêm một ly nước.</p></div>
+<div class="grammar-rule"><div class="rule-form">これもお願いします。</div><p>= Cho cả món này nữa.</p></div>
+<div class="tip memory"><strong>💡 も = also</strong><span class="jp-inline">これも</span> = this too. Very useful when adding another item.</div></section>
+
+<section class="section-card" id="questions"><div class="section-kicker">07 · Ask About Food</div><h2>Simple questions before eating</h2>
+<div class="grammar-rule"><div class="rule-form">これは辛いですか。</div><p>= Món này có cay không?</p></div>
+<div class="grammar-rule"><div class="rule-form">肉は入っていますか。</div><p>= Có thịt trong món này không?</p></div>
+<div class="grammar-rule"><div class="rule-form">魚は入っていますか。</div><p>= Có cá trong món này không?</p></div>
+<div class="tip warning"><strong>⚠ Whole chunk</strong><span class="jp-inline">入っていますか</span> hôm nay học như một survival chunk “có ... trong đó không?”. Không cần mở toàn bộ grammar `〜ている` ở đây.</div></section>
+
+<section class="section-card" id="repair"><div class="section-kicker">08 · Communication Repair</div><h2>When the waiter speaks too fast</h2>
+<div class="grammar-rule"><div class="rule-form">すみません。もう一度お願いします。</div><p>= Xin lỗi, vui lòng nói lại.</p></div>
+<div class="grammar-rule"><div class="rule-form">もう少しゆっくりお願いします。</div><p>= Vui lòng nói chậm hơn một chút.</p></div>
+<div class="grammar-rule"><div class="rule-form">この言葉がわかりません。</div><p>= Tôi không hiểu từ này.</p></div>
+<div class="grammar-rule"><div class="rule-form">これはどういう意味ですか。</div><p>= Cái này nghĩa là gì?</p></div></section>
+
+<section class="section-card" id="culture"><div class="section-kicker">09 · Culture & Meal Phrases</div><h2>いただきます / ごちそうさまでした</h2>
+<div class="grammar-rule"><div class="rule-form">いただきます。</div><p>Common phrase said before eating.</p></div>
+<div class="grammar-rule"><div class="rule-form">ごちそうさまでした。</div><p>Common phrase after finishing a meal.</p></div>
+<div class="tip real"><strong>🇯🇵 Usage</strong>Không cần dịch từng chữ. Học như cultural chunks gắn với <strong>before meal / after meal</strong>.</div></section>
+
+<section class="section-card" id="payment"><div class="section-kicker">10 · Payment</div><h2>お会計お願いします</h2>
+<div class="grammar-rule"><div class="rule-form">お会計お願いします。</div><p>= Cho tôi thanh toán / tính tiền giúp tôi.</p></div>
+<div class="grammar-rule"><div class="rule-form">カードは使えますか。</div><p>= Có dùng thẻ được không?</p></div>
+<div class="grammar-rule"><div class="rule-form">現金で払います。</div><p>= Tôi trả bằng tiền mặt. Recognition/useful chunk.</p></div>
+<div class="tip memory"><strong>💡 Payment strategy</strong>Nếu câu dài khó nhớ, chỉ cần <span class="jp-inline">お会計お願いします</span> trước. Sau đó hỏi phương thức thanh toán.</div></section>
+
+<section class="section-card" id="vocab"><div class="section-kicker">11 · Restaurant Vocabulary</div><h2>14 survival chunks</h2><div class="vocab-grid"><div class="vocab-card"><div><div class="vocab-jp"><ruby>何名様<rt>なんめいさま</rt></ruby>ですか</div>
+    <div class="romaji vocab-reading">nanmei-sama desu ka</div><div class="vi vocab-vi">quý khách có mấy người?</div></div>
+    <button class="line-audio" onclick="speakJapanese('何名様ですか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>二人<rt>ふたり</rt></ruby>です</div>
+    <div class="romaji vocab-reading">futari desu</div><div class="vi vocab-vi">hai người</div></div>
+    <button class="line-audio" onclick="speakJapanese('二人です',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>予約<rt>よやく</rt></ruby>はありますか</div>
+    <div class="romaji vocab-reading">yoyaku wa arimasu ka</div><div class="vi vocab-vi">có đặt chỗ trước không?</div></div>
+    <button class="line-audio" onclick="speakJapanese('予約はありますか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">メニューをお<ruby>願<rt>ねが</rt></ruby>いします</div>
+    <div class="romaji vocab-reading">menyū o onegaishimasu</div><div class="vi vocab-vi">cho tôi menu</div></div>
+    <button class="line-audio" onclick="speakJapanese('メニューをお願いします',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">おすすめは<ruby>何<rt>なん</rt></ruby>ですか</div>
+    <div class="romaji vocab-reading">osusume wa nan desu ka</div><div class="vi vocab-vi">món gợi ý là gì?</div></div>
+    <button class="line-audio" onclick="speakJapanese('おすすめは何ですか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">これをお<ruby>願<rt>ねが</rt></ruby>いします</div>
+    <div class="romaji vocab-reading">kore o onegaishimasu</div><div class="vi vocab-vi">cho tôi món này</div></div>
+    <button class="line-audio" onclick="speakJapanese('これをお願いします',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>水<rt>みず</rt></ruby>をください</div>
+    <div class="romaji vocab-reading">mizu o kudasai</div><div class="vi vocab-vi">cho tôi nước</div></div>
+    <button class="line-audio" onclick="speakJapanese('水をください',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">もう<ruby>一<rt>ひと</rt></ruby>つお<ruby>願<rt>ねが</rt></ruby>いします</div>
+    <div class="romaji vocab-reading">mō hitotsu onegaishimasu</div><div class="vi vocab-vi">cho thêm một cái/phần nữa</div></div>
+    <button class="line-audio" onclick="speakJapanese('もう一つお願いします',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>辛<rt>から</rt></ruby>いですか</div>
+    <div class="romaji vocab-reading">karai desu ka</div><div class="vi vocab-vi">có cay không?</div></div>
+    <button class="line-audio" onclick="speakJapanese('辛いですか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>肉<rt>にく</rt></ruby>は<ruby>入<rt>はい</rt></ruby>っていますか</div>
+    <div class="romaji vocab-reading">niku wa haitte imasu ka</div><div class="vi vocab-vi">có thịt trong món này không?</div></div>
+    <button class="line-audio" onclick="speakJapanese('肉は入っていますか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>お会計<rt>おかいけい</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします</div>
+    <div class="romaji vocab-reading">okaikei onegaishimasu</div><div class="vi vocab-vi">cho tôi thanh toán</div></div>
+    <button class="line-audio" onclick="speakJapanese('お会計お願いします',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">カードは<ruby>使<rt>つか</rt></ruby>えますか</div>
+    <div class="romaji vocab-reading">kādo wa tsukaemasu ka</div><div class="vi vocab-vi">có dùng thẻ được không?</div></div>
+    <button class="line-audio" onclick="speakJapanese('カードは使えますか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">いただきます</div>
+    <div class="romaji vocab-reading">itadakimasu</div><div class="vi vocab-vi">câu nói trước khi ăn</div></div>
+    <button class="line-audio" onclick="speakJapanese('いただきます',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">ごちそうさまでした</div>
+    <div class="romaji vocab-reading">gochisōsama deshita</div><div class="vi vocab-vi">cảm ơn vì bữa ăn</div></div>
+    <button class="line-audio" onclick="speakJapanese('ごちそうさまでした',1)">▶</button></div></div></section>
+
+<section class="section-card" id="kanji"><div class="section-kicker">12 · Kanji Helper</div><h2>Kanji worth recognizing in restaurants</h2>
+<div class="explain-grid">
+<div class="explain-card"><h3><ruby>予約<rt>よやく</rt></ruby></h3><p><strong>reservation</strong>. Learn whole word.</p></div>
+<div class="explain-card"><h3><ruby>水<rt>みず</rt></ruby></h3><p><strong>water</strong>.</p></div>
+<div class="explain-card"><h3><ruby>辛<rt>から</rt></ruby>い</h3><p><strong>spicy</strong>. Not “salty”.</p></div>
+<div class="explain-card"><h3><ruby>肉<rt>にく</rt></ruby></h3><p><strong>meat</strong>.</p></div>
+<div class="explain-card"><h3><ruby>魚<rt>さかな</rt></ruby></h3><p><strong>fish</strong>.</p></div>
+<div class="explain-card"><h3><ruby>入<rt>はい</rt></ruby>る</h3><p><strong>enter/be contained</strong>. Here: 入っています.</p></div>
+<div class="explain-card"><h3><ruby>会計<rt>かいけい</rt></ruby></h3><p><strong>bill/payment</strong>. Restaurant chunk: お会計.</p></div>
+<div class="explain-card"><h3><ruby>使<rt>つか</rt></ruby>う</h3><p><strong>use</strong>. Card chunk: カードは使えますか.</p></div>
+</div><div class="tip memory"><strong>🌱 Priority</strong>Must recognize: 予約・水・辛・肉・魚・会計. Recognition-only whole chunks: 入っています・使えますか.</div></section>
+
+<section class="section-card" id="natural"><div class="section-kicker">13 · Natural Japanese</div><h2>Restaurant Japanese is often short</h2>
+<div class="grammar-rule"><div class="rule-form">これをお願いします。</div><p>Point + phrase = enough.</p></div>
+<div class="grammar-rule"><div class="rule-form">これもお願いします。</div><p>Add this too.</p></div>
+<div class="grammar-rule"><div class="rule-form">すみません。</div><p>Useful to get staff attention before your request.</p></div>
+<div class="grammar-rule"><div class="rule-form">ありがとうございます。</div><p>Works throughout the interaction.</p></div>
+<div class="tip real"><strong>🇯🇵 Don't overbuild</strong>Ở nhà hàng, short polite chunks are more useful than trying to make long textbook sentences.</div></section>
+
+<section class="section-card" id="traps"><div class="section-kicker">14 · Common Mistakes</div><h2>Restaurant traps</h2>
+<div class="grammar-rule"><div class="rule-form">これがお願いします ✕ → これをお願いします ✓</div><p>Requested item → を.</p></div>
+<div class="grammar-rule"><div class="rule-form">おすすめはどこですか ✕ → おすすめは何ですか ✓</div><p>Ask what the recommendation is, not where.</p></div>
+<div class="grammar-rule"><div class="rule-form">辛い = hot temperature ✕</div><p><span class="jp-inline">辛い</span> = spicy. <span class="jp-inline">熱い</span> = hot to the touch/temperature.</p></div>
+<div class="grammar-rule"><div class="rule-form">もう一度 = one more item ✕</div><p><span class="jp-inline">もう一度</span> = one more time; <span class="jp-inline">もう一つ</span> = one more item.</p></div>
+<div class="tip warning"><strong>⚠ Counter distinction</strong>`一度` counts times; `一つ` counts generic items.</div></section>
+
+<section class="section-card" id="grammar"><div class="section-kicker">15 · Survival Patterns</div><h2>8 restaurant formulas</h2>
+<div class="grammar-rule"><div class="rule-form">N人です</div><p><span class="jp-inline">二人です。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">N は 何ですか</div><p><span class="jp-inline">おすすめは何ですか。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">N を お願いします</div><p><span class="jp-inline">これをお願いします。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">N を ください</div><p><span class="jp-inline">水をください。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">もう一つお願いします</div><p>One more, please.</p></div>
+<div class="grammar-rule"><div class="rule-form">N は 入っていますか</div><p><span class="jp-inline">肉は入っていますか。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">お会計お願いします</div><p>Bill, please.</p></div>
+<div class="grammar-rule"><div class="rule-form">カードは使えますか</div><p>Can I use a card?</p></div></section>
+
+<section class="section-card" id="listening"><div class="section-kicker">16 · Listening Ladder</div><h2>10 rounds + restaurant shadowing</h2><div class="practice-box">
+      <div class="practice-title">Listening 1 · Party size</div>
+      <button class="audio-btn primary" onclick="speakJapanese('何名様ですか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Có mấy người?</button><button class="choice-btn" data-value="b">B. Đặt món gì?</button><button class="choice-btn" data-value="c">C. Thanh toán thế nào?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 2 · Two people</div>
+      <button class="audio-btn primary" onclick="speakJapanese('二人です。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Hai người</button><button class="choice-btn" data-value="b">B. Hai phần</button><button class="choice-btn" data-value="c">C. Hai giờ</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 3 · Recommendation</div>
+      <button class="audio-btn primary" onclick="speakJapanese('おすすめは何ですか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Món gợi ý là gì?</button><button class="choice-btn" data-value="b">B. Món này giá bao nhiêu?</button><button class="choice-btn" data-value="c">C. Nhà vệ sinh ở đâu?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 4 · Order</div>
+      <button class="audio-btn primary" onclick="speakJapanese('これをお願いします。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Cho tôi món này</button><button class="choice-btn" data-value="b">B. Cho tôi xem menu</button><button class="choice-btn" data-value="c">C. Cho tôi thanh toán</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 5 · Water</div>
+      <button class="audio-btn primary" onclick="speakJapanese('水をください。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Cho tôi nước</button><button class="choice-btn" data-value="b">B. Cho tôi trà</button><button class="choice-btn" data-value="c">C. Cho tôi cơm</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 6 · Another one</div>
+      <button class="audio-btn primary" onclick="speakJapanese('もう一つお願いします。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Cho thêm một phần/cái nữa</button><button class="choice-btn" data-value="b">B. Không cần nữa</button><button class="choice-btn" data-value="c">C. Đổi sang món khác</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 7 · Spicy?</div>
+      <button class="audio-btn primary" onclick="speakJapanese('これは辛いですか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Món này có cay không?</button><button class="choice-btn" data-value="b">B. Món này có nóng không?</button><button class="choice-btn" data-value="c">C. Món này có ngon không?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 8 · Ingredient</div>
+      <button class="audio-btn primary" onclick="speakJapanese('肉は入っていますか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Có thịt trong món này không?</button><button class="choice-btn" data-value="b">B. Thịt ở đâu?</button><button class="choice-btn" data-value="c">C. Có bán thịt không?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 9 · Bill</div>
+      <button class="audio-btn primary" onclick="speakJapanese('お会計お願いします。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Cho tôi thanh toán</button><button class="choice-btn" data-value="b">B. Cho tôi gọi món</button><button class="choice-btn" data-value="c">C. Cho tôi đổi bàn</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 10 · Card</div>
+      <button class="audio-btn primary" onclick="speakJapanese('カードは使えますか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Có dùng thẻ được không?</button><button class="choice-btn" data-value="b">B. Có bán thẻ không?</button><button class="choice-btn" data-value="c">C. Có cần thẻ không?</button></div><div class="feedback"></div>
+    </div>
+<div class="practice-box"><div class="practice-title">Shadowing · Full restaurant flow</div><div class="audio-controls">
+<button class="audio-btn" onclick="speakJapanese('何名様ですか。二人です。おすすめは何ですか。これをお願いします。それから、水をください。すみません。もう一つお願いします。お会計お願いします。カードは使えますか。',.76)">🐢 Slow</button>
+<button class="audio-btn primary" onclick="speakJapanese('何名様ですか。二人です。おすすめは何ですか。これをお願いします。それから、水をください。すみません。もう一つお願いします。お会計お願いします。カードは使えますか。',1)">▶ Natural</button>
+</div></div></section>
+
+<section class="section-card" id="builder"><div class="section-kicker">17 · Order Builder</div><h2>Build your meal interaction</h2>
+<div class="breakdown">
+<div class="break-row"><div class="break-label">Party</div><div><strong>二人です。</strong></div></div>
+<div class="break-row"><div class="break-label">Menu</div><div><strong>メニューをお願いします。</strong></div></div>
+<div class="break-row"><div class="break-label">Recommend</div><div><strong>おすすめは何ですか。</strong></div></div>
+<div class="break-row"><div class="break-label">Order</div><div><strong>これをお願いします。</strong></div></div>
+<div class="break-row"><div class="break-label">Drink</div><div><strong>水をください。</strong></div></div>
+<div class="break-row"><div class="break-label">More</div><div><strong>もう一つお願いします。</strong></div></div>
+<div class="break-row"><div class="break-label">Bill</div><div><strong>お会計お願いします。</strong></div></div>
+<div class="break-row"><div class="break-label">Card</div><div><strong>カードは使えますか。</strong></div></div>
+</div></section>
+
+<section class="section-card" id="japanese-first"><div class="section-kicker">18 · Japanese First</div><h2>Romaji-Off Restaurant Sprint</h2>
+<p class="section-intro vi">Nghe staff → trả lời ngay, không dịch từng chữ.</p>
+<div class="practice-box"><div class="practice-title">Round 1 · Party size</div><button class="audio-btn primary" onclick="speakJapanese('何名様ですか。',1)">▶ Nghe</button><p class="jp">二人です。</p></div>
+<div class="practice-box"><div class="practice-title">Round 2 · Recommendation</div><button class="audio-btn primary" onclick="speakJapanese('何を食べますか。',1)">▶ Nghe</button><p class="jp">おすすめは何ですか。</p></div>
+<div class="practice-box"><div class="practice-title">Round 3 · Order</div><button class="audio-btn primary" onclick="speakJapanese('注文してください。',1)">▶ Nghe</button><p class="jp">これをお願いします。</p></div>
+<div class="practice-box"><div class="practice-title">Round 4 · Ingredient</div><button class="audio-btn primary" onclick="speakJapanese('肉。中にありますか。',1)">▶ Nghe</button><p class="jp">肉は入っていますか。</p></div>
+<div class="practice-box"><div class="practice-title">Round 5 · Pay</div><button class="audio-btn primary" onclick="speakJapanese('食事が終わりました。',1)">▶ Nghe</button><p class="jp">お会計お願いします。カードは使えますか。</p></div></section>
+
+<section class="section-card" id="speaking"><div class="section-kicker">19 · Speaking & Restaurant Role-play</div><h2>Order a full meal</h2>
+<div class="speaking-grid">
+<div class="speaking-card"><div class="prompt">1. “Hai người.”</div><button class="audio-btn" onclick="toggleAnswer('a1')">Model</button><div class="answer" id="a1"><div class="jp">二人です。</div></div></div>
+<div class="speaking-card"><div class="prompt">2. “Món gợi ý là gì?”</div><button class="audio-btn" onclick="toggleAnswer('a2')">Model</button><div class="answer" id="a2"><div class="jp">おすすめは何ですか。</div></div></div>
+<div class="speaking-card"><div class="prompt">3. “Cho tôi món này.”</div><button class="audio-btn" onclick="toggleAnswer('a3')">Model</button><div class="answer" id="a3"><div class="jp">これをお願いします。</div></div></div>
+<div class="speaking-card"><div class="prompt">4. “Cho tôi thêm một phần.”</div><button class="audio-btn" onclick="toggleAnswer('a4')">Model</button><div class="answer" id="a4"><div class="jp">もう一つお願いします。</div></div></div>
+<div class="speaking-card"><div class="prompt">5. “Có thịt trong món này không?”</div><button class="audio-btn" onclick="toggleAnswer('a5')">Model</button><div class="answer" id="a5"><div class="jp">肉は入っていますか。</div></div></div>
+<div class="speaking-card"><div class="prompt">6. “Cho tôi thanh toán.”</div><button class="audio-btn" onclick="toggleAnswer('a6')">Model</button><div class="answer" id="a6"><div class="jp">お会計お願いします。</div></div></div>
+</div><div class="practice-box" style="margin-top:16px;"><div class="practice-title">Restaurant Role-play · 14 Prompts</div><button class="audio-btn primary" onclick="playRoleplay()">▶ Start Role-play</button><p class="vi">Staff hỏi số người, reservation, order, recommendation, ingredients, add-on, payment và tạo 2 đoạn nói nhanh để bạn repair.</p></div></section>
+
+<section class="section-card" id="quiz"><div class="section-kicker">20 · Mini Quiz</div><h2>12 câu Day 83</h2><div class="quiz-q" data-answer="a"><h3>1. `何名様ですか`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. Có mấy người?</button><button class="choice-btn" data-value="b">B. Tên là gì?</button><button class="choice-btn" data-value="c">C. Món gì?</button></div></div><div class="quiz-q" data-answer="a"><h3>2. “Hai người.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 二人です。</button><button class="choice-btn" data-value="b">B. 二つです。</button><button class="choice-btn" data-value="c">C. 二名をです。</button></div></div><div class="quiz-q" data-answer="a"><h3>3. “Món gợi ý là gì?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. おすすめは何ですか。</button><button class="choice-btn" data-value="b">B. これは何時ですか。</button><button class="choice-btn" data-value="c">C. 何で行きますか。</button></div></div><div class="quiz-q" data-answer="a"><h3>4. “Cho tôi món này.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. これをお願いします。</button><button class="choice-btn" data-value="b">B. これがいいですか。</button><button class="choice-btn" data-value="c">C. これへ行きます。</button></div></div><div class="quiz-q" data-answer="a"><h3>5. `もう一つお願いします`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. thêm một cái/phần nữa</button><button class="choice-btn" data-value="b">B. nói lại một lần nữa</button><button class="choice-btn" data-value="c">C. một người nữa</button></div></div><div class="quiz-q" data-answer="a"><h3>6. “Món này có cay không?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. これは辛いですか。</button><button class="choice-btn" data-value="b">B. これは暑いですか。</button><button class="choice-btn" data-value="c">C. これは高いですか。</button></div></div><div class="quiz-q" data-answer="a"><h3>7. “Có thịt trong món này không?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 肉は入っていますか。</button><button class="choice-btn" data-value="b">B. 肉を入りますか。</button><button class="choice-btn" data-value="c">C. 肉へありますか。</button></div></div><div class="quiz-q" data-answer="a"><h3>8. `お会計お願いします`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. tính tiền giúp tôi</button><button class="choice-btn" data-value="b">B. gọi món giúp tôi</button><button class="choice-btn" data-value="c">C. đặt bàn giúp tôi</button></div></div><div class="quiz-q" data-answer="a"><h3>9. `カードは使えますか`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. có dùng thẻ được không?</button><button class="choice-btn" data-value="b">B. thẻ ở đâu?</button><button class="choice-btn" data-value="c">C. thẻ bao nhiêu tiền?</button></div></div><div class="quiz-q" data-answer="a"><h3>10. Khi không hiểu waiter?</h3><div class="choices"><button class="choice-btn" data-value="a">A. もう一度お願いします。</button><button class="choice-btn" data-value="b">B. ごちそうさまでした。</button><button class="choice-btn" data-value="c">C. 二人です。</button></div></div><div class="quiz-q" data-answer="a"><h3>11. `いただきます` thường nói khi?</h3><div class="choices"><button class="choice-btn" data-value="a">A. trước khi ăn</button><button class="choice-btn" data-value="b">B. thanh toán</button><button class="choice-btn" data-value="c">C. rời khách sạn</button></div></div><div class="quiz-q" data-answer="a"><h3>12. Day 83 trọng tâm là?</h3><div class="choices"><button class="choice-btn" data-value="a">A. phản xạ restaurant survival</button><button class="choice-btn" data-value="b">B. học toàn bộ ẩm thực Nhật</button><button class="choice-btn" data-value="c">C. học past tense mới</button></div></div>
+<div class="quiz-actions"><button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button><button class="audio-btn" onclick="resetQuiz()">Làm lại</button></div><div class="score-box" id="scoreBox"></div></section>
+
+<section class="section-card mission-card" id="mission"><div class="section-kicker">21 · Restaurant Simulation</div><h2>Enter → Eat → Pay — 10–12 minutes</h2>
+<p class="section-intro">Không nhìn Romaji. Tự đóng vai customer từ lúc vào đến lúc rời quán.</p>
+<div class="mission-lines">
+<div class="mission-line"><div class="vi">1. Trả lời số người.</div><div class="jp">二人です。</div></div>
+<div class="mission-line"><div class="vi">2. Xin menu.</div><div class="jp">メニューをお願いします。</div></div>
+<div class="mission-line"><div class="vi">3. Hỏi món gợi ý.</div><div class="jp">おすすめは何ですか。</div></div>
+<div class="mission-line"><div class="vi">4. Gọi món.</div><div class="jp">これをお願いします。</div></div>
+<div class="mission-line"><div class="vi">5. Gọi nước.</div><div class="jp">水をください。</div></div>
+<div class="mission-line"><div class="vi">6. Hỏi có cay không.</div><div class="jp">これは辛いですか。</div></div>
+<div class="mission-line"><div class="vi">7. Hỏi ingredient.</div><div class="jp">肉は入っていますか。</div></div>
+<div class="mission-line"><div class="vi">8. Gọi thêm.</div><div class="jp">もう一つお願いします。</div></div>
+<div class="mission-line"><div class="vi">9. Không hiểu waiter.</div><div class="jp">すみません。もう一度、ゆっくりお願いします。</div></div>
+<div class="mission-line"><div class="vi">10. Thanh toán.</div><div class="jp">お会計お願いします。</div></div>
+<div class="mission-line"><div class="vi">11. Hỏi dùng thẻ.</div><div class="jp">カードは使えますか。</div></div>
+<div class="mission-line"><div class="vi">12. Kết thúc bữa ăn.</div><div class="jp">ごちそうさまでした。</div></div>
+</div>
+<div class="audio-controls"><button class="audio-btn" onclick="playMission(.76)">🐢 Restaurant Simulation Slow</button><button class="audio-btn primary" onclick="playMission(1)">▶ Restaurant Simulation Natural</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div>
+<div class="tip memory"><strong>✅ Pass standard</strong>Phản xạ đúng ít nhất <strong>10/12 tình huống</strong>, tự gọi được món + gọi thêm + hỏi ingredient + thanh toán, không cần Romaji.</div>
+<div class="tip warning"><strong>➡️ Next Day</strong>Day 84 — <strong>Shopping</strong>: hỏi giá, size, màu, thử đồ, chọn món, thanh toán và xử lý khi không hiểu staff.</div>
+<div class="complete-box"><p id="completeMessage" style="margin-top:0;color:var(--muted);">Hoàn thành khi bạn có thể đi từ cửa nhà hàng đến thanh toán bằng các câu ngắn, rõ và thực dụng.</p><button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 83</button></div></section>
+
+<div class="day-nav"><a href="day82.html">← Day 82 · Hotel Check-in</a><a class="next" href="day84.html">Day 84 · Shopping →</a></div>
+</div></div></main>
+
+<footer><div class="container footer-inner"><div><span class="footer-brand">🌸 Nihongo 90</span> · Day 83</div><div>Japan Survival Simulation · Enter, order, ask about food, add items, pay and repair communication.</div></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const DAY_KEY="n5-day-83";
+const FAVORITE_KEY="n5-favorite-day-83";
+const DISPLAY_KEY="nihongo90-display";
+const dialogueLines=["いらっしゃいませ。何名様ですか。","二人です。","こちらへどうぞ。メニューです。","ありがとうございます。おすすめは何ですか。","この魚料理がおすすめです。","じゃあ、これをお願いします。それから、水をください。","すみません。もう一つお願いします。","お会計お願いします。カードは使えますか。"];
+const roleplayPrompts=["何名様ですか。","予約はありますか。","メニューをお願いします。","おすすめは何ですか。","何を注文しますか。","これをお願いします。","水をください。","これは辛いですか。","肉は入っていますか。","もう一つお願いします。","少し速く話します。","もう一度お願いします。","お会計お願いします。","カードは使えますか。"];
+const missionPrompts=["二人です。","メニューをお願いします。","おすすめは何ですか。","これをお願いします。","水をください。","これは辛いですか。","肉は入っていますか。","もう一つお願いします。","もう一度、ゆっくりお願いします。","お会計お願いします。","カードは使えますか。","ごちそうさまでした。"];
+let voiceCache=[],japaneseVoice=null,dialogueRunId=0,playToken=0;
+
+function setupMenu(){const btn=document.getElementById("menuBtn"),menu=document.getElementById("mobileMenu");btn.addEventListener("click",()=>{const open=menu.classList.toggle("open");btn.setAttribute("aria-expanded",open?"true":"false");btn.textContent=open?"✕":"☰";});}
+function loadDisplaySettings(){let saved={furigana:true,romaji:false,vi:true};try{const p=JSON.parse(localStorage.getItem(DISPLAY_KEY));if(p&&typeof p==="object")saved={...saved,...p};}catch(_){}applyDisplaySettings(saved);}
+function applyDisplaySettings(s){document.body.classList.toggle("hide-furigana",!s.furigana);document.body.classList.toggle("hide-romaji",!s.romaji);document.body.classList.toggle("hide-vi",!s.vi);document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.toggle("active",!!s[b.dataset.toggle]));localStorage.setItem(DISPLAY_KEY,JSON.stringify(s));}
+function setupDisplayToggles(){document.querySelectorAll(".toggle-btn").forEach(btn=>btn.addEventListener("click",()=>{let s={furigana:true,romaji:false,vi:true};try{s={...s,...JSON.parse(localStorage.getItem(DISPLAY_KEY))};}catch(_){}s[btn.dataset.toggle]=!s[btn.dataset.toggle];applyDisplaySettings(s);}));}
+function loadVoices(){if(!("speechSynthesis" in window))return;voiceCache=speechSynthesis.getVoices()||[];japaneseVoice=pickJapaneseVoice();}
+function pickJapaneseVoice(){const vs=voiceCache.filter(v=>/^ja(-|_)?JP/i.test(v.lang)||/^ja/i.test(v.lang));if(!vs.length)return null;const pref=["Kyoko","Otoya","Nanami","Keita","Haruka","Google 日本語","Microsoft Nanami","Microsoft Keita","Natural","Premium","Enhanced"];for(const n of pref){const f=vs.find(v=>v.name.toLowerCase().includes(n.toLowerCase()));if(f)return f;}return vs[0];}
+async function ensureVoice(){if(!("speechSynthesis" in window))return null;loadVoices();if(japaneseVoice)return japaneseVoice;for(const d of [120,220,360,520]){await new Promise(r=>setTimeout(r,d));loadVoices();if(japaneseVoice)return japaneseVoice;}return null;}
+function stopAudio(){dialogueRunId++;playToken++;if("speechSynthesis" in window){try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}}}
+async function speakJapanese(text,rate=1){stopAudio();if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}const voice=await ensureVoice(),token=++playToken;try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}await new Promise(r=>setTimeout(r,70));if(token!==playToken)return;const u=new SpeechSynthesisUtterance(text);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;u.volume=1;if(voice)u.voice=voice;u.onerror=()=>showToast("Audio TTS không phát được. Hãy thử lại.");speechSynthesis.speak(u);}
+async function playSequence(lines,rate=1,pause=220){stopAudio();if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}const runId=++dialogueRunId,localToken=++playToken,voice=await ensureVoice();for(const line of lines){if(runId!==dialogueRunId||localToken!==playToken)return;await new Promise(resolve=>{const u=new SpeechSynthesisUtterance(line);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;if(voice)u.voice=voice;u.onend=resolve;u.onerror=resolve;try{speechSynthesis.resume();}catch(_){}speechSynthesis.speak(u);});await new Promise(r=>setTimeout(r,pause));}}
+function playDialogue(rate=1){playSequence(dialogueLines,rate,180);}
+function playRoleplay(){showToast("Restaurant Role-play: order, ask, repair, then pay.");playSequence(roleplayPrompts,1,3600);}
+function playMission(rate=1){showToast("Restaurant Survival Simulation.");playSequence(missionPrompts,rate,rate<1?4300:3400);}
+
+function hasJapanese(t){return /[\u3040-\u30ff\u3400-\u9fff]/.test(t||"");}
+function baseText(node){const c=node.cloneNode(true);c.querySelectorAll("rt,.romaji,.vi,.audio-btn,.line-audio,.feedback").forEach(e=>e.remove());return(c.textContent||"").replace(/\s+/g," ").trim();}
+function getAutoAudioText(c){for(const s of [".jp",".jp-line",".vocab-jp",".mission-line .jp",".jp-inline"]){const p=[...c.querySelectorAll(s)].map(baseText).filter(t=>t&&hasJapanese(t));if(p.length)return[...new Set(p)].join("。").replace(/。。+/g,"。");}const r=c.querySelector(".rule-form");if(r){const t=baseText(r);if(t&&hasJapanese(t))return t;}const ss=[...c.querySelectorAll("strong")].map(baseText).filter(t=>t&&hasJapanese(t));if(ss.length)return[...new Set(ss)].join("。");const h=c.querySelector("h3");if(h){const t=baseText(h);if(t&&hasJapanese(t))return t;}return"";}
+function setupInlineAudioButtons(){document.querySelectorAll(".grammar-rule,.explain-card,.break-row,.answer,.mission-line,.tip").forEach(c=>{if(c.closest(".quiz-q")||c.querySelector(".audio-btn,.line-audio"))return;const t=getAutoAudioText(c);if(!t)return;const b=document.createElement("button");b.className="audio-btn auto-audio-btn";b.type="button";b.textContent="▶ Nghe";b.style.marginTop="10px";b.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();speakJapanese(t,1);});c.appendChild(b);});}
+function setupChoiceGroups(){document.querySelectorAll(".practice-box .choices").forEach(g=>{const a=g.dataset.answer,f=g.parentElement.querySelector(".feedback");g.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{g.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));if(btn.dataset.value===a){btn.classList.add("correct");f.textContent="✓ Chính xác!";}else{btn.classList.add("wrong");const c=g.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");f.textContent="Chưa đúng. Nghe keyword restaurant + order/payment phrase.";}}));});}
+function toggleAnswer(id){document.getElementById(id).classList.toggle("show");}
+function setupQuiz(){document.querySelectorAll(".quiz-q").forEach(q=>q.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{q.querySelectorAll(".choice-btn").forEach(b=>{b.dataset.selected="false";b.style.outline="none";b.style.background="#fff";});btn.dataset.selected="true";btn.style.outline="2px solid rgba(239,166,181,.65)";btn.style.background="#fff8fa";})));}
+function gradeQuiz(){let score=0;document.querySelectorAll(".quiz-q").forEach(q=>{const a=q.dataset.answer,s=q.querySelector('.choice-btn[data-selected="true"]');q.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));const c=q.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");if(s){if(s.dataset.value===a)score++;else s.classList.add("wrong");}});const total=document.querySelectorAll(".quiz-q").length,b=document.getElementById("scoreBox");b.classList.add("show");b.textContent=score===total?`${score}/${total} ✨ Excellent. Restaurant survival rất chắc.`:score>=10?`${score}/${total} — Rất tốt. Review nhẹ recommendation / add-on / payment.`:score>=8?`${score}/${total} — Có nền. Làm lại Order Builder + Japanese First.`:`${score}/${total} — Nên luyện core restaurant chunks trước Day 84.`;}
+function resetQuiz(){document.querySelectorAll(".quiz-q .choice-btn").forEach(btn=>{btn.dataset.selected="false";btn.classList.remove("correct","wrong");btn.style.outline="none";btn.style.background="#fff";});const b=document.getElementById("scoreBox");b.classList.remove("show");b.textContent="";}
+function isCompleted(){return localStorage.getItem(DAY_KEY)==="completed";}
+function updateCompleteUI(){const b=document.getElementById("completeBtn"),m=document.getElementById("completeMessage");if(isCompleted()){b.classList.add("completed");b.textContent="✓ Day 83 Completed";m.textContent="Đã hoàn thành Day 83. Tiếp theo: Day 84 — Shopping.";}else{b.classList.remove("completed");b.textContent="✓ Complete Day 83";m.textContent="Hoàn thành khi bạn có thể đi từ cửa nhà hàng đến thanh toán bằng các câu ngắn, rõ và thực dụng.";}}
+function toggleComplete(){if(isCompleted()){localStorage.removeItem(DAY_KEY);showToast("Đã chuyển Day 83 về trạng thái chưa hoàn thành.");}else{localStorage.setItem(DAY_KEY,"completed");localStorage.setItem("n5-last-opened-day","83");showToast("Day 83 completed 🌸");}updateCompleteUI();}
+function isFavorite(){return localStorage.getItem(FAVORITE_KEY)==="true";}
+function updateFavoriteUI(){const b=document.getElementById("favoriteBtn");b.classList.toggle("active",isFavorite());b.textContent=isFavorite()?"★ Favorite":"☆ Favorite";}
+function toggleFavorite(){localStorage.setItem(FAVORITE_KEY,String(!isFavorite()));updateFavoriteUI();showToast(isFavorite()?"Đã thêm Day 83 vào Favorites ★":"Đã bỏ Day 83 khỏi Favorites");}
+function showToast(message){const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove("show"),2200);}
+document.addEventListener("DOMContentLoaded",()=>{setupMenu();setupDisplayToggles();loadDisplaySettings();setupInlineAudioButtons();setupChoiceGroups();setupQuiz();updateCompleteUI();updateFavoriteUI();localStorage.setItem("n5-last-opened-day","83");document.getElementById("favoriteBtn").addEventListener("click",toggleFavorite);if("speechSynthesis" in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}window.addEventListener("beforeunload",stopAudio);});
+</script>
+</body></html>

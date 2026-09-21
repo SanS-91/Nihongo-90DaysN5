@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 79: Travel Plans — 旅行の予定." />
+  <title>Day 79 — Travel Plans | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<header class="topbar"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark">🌸</span><span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span></a><nav class="nav-links"><a href="index.html">Home</a><a class="active" href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4</a></nav><button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button></div><nav class="mobile-menu container" id="mobileMenu"><a href="index.html">Home</a><a href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4 · Coming Soon</a></nav></header>
+<div class="lessonbar"><div class="container lessonbar-inner"><div class="lesson-position"><a href="day78.html">← Day 78</a><span>·</span><strong>Day 79 / 90</strong></div><div class="lesson-actions"><a class="tiny-btn" href="review.html">Quick Review</a><button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button></div></div></div>
+<main><section class="hero"><div class="container"><article class="hero-card"><span class="eyebrow">Day 79 · Past, Reasons & Plans</span><h1><ruby>旅行<rt>りょこう</rt></ruby>の<ruby>予定<rt>よてい</rt></ruby></h1><div class="hero-en">Travel Plans</div><div class="hero-vi">Ghép <strong>calendar, destination, transport, companion, hotel và activities</strong> thành một travel plan hoàn chỉnh.</div><div class="hero-meta"><span class="meta-chip">Phase 8</span><span class="meta-chip">75–90 phút</span><span class="meta-chip">旅行</span><span class="meta-chip">何で</span><span class="meta-chip">何泊</span><span class="meta-chip">一日目〜三日目</span></div><div class="goal-box"><strong>Mục tiêu hôm nay</strong><p>Bạn có thể nói <span class="jp-inline">来週、京都へ行きます。</span> <span class="jp-inline">新幹線で行きます。</span> <span class="jp-inline">二泊します。</span> rồi chia lịch theo <span class="jp-inline">一日目・二日目・三日目</span>.</p></div><div class="tip memory" style="margin-top:16px;"><strong>🌱 Travel map</strong><strong>When → Where → Transport → With whom → Nights → Day 1 → Day 2 → Return</strong>.</div><div class="display-panel"><div class="display-title">表示 · Hiển thị</div><div class="display-toggles"><button class="toggle-btn active" data-toggle="furigana">Furigana</button><button class="toggle-btn" data-toggle="romaji">Romaji</button><button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button></div></div></article></div></section>
+<div class="container lesson-layout"><aside class="toc"><div class="toc-title">Trong bài này</div>
+<a href="#warmup">01 · Warm-up</a><a href="#conversation">02 · Main Conversation</a><a href="#whenwhere">03 · When & Where</a><a href="#transport">04 · Transport で</a><a href="#companion">05 · Companion と</a><a href="#stay">06 · Stay & Nights</a><a href="#days">07 · Day 1/2/3</a><a href="#activities">08 · Travel Activities</a><a href="#questions">09 · Travel Questions</a><a href="#contrast">10 · Plan vs Desire</a><a href="#vocab">11 · Vocabulary</a><a href="#kanji">12 · Kanji</a><a href="#natural">13 · Natural Japanese</a><a href="#traps">14 · Common Mistakes</a><a href="#grammar">15 · Grammar Made Easy</a><a href="#listening">16 · Listening</a><a href="#builder">17 · Itinerary Builder</a><a href="#japanese-first">18 · Japanese First</a><a href="#speaking">19 · Speaking</a><a href="#quiz">20 · Mini Quiz</a><a href="#mission">21 · Mission</a>
+</aside><div class="lesson-content"><section class="section-card" id="warmup"><div class="section-kicker">01 · Warm-up</div><h2>Build the trip in eight pieces</h2><div class="warmup-grid">
+<div class="warmup-item"><div class="jp"><ruby>来週<rt>らいしゅう</rt></ruby>、<ruby>京都<rt>きょうと</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。</div><div class="vi">Tuần sau tôi đi Kyoto.</div><button class="audio-btn" onclick="speakJapanese('来週、京都へ行きます。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp"><ruby>新幹線<rt>しんかんせん</rt></ruby>で<ruby>行<rt>い</rt></ruby>きます。</div><div class="vi">Đi bằng Shinkansen.</div><button class="audio-btn" onclick="speakJapanese('新幹線で行きます。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp"><ruby>二泊<rt>にはく</rt></ruby>します。</div><div class="vi">Ở hai đêm.</div><button class="audio-btn" onclick="speakJapanese('二泊します。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp"><ruby>一日目<rt>いちにちめ</rt></ruby>は<ruby>寺<rt>てら</rt></ruby>を<ruby>見<rt>み</rt></ruby>ます。</div><div class="vi">Ngày đầu đi xem chùa.</div><button class="audio-btn" onclick="speakJapanese('一日目は寺を見ます。',1)">▶ Nghe</button></div></div></section><section class="section-card" id="conversation"><div class="section-kicker">02 · Main Conversation</div><h2>Planning a Kyoto trip</h2><div class="audio-controls"><button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button><button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div><div class="dialogue-shell" style="margin-top:16px;">
+<div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line"><ruby>来週<rt>らいしゅう</rt></ruby>、どこへ<ruby>行<rt>い</rt></ruby>きますか。</div><div class="vi line-note">Tuần sau bạn đi đâu?</div></div><button class="line-audio" onclick="speakJapanese('来週、どこへ行きますか。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line"><ruby>友達<rt>ともだち</rt></ruby>と<ruby>京都<rt>きょうと</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。</div><div class="vi line-note">Tôi đi Kyoto với bạn.</div></div><button class="line-audio" onclick="speakJapanese('友達と京都へ行きます。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line"><ruby>何<rt>なに</rt></ruby>で<ruby>行<rt>い</rt></ruby>きますか。</div><div class="vi line-note">Bạn đi bằng gì?</div></div><button class="line-audio" onclick="speakJapanese('何で行きますか。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line"><ruby>新幹線<rt>しんかんせん</rt></ruby>で<ruby>行<rt>い</rt></ruby>きます。<ruby>二泊<rt>にはく</rt></ruby>します。</div><div class="vi line-note">Đi bằng Shinkansen. Ở hai đêm.</div></div><button class="line-audio" onclick="speakJapanese('新幹線で行きます。二泊します。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line"><ruby>京都<rt>きょうと</rt></ruby>で<ruby>何<rt>なに</rt></ruby>をしますか。</div><div class="vi line-note">Ở Kyoto bạn làm gì?</div></div><button class="line-audio" onclick="speakJapanese('京都で何をしますか。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line"><ruby>一日目<rt>いちにちめ</rt></ruby>は<ruby>寺<rt>てら</rt></ruby>を<ruby>見<rt>み</rt></ruby>ます。<ruby>二日目<rt>ふつかめ</rt></ruby>は<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>をして、<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ります。</div><div class="vi line-note">Ngày đầu xem chùa. Ngày hai mua sắm và chụp ảnh.</div></div><button class="line-audio" onclick="speakJapanese('一日目は寺を見ます。二日目は買い物をして、写真を撮ります。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line"><ruby>三日目<rt>みっかめ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>ります。</div><div class="vi line-note">Ngày thứ ba tôi về.</div></div><button class="line-audio" onclick="speakJapanese('三日目に帰ります。',1)">▶</button></div></div><div class="tip warning"><strong>⚠ Recognition note</strong><span class="jp-inline">買い物をして、写真を撮ります</span> chỉ tái sử dụng て-form nối hành động từ Day 61.</div></section><section class="section-card" id="whenwhere"><div class="section-kicker">03 · When & Where</div><h2>Time + destination</h2><div class="grammar-rule"><div class="rule-form">来週、京都へ行きます。</div><p>= Tuần sau tôi đi Kyoto.</p></div><div class="grammar-rule"><div class="rule-form">土曜日に大阪へ行きます。</div><p>= Thứ Bảy tôi đi Osaka.</p></div><div class="grammar-rule"><div class="rule-form">来月、東京へ行きたいです。</div><p>= Tháng sau tôi muốn đi Tokyo.</p></div><div class="tip memory"><strong>💡 Recycle Day 78</strong><span class="jp-inline">来週</span> thường không cần に; weekday/date cụ thể có thể dùng <span class="jp-inline">に</span>.</div></section><section class="section-card" id="transport"><div class="section-kicker">04 · Transport で</div><h2>Vehicle + で + 行きます</h2><div class="grammar-rule"><div class="rule-form">新幹線で行きます。</div><p>= Đi bằng Shinkansen.</p></div><div class="grammar-rule"><div class="rule-form">電車で行きます。</div><p>= Đi bằng tàu điện.</p></div><div class="grammar-rule"><div class="rule-form">バスで行きます。</div><p>= Đi bằng xe buýt.</p></div><div class="grammar-rule"><div class="rule-form">何で行きますか。</div><p>= Đi bằng gì?</p></div><div class="tip warning"><strong>⚠ で here</strong>Trong bài này, で đánh dấu <strong>phương tiện</strong>.</div></section><section class="section-card" id="companion"><div class="section-kicker">05 · Companion と</div><h2>Person + と + 行きます</h2><div class="grammar-rule"><div class="rule-form">友達と行きます。</div><p>= Đi với bạn.</p></div><div class="grammar-rule"><div class="rule-form">家族と行きます。</div><p>= Đi với gia đình.</p></div><div class="grammar-rule"><div class="rule-form">だれと行きますか。</div><p>= Đi với ai?</p></div><div class="tip memory"><strong>💡 と = companion</strong>Giữ đúng function đã học ở các bài movement/social.</div></section><section class="section-card" id="stay"><div class="section-kicker">06 · Stay & Nights</div><h2>何泊しますか</h2><div class="grammar-rule"><div class="rule-form">二泊します。</div><p>= Ở hai đêm.</p></div><div class="grammar-rule"><div class="rule-form">何泊しますか。</div><p>= Ở mấy đêm?</p></div><div class="grammar-rule"><div class="rule-form">ホテルに泊まります。</div><p>= Ở khách sạn.</p></div><div class="tip memory"><strong>💡 泊まる</strong>Học nguyên chunk <span class="jp-inline">ホテルに泊まります</span>.</div></section><section class="section-card" id="days"><div class="section-kicker">07 · Day 1 / Day 2 / Day 3</div><h2>一日目・二日目・三日目</h2><div class="grammar-rule"><div class="rule-form">一日目は寺を見ます。</div><p>Day 1: xem chùa.</p></div><div class="grammar-rule"><div class="rule-form">二日目は買い物をします。</div><p>Day 2: mua sắm.</p></div><div class="grammar-rule"><div class="rule-form">三日目に帰ります。</div><p>Day 3: trở về.</p></div><div class="tip memory"><strong>💡 目 marks order</strong><span class="jp-inline">一日目 / 二日目 / 三日目</span> = ngày thứ 1 / 2 / 3 của chuyến đi.</div></section><section class="section-card" id="activities"><div class="section-kicker">08 · Travel Activities</div><h2>What will you do there?</h2><div class="grammar-rule"><div class="rule-form">寺を見ます。</div><p>Xem/tham quan chùa.</p></div><div class="grammar-rule"><div class="rule-form">写真を撮ります。</div><p>Chụp ảnh.</p></div><div class="grammar-rule"><div class="rule-form">京都料理を食べます。</div><p>Ăn món Kyoto.</p></div><div class="grammar-rule"><div class="rule-form">買い物をします。</div><p>Mua sắm.</p></div></section><section class="section-card" id="questions"><div class="section-kicker">09 · Travel Questions</div><h2>Five questions unlock the itinerary</h2><div class="grammar-rule"><div class="rule-form">どこへ行きますか。</div><p>Đi đâu?</p></div><div class="grammar-rule"><div class="rule-form">何で行きますか。</div><p>Đi bằng gì?</p></div><div class="grammar-rule"><div class="rule-form">だれと行きますか。</div><p>Đi với ai?</p></div><div class="grammar-rule"><div class="rule-form">何泊しますか。</div><p>Ở mấy đêm?</p></div><div class="grammar-rule"><div class="rule-form">そこで何をしますか。</div><p>Ở đó làm gì?</p></div></section><section class="section-card" id="contrast"><div class="section-kicker">10 · Plan vs Desire vs Prediction</div><h2>Function first</h2><div class="grammar-rule"><div class="rule-form">来週、京都へ行きます。</div><p><strong>Plan/action:</strong> đã xác định sẽ đi.</p></div><div class="grammar-rule"><div class="rule-form">京都へ行きたいです。</div><p><strong>Desire:</strong> muốn đi Kyoto.</p></div><div class="grammar-rule"><div class="rule-form">京都はきれいだと思います。</div><p><strong>Opinion:</strong> tôi nghĩ Kyoto đẹp.</p></div><div class="tip warning"><strong>⚠ Important</strong>`たいです` là mong muốn, không phải future marker.</div></section><section class="section-card" id="vocab"><div class="section-kicker">11 · Travel Vocabulary</div><h2>14 useful travel chunks</h2><div class="vocab-grid"><div class="vocab-card"><div><div class="vocab-jp"><ruby>旅行<rt>りょこう</rt></ruby>の<ruby>予定<rt>よてい</rt></ruby></div><div class="romaji vocab-reading">ryokō no yotei</div><div class="vi vocab-vi">kế hoạch du lịch</div></div><button class="line-audio" onclick="speakJapanese('旅行の予定',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>来週<rt>らいしゅう</rt></ruby>、<ruby>京都<rt>きょうと</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます</div><div class="romaji vocab-reading">raishū, Kyōto e ikimasu</div><div class="vi vocab-vi">tuần sau tôi đi Kyoto</div></div><button class="line-audio" onclick="speakJapanese('来週、京都へ行きます',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>新幹線<rt>しんかんせん</rt></ruby>で<ruby>行<rt>い</rt></ruby>きます</div><div class="romaji vocab-reading">shinkansen de ikimasu</div><div class="vi vocab-vi">đi bằng Shinkansen</div></div><button class="line-audio" onclick="speakJapanese('新幹線で行きます',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>友達<rt>ともだち</rt></ruby>と<ruby>行<rt>い</rt></ruby>きます</div><div class="romaji vocab-reading">tomodachi to ikimasu</div><div class="vi vocab-vi">đi cùng bạn</div></div><button class="line-audio" onclick="speakJapanese('友達と行きます',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>二泊<rt>にはく</rt></ruby>します</div><div class="romaji vocab-reading">nihaku shimasu</div><div class="vi vocab-vi">ở 2 đêm</div></div><button class="line-audio" onclick="speakJapanese('二泊します',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">ホテルに<ruby>泊<rt>と</rt></ruby>まります</div><div class="romaji vocab-reading">hoteru ni tomarimasu</div><div class="vi vocab-vi">ở khách sạn</div></div><button class="line-audio" onclick="speakJapanese('ホテルに泊まります',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>一日目<rt>いちにちめ</rt></ruby></div><div class="romaji vocab-reading">ichinichime</div><div class="vi vocab-vi">ngày thứ nhất</div></div><button class="line-audio" onclick="speakJapanese('一日目',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>二日目<rt>ふつかめ</rt></ruby></div><div class="romaji vocab-reading">futsukame</div><div class="vi vocab-vi">ngày thứ hai</div></div><button class="line-audio" onclick="speakJapanese('二日目',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>三日目<rt>みっかめ</rt></ruby></div><div class="romaji vocab-reading">mikkame</div><div class="vi vocab-vi">ngày thứ ba</div></div><button class="line-audio" onclick="speakJapanese('三日目',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>寺<rt>てら</rt></ruby>を<ruby>見<rt>み</rt></ruby>ます</div><div class="romaji vocab-reading">tera o mimasu</div><div class="vi vocab-vi">đi xem/tham quan chùa</div></div><button class="line-audio" onclick="speakJapanese('寺を見ます',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ります</div><div class="romaji vocab-reading">shashin o torimasu</div><div class="vi vocab-vi">chụp ảnh</div></div><button class="line-audio" onclick="speakJapanese('写真を撮ります',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>京都料理<rt>きょうとりょうり</rt></ruby>を<ruby>食<rt>た</rt></ruby>べます</div><div class="romaji vocab-reading">Kyōto ryōri o tabemasu</div><div class="vi vocab-vi">ăn món Kyoto</div></div><button class="line-audio" onclick="speakJapanese('京都料理を食べます',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>何泊<rt>なんぱく</rt></ruby></div><div class="romaji vocab-reading">nanpaku</div><div class="vi vocab-vi">mấy đêm?</div></div><button class="line-audio" onclick="speakJapanese('何泊',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>何<rt>なに</rt></ruby>で<ruby>行<rt>い</rt></ruby>きますか</div><div class="romaji vocab-reading">nani de ikimasu ka</div><div class="vi vocab-vi">đi bằng gì?</div></div><button class="line-audio" onclick="speakJapanese('何で行きますか',1)">▶</button></div></div></section><section class="section-card" id="kanji"><div class="section-kicker">12 · Kanji Helper</div><h2>Kanji for travel planning</h2><div class="explain-grid">
+<div class="explain-card"><h3><ruby>旅行<rt>りょこう</rt></ruby></h3><p><strong>travel/trip</strong>. Learn as whole word.</p></div>
+<div class="explain-card"><h3><ruby>予定<rt>よてい</rt></ruby></h3><p><strong>plan/schedule</strong>.</p></div>
+<div class="explain-card"><h3><ruby>新幹線<rt>しんかんせん</rt></ruby></h3><p><strong>Shinkansen</strong>. Recognition whole word.</p></div>
+<div class="explain-card"><h3><ruby>泊<rt>と</rt></ruby>まる</h3><p><strong>stay overnight</strong>.</p></div>
+<div class="explain-card"><h3><ruby>寺<rt>てら</rt></ruby></h3><p><strong>temple</strong>.</p></div>
+<div class="explain-card"><h3><ruby>写真<rt>しゃしん</rt></ruby></h3><p><strong>photo</strong>.</p></div>
+<div class="explain-card"><h3><ruby>撮<rt>と</rt></ruby>る</h3><p><strong>take a photo</strong>.</p></div>
+<div class="explain-card"><h3><ruby>帰<rt>かえ</rt></ruby>る</h3><p><strong>return/go home</strong>.</p></div></div><div class="tip memory"><strong>🌱 Priority</strong>Must recognize: 旅行・予定・泊・寺・写真・撮・帰. 新幹線: learn as whole word.</div></section><section class="section-card" id="natural"><div class="section-kicker">13 · Natural Japanese</div><h2>Give the big picture first</h2><div class="grammar-rule"><div class="rule-form">来週、友達と京都へ行きます。</div><p>Start with when + companion + destination.</p></div><div class="grammar-rule"><div class="rule-form">新幹線で行きます。二泊します。</div><p>Then transport + duration.</p></div><div class="grammar-rule"><div class="rule-form">一日目は… 二日目は…</div><p>Then give itinerary details.</p></div><div class="tip real"><strong>🇯🇵 Listener-friendly order</strong>Overview first, details second.</div></section><section class="section-card" id="traps"><div class="section-kicker">14 · Common Mistakes</div><h2>Travel-plan traps</h2><div class="grammar-rule"><div class="rule-form">新幹線に行きます ✕ → 新幹線で行きます ✓</div><p>Transport → で.</p></div><div class="grammar-rule"><div class="rule-form">友達で行きます ✕ → 友達と行きます ✓</div><p>Companion → と.</p></div><div class="grammar-rule"><div class="rule-form">ホテルで泊まります △ → ホテルに泊まります ✓</div><p>Beginner-safe standard with 泊まる: stay-place → に.</p></div><div class="grammar-rule"><div class="rule-form">何泊にしますか ✕ → 何泊しますか ✓</div><p>Ask number of nights directly.</p></div><div class="grammar-rule"><div class="rule-form">京都へ行きたいです = fixed plan ✕</div><p>たい primarily expresses desire.</p></div></section><section class="section-card" id="grammar"><div class="section-kicker">15 · Travel Plan Made Easy</div><h2>8 itinerary formulas</h2><div class="grammar-rule"><div class="rule-form">Time + Place へ + 行きます</div><p>来週、京都へ行きます。</p></div><div class="grammar-rule"><div class="rule-form">Vehicle で + 行きます</div><p>新幹線で行きます。</p></div><div class="grammar-rule"><div class="rule-form">Person と + 行きます</div><p>友達と行きます。</p></div><div class="grammar-rule"><div class="rule-form">N泊します</div><p>二泊します。</p></div><div class="grammar-rule"><div class="rule-form">Hotel に + 泊まります</div><p>ホテルに泊まります。</p></div><div class="grammar-rule"><div class="rule-form">N日目は + activity</div><p>一日目は寺を見ます。</p></div><div class="grammar-rule"><div class="rule-form">何で / だれと / 何泊</div><p>transport / companion / nights</p></div><div class="grammar-rule"><div class="rule-form">三日目に帰ります</div><p>return on day 3.</p></div></section><section class="section-card" id="listening"><div class="section-kicker">16 · Listening Ladder</div><h2>10 rounds + itinerary shadowing</h2><div class="practice-box"><div class="practice-title">Listening 1 · Destination</div><button class="audio-btn primary" onclick="speakJapanese('来週、京都へ行きます。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Tuần sau đi Kyoto</button><button class="choice-btn" data-value="b">B. Tuần trước đã đi Kyoto</button><button class="choice-btn" data-value="c">C. Muốn đi Tokyo</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 2 · Transport</div><button class="audio-btn primary" onclick="speakJapanese('新幹線で行きます。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Đi bằng Shinkansen</button><button class="choice-btn" data-value="b">B. Đi đến ga Shinkansen</button><button class="choice-btn" data-value="c">C. Đi với nhân viên ga</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 3 · Companion</div><button class="audio-btn primary" onclick="speakJapanese('友達と行きます。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Đi với bạn</button><button class="choice-btn" data-value="b">B. Gặp bạn ở đó</button><button class="choice-btn" data-value="c">C. Đi một mình</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 4 · Nights</div><button class="audio-btn primary" onclick="speakJapanese('二泊します。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Ở 2 đêm</button><button class="choice-btn" data-value="b">B. Đi 2 lần</button><button class="choice-btn" data-value="c">C. Ở ngày thứ hai</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 5 · Hotel</div><button class="audio-btn primary" onclick="speakJapanese('ホテルに泊まります。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Ở khách sạn</button><button class="choice-btn" data-value="b">B. Làm việc ở khách sạn</button><button class="choice-btn" data-value="c">C. Ăn tại khách sạn</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 6 · Day 1</div><button class="audio-btn primary" onclick="speakJapanese('一日目は寺を見ます。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Ngày đầu xem chùa</button><button class="choice-btn" data-value="b">B. Ngày hai xem phim</button><button class="choice-btn" data-value="c">C. Ngày đầu mua sắm</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 7 · Day 2</div><button class="audio-btn primary" onclick="speakJapanese('二日目は買い物をして、写真を撮ります。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Ngày hai mua sắm và chụp ảnh</button><button class="choice-btn" data-value="b">B. Ngày hai ở khách sạn</button><button class="choice-btn" data-value="c">C. Ngày hai không làm gì</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 8 · How many nights?</div><button class="audio-btn primary" onclick="speakJapanese('何泊しますか。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Ở mấy đêm?</button><button class="choice-btn" data-value="b">B. Đi bằng gì?</button><button class="choice-btn" data-value="c">C. Đi với ai?</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 9 · Desire vs plan</div><button class="audio-btn primary" onclick="speakJapanese('京都へ行きたいです。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Muốn đi Kyoto</button><button class="choice-btn" data-value="b">B. Đã có kế hoạch chắc chắn đi Kyoto</button><button class="choice-btn" data-value="c">C. Đã đi Kyoto</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Listening 10 · Integrated</div><button class="audio-btn primary" onclick="speakJapanese('来週、友達と京都へ行きます。新幹線で行きます。二泊します。一日目は寺を見ます。二日目は買い物をして、写真を撮ります。三日目に帰ります。',1)">▶ Nghe</button><div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Tuần sau đi Kyoto với bạn bằng Shinkansen, ở 2 đêm, lịch 3 ngày</button><button class="choice-btn" data-value="b">B. Chỉ ở Kyoto một ngày</button><button class="choice-btn" data-value="c">C. Đi Kyoto một mình bằng taxi</button></div><div class="feedback"></div></div><div class="practice-box"><div class="practice-title">Shadowing · Full travel plan</div><div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('来週、友達と京都へ行きます。新幹線で行きます。二泊します。一日目は寺を見ます。二日目は買い物をして、写真を撮ります。三日目に帰ります。',.76)">🐢 Slow</button><button class="audio-btn primary" onclick="speakJapanese('来週、友達と京都へ行きます。新幹線で行きます。二泊します。一日目は寺を見ます。二日目は買い物をして、写真を撮ります。三日目に帰ります。',1)">▶ Natural</button></div></div></section><section class="section-card" id="builder"><div class="section-kicker">17 · Itinerary Builder</div><h2>Build a 3-day trip</h2><div class="breakdown">
+<div class="break-row"><div class="break-label">When</div><div><strong>来週、</strong></div></div>
+<div class="break-row"><div class="break-label">Who + Where</div><div><strong>友達と京都へ行きます。</strong></div></div>
+<div class="break-row"><div class="break-label">Transport</div><div><strong>新幹線で行きます。</strong></div></div>
+<div class="break-row"><div class="break-label">Stay</div><div><strong>ホテルに泊まります。二泊します。</strong></div></div>
+<div class="break-row"><div class="break-label">Day 1</div><div><strong>一日目は寺を見ます。</strong></div></div>
+<div class="break-row"><div class="break-label">Day 2</div><div><strong>二日目は買い物をして、写真を撮ります。</strong></div></div>
+<div class="break-row"><div class="break-label">Day 3</div><div><strong>三日目に帰ります。</strong></div></div>
+<div class="break-row"><div class="break-label">Ask back</div><div><strong>旅行の予定はありますか。</strong></div></div></div></section><section class="section-card" id="japanese-first"><div class="section-kicker">18 · Japanese First</div><h2>Romaji-Off Travel Sprint</h2><p class="section-intro vi">Nghe cue → dựng itinerary bằng Japanese first.</p>
+<div class="practice-box"><div class="practice-title">Round 1 · Destination</div><button class="audio-btn primary" onclick="speakJapanese('来週。京都。行く。',1)">▶ Nghe</button><p class="jp">来週、京都へ行きます。</p></div>
+<div class="practice-box"><div class="practice-title">Round 2 · Transport</div><button class="audio-btn primary" onclick="speakJapanese('新幹線。行く。',1)">▶ Nghe</button><p class="jp">新幹線で行きます。</p></div>
+<div class="practice-box"><div class="practice-title">Round 3 · Nights</div><button class="audio-btn primary" onclick="speakJapanese('二。泊。',1)">▶ Nghe</button><p class="jp">二泊します。</p></div>
+<div class="practice-box"><div class="practice-title">Round 4 · Itinerary</div><button class="audio-btn primary" onclick="speakJapanese('一日目。寺。二日目。買い物。写真。',1)">▶ Nghe</button><p class="jp">一日目は寺を見ます。二日目は買い物をして、写真を撮ります。</p></div>
+<div class="practice-box"><div class="practice-title">Round 5 · Return</div><button class="audio-btn primary" onclick="speakJapanese('三日目。帰る。',1)">▶ Nghe</button><p class="jp">三日目に帰ります。</p></div></section><section class="section-card" id="speaking"><div class="section-kicker">19 · Speaking & Travel Role-play</div><h2>Plan a trip out loud</h2><div class="speaking-grid">
+<div class="speaking-card"><div class="prompt">1. “Tuần sau tôi đi Kyoto.”</div><button class="audio-btn" onclick="toggleAnswer('a1')">Model</button><div class="answer" id="a1"><div class="jp">来週、京都へ行きます。</div></div></div>
+<div class="speaking-card"><div class="prompt">2. “Tôi đi bằng Shinkansen.”</div><button class="audio-btn" onclick="toggleAnswer('a2')">Model</button><div class="answer" id="a2"><div class="jp">新幹線で行きます。</div></div></div>
+<div class="speaking-card"><div class="prompt">3. “Tôi đi với bạn.”</div><button class="audio-btn" onclick="toggleAnswer('a3')">Model</button><div class="answer" id="a3"><div class="jp">友達と行きます。</div></div></div>
+<div class="speaking-card"><div class="prompt">4. “Tôi ở hai đêm.”</div><button class="audio-btn" onclick="toggleAnswer('a4')">Model</button><div class="answer" id="a4"><div class="jp">二泊します。</div></div></div>
+<div class="speaking-card"><div class="prompt">5. “Bạn đi bằng gì?”</div><button class="audio-btn" onclick="toggleAnswer('a5')">Model</button><div class="answer" id="a5"><div class="jp">何で行きますか。</div></div></div>
+<div class="speaking-card"><div class="prompt">6. “Bạn ở mấy đêm?”</div><button class="audio-btn" onclick="toggleAnswer('a6')">Model</button><div class="answer" id="a6"><div class="jp">何泊しますか。</div></div></div>
+</div><div class="practice-box" style="margin-top:16px;"><div class="practice-title">Travel Planner Role-play · 12 Prompts</div><button class="audio-btn primary" onclick="playRoleplay()">▶ Start Role-play</button><p class="vi">Audio hỏi destination, transport, companion, nights, hotel, Day 1/2/3 và plan vs desire.</p></div></section><section class="section-card" id="quiz"><div class="section-kicker">20 · Mini Quiz</div><h2>12 câu Day 79</h2><div class="quiz-q" data-answer="a"><h3>1. “Tuần sau tôi đi Kyoto.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 来週、京都へ行きます。</button><button class="choice-btn" data-value="b">B. 先週、京都へ行きました。</button><button class="choice-btn" data-value="c">C. 京都へ行きたいでした。</button></div></div><div class="quiz-q" data-answer="a"><h3>2. “Đi bằng Shinkansen.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 新幹線で行きます。</button><button class="choice-btn" data-value="b">B. 新幹線に行きます。</button><button class="choice-btn" data-value="c">C. 新幹線と行きます。</button></div></div><div class="quiz-q" data-answer="a"><h3>3. “Đi với bạn.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 友達と行きます。</button><button class="choice-btn" data-value="b">B. 友達で行きます。</button><button class="choice-btn" data-value="c">C. 友達へ行きます。</button></div></div><div class="quiz-q" data-answer="a"><h3>4. `二泊します`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. ở 2 đêm</button><button class="choice-btn" data-value="b">B. đi ngày thứ hai</button><button class="choice-btn" data-value="c">C. 2 người đi</button></div></div><div class="quiz-q" data-answer="a"><h3>5. `ホテルに泊まります` dùng に vì?</h3><div class="choices"><button class="choice-btn" data-value="a">A. nơi mình lưu trú/đích của 泊まる</button><button class="choice-btn" data-value="b">B. phương tiện</button><button class="choice-btn" data-value="c">C. companion</button></div></div><div class="quiz-q" data-answer="a"><h3>6. “Đi bằng gì?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 何で行きますか。</button><button class="choice-btn" data-value="b">B. どこで行きますか。</button><button class="choice-btn" data-value="c">C. 何を行きますか。</button></div></div><div class="quiz-q" data-answer="a"><h3>7. “Ở mấy đêm?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 何泊しますか。</button><button class="choice-btn" data-value="b">B. 何日ですか。</button><button class="choice-btn" data-value="c">C. 何時に泊まりますか。</button></div></div><div class="quiz-q" data-answer="a"><h3>8. `一日目 / 二日目 / 三日目` dùng để?</h3><div class="choices"><button class="choice-btn" data-value="a">A. chia itinerary theo ngày</button><button class="choice-btn" data-value="b">B. đếm người</button><button class="choice-btn" data-value="c">C. nói giá</button></div></div><div class="quiz-q" data-answer="a"><h3>9. `京都へ行きます` vs `京都へ行きたいです`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. plan/action vs desire</button><button class="choice-btn" data-value="b">B. past vs present</button><button class="choice-btn" data-value="c">C. permission vs prohibition</button></div></div><div class="quiz-q" data-answer="a"><h3>10. `新幹線で` particle で đánh dấu?</h3><div class="choices"><button class="choice-btn" data-value="a">A. phương tiện</button><button class="choice-btn" data-value="b">B. destination</button><button class="choice-btn" data-value="c">C. person</button></div></div><div class="quiz-q" data-answer="a"><h3>11. “Ngày thứ ba tôi về.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 三日目に帰ります。</button><button class="choice-btn" data-value="b">B. 三日目で帰ります。</button><button class="choice-btn" data-value="c">C. 三日目を帰ります。</button></div></div><div class="quiz-q" data-answer="a"><h3>12. Day 79 trọng tâm là?</h3><div class="choices"><button class="choice-btn" data-value="a">A. ghép calendar + destination + transport + stay + activities thành travel plan</button><button class="choice-btn" data-value="b">B. học past adjective mới</button><button class="choice-btn" data-value="c">C. học prohibition</button></div></div><div class="quiz-actions"><button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button><button class="audio-btn" onclick="resetQuiz()">Làm lại</button></div><div class="score-box" id="scoreBox"></div></section><section class="section-card" id="mission"><div class="section-kicker">21 · Today's Mission</div><h2>My 3-Day Trip — 10 minutes</h2><p class="section-intro">Tự lập một travel plan 8–10 câu, không Romaji.</p><div class="mission-lines">
+<div class="mission-line"><div class="vi">1. Khi nào + đi đâu.</div><div class="jp">来週、京都へ行きます。</div></div>
+<div class="mission-line"><div class="vi">2. Đi với ai.</div><div class="jp">友達と行きます。</div></div>
+<div class="mission-line"><div class="vi">3. Phương tiện.</div><div class="jp">新幹線で行きます。</div></div>
+<div class="mission-line"><div class="vi">4. Ở đâu + mấy đêm.</div><div class="jp">ホテルに泊まります。二泊します。</div></div>
+<div class="mission-line"><div class="vi">5. Day 1.</div><div class="jp">一日目は寺を見ます。</div></div>
+<div class="mission-line"><div class="vi">6. Day 2.</div><div class="jp">二日目は買い物をして、写真を撮ります。</div></div>
+<div class="mission-line"><div class="vi">7. Day 3.</div><div class="jp">三日目に帰ります。</div></div>
+<div class="mission-line"><div class="vi">8. Thêm món muốn ăn.</div><div class="jp">京都料理を食べたいです。</div></div>
+<div class="mission-line"><div class="vi">9. Hỏi 3 travel questions.</div><div class="jp">どこへ行きますか。何で行きますか。何泊しますか。</div></div>
+<div class="mission-line"><div class="vi">10. Kể lại Romaji OFF.</div><div class="jp">when → where → transport → who → nights → day 1 → day 2 → return</div></div></div>
+<div class="audio-controls"><button class="audio-btn" onclick="playMission(.76)">🐢 Travel Plan Slow</button><button class="audio-btn primary" onclick="playMission(1)">▶ Travel Plan Natural</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div>
+<div class="tip memory"><strong>✅ Pass standard</strong>Nói được ít nhất <strong>8 câu travel plan</strong>, dùng đúng `へ / で / と / に`, hỏi được `何で / 何泊`, và chia itinerary theo <span class="jp-inline">一日目〜三日目</span>.</div>
+<div class="tip warning"><strong>➡️ Next Day</strong>Day 80 — <strong>Tell Me About Your Week</strong> là checkpoint Phase 8: past story + reasons + opinions + tomorrow/next-week/travel plans.</div>
+<div class="complete-box"><p id="completeMessage" style="margin-top:0;color:var(--muted);">Hoàn thành khi bạn có thể trình bày một chuyến đi 3 ngày theo đúng thứ tự thông tin.</p><button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 79</button></div></section><div class="day-nav"><a href="day78.html">← Day 78 · Next Week</a><a class="next" href="day80.html">Day 80 · Tell Me About Your Week →</a></div></div></div></main>
+<footer><div class="container footer-inner"><div><span class="footer-brand">🌸 Nihongo 90</span> · Day 79</div><div>Past, Reasons & Plans · Turn calendar language into a complete travel itinerary.</div></div></footer><div class="toast" id="toast"></div>
+<script>
+const DAY_KEY="n5-day-79"; const FAVORITE_KEY="n5-favorite-day-79"; const DISPLAY_KEY="nihongo90-display";
+const dialogueLines=["来週、どこへ行きますか。","友達と京都へ行きます。","何で行きますか。","新幹線で行きます。二泊します。","京都で何をしますか。","一日目は寺を見ます。二日目は買い物をして、写真を撮ります。","三日目に帰ります。"];
+const roleplayPrompts=["来週、どこへ行きますか。","何で行きますか。","だれと行きますか。","何泊しますか。","どこに泊まりますか。","一日目は何をしますか。","二日目は何をしますか。","三日目は何をしますか。","写真を撮ります。","京都料理を食べたいです。","京都へ行きます。京都へ行きたいです。違いを言ってください。","最後に旅行の予定を八文で話してください。"];
+const missionPrompts=["来週、京都へ行きます。","友達と行きます。","新幹線で行きます。","ホテルに泊まります。二泊します。","一日目は寺を見ます。","二日目は買い物をして、写真を撮ります。","三日目に帰ります。","京都料理を食べたいです。","どこへ行きますか。何で行きますか。何泊しますか。"];
+let voiceCache=[],japaneseVoice=null,dialogueRunId=0,playToken=0;
+function setupMenu(){const b=document.getElementById("menuBtn"),m=document.getElementById("mobileMenu");b.addEventListener("click",()=>{const o=m.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");b.textContent=o?"✕":"☰";});}
+function loadDisplaySettings(){let s={furigana:true,romaji:false,vi:true};try{const p=JSON.parse(localStorage.getItem(DISPLAY_KEY));if(p&&typeof p==="object")s={...s,...p};}catch(_){}applyDisplaySettings(s);}
+function applyDisplaySettings(s){document.body.classList.toggle("hide-furigana",!s.furigana);document.body.classList.toggle("hide-romaji",!s.romaji);document.body.classList.toggle("hide-vi",!s.vi);document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.toggle("active",!!s[b.dataset.toggle]));localStorage.setItem(DISPLAY_KEY,JSON.stringify(s));}
+function setupDisplayToggles(){document.querySelectorAll(".toggle-btn").forEach(btn=>btn.addEventListener("click",()=>{let s={furigana:true,romaji:false,vi:true};try{s={...s,...JSON.parse(localStorage.getItem(DISPLAY_KEY))};}catch(_){}s[btn.dataset.toggle]=!s[btn.dataset.toggle];applyDisplaySettings(s);}));}
+function loadVoices(){if(!("speechSynthesis" in window))return;voiceCache=speechSynthesis.getVoices()||[];japaneseVoice=pickJapaneseVoice();}
+function pickJapaneseVoice(){const vs=voiceCache.filter(v=>/^ja(-|_)?JP/i.test(v.lang)||/^ja/i.test(v.lang));if(!vs.length)return null;const p=["Kyoko","Otoya","Nanami","Keita","Haruka","Google 日本語","Microsoft Nanami","Microsoft Keita","Natural","Premium","Enhanced"];for(const n of p){const f=vs.find(v=>v.name.toLowerCase().includes(n.toLowerCase()));if(f)return f;}return vs[0];}
+async function ensureVoice(){if(!("speechSynthesis" in window))return null;loadVoices();if(japaneseVoice)return japaneseVoice;for(const d of [120,220,360,520]){await new Promise(r=>setTimeout(r,d));loadVoices();if(japaneseVoice)return japaneseVoice;}return null;}
+function stopAudio(){dialogueRunId++;playToken++;if("speechSynthesis" in window){try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}}}
+async function speakJapanese(text,rate=1){stopAudio();if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}const voice=await ensureVoice(),token=++playToken;try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}await new Promise(r=>setTimeout(r,70));if(token!==playToken)return;const u=new SpeechSynthesisUtterance(text);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;u.volume=1;if(voice)u.voice=voice;u.onerror=()=>showToast("Audio TTS không phát được. Hãy thử lại.");speechSynthesis.speak(u);}
+async function playSequence(lines,rate=1,pause=220){stopAudio();if(!("speechSynthesis" in window))return;const runId=++dialogueRunId,localToken=++playToken,voice=await ensureVoice();for(const line of lines){if(runId!==dialogueRunId||localToken!==playToken)return;await new Promise(resolve=>{const u=new SpeechSynthesisUtterance(line);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;if(voice)u.voice=voice;u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u);});await new Promise(r=>setTimeout(r,pause));}}
+function playDialogue(rate=1){playSequence(dialogueLines,rate,180);} function playRoleplay(){showToast("Travel Role-play: build the trip from overview to itinerary.");playSequence(roleplayPrompts,1,3900);} function playMission(rate=1){showToast("My 3-Day Trip Challenge.");playSequence(missionPrompts,rate,rate<1?4600:3700);}
+function hasJapanese(t){return /[\u3040-\u30ff\u3400-\u9fff]/.test(t||"");}
+function baseText(node){const c=node.cloneNode(true);c.querySelectorAll("rt,.romaji,.vi,.audio-btn,.line-audio,.feedback").forEach(e=>e.remove());return(c.textContent||"").replace(/\s+/g," ").trim();}
+function getAutoAudioText(c){for(const s of [".jp",".jp-line",".vocab-jp",".mission-line .jp",".jp-inline"]){const p=[...c.querySelectorAll(s)].map(baseText).filter(t=>t&&hasJapanese(t));if(p.length)return[...new Set(p)].join("。").replace(/。。+/g,"。");}const r=c.querySelector(".rule-form");if(r){const t=baseText(r);if(t&&hasJapanese(t))return t;}const ss=[...c.querySelectorAll("strong")].map(baseText).filter(t=>t&&hasJapanese(t));if(ss.length)return[...new Set(ss)].join("。");const h=c.querySelector("h3");if(h){const t=baseText(h);if(t&&hasJapanese(t))return t;}return"";}
+function setupInlineAudioButtons(){document.querySelectorAll(".grammar-rule,.explain-card,.break-row,.answer,.mission-line,.tip").forEach(c=>{if(c.closest(".quiz-q")||c.querySelector(".audio-btn,.line-audio"))return;const t=getAutoAudioText(c);if(!t)return;const b=document.createElement("button");b.className="audio-btn auto-audio-btn";b.type="button";b.textContent="▶ Nghe";b.style.marginTop="10px";b.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();speakJapanese(t,1);});c.appendChild(b);});}
+function setupChoiceGroups(){document.querySelectorAll(".practice-box .choices").forEach(g=>{const a=g.dataset.answer,f=g.parentElement.querySelector(".feedback");g.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{g.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));if(btn.dataset.value===a){btn.classList.add("correct");f.textContent="✓ Chính xác!";}else{btn.classList.add("wrong");const c=g.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");f.textContent="Chưa đúng. Nghe destination, transport, nights và day marker.";}}));});}
+function toggleAnswer(id){document.getElementById(id).classList.toggle("show");}
+function setupQuiz(){document.querySelectorAll(".quiz-q").forEach(q=>q.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{q.querySelectorAll(".choice-btn").forEach(b=>{b.dataset.selected="false";b.style.outline="none";b.style.background="#fff";});btn.dataset.selected="true";btn.style.outline="2px solid rgba(239,166,181,.65)";btn.style.background="#fff8fa";})));}
+function gradeQuiz(){let score=0;document.querySelectorAll(".quiz-q").forEach(q=>{const a=q.dataset.answer,s=q.querySelector('.choice-btn[data-selected="true"]');q.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));const c=q.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");if(s){if(s.dataset.value===a)score++;else s.classList.add("wrong");}});const total=document.querySelectorAll(".quiz-q").length,b=document.getElementById("scoreBox");b.classList.add("show");b.textContent=score===total?`${score}/${total} ✨ Excellent. Travel-plan flow rất chắc.`:score>=10?`${score}/${total} — Rất tốt. Review nhẹ で / と / に và plan vs desire.`:score>=8?`${score}/${total} — Có nền. Làm lại Itinerary Builder + Japanese First.`:`${score}/${total} — Nên luyện travel questions + particles trước Day 80.`;}
+function resetQuiz(){document.querySelectorAll(".quiz-q .choice-btn").forEach(btn=>{btn.dataset.selected="false";btn.classList.remove("correct","wrong");btn.style.outline="none";btn.style.background="#fff";});const b=document.getElementById("scoreBox");b.classList.remove("show");b.textContent="";}
+function isCompleted(){return localStorage.getItem(DAY_KEY)==="completed";} function updateCompleteUI(){const b=document.getElementById("completeBtn"),m=document.getElementById("completeMessage");if(isCompleted()){b.classList.add("completed");b.textContent="✓ Day 79 Completed";m.textContent="Đã hoàn thành Day 79. Tiếp theo: Day 80 — Tell Me About Your Week.";}else{b.classList.remove("completed");b.textContent="✓ Complete Day 79";m.textContent="Hoàn thành khi bạn có thể trình bày một chuyến đi 3 ngày theo đúng thứ tự thông tin.";}}
+function toggleComplete(){if(isCompleted()){localStorage.removeItem(DAY_KEY);showToast("Đã chuyển Day 79 về trạng thái chưa hoàn thành.");}else{localStorage.setItem(DAY_KEY,"completed");localStorage.setItem("n5-last-opened-day","79");showToast("Day 79 completed 🌸");}updateCompleteUI();}
+function isFavorite(){return localStorage.getItem(FAVORITE_KEY)==="true";} function updateFavoriteUI(){const b=document.getElementById("favoriteBtn");b.classList.toggle("active",isFavorite());b.textContent=isFavorite()?"★ Favorite":"☆ Favorite";} function toggleFavorite(){localStorage.setItem(FAVORITE_KEY,String(!isFavorite()));updateFavoriteUI();showToast(isFavorite()?"Đã thêm Day 79 vào Favorites ★":"Đã bỏ Day 79 khỏi Favorites");}
+function showToast(message){const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove("show"),2200);}
+document.addEventListener("DOMContentLoaded",()=>{setupMenu();setupDisplayToggles();loadDisplaySettings();setupInlineAudioButtons();setupChoiceGroups();setupQuiz();updateCompleteUI();updateFavoriteUI();localStorage.setItem("n5-last-opened-day","79");document.getElementById("favoriteBtn").addEventListener("click",toggleFavorite);if("speechSynthesis" in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}window.addEventListener("beforeunload",stopAudio);});
+</script></body></html>

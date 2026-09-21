@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 41: Weather — 天気." />
+  <title>Day 41 — 天気 | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand-mark">🌸</span><span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span></a>
+    <nav class="nav-links"><a href="index.html">Home</a><a class="active" href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4</a></nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button>
+  </div>
+  <nav class="mobile-menu container" id="mobileMenu"><a href="index.html">Home</a><a href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4 · Coming Soon</a></nav>
+</header>
+
+<div class="lessonbar"><div class="container lessonbar-inner">
+  <div class="lesson-position"><a href="day40.html">← Day 40</a><span>·</span><strong>Day 41 / 90</strong></div>
+  <div class="lesson-actions"><a class="tiny-btn" href="review.html">Quick Review</a><button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button></div>
+</div></div>
+
+<main>
+<section class="hero"><div class="container"><article class="hero-card">
+  <span class="eyebrow">Day 41 · Describe Your World</span>
+  <h1><ruby>天気<rt>てんき</rt></ruby></h1>
+  <div class="hero-en">Weather</div>
+  <div class="hero-vi">Bắt đầu Phase 5 bằng một chủ đề dùng hằng ngày:
+    <strong>hỏi thời tiết → mô tả hôm nay → nói ngày mai → phản ứng tự nhiên</strong>.
+  </div>
+  <div class="hero-meta">
+    <span class="meta-chip">N5 Beginner</span><span class="meta-chip">70–85 phút</span>
+    <span class="meta-chip">天気はどうですか</span><span class="meta-chip">晴れ / 雨 / 曇り / 雪</span>
+    <span class="meta-chip">今日 / 明日</span>
+  </div>
+  <div class="goal-box"><strong>Mục tiêu hôm nay</strong><p>
+    Sau bài này, bạn có thể hỏi <span class="jp-inline">今日の天気はどうですか。</span>,
+    trả lời <span class="jp-inline">今日は晴れです。</span>,
+    và nói <span class="jp-inline">明日は雨です。</span> hoặc <span class="jp-inline">いい天気ですね。</span>
+  </p></div>
+  <div class="tip memory" style="margin-top:16px;"><strong>🌱 Phase 5 bắt đầu: describe, not just survive</strong>
+    Từ hôm nay, bạn bắt đầu mô tả thế giới xung quanh bằng Japanese ngắn và có ngữ cảnh.
+  </div>
+  <div class="display-panel"><div class="display-title">表示 · Hiển thị</div><div class="display-toggles">
+    <button class="toggle-btn active" data-toggle="furigana">Furigana</button>
+    <button class="toggle-btn" data-toggle="romaji">Romaji</button>
+    <button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+  </div></div>
+</article></div></section>
+
+<div class="container lesson-layout">
+<aside class="toc">
+  <div class="toc-title">Trong bài này</div>
+  <a href="#warmup">01 · Warm-up</a><a href="#conversation">02 · Main Conversation</a>
+  <a href="#weather">03 · Weather Words</a><a href="#question">04 · 天気はどうですか</a>
+  <a href="#today">05 · 今日は〜です</a><a href="#tomorrow">06 · 明日は〜です</a>
+  <a href="#ii">07 · いい天気ですね</a><a href="#forecast">08 · Simple Forecast</a>
+  <a href="#vocab">09 · Weather Vocabulary</a><a href="#kanji">10 · Kanji Helper</a>
+  <a href="#expressions">11 · Key Expressions</a><a href="#grammar">12 · Grammar Made Easy</a>
+  <a href="#listening">13 · Listening Ladder</a><a href="#builder">14 · Weather Builder</a>
+  <a href="#japanese-first">15 · Japanese First</a><a href="#speaking">16 · Speaking & Role-play</a>
+  <a href="#quiz">17 · Mini Quiz</a><a href="#mission">18 · Today's Mission</a>
+</aside>
+
+<div class="lesson-content">
+<section class="section-card" id="warmup">
+  <div class="section-kicker">01 · Warm-up</div><h2>Nhìn trời và nói ngay bằng Japanese</h2>
+  <div class="warmup-grid">
+    <div class="warmup-item"><div class="jp"><ruby>今日<rt>きょう</rt></ruby>の<ruby>天気<rt>てんき</rt></ruby>はどうですか。</div><div class="romaji">Kyō no tenki wa dō desu ka?</div><div class="vi">Thời tiết hôm nay thế nào?</div><div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('今日の天気はどうですか。',1)">▶ Nghe</button></div></div>
+    <div class="warmup-item"><div class="jp"><ruby>今日<rt>きょう</rt></ruby>は<ruby>晴<rt>は</rt></ruby>れです。</div><div class="romaji">Kyō wa hare desu.</div><div class="vi">Hôm nay trời quang.</div><div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('今日は晴れです。',1)">▶ Nghe</button></div></div>
+    <div class="warmup-item"><div class="jp"><ruby>明日<rt>あした</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>です。</div><div class="romaji">Ashita wa ame desu.</div><div class="vi">Ngày mai trời mưa.</div><div class="audio-controls"><button class="audio-btn" onclick="speakJapanese('明日は雨です。',1)">▶ Nghe</button></div></div>
+  </div>
+  <div class="tip memory"><strong>💡 Weather starter formula</strong><strong>TIME + は + WEATHER + です</strong><br><span class="jp-inline">今日は晴れです。</span></div>
+</section>
+
+<section class="section-card" id="conversation">
+  <div class="section-kicker">02 · Main Conversation</div><h2>Small talk về thời tiết</h2>
+  <p class="section-intro">Nghe lần 1 toàn đoạn. Lần 2 bắt: <strong>today → weather → reaction → tomorrow</strong>.</p>
+  <div class="audio-controls"><button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button><button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div>
+  <div class="audio-status" id="audioStatus"></div>
+  <div class="dialogue-shell" style="margin-top:16px;">
+    <div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line"><ruby>今日<rt>きょう</rt></ruby>の<ruby>天気<rt>てんき</rt></ruby>はどうですか。</div><div class="romaji">Kyō no tenki wa dō desu ka?</div><div class="vi line-note">Thời tiết hôm nay thế nào?</div></div><button class="line-audio" onclick="speakJapanese('今日の天気はどうですか。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line"><ruby>今日<rt>きょう</rt></ruby>は<ruby>晴<rt>は</rt></ruby>れです。</div><div class="romaji">Kyō wa hare desu.</div><div class="vi line-note">Hôm nay trời quang.</div></div><button class="line-audio" onclick="speakJapanese('今日は晴れです。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line">いい<ruby>天気<rt>てんき</rt></ruby>ですね。</div><div class="romaji">Ii tenki desu ne.</div><div class="vi line-note">Thời tiết đẹp nhỉ.</div></div><button class="line-audio" onclick="speakJapanese('いい天気ですね。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line">そうですね。</div><div class="romaji">Sō desu ne.</div><div class="vi line-note">Đúng vậy nhỉ.</div></div><button class="line-audio" onclick="speakJapanese('そうですね。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">A</div><div><div class="jp-line"><ruby>明日<rt>あした</rt></ruby>はどうですか。</div><div class="romaji">Ashita wa dō desu ka?</div><div class="vi line-note">Còn ngày mai thì sao?</div></div><button class="line-audio" onclick="speakJapanese('明日はどうですか。',1)">▶</button></div>
+    <div class="dialogue-line"><div class="speaker">B</div><div><div class="jp-line"><ruby>明日<rt>あした</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>です。</div><div class="romaji">Ashita wa ame desu.</div><div class="vi line-note">Ngày mai trời mưa.</div></div><button class="line-audio" onclick="speakJapanese('明日は雨です。',1)">▶</button></div>
+  </div>
+  <div class="tip real"><strong>🇯🇵 Weather = small talk tự nhiên</strong><span class="jp-inline">いい天気ですね</span> là câu mở chuyện nhẹ và hữu ích.</div>
+</section>
+
+<section class="section-card" id="weather">
+  <div class="section-kicker">03 · Weather Words</div><h2>4 trạng thái cốt lõi</h2>
+  <div class="explain-grid">
+    <div class="explain-card"><h3><ruby>晴<rt>は</rt></ruby>れ</h3><p><strong>trời quang / nắng</strong>. Học như weather label.</p></div>
+    <div class="explain-card"><h3><ruby>雨<rt>あめ</rt></ruby></h3><p><strong>mưa</strong>.</p></div>
+    <div class="explain-card"><h3><ruby>曇<rt>くも</rt></ruby>り</h3><p><strong>nhiều mây / âm u</strong>.</p></div>
+    <div class="explain-card"><h3><ruby>雪<rt>ゆき</rt></ruby></h3><p><strong>tuyết</strong>.</p></div>
+  </div>
+  <div class="grammar-rule"><div class="rule-form">今日は晴れです。</div><p>= Hôm nay trời quang.</p></div>
+  <div class="grammar-rule"><div class="rule-form">今日は雨です。</div><p>= Hôm nay trời mưa.</p></div>
+  <div class="grammar-rule"><div class="rule-form">今日は曇りです。</div><p>= Hôm nay trời nhiều mây.</p></div>
+  <div class="grammar-rule"><div class="rule-form">今日は雪です。</div><p>= Hôm nay có tuyết.</p></div>
+  <div class="tip memory"><strong>💡 Học whole weather labels</strong>Chưa cần biến thành adjective. Chỉ cần <strong>今日は + weather + です</strong>.</div>
+</section>
+
+<section class="section-card" id="question">
+  <div class="section-kicker">04 · 天気はどうですか</div><h2>どうですか = thế nào?</h2>
+  <div class="grammar-rule"><div class="rule-form">天気はどうですか。</div><p>= Thời tiết thế nào?</p></div>
+  <div class="grammar-rule"><div class="rule-form">今日の天気はどうですか。</div><p>= Thời tiết hôm nay thế nào?</p></div>
+  <div class="grammar-rule"><div class="rule-form">明日はどうですか。</div><p>= Còn ngày mai thì sao?</p></div>
+  <div class="tip memory"><strong>💡 どうですか</strong> hỏi condition / impression. Hôm nay dùng cho weather.</div>
+</section>
+
+<section class="section-card" id="today">
+  <div class="section-kicker">05 · 今日は〜です</div><h2>Nói thời tiết hôm nay</h2>
+  <div class="grammar-rule"><div class="rule-form">今日は晴れです。</div><p>= Hôm nay trời quang.</p></div>
+  <div class="grammar-rule"><div class="rule-form">今日は雨です。</div><p>= Hôm nay trời mưa.</p></div>
+  <div class="grammar-rule"><div class="rule-form">今日は曇りです。</div><p>= Hôm nay trời nhiều mây.</p></div>
+  <div class="tip warning"><strong>⚠ 今日の天気は晴れです cũng đúng</strong> nhưng <span class="jp-inline">今日は晴れです</span> gọn hơn trong hội thoại.</div>
+</section>
+
+<section class="section-card" id="tomorrow">
+  <div class="section-kicker">06 · 明日は〜です</div><h2>Nói dự báo đơn giản cho ngày mai</h2>
+  <div class="grammar-rule"><div class="rule-form">明日は雨です。</div><p>= Ngày mai trời mưa.</p></div>
+  <div class="grammar-rule"><div class="rule-form">明日は晴れです。</div><p>= Ngày mai trời quang.</p></div>
+  <div class="grammar-rule"><div class="rule-form">明日は曇りです。</div><p>= Ngày mai trời nhiều mây.</p></div>
+  <div class="tip memory"><strong>💡 Non-past + future time context</strong><span class="jp-inline">明日は雨です</span> đã đủ cho dự báo đơn giản.</div>
+</section>
+
+<section class="section-card" id="ii">
+  <div class="section-kicker">07 · いい天気ですね</div><h2>Phản ứng tự nhiên</h2>
+  <div class="grammar-rule"><div class="rule-form">いい天気ですね。</div><p>= Thời tiết đẹp nhỉ.</p></div>
+  <div class="grammar-rule"><div class="rule-form">そうですね。</div><p>= Đúng vậy nhỉ.</p></div>
+  <div class="tip memory"><strong>💡 ですね = shared feeling</strong> kéo người nghe vào một cảm nhận chung.</div>
+  <div class="tip warning"><strong>⚠ いい là irregular adjective</strong> nhưng hôm nay chỉ nhớ whole chunk <span class="jp-inline">いい天気ですね</span>. Day 42 sẽ mở adjective.</div>
+</section>
+
+<section class="section-card" id="forecast">
+  <div class="section-kicker">08 · Simple Forecast</div><h2>Đọc dự báo 3 ngày</h2>
+  <div class="breakdown">
+    <div class="break-row"><div class="break-label">Today</div><div><strong>今日は晴れです。</strong></div></div>
+    <div class="break-row"><div class="break-label">Tomorrow</div><div><strong>明日は雨です。</strong></div></div>
+    <div class="break-row"><div class="break-label">Next day</div><div><strong>あさっては曇りです。</strong></div></div>
+  </div>
+  <div class="tip memory"><strong>💡 あさって</strong> = ngày kia. Học như time word.</div>
+  <div class="tip real"><strong>🇯🇵 Forecast ngoài đời dài hơn</strong> nhưng trước tiên hãy bắt <strong>time word + weather word</strong>.</div>
+</section>
+
+<section class="section-card" id="vocab">
+  <div class="section-kicker">09 · Weather Vocabulary</div><h2>14 từ/cụm thực dụng</h2>
+  <div class="vocab-grid"><div class="vocab-card"><div><div class="vocab-jp"><ruby>天気<rt>てんき</rt></ruby></div>
+    <div class="romaji vocab-reading">tenki</div><div class="vi vocab-vi">thời tiết</div></div>
+    <button class="line-audio" onclick="speakJapanese('天気',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>晴<rt>は</rt></ruby>れ</div>
+    <div class="romaji vocab-reading">hare</div><div class="vi vocab-vi">trời quang/nắng</div></div>
+    <button class="line-audio" onclick="speakJapanese('晴れ',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>雨<rt>あめ</rt></ruby></div>
+    <div class="romaji vocab-reading">ame</div><div class="vi vocab-vi">mưa</div></div>
+    <button class="line-audio" onclick="speakJapanese('雨',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>曇<rt>くも</rt></ruby>り</div>
+    <div class="romaji vocab-reading">kumori</div><div class="vi vocab-vi">nhiều mây/âm u</div></div>
+    <button class="line-audio" onclick="speakJapanese('曇り',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>雪<rt>ゆき</rt></ruby></div>
+    <div class="romaji vocab-reading">yuki</div><div class="vi vocab-vi">tuyết</div></div>
+    <button class="line-audio" onclick="speakJapanese('雪',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>今日<rt>きょう</rt></ruby></div>
+    <div class="romaji vocab-reading">kyō</div><div class="vi vocab-vi">hôm nay</div></div>
+    <button class="line-audio" onclick="speakJapanese('今日',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>明日<rt>あした</rt></ruby></div>
+    <div class="romaji vocab-reading">ashita</div><div class="vi vocab-vi">ngày mai</div></div>
+    <button class="line-audio" onclick="speakJapanese('明日',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">あさって</div>
+    <div class="romaji vocab-reading">asatte</div><div class="vi vocab-vi">ngày kia</div></div>
+    <button class="line-audio" onclick="speakJapanese('あさって',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">どうですか</div>
+    <div class="romaji vocab-reading">dō desu ka</div><div class="vi vocab-vi">thế nào?</div></div>
+    <button class="line-audio" onclick="speakJapanese('どうですか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">いい<ruby>天気<rt>てんき</rt></ruby></div>
+    <div class="romaji vocab-reading">ii tenki</div><div class="vi vocab-vi">thời tiết đẹp</div></div>
+    <button class="line-audio" onclick="speakJapanese('いい天気',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">そうですね</div>
+    <div class="romaji vocab-reading">sō desu ne</div><div class="vi vocab-vi">đúng vậy nhỉ</div></div>
+    <button class="line-audio" onclick="speakJapanese('そうですね',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>予報<rt>よほう</rt></ruby></div>
+    <div class="romaji vocab-reading">yohō</div><div class="vi vocab-vi">dự báo</div></div>
+    <button class="line-audio" onclick="speakJapanese('予報',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>天気予報<rt>てんきよほう</rt></ruby></div>
+    <div class="romaji vocab-reading">tenki yohō</div><div class="vi vocab-vi">dự báo thời tiết</div></div>
+    <button class="line-audio" onclick="speakJapanese('天気予報',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>空<rt>そら</rt></ruby></div>
+    <div class="romaji vocab-reading">sora</div><div class="vi vocab-vi">bầu trời</div></div>
+    <button class="line-audio" onclick="speakJapanese('空',1)">▶</button></div></div>
+  <div class="tip warning"><strong>⚠ 予報・天気予報・空 hôm nay recognition only</strong>Productive core: <strong>天気・晴れ・雨・曇り・雪・今日・明日</strong>.</div>
+</section>
+
+<section class="section-card" id="kanji">
+  <div class="section-kicker">10 · Kanji Helper</div><h2>Kanji theo whole weather words</h2>
+  <div class="explain-grid">
+    <div class="explain-card"><h3><ruby>天気<rt>てんき</rt></ruby></h3><p><strong>thời tiết</strong>. Must recognize.</p></div>
+    <div class="explain-card"><h3><ruby>晴<rt>は</rt></ruby>れ</h3><p><strong>trời quang</strong>. Học whole word 晴れ.</p></div>
+    <div class="explain-card"><h3><ruby>雨<rt>あめ</rt></ruby></h3><p><strong>mưa</strong>. Chữ gợi các giọt mưa trong khung trời.</p></div>
+    <div class="explain-card"><h3><ruby>曇<rt>くも</rt></ruby>り</h3><p><strong>nhiều mây</strong>. Complex: học whole word.</p></div>
+    <div class="explain-card"><h3><ruby>雪<rt>ゆき</rt></ruby></h3><p><strong>tuyết</strong>. Must recognize trong forecast.</p></div>
+    <div class="explain-card"><h3><ruby>今日<rt>きょう</rt></ruby>・<ruby>明日<rt>あした</rt></ruby></h3><p>Readings đặc biệt. Học như whole time words.</p></div>
+  </div>
+  <div class="tip memory"><strong>🌱 Must recognize</strong> 天気・晴れ・雨・曇り・雪・今日・明日.<br><strong>Recognition only:</strong> 予報・空.</div>
+</section>
+
+<section class="section-card" id="expressions">
+  <div class="section-kicker">11 · Key Expressions</div><h2>12 câu/cụm cần phản xạ</h2>
+  <div class="vocab-grid">
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>今日<rt>きょう</rt></ruby>の<ruby>天気<rt>てんき</rt></ruby>はどうですか。</div>
+    <div class="romaji vocab-reading">Kyō no tenki wa dō desu ka?</div><div class="vi vocab-vi">Thời tiết hôm nay thế nào?</div></div>
+    <button class="line-audio" onclick="speakJapanese('今日の天気はどうですか。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>今日<rt>きょう</rt></ruby>は<ruby>晴<rt>は</rt></ruby>れです。</div>
+    <div class="romaji vocab-reading">Kyō wa hare desu.</div><div class="vi vocab-vi">Hôm nay trời quang.</div></div>
+    <button class="line-audio" onclick="speakJapanese('今日は晴れです。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>今日<rt>きょう</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Kyō wa ame desu.</div><div class="vi vocab-vi">Hôm nay trời mưa.</div></div>
+    <button class="line-audio" onclick="speakJapanese('今日は雨です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>今日<rt>きょう</rt></ruby>は<ruby>曇<rt>くも</rt></ruby>りです。</div>
+    <div class="romaji vocab-reading">Kyō wa kumori desu.</div><div class="vi vocab-vi">Hôm nay trời nhiều mây.</div></div>
+    <button class="line-audio" onclick="speakJapanese('今日は曇りです。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>今日<rt>きょう</rt></ruby>は<ruby>雪<rt>ゆき</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Kyō wa yuki desu.</div><div class="vi vocab-vi">Hôm nay có tuyết.</div></div>
+    <button class="line-audio" onclick="speakJapanese('今日は雪です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp">いい<ruby>天気<rt>てんき</rt></ruby>ですね。</div>
+    <div class="romaji vocab-reading">Ii tenki desu ne.</div><div class="vi vocab-vi">Thời tiết đẹp nhỉ.</div></div>
+    <button class="line-audio" onclick="speakJapanese('いい天気ですね。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp">そうですね。</div>
+    <div class="romaji vocab-reading">Sō desu ne.</div><div class="vi vocab-vi">Đúng vậy nhỉ.</div></div>
+    <button class="line-audio" onclick="speakJapanese('そうですね。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>明日<rt>あした</rt></ruby>はどうですか。</div>
+    <div class="romaji vocab-reading">Ashita wa dō desu ka?</div><div class="vi vocab-vi">Còn ngày mai thì sao?</div></div>
+    <button class="line-audio" onclick="speakJapanese('明日はどうですか。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>明日<rt>あした</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>です。</div>
+    <div class="romaji vocab-reading">Ashita wa ame desu.</div><div class="vi vocab-vi">Ngày mai trời mưa.</div></div>
+    <button class="line-audio" onclick="speakJapanese('明日は雨です。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>明日<rt>あした</rt></ruby>は<ruby>晴<rt>は</rt></ruby>れです。</div>
+    <div class="romaji vocab-reading">Ashita wa hare desu.</div><div class="vi vocab-vi">Ngày mai trời quang.</div></div>
+    <button class="line-audio" onclick="speakJapanese('明日は晴れです。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp">あさっては<ruby>曇<rt>くも</rt></ruby>りです。</div>
+    <div class="romaji vocab-reading">Asatte wa kumori desu.</div><div class="vi vocab-vi">Ngày kia trời nhiều mây.</div></div>
+    <button class="line-audio" onclick="speakJapanese('あさっては曇りです。',1)">▶</button></div>
+    <div class="vocab-card"><div><div class="vocab-jp"><ruby>天気予報<rt>てんきよほう</rt></ruby></div>
+    <div class="romaji vocab-reading">tenki yohō</div><div class="vi vocab-vi">dự báo thời tiết</div></div>
+    <button class="line-audio" onclick="speakJapanese('天気予報',1)">▶</button></div>
+  </div>
+</section>
+
+<section class="section-card" id="grammar">
+  <div class="section-kicker">12 · Grammar Made Easy</div><h2>5 patterns cốt lõi</h2>
+  <div class="grammar-rule"><div class="rule-form">今日の天気はどうですか</div><p>= Thời tiết hôm nay thế nào?</p></div>
+  <div class="grammar-rule"><div class="rule-form">今日は + Weather + です</div><p><span class="jp-inline">今日は晴れです。</span></p></div>
+  <div class="grammar-rule"><div class="rule-form">明日は + Weather + です</div><p><span class="jp-inline">明日は雨です。</span></p></div>
+  <div class="grammar-rule"><div class="rule-form">いい天気ですね</div><p>= Thời tiết đẹp nhỉ.</p></div>
+  <div class="grammar-rule"><div class="rule-form">明日はどうですか</div><p>= Còn ngày mai thì sao?</p></div>
+  <div class="tip memory"><strong>💡 Weather formula</strong><strong>TIME + は + WEATHER + です</strong></div>
+</section>
+
+<section class="section-card" id="listening">
+  <div class="section-kicker">13 · Listening Ladder</div><h2>Nghe weather word trước</h2>
+  <div class="practice-box">
+      <div class="practice-title">Listening 1 · Weather question</div>
+      <button class="audio-btn primary" onclick="speakJapanese('今日の天気はどうですか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="b"><button class="choice-btn" data-value="a">A. Hôm nay là ngày mấy?</button><button class="choice-btn" data-value="b">B. Thời tiết hôm nay thế nào?</button><button class="choice-btn" data-value="c">C. Ngày mai đi đâu?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 2 · Sunny</div>
+      <button class="audio-btn primary" onclick="speakJapanese('今日は晴れです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Hôm nay trời quang</button><button class="choice-btn" data-value="b">B. Hôm nay mưa</button><button class="choice-btn" data-value="c">C. Hôm nay tuyết</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 3 · Rain</div>
+      <button class="audio-btn primary" onclick="speakJapanese('明日は雨です。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="c"><button class="choice-btn" data-value="a">A. Ngày mai quang</button><button class="choice-btn" data-value="b">B. Hôm nay mưa</button><button class="choice-btn" data-value="c">C. Ngày mai mưa</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 4 · Cloudy</div>
+      <button class="audio-btn primary" onclick="speakJapanese('今日は曇りです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="b"><button class="choice-btn" data-value="a">A. tuyết</button><button class="choice-btn" data-value="b">B. nhiều mây</button><button class="choice-btn" data-value="c">C. nắng</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 5 · Snow</div>
+      <button class="audio-btn primary" onclick="speakJapanese('今日は雪です。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Hôm nay có tuyết</button><button class="choice-btn" data-value="b">B. Hôm nay mưa</button><button class="choice-btn" data-value="c">C. Ngày mai tuyết</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 6 · Small talk</div>
+      <button class="audio-btn primary" onclick="speakJapanese('いい天気ですね。そうですね。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="c"><button class="choice-btn" data-value="a">A. Hỏi đường</button><button class="choice-btn" data-value="b">B. Hỏi giá</button><button class="choice-btn" data-value="c">C. Nhận xét thời tiết đẹp và đồng tình</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 7 · Tomorrow</div>
+      <button class="audio-btn primary" onclick="speakJapanese('明日はどうですか。明日は晴れです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="b"><button class="choice-btn" data-value="a">A. Ngày mai mưa</button><button class="choice-btn" data-value="b">B. Hỏi ngày mai; trả lời trời quang</button><button class="choice-btn" data-value="c">C. Hỏi hôm nay; trả lời tuyết</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 8 · 3-day forecast</div>
+      <button class="audio-btn primary" onclick="speakJapanese('今日は晴れです。明日は雨です。あさっては曇りです。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="c"><button class="choice-btn" data-value="a">A. Hôm nay mưa, mai nắng, ngày kia tuyết</button><button class="choice-btn" data-value="b">B. Hôm nay mây, mai mưa, ngày kia nắng</button><button class="choice-btn" data-value="c">C. Hôm nay quang, mai mưa, ngày kia nhiều mây</button></div><div class="feedback"></div>
+    </div>
+  <div class="practice-box"><div class="practice-title">Shadowing · Weather flow</div>
+    <div class="audio-controls">
+      <button class="audio-btn" onclick="speakJapanese('今日の天気はどうですか。今日は晴れです。いい天気ですね。明日はどうですか。明日は雨です。',.76)">🐢 Slow</button>
+      <button class="audio-btn primary" onclick="speakJapanese('今日の天気はどうですか。今日は晴れです。いい天気ですね。明日はどうですか。明日は雨です。',1)">▶ Natural</button>
+    </div>
+  </div>
+</section>
+
+<section class="section-card" id="builder">
+  <div class="section-kicker">14 · Weather Builder</div><h2>Thay 2 slot: time + weather</h2>
+  <div class="breakdown">
+    <div class="break-row"><div class="break-label">Time</div><div><strong>今日 / 明日 / あさって</strong></div></div>
+    <div class="break-row"><div class="break-label">Weather</div><div><strong>晴れ / 雨 / 曇り / 雪</strong></div></div>
+    <div class="break-row"><div class="break-label">Sentence</div><div><strong>今日は晴れです。</strong></div></div>
+    <div class="break-row"><div class="break-label">Change time</div><div><strong>明日は晴れです。</strong></div></div>
+    <div class="break-row"><div class="break-label">Change weather</div><div><strong>明日は雨です。</strong></div></div>
+    <div class="break-row"><div class="break-label">Ask</div><div><strong>明日はどうですか。</strong></div></div>
+  </div>
+  <div class="tip memory"><strong>💡 Build, don't translate</strong>Chọn <strong>time slot</strong> + <strong>weather slot</strong> rồi nói ngay.</div>
+</section>
+
+<section class="section-card" id="japanese-first">
+  <div class="section-kicker">15 · Japanese First</div><h2>Romaji-Off Round</h2>
+  <p class="section-intro vi">Không có Romaji trong phần này. Nghe → đọc Japanese → trả lời.</p>
+  <div class="practice-box"><div class="practice-title">Round 1</div><button class="audio-btn primary" onclick="speakJapanese('今日は雨です。',1)">▶ Nghe</button><p class="jp">今日は雨です。</p><p class="vi">Nói lại.</p></div>
+  <div class="practice-box"><div class="practice-title">Round 2</div><button class="audio-btn primary" onclick="speakJapanese('明日は晴れです。',1)">▶ Nghe</button><p class="jp">明日は晴れです。</p><p class="vi">Nói lại.</p></div>
+  <div class="practice-box"><div class="practice-title">Round 3</div><button class="audio-btn primary" onclick="speakJapanese('今日の天気はどうですか。',1)">▶ Nghe</button><p class="jp">今日の天気はどうですか。</p><p class="vi">Tự trả lời bằng một weather word.</p></div>
+  <div class="practice-box"><div class="practice-title">Round 4</div><button class="audio-btn primary" onclick="speakJapanese('明日はどうですか。',1)">▶ Nghe</button><p class="jp">明日はどうですか。</p><p class="vi">Tự trả lời mà không bật Romaji.</p></div>
+</section>
+
+<section class="section-card" id="speaking">
+  <div class="section-kicker">16 · Speaking & Role-play</div><h2>Từ mô tả → small talk</h2>
+  <div class="speaking-grid">
+    <div class="speaking-card"><div class="prompt">1. “Thời tiết hôm nay thế nào?”</div><button class="audio-btn" onclick="toggleAnswer('a1')">Xem đáp án</button><div class="answer" id="a1"><div class="jp">今日の天気はどうですか。</div></div></div>
+    <div class="speaking-card"><div class="prompt">2. “Hôm nay trời quang.”</div><button class="audio-btn" onclick="toggleAnswer('a2')">Xem đáp án</button><div class="answer" id="a2"><div class="jp">今日は晴れです。</div></div></div>
+    <div class="speaking-card"><div class="prompt">3. “Hôm nay trời nhiều mây.”</div><button class="audio-btn" onclick="toggleAnswer('a3')">Xem đáp án</button><div class="answer" id="a3"><div class="jp">今日は曇りです。</div></div></div>
+    <div class="speaking-card"><div class="prompt">4. “Thời tiết đẹp nhỉ.”</div><button class="audio-btn" onclick="toggleAnswer('a4')">Xem đáp án</button><div class="answer" id="a4"><div class="jp">いい天気ですね。</div></div></div>
+    <div class="speaking-card"><div class="prompt">5. “Còn ngày mai thì sao?”</div><button class="audio-btn" onclick="toggleAnswer('a5')">Xem đáp án</button><div class="answer" id="a5"><div class="jp">明日はどうですか。</div></div></div>
+    <div class="speaking-card"><div class="prompt">6. “Ngày mai trời mưa.”</div><button class="audio-btn" onclick="toggleAnswer('a6')">Xem đáp án</button><div class="answer" id="a6"><div class="jp">明日は雨です。</div></div></div>
+  </div>
+  <div class="practice-box" style="margin-top:16px;"><div class="practice-title">Weather Role-play</div><button class="audio-btn primary" onclick="playRoleplay()">▶ Start 4 Prompts</button><p class="vi">Audio hỏi/nhận xét. Bạn phản ứng trong khoảng nghỉ.</p></div>
+</section>
+
+<section class="section-card" id="quiz">
+  <div class="section-kicker">17 · Mini Quiz</div><h2>Kiểm tra nhanh Day 41</h2>
+  <div class="quiz-q" data-answer="b"><h3>1. 天気 là?</h3><div class="choices"><button class="choice-btn" data-value="a">A. nhiệt độ</button><button class="choice-btn" data-value="b">B. thời tiết</button><button class="choice-btn" data-value="c">C. mùa</button></div></div><div class="quiz-q" data-answer="a"><h3>2. 晴れ?</h3><div class="choices"><button class="choice-btn" data-value="a">A. trời quang/nắng</button><button class="choice-btn" data-value="b">B. mưa</button><button class="choice-btn" data-value="c">C. tuyết</button></div></div><div class="quiz-q" data-answer="c"><h3>3. 曇り?</h3><div class="choices"><button class="choice-btn" data-value="a">A. mưa</button><button class="choice-btn" data-value="b">B. tuyết</button><button class="choice-btn" data-value="c">C. nhiều mây</button></div></div><div class="quiz-q" data-answer="b"><h3>4. “Thời tiết hôm nay thế nào?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 今日の天気は何ですか。</button><button class="choice-btn" data-value="b">B. 今日の天気はどうですか。</button><button class="choice-btn" data-value="c">C. 今日はいくらですか。</button></div></div><div class="quiz-q" data-answer="a"><h3>5. “Hôm nay trời mưa.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 今日は雨です。</button><button class="choice-btn" data-value="b">B. 今日の雨ですか。</button><button class="choice-btn" data-value="c">C. 雨は今日です。</button></div></div><div class="quiz-q" data-answer="c"><h3>6. “Ngày mai trời quang.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 明日は雨です。</button><button class="choice-btn" data-value="b">B. 今日晴れです。</button><button class="choice-btn" data-value="c">C. 明日は晴れです。</button></div></div><div class="quiz-q" data-answer="b"><h3>7. いい天気ですね có sắc thái?</h3><div class="choices"><button class="choice-btn" data-value="a">A. hỏi giá thời tiết</button><button class="choice-btn" data-value="b">B. nhận xét “thời tiết đẹp nhỉ”</button><button class="choice-btn" data-value="c">C. dự báo ngày mai</button></div></div><div class="quiz-q" data-answer="a"><h3>8. “Còn ngày mai thì sao?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 明日はどうですか。</button><button class="choice-btn" data-value="b">B. 明日はどこですか。</button><button class="choice-btn" data-value="c">C. 明日は何番ですか。</button></div></div><div class="quiz-q" data-answer="c"><h3>9. Day 41 chưa mở sâu nội dung nào?</h3><div class="choices"><button class="choice-btn" data-value="a">A. 晴れ / 雨</button><button class="choice-btn" data-value="b">B. 今日 / 明日</button><button class="choice-btn" data-value="c">C. 暑い / 寒い adjective system</button></div></div><div class="quiz-q" data-answer="b"><h3>10. Core formula?</h3><div class="choices"><button class="choice-btn" data-value="a">A. WEATHER + を + TIME</button><button class="choice-btn" data-value="b">B. TIME + は + WEATHER + です</button><button class="choice-btn" data-value="c">C. TIME + に + WEATHER</button></div></div>
+  <div class="quiz-actions"><button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button><button class="audio-btn" onclick="resetQuiz()">Làm lại</button></div>
+  <div class="score-box" id="scoreBox"></div>
+</section>
+
+<section class="section-card mission-card" id="mission">
+  <div class="section-kicker">18 · Today's Mission</div><h2>3-Day Weather Talk — 2 minutes</h2>
+  <p class="section-intro">Tưởng tượng bạn nói chuyện với một người bạn về hôm nay và hai ngày tới.</p>
+  <div class="mission-lines">
+    <div class="mission-line"><div class="vi">1. Hỏi thời tiết hôm nay.</div><div class="jp">今日の天気はどうですか。</div></div>
+    <div class="mission-line"><div class="vi">2. Trả lời: hôm nay trời quang.</div><div class="jp">今日は晴れです。</div></div>
+    <div class="mission-line"><div class="vi">3. Nhận xét.</div><div class="jp">いい天気ですね。</div></div>
+    <div class="mission-line"><div class="vi">4. Đồng tình.</div><div class="jp">そうですね。</div></div>
+    <div class="mission-line"><div class="vi">5. Hỏi ngày mai.</div><div class="jp">明日はどうですか。</div></div>
+    <div class="mission-line"><div class="vi">6. Trả lời: ngày mai mưa.</div><div class="jp">明日は雨です。</div></div>
+    <div class="mission-line"><div class="vi">7. Ngày kia nhiều mây.</div><div class="jp">あさっては曇りです。</div></div>
+    <div class="mission-line"><div class="vi">8. Làm lại với weather khác.</div><div class="jp">晴れ / 雨 / 曇り / 雪</div></div>
+  </div>
+  <div class="audio-controls"><button class="audio-btn" onclick="playMission(.76)">🐢 Weather Simulation Slow</button><button class="audio-btn primary" onclick="playMission(1)">▶ Weather Simulation Natural</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div>
+  <div class="tip memory"><strong>✅ Pass standard</strong>Bạn nói được ít nhất <strong>3 time points + 4 weather words</strong> mà không bật Romaji.</div>
+  <div class="complete-box"><p id="completeMessage" style="margin-top:0;color:var(--muted);">Hoàn thành khi bạn có thể hỏi, mô tả và phản ứng về thời tiết bằng Japanese ngắn.</p><button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 41</button></div>
+</section>
+
+<div class="day-nav"><a href="day40.html">← Day 40 · Transport Challenge</a><a class="next" href="day42.html">Day 42 · Hot / Cold / Beautiful →</a></div>
+</div></div>
+</main>
+
+<footer><div class="container footer-inner"><div><span class="footer-brand">🌸 Nihongo 90</span> · Day 41</div><div>Describe Your World · Weather today, tomorrow, and beyond.</div></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const DAY_KEY="n5-day-41";
+const FAVORITE_KEY="n5-favorite-day-41";
+const DISPLAY_KEY="nihongo90-display";
+const PHASE5_DISPLAY_INIT_KEY="nihongo90-phase5-display-initialized";
+const dialogueLines=["今日の天気はどうですか。","今日は晴れです。","いい天気ですね。","そうですね。","明日はどうですか。","明日は雨です。"];
+const roleplayPrompts=["今日の天気はどうですか。","いい天気ですね。","明日はどうですか。","あさってはどうですか。"];
+const missionPrompts=["今日の天気はどうですか。","今日は晴れです。","いい天気ですね。","そうですね。","明日はどうですか。","明日は雨です。","あさっては曇りです。"];
+let voiceCache=[],japaneseVoice=null,dialogueRunId=0,playToken=0;
+
+function setupMenu(){
+  const btn=document.getElementById("menuBtn"),menu=document.getElementById("mobileMenu");
+  btn.addEventListener("click",()=>{const open=menu.classList.toggle("open");btn.setAttribute("aria-expanded",open?"true":"false");btn.textContent=open?"✕":"☰";});
+}
+function loadDisplaySettings(){
+  let saved={furigana:true,romaji:false,vi:true};
+  try{const p=JSON.parse(localStorage.getItem(DISPLAY_KEY));if(p&&typeof p==="object")saved={...saved,...p};}catch(_){}
+  if(!localStorage.getItem(PHASE5_DISPLAY_INIT_KEY)){saved.romaji=false;localStorage.setItem(PHASE5_DISPLAY_INIT_KEY,"true");}
+  applyDisplaySettings(saved);
+}
+function applyDisplaySettings(s){
+  document.body.classList.toggle("hide-furigana",!s.furigana);
+  document.body.classList.toggle("hide-romaji",!s.romaji);
+  document.body.classList.toggle("hide-vi",!s.vi);
+  document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.toggle("active",!!s[b.dataset.toggle]));
+  localStorage.setItem(DISPLAY_KEY,JSON.stringify(s));
+}
+function setupDisplayToggles(){
+  document.querySelectorAll(".toggle-btn").forEach(btn=>btn.addEventListener("click",()=>{
+    let s={furigana:true,romaji:false,vi:true};
+    try{s={...s,...JSON.parse(localStorage.getItem(DISPLAY_KEY))};}catch(_){}
+    s[btn.dataset.toggle]=!s[btn.dataset.toggle];applyDisplaySettings(s);
+  }));
+}
+function loadVoices(){if(!("speechSynthesis" in window))return;voiceCache=speechSynthesis.getVoices()||[];japaneseVoice=pickJapaneseVoice();}
+function pickJapaneseVoice(){
+  const vs=voiceCache.filter(v=>/^ja(-|_)?JP/i.test(v.lang)||/^ja/i.test(v.lang));if(!vs.length)return null;
+  const pref=["Kyoko","Otoya","Nanami","Keita","Haruka","Google 日本語","Microsoft Nanami","Microsoft Keita","Natural","Premium","Enhanced"];
+  for(const n of pref){const f=vs.find(v=>v.name.toLowerCase().includes(n.toLowerCase()));if(f)return f;}return vs[0];
+}
+async function ensureVoice(){if(!("speechSynthesis" in window))return null;loadVoices();if(japaneseVoice)return japaneseVoice;for(const d of [120,220,360,520]){await new Promise(r=>setTimeout(r,d));loadVoices();if(japaneseVoice)return japaneseVoice;}return null;}
+function setAudioStatus(t){const e=document.getElementById("audioStatus");if(e)e.textContent=t||"";}
+function stopAudio(){dialogueRunId++;playToken++;if("speechSynthesis" in window){try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}}setAudioStatus("");}
+async function speakJapanese(text,rate=1){
+  stopAudio();
+  if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}
+  const voice=await ensureVoice(),token=++playToken;
+  try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}
+  await new Promise(r=>setTimeout(r,70));if(token!==playToken)return;
+  const u=new SpeechSynthesisUtterance(text);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;u.volume=1;if(voice)u.voice=voice;u.onerror=()=>showToast("Audio TTS không phát được. Hãy thử lại.");speechSynthesis.speak(u);
+}
+async function playSequence(lines,rate=1,pause=220){
+  stopAudio();if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}
+  const runId=++dialogueRunId,localToken=++playToken,voice=await ensureVoice();
+  for(const line of lines){
+    if(runId!==dialogueRunId||localToken!==playToken)return;
+    await new Promise(resolve=>{const u=new SpeechSynthesisUtterance(line);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;if(voice)u.voice=voice;u.onend=resolve;u.onerror=resolve;try{speechSynthesis.resume();}catch(_){}speechSynthesis.speak(u);});
+    await new Promise(r=>setTimeout(r,pause));
+  }
+}
+function playDialogue(rate=1){setAudioStatus(rate<1?"Playing slow weather conversation…":"Playing weather conversation…");playSequence(dialogueLines,rate,180).then(()=>setAudioStatus(""));}
+function playRoleplay(){showToast("Weather Role-play: tự trả lời trong khoảng nghỉ.");playSequence(roleplayPrompts,1,3700);}
+function playMission(rate=1){showToast("Weather Simulation: today → reaction → tomorrow.");playSequence(missionPrompts,rate,rate<1?3900:3000);}
+
+function hasJapanese(t){return /[\u3040-\u30ff\u3400-\u9fff]/.test(t||"");}
+function baseText(node){const c=node.cloneNode(true);c.querySelectorAll("rt,.romaji,.vi,.audio-btn,.line-audio,.feedback").forEach(e=>e.remove());return(c.textContent||"").replace(/\s+/g," ").trim();}
+function getAutoAudioText(c){
+  for(const s of [".jp",".jp-line",".vocab-jp",".mission-line .jp",".jp-inline"]){const p=[...c.querySelectorAll(s)].map(baseText).filter(t=>t&&hasJapanese(t));if(p.length)return[...new Set(p)].join("。").replace(/。。+/g,"。");}
+  const r=c.querySelector(".rule-form");if(r){const t=baseText(r);if(t&&hasJapanese(t))return t;}
+  const ss=[...c.querySelectorAll("strong")].map(baseText).filter(t=>t&&hasJapanese(t));if(ss.length)return[...new Set(ss)].join("。");
+  const h=c.querySelector("h3");if(h){const t=baseText(h);if(t&&hasJapanese(t))return t;}return"";
+}
+function setupInlineAudioButtons(){
+  document.querySelectorAll(".grammar-rule,.explain-card,.break-row,.answer,.mission-line,.tip").forEach(c=>{
+    if(c.closest(".quiz-q")||c.querySelector(".audio-btn,.line-audio"))return;const t=getAutoAudioText(c);if(!t)return;
+    const b=document.createElement("button");b.className="audio-btn auto-audio-btn";b.type="button";b.textContent="▶ Nghe";b.style.marginTop="10px";b.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();speakJapanese(t,1);});c.appendChild(b);
+  });
+}
+function setupChoiceGroups(){
+  document.querySelectorAll(".practice-box .choices").forEach(g=>{const a=g.dataset.answer,f=g.parentElement.querySelector(".feedback");g.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{g.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));if(btn.dataset.value===a){btn.classList.add("correct");f.textContent="✓ Chính xác!";}else{btn.classList.add("wrong");const c=g.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");f.textContent="Chưa đúng. Bắt time word + weather word trước.";}}));});
+}
+function toggleAnswer(id){document.getElementById(id).classList.toggle("show");}
+function setupQuiz(){
+  document.querySelectorAll(".quiz-q").forEach(q=>q.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{q.querySelectorAll(".choice-btn").forEach(b=>{b.dataset.selected="false";b.style.outline="none";b.style.background="#fff";});btn.dataset.selected="true";btn.style.outline="2px solid rgba(239,166,181,.65)";btn.style.background="#fff8fa";})));
+}
+function gradeQuiz(){
+  let score=0;document.querySelectorAll(".quiz-q").forEach(q=>{const a=q.dataset.answer,s=q.querySelector('.choice-btn[data-selected="true"]');q.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));const c=q.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");if(s){if(s.dataset.value===a)score++;else s.classList.add("wrong");}});
+  const b=document.getElementById("scoreBox");b.classList.add("show");b.textContent=score===10?"10/10 ✨ Excellent. Bạn đã mô tả weather cơ bản rất ổn.":score>=8?`${score}/10 — Rất tốt. Review nhẹ 晴れ / 曇り / 雪.`:score>=6?`${score}/10 — Có nền. Làm lại Listening + Weather Builder.`:`${score}/10 — Xem lại 天気・晴れ・雨・曇り・雪 trước khi làm lại.`;
+}
+function resetQuiz(){document.querySelectorAll(".quiz-q .choice-btn").forEach(btn=>{btn.dataset.selected="false";btn.classList.remove("correct","wrong");btn.style.outline="none";btn.style.background="#fff";});const b=document.getElementById("scoreBox");b.classList.remove("show");b.textContent="";}
+function isCompleted(){return localStorage.getItem(DAY_KEY)==="completed";}
+function updateCompleteUI(){const b=document.getElementById("completeBtn"),m=document.getElementById("completeMessage");if(isCompleted()){b.classList.add("completed");b.textContent="✓ Day 41 Completed";m.textContent="Đã hoàn thành Day 41. Tiếp theo: Day 42 — Hot / Cold / Beautiful.";}else{b.classList.remove("completed");b.textContent="✓ Complete Day 41";m.textContent="Hoàn thành khi bạn có thể hỏi, mô tả và phản ứng về thời tiết bằng Japanese ngắn.";}}
+function toggleComplete(){if(isCompleted()){localStorage.removeItem(DAY_KEY);showToast("Đã chuyển Day 41 về trạng thái chưa hoàn thành.");}else{localStorage.setItem(DAY_KEY,"completed");localStorage.setItem("n5-last-opened-day","41");showToast("Day 41 completed 🌸");}updateCompleteUI();}
+function isFavorite(){return localStorage.getItem(FAVORITE_KEY)==="true";}
+function updateFavoriteUI(){const b=document.getElementById("favoriteBtn");b.classList.toggle("active",isFavorite());b.textContent=isFavorite()?"★ Favorite":"☆ Favorite";}
+function toggleFavorite(){localStorage.setItem(FAVORITE_KEY,String(!isFavorite()));updateFavoriteUI();showToast(isFavorite()?"Đã thêm Day 41 vào Favorites ★":"Đã bỏ Day 41 khỏi Favorites");}
+function showToast(message){const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove("show"),2200);}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  setupMenu();setupDisplayToggles();loadDisplaySettings();setupInlineAudioButtons();setupChoiceGroups();setupQuiz();updateCompleteUI();updateFavoriteUI();
+  localStorage.setItem("n5-last-opened-day","41");
+  document.getElementById("favoriteBtn").addEventListener("click",toggleFavorite);
+  if("speechSynthesis" in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+  window.addEventListener("beforeunload",stopAudio);
+});
+</script>
+</body>
+</html>

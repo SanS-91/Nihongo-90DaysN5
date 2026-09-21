@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf7" />
+  <meta name="description" content="Nihongo 90 — Day 82: Hotel Check-in — ホテルで." />
+  <title>Day 82 — Hotel Check-in | Nihongo 90</title>
+
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --surface: rgba(255,255,255,.86);
+      --text: #3e3a39;
+      --muted: #7d7572;
+      --line: #eee5e1;
+
+      --sakura: #efa6b5;
+      --sakura-deep: #db8195;
+      --sakura-soft: #fde7ec;
+
+      --mint: #bfded4;
+      --mint-deep: #76ad9d;
+      --mint-soft: #e8f6f1;
+
+      --blue-soft: #edf5fb;
+      --butter-soft: #fff7db;
+      --lavender-soft: #f4eefb;
+      --coral-soft: #fff0ec;
+
+      --shadow: 0 18px 45px rgba(91,67,61,.08);
+      --shadow-soft: 0 10px 28px rgba(91,67,61,.06);
+      --radius-xl: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(191,222,212,.2), transparent 27%),
+        radial-gradient(circle at 70% 94%, rgba(201,222,241,.16), transparent 30%),
+        var(--bg);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Noto Sans", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,247,.8);
+      border-bottom: 1px solid rgba(238,229,225,.74);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--sakura-soft), #fff);
+      box-shadow: var(--shadow-soft);
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.08;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(238,229,225,.85);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(77,55,50,.07);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .lessonbar {
+      position: sticky;
+      top: 74px;
+      z-index: 55;
+      backdrop-filter: blur(14px);
+      background: rgba(255,250,247,.87);
+      border-bottom: 1px solid rgba(238,229,225,.7);
+    }
+
+    .lessonbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-position {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .lesson-position strong { color: var(--text); }
+
+    .lesson-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tiny-btn.favorite.active {
+      color: #b58d2b;
+      border-color: #ebdba3;
+      background: var(--butter-soft);
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 4vw, 52px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(239,166,181,.24), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(191,222,212,.25), transparent 33%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(238,229,225,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--sakura-soft);
+      color: #9f5769;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 4px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .hero-en {
+      margin-top: 9px;
+      font-size: clamp(21px, 2.6vw, 31px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hero-vi {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .meta-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .goal-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(238,229,225,.94);
+    }
+
+    .goal-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #a05d6c;
+    }
+
+    .goal-box p { margin: 0; }
+
+    .display-panel {
+      margin: 18px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .display-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .display-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .toggle-btn {
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .toggle-btn.active {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    body.hide-furigana rt { visibility: hidden; }
+    body.hide-romaji .romaji { display: none !important; }
+    body.hide-vi .vi { display: none !important; }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 18px 0 52px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 150px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc-title {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: #f8f4f2;
+    }
+
+    .lesson-content {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      scroll-margin-top: 150px;
+      padding: clamp(20px, 3vw, 30px);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(238,229,225,.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-kicker {
+      color: #a05d6c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-card h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 3.3vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .audio-btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .audio-btn.primary {
+      background: var(--sakura-soft);
+      color: #99596a;
+      border-color: #f0c9d1;
+    }
+
+    .audio-status {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .warmup-item {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .warmup-item .jp {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .romaji {
+      margin-top: 3px;
+      color: #9d8f8a;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dialogue-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dialogue-line {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 13px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .speaker {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 900;
+      background: var(--sakura-soft);
+      color: #9b5969;
+    }
+
+    .dialogue-line:nth-child(even) .speaker {
+      background: var(--mint-soft);
+      color: #5f9182;
+    }
+
+    .jp-line {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+      line-height: 1.6;
+    }
+
+    ruby rt {
+      font-size: .52em;
+      font-weight: 600;
+      color: #8a7f7a;
+    }
+
+    .line-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .line-audio {
+      width: 39px;
+      height: 39px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      color: #9c6573;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .explain-card {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .explain-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .jp-inline {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .tip {
+      margin-top: 13px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+
+    .tip.memory { background: var(--butter-soft); }
+    .tip.warning { background: var(--coral-soft); }
+    .tip.real { background: var(--mint-soft); }
+    .tip strong { display: block; margin-bottom: 3px; }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .vocab-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .vocab-jp {
+      font-size: 21px;
+      font-weight: 800;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .vocab-reading {
+      margin-top: 2px;
+      color: #9a8d88;
+      font-size: 12px;
+    }
+
+    .vocab-vi {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .vocab-listen {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: #5a7f9f;
+      font-weight: 900;
+    }
+
+    .grammar-formula {
+      padding: 17px;
+      border-radius: 18px;
+      background: var(--lavender-soft);
+      border: 1px solid #e7dcf4;
+      font-weight: 900;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .grammar-example {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .breakdown {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #faf7f5;
+    }
+
+    .break-row strong {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .break-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .practice-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .practice-box + .practice-box { margin-top: 12px; }
+
+    .practice-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .choice-btn.correct {
+      background: var(--mint-soft);
+      border-color: #b7d9cf;
+      color: #477d6e;
+    }
+
+    .choice-btn.wrong {
+      background: var(--coral-soft);
+      border-color: #efcec5;
+      color: #a06151;
+    }
+
+    .feedback {
+      min-height: 22px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .speaking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .speaking-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .prompt {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--mint-soft);
+    }
+
+    .answer.show { display: block; }
+
+    .answer .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .quiz-q {
+      padding: 17px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .quiz-q + .quiz-q { margin-top: 12px; }
+
+    .quiz-q h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .quiz-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .score-box {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--blue-soft);
+      color: #55748f;
+      font-weight: 800;
+      display: none;
+    }
+
+    .score-box.show { display: block; }
+
+    .mission-card {
+      background:
+        radial-gradient(circle at 93% 10%, rgba(239,166,181,.17), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(191,222,212,.2), transparent 30%),
+        rgba(255,255,255,.86);
+    }
+
+    .mission-lines {
+      margin-top: 16px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .mission-line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+
+    .mission-line .jp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .complete-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .complete-btn {
+      min-height: 50px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--sakura-deep), #e994a4);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(219,129,149,.21);
+    }
+
+    .complete-btn.completed {
+      background: linear-gradient(135deg, var(--mint-deep), #8fc2b3);
+    }
+
+    .day-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .day-nav a {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    .day-nav .next {
+      text-align: right;
+      background: var(--sakura-soft);
+      border-color: #f0ccd4;
+      color: #955969;
+    }
+
+    footer {
+      padding: 20px 0 52px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 100;
+      transform: translate(-50%, 18px);
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(62,58,57,.95);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .warmup-grid, .explain-grid, .vocab-grid, .speaking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .menu-btn { display: grid; place-items: center; }
+      .lesson-actions .tiny-btn:not(.favorite) { display: none; }
+
+      .dialogue-line {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .line-audio {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .section-card { padding: 20px; }
+
+      .display-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .display-toggles { width: 100%; }
+      .toggle-btn { flex: 1 1 calc(50% - 7px); }
+
+      .break-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .day-nav { grid-template-columns: 1fr; }
+      .day-nav .next { text-align: left; }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<header class="topbar"><div class="container nav">
+<a class="brand" href="index.html"><span class="brand-mark">🌸</span><span class="brand-copy">Nihongo 90<small>Japanese for real life</small></span></a>
+<nav class="nav-links"><a href="index.html">Home</a><a class="active" href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4</a></nav>
+<button class="menu-btn" id="menuBtn" aria-expanded="false">☰</button></div>
+<nav class="mobile-menu container" id="mobileMenu"><a href="index.html">Home</a><a href="n5.html">N5 Course</a><a href="review.html">Quick Review</a><a href="n4.html">N4 · Coming Soon</a></nav></header>
+
+<div class="lessonbar"><div class="container lessonbar-inner">
+<div class="lesson-position"><a href="day81.html">← Day 81</a><span>·</span><strong>Day 82 / 90</strong></div>
+<div class="lesson-actions"><a class="tiny-btn" href="review.html">Quick Review</a><button class="tiny-btn favorite" id="favoriteBtn">☆ Favorite</button></div>
+</div></div>
+
+<main><section class="hero"><div class="container"><article class="hero-card">
+<span class="eyebrow">Day 82 · Japan Survival Simulation</span>
+<h1>ホテルで</h1>
+<div class="hero-en">Hotel Check-in</div>
+<div class="hero-vi">Từ lúc bước tới quầy lễ tân đến lúc vào phòng, bạn cần xử lý được <strong>reservation → identity → check-in → key → breakfast → Wi‑Fi → check-out → luggage → room problem</strong>.</div>
+<div class="hero-meta"><span class="meta-chip">Phase 9</span><span class="meta-chip">75–90 phút</span><span class="meta-chip">Hotel Survival</span><span class="meta-chip">予約</span><span class="meta-chip">何時から</span><span class="meta-chip">Wi‑Fi</span><span class="meta-chip">Problem Solving</span></div>
+<div class="goal-box"><strong>Mục tiêu hôm nay</strong><p>Bạn có thể check-in bằng <span class="jp-inline">予約があります / チェックインをお願いします</span>, hỏi thông tin bằng <span class="jp-inline">朝ご飯は何時からですか / Wi-Fiはありますか / チェックアウトは何時ですか</span>, và báo sự cố bằng <span class="jp-inline">部屋に問題があります</span>.</p></div>
+<div class="tip memory" style="margin-top:16px;"><strong>🌱 Hotel map</strong><strong>Reservation → Name/Passport → Check-in → Key → Breakfast/Wi‑Fi → Check-out → Luggage → Problem/Repair</strong>.</div>
+<div class="display-panel"><div class="display-title">表示 · Hiển thị</div><div class="display-toggles">
+<button class="toggle-btn active" data-toggle="furigana">Furigana</button><button class="toggle-btn" data-toggle="romaji">Romaji</button><button class="toggle-btn active" data-toggle="vi">Tiếng Việt</button>
+</div></div></article></div></section>
+
+<div class="container lesson-layout"><aside class="toc"><div class="toc-title">Trong bài này</div>
+<a href="#warmup">01 · Warm-up</a><a href="#conversation">02 · Main Conversation</a>
+<a href="#reservation">03 · Reservation</a><a href="#identity">04 · Name & Passport</a>
+<a href="#room">05 · Room & Key</a><a href="#breakfast">06 · Breakfast Time</a>
+<a href="#wifi">07 · Wi‑Fi</a><a href="#checkout">08 · Check-out</a>
+<a href="#luggage">09 · Leaving Luggage</a><a href="#problem">10 · Room Problems</a>
+<a href="#vocab">11 · Hotel Vocabulary</a><a href="#kanji">12 · Kanji Helper</a>
+<a href="#natural">13 · Natural Japanese</a><a href="#traps">14 · Common Mistakes</a>
+<a href="#grammar">15 · Survival Patterns</a><a href="#listening">16 · Listening Ladder</a>
+<a href="#builder">17 · Hotel Response Builder</a><a href="#japanese-first">18 · Japanese First</a>
+<a href="#speaking">19 · Hotel Role-play</a><a href="#quiz">20 · Mini Quiz</a>
+<a href="#mission">21 · Hotel Simulation</a>
+</aside><div class="lesson-content">
+
+<section class="section-card" id="warmup"><div class="section-kicker">01 · Warm-up</div><h2>Four hotel phrases worth memorizing</h2>
+<div class="warmup-grid">
+<div class="warmup-item"><div class="jp"><ruby>予約<rt>よやく</rt></ruby>があります。</div><div class="vi">Tôi có đặt phòng trước.</div><button class="audio-btn" onclick="speakJapanese('予約があります。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp">チェックインをお<ruby>願<rt>ねが</rt></ruby>いします。</div><div class="vi">Tôi muốn check-in.</div><button class="audio-btn" onclick="speakJapanese('チェックインをお願いします。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp">Wi-Fiはありますか。</div><div class="vi">Có Wi‑Fi không?</div><button class="audio-btn" onclick="speakJapanese('ワイファイはありますか。',1)">▶ Nghe</button></div>
+<div class="warmup-item"><div class="jp">チェックアウトは<ruby>何時<rt>なんじ</rt></ruby>ですか。</div><div class="vi">Check-out lúc mấy giờ?</div><button class="audio-btn" onclick="speakJapanese('チェックアウトは何時ですか。',1)">▶ Nghe</button></div>
+</div></section>
+
+<section class="section-card" id="conversation"><div class="section-kicker">02 · Main Conversation</div><h2>At the front desk</h2>
+<div class="audio-controls"><button class="audio-btn primary" onclick="playDialogue(1)">▶ Full Conversation</button><button class="audio-btn" onclick="playDialogue(.76)">🐢 Slow</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div>
+<div class="dialogue-shell" style="margin-top:16px;">
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line">こんばんは。<ruby>予約<rt>よやく</rt></ruby>があります。チェックインをお<ruby>願<rt>ねが</rt></ruby>いします。</div><div class="vi line-note">Chào buổi tối. Tôi có đặt phòng. Tôi muốn check-in.</div></div><button class="line-audio" onclick="speakJapanese('こんばんは。予約があります。チェックインをお願いします。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">Staff</div><div><div class="jp-line">お<ruby>名前<rt>なまえ</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。</div><div class="vi line-note">Xin cho biết tên.</div></div><button class="line-audio" onclick="speakJapanese('お名前をお願いします。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line"><ruby>名前<rt>なまえ</rt></ruby>はリンです。パスポートです。どうぞ。</div><div class="vi line-note">Tên tôi là Linh. Đây là hộ chiếu, mời bạn.</div></div><button class="line-audio" onclick="speakJapanese('名前はリンです。パスポートです。どうぞ。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">Staff</div><div><div class="jp-line">ありがとうございます。こちらが<ruby>部屋<rt>へや</rt></ruby>の<ruby>鍵<rt>かぎ</rt></ruby>です。</div><div class="vi line-note">Cảm ơn. Đây là chìa khóa phòng.</div></div><button class="line-audio" onclick="speakJapanese('ありがとうございます。こちらが部屋の鍵です。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line"><ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>は<ruby>何時<rt>なんじ</rt></ruby>からですか。</div><div class="vi line-note">Bữa sáng bắt đầu lúc mấy giờ?</div></div><button class="line-audio" onclick="speakJapanese('朝ご飯は何時からですか。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">Staff</div><div><div class="jp-line"><ruby>七時<rt>しちじ</rt></ruby>からです。Wi-Fiもあります。</div><div class="vi line-note">Từ 7 giờ. Cũng có Wi‑Fi.</div></div><button class="line-audio" onclick="speakJapanese('七時からです。ワイファイもあります。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">You</div><div><div class="jp-line">パスワードは<ruby>何<rt>なん</rt></ruby>ですか。チェックアウトは<ruby>何時<rt>なんじ</rt></ruby>ですか。</div><div class="vi line-note">Mật khẩu là gì? Check-out lúc mấy giờ?</div></div><button class="line-audio" onclick="speakJapanese('パスワードは何ですか。チェックアウトは何時ですか。',1)">▶</button></div>
+<div class="dialogue-line"><div class="speaker">Staff</div><div><div class="jp-line"><ruby>十一時<rt>じゅういちじ</rt></ruby>です。</div><div class="vi line-note">11 giờ.</div></div><button class="line-audio" onclick="speakJapanese('十一時です。',1)">▶</button></div>
+</div></section>
+
+<section class="section-card" id="reservation"><div class="section-kicker">03 · Reservation</div><h2>予約があります</h2>
+<div class="grammar-rule"><div class="rule-form">予約があります。</div><p>= Tôi có đặt phòng trước.</p></div>
+<div class="grammar-rule"><div class="rule-form">予約はありません。</div><p>= Tôi không có đặt phòng.</p></div>
+<div class="grammar-rule"><div class="rule-form">チェックインをお願いします。</div><p>= Tôi muốn làm thủ tục check-in.</p></div>
+<div class="tip memory"><strong>💡 Whole hotel chunk</strong><span class="jp-inline">予約があります</span> nhanh, rõ và tự nhiên hơn cố dịch dài “I have a reservation under...”.</div></section>
+
+<section class="section-card" id="identity"><div class="section-kicker">04 · Name & Passport</div><h2>Recognize staff requests</h2>
+<div class="grammar-rule"><div class="rule-form">お名前をお願いします。</div><p>= Xin cho biết tên.</p></div>
+<div class="grammar-rule"><div class="rule-form">名前はリンです。</div><p>= Tên tôi là Linh.</p></div>
+<div class="grammar-rule"><div class="rule-form">パスポートを見せてください。</div><p>= Vui lòng cho xem hộ chiếu.</p></div>
+<div class="grammar-rule"><div class="rule-form">はい、どうぞ。</div><p>= Vâng, đây ạ.</p></div>
+<div class="tip memory"><strong>💡 Recycle Day 81</strong>Passport handover works exactly like at the airport.</div></section>
+
+<section class="section-card" id="room"><div class="section-kicker">05 · Room & Key</div><h2>部屋 / 鍵 / number</h2>
+<div class="grammar-rule"><div class="rule-form">こちらが部屋の鍵です。</div><p>= Đây là chìa khóa phòng.</p></div>
+<div class="grammar-rule"><div class="rule-form">部屋は何階ですか。</div><p>= Phòng ở tầng mấy?</p></div>
+<div class="grammar-rule"><div class="rule-form">部屋はどこですか。</div><p>= Phòng ở đâu?</p></div>
+<div class="tip real"><strong>🇯🇵 Ask only what you need</strong>Nếu staff nói nhiều quá, chốt lại bằng câu ngắn: <span class="jp-inline">部屋は何階ですか</span>.</div></section>
+
+<section class="section-card" id="breakfast"><div class="section-kicker">06 · Breakfast Time</div><h2>何時から = from what time?</h2>
+<div class="grammar-rule"><div class="rule-form">朝ご飯は何時からですか。</div><p>= Bữa sáng bắt đầu từ mấy giờ?</p></div>
+<div class="grammar-rule"><div class="rule-form">七時からです。</div><p>= Từ 7 giờ.</p></div>
+<div class="grammar-rule"><div class="rule-form">朝ご飯はどこですか。</div><p>= Bữa sáng ở đâu?</p></div>
+<div class="tip memory"><strong>💡 から = starting point here</strong>Đừng nhầm với Day 75 reason `because`. Ở đây <span class="jp-inline">七時から</span> = from 7 o'clock.</div></section>
+
+<section class="section-card" id="wifi"><div class="section-kicker">07 · Wi‑Fi</div><h2>Ask availability, then password</h2>
+<div class="grammar-rule"><div class="rule-form">Wi-Fiはありますか。</div><p>= Có Wi‑Fi không?</p></div>
+<div class="grammar-rule"><div class="rule-form">パスワードは何ですか。</div><p>= Mật khẩu là gì?</p></div>
+<div class="grammar-rule"><div class="rule-form">Wi-Fiがわかりません。</div><p>= Tôi không hiểu/không biết cách xử lý Wi‑Fi. Beginner survival use.</p></div>
+<div class="tip real"><strong>🇯🇵 Pointing helps</strong>Nếu password được in trên card, bạn có thể chỉ vào đó và hỏi <span class="jp-inline">これは何ですか</span>.</div></section>
+
+<section class="section-card" id="checkout"><div class="section-kicker">08 · Check-out</div><h2>何時ですか</h2>
+<div class="grammar-rule"><div class="rule-form">チェックアウトは何時ですか。</div><p>= Check-out lúc mấy giờ?</p></div>
+<div class="grammar-rule"><div class="rule-form">十一時です。</div><p>= 11 giờ.</p></div>
+<div class="grammar-rule"><div class="rule-form">チェックアウトをお願いします。</div><p>= Tôi muốn check-out.</p></div>
+<div class="tip memory"><strong>💡 Contrast</strong><span class="jp-inline">何時から</span> asks starting time; <span class="jp-inline">何時</span> asks the clock time itself.</div></section>
+
+<section class="section-card" id="luggage"><div class="section-kicker">09 · Leaving Luggage</div><h2>荷物を預けてもいいですか</h2>
+<div class="grammar-rule"><div class="rule-form">荷物を預けてもいいですか。</div><p>= Tôi gửi hành lý ở đây được không?</p></div>
+<div class="grammar-rule"><div class="rule-form">チェックアウトのあと、荷物を預けてもいいですか。</div><p>= Sau khi check-out, tôi gửi hành lý được không?</p></div>
+<div class="tip memory"><strong>💡 Same verb, new situation</strong><span class="jp-inline">預ける</span> ở sân bay = ký gửi; ở khách sạn = gửi nhờ hành lý. Context decides.</div></section>
+
+<section class="section-card" id="problem"><div class="section-kicker">10 · Room Problems</div><h2>Say the problem simply</h2>
+<div class="grammar-rule"><div class="rule-form">部屋に問題があります。</div><p>= Phòng có vấn đề.</p></div>
+<div class="grammar-rule"><div class="rule-form">お湯が出ません。</div><p>= Nước nóng không chảy / không có nước nóng.</p></div>
+<div class="grammar-rule"><div class="rule-form">Wi-Fiが使えません。</div><p>= Không dùng được Wi‑Fi. Learn as survival chunk.</p></div>
+<div class="grammar-rule"><div class="rule-form">手伝ってもらえますか。</div><p>= Bạn có thể giúp tôi được không?</p></div>
+<div class="tip warning"><strong>⚠ Don't over-explain</strong>Ở quầy lễ tân, nêu <strong>problem + one concrete symptom + help request</strong> là đủ.</div></section>
+
+<section class="section-card" id="vocab"><div class="section-kicker">11 · Hotel Vocabulary</div><h2>14 survival chunks</h2><div class="vocab-grid"><div class="vocab-card"><div><div class="vocab-jp"><ruby>予約<rt>よやく</rt></ruby>があります</div>
+    <div class="romaji vocab-reading">yoyaku ga arimasu</div><div class="vi vocab-vi">tôi có đặt phòng trước</div></div>
+    <button class="line-audio" onclick="speakJapanese('予約があります',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">チェックインをお<ruby>願<rt>ねが</rt></ruby>いします</div>
+    <div class="romaji vocab-reading">chekku-in o onegaishimasu</div><div class="vi vocab-vi">tôi muốn check-in</div></div>
+    <button class="line-audio" onclick="speakJapanese('チェックインをお願いします',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>名前<rt>なまえ</rt></ruby>は〜です</div>
+    <div class="romaji vocab-reading">namae wa ~ desu</div><div class="vi vocab-vi">tên là...</div></div>
+    <button class="line-audio" onclick="speakJapanese('名前は田中です',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>パスポート<rt>パスポート</rt></ruby>です</div>
+    <div class="romaji vocab-reading">pasupōto desu</div><div class="vi vocab-vi">đây là hộ chiếu</div></div>
+    <button class="line-audio" onclick="speakJapanese('パスポートです',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>部屋<rt>へや</rt></ruby></div>
+    <div class="romaji vocab-reading">heya</div><div class="vi vocab-vi">phòng</div></div>
+    <button class="line-audio" onclick="speakJapanese('部屋',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>鍵<rt>かぎ</rt></ruby></div>
+    <div class="romaji vocab-reading">kagi</div><div class="vi vocab-vi">chìa khóa</div></div>
+    <button class="line-audio" onclick="speakJapanese('鍵',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>は<ruby>何時<rt>なんじ</rt></ruby>からですか</div>
+    <div class="romaji vocab-reading">asagohan wa nanji kara desu ka</div><div class="vi vocab-vi">bữa sáng bắt đầu lúc mấy giờ?</div></div>
+    <button class="line-audio" onclick="speakJapanese('朝ご飯は何時からですか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">Wi-Fiはありますか</div>
+    <div class="romaji vocab-reading">waifai wa arimasu ka</div><div class="vi vocab-vi">có Wi‑Fi không?</div></div>
+    <button class="line-audio" onclick="speakJapanese('ワイファイはありますか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">パスワードは<ruby>何<rt>なん</rt></ruby>ですか</div>
+    <div class="romaji vocab-reading">pasuwādo wa nan desu ka</div><div class="vi vocab-vi">mật khẩu là gì?</div></div>
+    <button class="line-audio" onclick="speakJapanese('パスワードは何ですか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">チェックアウトは<ruby>何時<rt>なんじ</rt></ruby>ですか</div>
+    <div class="romaji vocab-reading">chekku-auto wa nanji desu ka</div><div class="vi vocab-vi">check-out lúc mấy giờ?</div></div>
+    <button class="line-audio" onclick="speakJapanese('チェックアウトは何時ですか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>荷物<rt>にもつ</rt></ruby>を<ruby>預<rt>あず</rt></ruby>けてもいいですか</div>
+    <div class="romaji vocab-reading">nimotsu o azukete mo ii desu ka</div><div class="vi vocab-vi">tôi gửi hành lý được không?</div></div>
+    <button class="line-audio" onclick="speakJapanese('荷物を預けてもいいですか',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>部屋<rt>へや</rt></ruby>に<ruby>問題<rt>もんだい</rt></ruby>があります</div>
+    <div class="romaji vocab-reading">heya ni mondai ga arimasu</div><div class="vi vocab-vi">phòng có vấn đề</div></div>
+    <button class="line-audio" onclick="speakJapanese('部屋に問題があります',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp"><ruby>お湯<rt>おゆ</rt></ruby>が<ruby>出<rt>で</rt></ruby>ません</div>
+    <div class="romaji vocab-reading">oyu ga demasen</div><div class="vi vocab-vi">không có nước nóng</div></div>
+    <button class="line-audio" onclick="speakJapanese('お湯が出ません',1)">▶</button></div><div class="vocab-card"><div><div class="vocab-jp">もう<ruby>一度<rt>いちど</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします</div>
+    <div class="romaji vocab-reading">mō ichido onegaishimasu</div><div class="vi vocab-vi">vui lòng nói lại</div></div>
+    <button class="line-audio" onclick="speakJapanese('もう一度お願いします',1)">▶</button></div></div></section>
+
+<section class="section-card" id="kanji"><div class="section-kicker">12 · Kanji Helper</div><h2>Kanji you need to recognize at a hotel</h2>
+<div class="explain-grid">
+<div class="explain-card"><h3><ruby>予約<rt>よやく</rt></ruby></h3><p><strong>reservation</strong>. Same word as restaurant reservations.</p></div>
+<div class="explain-card"><h3><ruby>名前<rt>なまえ</rt></ruby></h3><p><strong>name</strong>.</p></div>
+<div class="explain-card"><h3><ruby>部屋<rt>へや</rt></ruby></h3><p><strong>room</strong>. High priority.</p></div>
+<div class="explain-card"><h3><ruby>鍵<rt>かぎ</rt></ruby></h3><p><strong>key</strong>. Recognition.</p></div>
+<div class="explain-card"><h3><ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby></h3><p><strong>breakfast</strong>.</p></div>
+<div class="explain-card"><h3><ruby>荷物<rt>にもつ</rt></ruby></h3><p><strong>luggage</strong>. Recycle Day 81.</p></div>
+<div class="explain-card"><h3><ruby>問題<rt>もんだい</rt></ruby></h3><p><strong>problem</strong>. Learn whole word.</p></div>
+<div class="explain-card"><h3><ruby>お湯<rt>おゆ</rt></ruby></h3><p><strong>hot water</strong>.</p></div>
+</div><div class="tip memory"><strong>🌱 Priority</strong>Must recognize: 予約・名前・部屋・朝ご飯・荷物・問題. Recognition-only: 鍵・お湯.</div></section>
+
+<section class="section-card" id="natural"><div class="section-kicker">13 · Natural Japanese</div><h2>Hotel survival is a sequence of short questions</h2>
+<div class="grammar-rule"><div class="rule-form">予約があります。</div><p>Establish your booking.</p></div>
+<div class="grammar-rule"><div class="rule-form">朝ご飯は何時からですか。</div><p>Ask one concrete facility question.</p></div>
+<div class="grammar-rule"><div class="rule-form">Wi-Fiはありますか。</div><p>Then ask availability.</p></div>
+<div class="grammar-rule"><div class="rule-form">チェックアウトは何時ですか。</div><p>Confirm departure time.</p></div>
+<div class="tip real"><strong>🇯🇵 One question at a time</strong>Ở level N5, câu ngắn nối tiếp nhau thường hiệu quả hơn cố gom tất cả vào một câu dài.</div></section>
+
+<section class="section-card" id="traps"><div class="section-kicker">14 · Common Mistakes</div><h2>Hotel traps</h2>
+<div class="grammar-rule"><div class="rule-form">予約をあります ✕ → 予約があります ✓</div><p>Existence uses が.</p></div>
+<div class="grammar-rule"><div class="rule-form">朝ご飯は何時ですか △ → 朝ご飯は何時からですか ✓</div><p>If asking when service starts, use 何時から.</p></div>
+<div class="grammar-rule"><div class="rule-form">Wi-Fiをありますか ✕ → Wi-Fiはありますか ✓</div><p>Availability pattern.</p></div>
+<div class="grammar-rule"><div class="rule-form">荷物を預けますか = May I leave luggage? ✕</div><p>That asks/remarks about checking baggage; for permission use <span class="jp-inline">預けてもいいですか</span>.</p></div>
+<div class="grammar-rule"><div class="rule-form">部屋で問題があります △ → 部屋に問題があります ✓</div><p>Problem exists in/with the room → beginner-safe に.</p></div></section>
+
+<section class="section-card" id="grammar"><div class="section-kicker">15 · Survival Patterns</div><h2>8 hotel formulas</h2>
+<div class="grammar-rule"><div class="rule-form">予約があります</div><p>I have a reservation.</p></div>
+<div class="grammar-rule"><div class="rule-form">N をお願いします</div><p><span class="jp-inline">チェックインをお願いします。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">N は何時からですか</div><p><span class="jp-inline">朝ご飯は何時からですか。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">N はありますか</div><p><span class="jp-inline">Wi-Fiはありますか。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">N は何ですか</div><p><span class="jp-inline">パスワードは何ですか。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">N は何時ですか</div><p><span class="jp-inline">チェックアウトは何時ですか。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">Vてもいいですか</div><p><span class="jp-inline">荷物を預けてもいいですか。</span></p></div>
+<div class="grammar-rule"><div class="rule-form">N に問題があります</div><p><span class="jp-inline">部屋に問題があります。</span></p></div></section>
+
+<section class="section-card" id="listening"><div class="section-kicker">16 · Listening Ladder</div><h2>10 rounds + hotel shadowing</h2><div class="practice-box">
+      <div class="practice-title">Listening 1 · Reservation</div>
+      <button class="audio-btn primary" onclick="speakJapanese('予約があります。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Tôi có đặt phòng trước</button><button class="choice-btn" data-value="b">B. Tôi muốn đặt taxi</button><button class="choice-btn" data-value="c">C. Tôi không có hộ chiếu</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 2 · Check-in</div>
+      <button class="audio-btn primary" onclick="speakJapanese('チェックインをお願いします。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Tôi muốn check-in</button><button class="choice-btn" data-value="b">B. Tôi muốn check-out</button><button class="choice-btn" data-value="c">C. Tôi muốn đổi phòng</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 3 · Breakfast</div>
+      <button class="audio-btn primary" onclick="speakJapanese('朝ご飯は何時からですか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Bữa sáng bắt đầu lúc mấy giờ?</button><button class="choice-btn" data-value="b">B. Bữa sáng ở đâu?</button><button class="choice-btn" data-value="c">C. Bữa sáng bao nhiêu tiền?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 4 · Wi-Fi</div>
+      <button class="audio-btn primary" onclick="speakJapanese('Wi-Fiはありますか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Có Wi‑Fi không?</button><button class="choice-btn" data-value="b">B. Wi‑Fi ở tầng mấy?</button><button class="choice-btn" data-value="c">C. Wi‑Fi bao nhiêu tiền?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 5 · Password</div>
+      <button class="audio-btn primary" onclick="speakJapanese('パスワードは何ですか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Mật khẩu là gì?</button><button class="choice-btn" data-value="b">B. Số phòng là gì?</button><button class="choice-btn" data-value="c">C. Tên là gì?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 6 · Check-out</div>
+      <button class="audio-btn primary" onclick="speakJapanese('チェックアウトは何時ですか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Check-out lúc mấy giờ?</button><button class="choice-btn" data-value="b">B. Check-in ở đâu?</button><button class="choice-btn" data-value="c">C. Ăn sáng lúc mấy giờ?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 7 · Leave luggage</div>
+      <button class="audio-btn primary" onclick="speakJapanese('荷物を預けてもいいですか。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Tôi gửi hành lý được không?</button><button class="choice-btn" data-value="b">B. Tôi mang hành lý vào phòng được không?</button><button class="choice-btn" data-value="c">C. Tôi bỏ hành lý ở đây được không?</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 8 · Room problem</div>
+      <button class="audio-btn primary" onclick="speakJapanese('部屋に問題があります。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Phòng có vấn đề</button><button class="choice-btn" data-value="b">B. Phòng rất đẹp</button><button class="choice-btn" data-value="c">C. Tôi không có phòng</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 9 · Hot water</div>
+      <button class="audio-btn primary" onclick="speakJapanese('お湯が出ません。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Không có nước nóng</button><button class="choice-btn" data-value="b">B. Không có Wi‑Fi</button><button class="choice-btn" data-value="c">C. Không có chìa khóa</button></div><div class="feedback"></div>
+    </div><div class="practice-box">
+      <div class="practice-title">Listening 10 · Repair</div>
+      <button class="audio-btn primary" onclick="speakJapanese('すみません。もう一度、ゆっくりお願いします。',1)">▶ Nghe</button>
+      <div class="choices" data-answer="a"><button class="choice-btn" data-value="a">A. Xin nói lại chậm hơn</button><button class="choice-btn" data-value="b">B. Xin đổi phòng</button><button class="choice-btn" data-value="c">C. Xin thêm khăn</button></div><div class="feedback"></div>
+    </div>
+<div class="practice-box"><div class="practice-title">Shadowing · Full hotel flow</div><div class="audio-controls">
+<button class="audio-btn" onclick="speakJapanese('予約があります。チェックインをお願いします。名前はリンです。朝ご飯は何時からですか。Wi-Fiはありますか。パスワードは何ですか。チェックアウトは何時ですか。荷物を預けてもいいですか。',.76)">🐢 Slow</button>
+<button class="audio-btn primary" onclick="speakJapanese('予約があります。チェックインをお願いします。名前はリンです。朝ご飯は何時からですか。Wi-Fiはありますか。パスワードは何ですか。チェックアウトは何時ですか。荷物を預けてもいいですか。',1)">▶ Natural</button>
+</div></div></section>
+
+<section class="section-card" id="builder"><div class="section-kicker">17 · Hotel Response Builder</div><h2>Build the front-desk interaction</h2>
+<div class="breakdown">
+<div class="break-row"><div class="break-label">Reservation</div><div><strong>予約があります。</strong></div></div>
+<div class="break-row"><div class="break-label">Check-in</div><div><strong>チェックインをお願いします。</strong></div></div>
+<div class="break-row"><div class="break-label">Identity</div><div><strong>名前はリンです。はい、どうぞ。</strong></div></div>
+<div class="break-row"><div class="break-label">Breakfast</div><div><strong>朝ご飯は何時からですか。</strong></div></div>
+<div class="break-row"><div class="break-label">Wi‑Fi</div><div><strong>Wi-Fiはありますか。パスワードは何ですか。</strong></div></div>
+<div class="break-row"><div class="break-label">Check-out</div><div><strong>チェックアウトは何時ですか。</strong></div></div>
+<div class="break-row"><div class="break-label">Luggage</div><div><strong>荷物を預けてもいいですか。</strong></div></div>
+<div class="break-row"><div class="break-label">Problem</div><div><strong>部屋に問題があります。手伝ってもらえますか。</strong></div></div>
+</div></section>
+
+<section class="section-card" id="japanese-first"><div class="section-kicker">18 · Japanese First</div><h2>Romaji-Off Hotel Sprint</h2>
+<p class="section-intro vi">Nghe cue → phản xạ ngay bằng Japanese.</p>
+<div class="practice-box"><div class="practice-title">Round 1 · Reservation</div><button class="audio-btn primary" onclick="speakJapanese('ホテル。予約。あります。チェックイン。',1)">▶ Nghe</button><p class="jp">予約があります。チェックインをお願いします。</p></div>
+<div class="practice-box"><div class="practice-title">Round 2 · Breakfast</div><button class="audio-btn primary" onclick="speakJapanese('朝ご飯。始まる時間を聞いてください。',1)">▶ Nghe</button><p class="jp">朝ご飯は何時からですか。</p></div>
+<div class="practice-box"><div class="practice-title">Round 3 · Wi‑Fi</div><button class="audio-btn primary" onclick="speakJapanese('ワイファイ。パスワード。',1)">▶ Nghe</button><p class="jp">Wi-Fiはありますか。パスワードは何ですか。</p></div>
+<div class="practice-box"><div class="practice-title">Round 4 · Luggage</div><button class="audio-btn primary" onclick="speakJapanese('チェックアウトのあと。荷物。預ける。許可。',1)">▶ Nghe</button><p class="jp">荷物を預けてもいいですか。</p></div>
+<div class="practice-box"><div class="practice-title">Round 5 · Problem</div><button class="audio-btn primary" onclick="speakJapanese('部屋。問題。お湯。出ない。助けてほしい。',1)">▶ Nghe</button><p class="jp">部屋に問題があります。お湯が出ません。手伝ってもらえますか。</p></div></section>
+
+<section class="section-card" id="speaking"><div class="section-kicker">19 · Speaking & Hotel Role-play</div><h2>Front desk simulation</h2>
+<div class="speaking-grid">
+<div class="speaking-card"><div class="prompt">1. “Tôi có đặt phòng.”</div><button class="audio-btn" onclick="toggleAnswer('a1')">Model</button><div class="answer" id="a1"><div class="jp">予約があります。</div></div></div>
+<div class="speaking-card"><div class="prompt">2. “Tôi muốn check-in.”</div><button class="audio-btn" onclick="toggleAnswer('a2')">Model</button><div class="answer" id="a2"><div class="jp">チェックインをお願いします。</div></div></div>
+<div class="speaking-card"><div class="prompt">3. “Bữa sáng bắt đầu lúc mấy giờ?”</div><button class="audio-btn" onclick="toggleAnswer('a3')">Model</button><div class="answer" id="a3"><div class="jp">朝ご飯は何時からですか。</div></div></div>
+<div class="speaking-card"><div class="prompt">4. “Có Wi‑Fi không?”</div><button class="audio-btn" onclick="toggleAnswer('a4')">Model</button><div class="answer" id="a4"><div class="jp">Wi-Fiはありますか。</div></div></div>
+<div class="speaking-card"><div class="prompt">5. “Tôi gửi hành lý được không?”</div><button class="audio-btn" onclick="toggleAnswer('a5')">Model</button><div class="answer" id="a5"><div class="jp">荷物を預けてもいいですか。</div></div></div>
+<div class="speaking-card"><div class="prompt">6. “Phòng có vấn đề.”</div><button class="audio-btn" onclick="toggleAnswer('a6')">Model</button><div class="answer" id="a6"><div class="jp">部屋に問題があります。</div></div></div>
+</div><div class="practice-box" style="margin-top:16px;"><div class="practice-title">Hotel Role-play · 14 Prompts</div><button class="audio-btn primary" onclick="playRoleplay()">▶ Start Role-play</button><p class="vi">Receptionist hỏi reservation/name/passport, đưa room/key, giải thích breakfast/Wi‑Fi/check-out, rồi có luggage request + room problem + communication repair.</p></div></section>
+
+<section class="section-card" id="quiz"><div class="section-kicker">20 · Mini Quiz</div><h2>12 câu Day 82</h2><div class="quiz-q" data-answer="a"><h3>1. `予約があります`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. Tôi có reservation</button><button class="choice-btn" data-value="b">B. Tôi muốn reservation</button><button class="choice-btn" data-value="c">C. Tôi hủy reservation</button></div></div><div class="quiz-q" data-answer="a"><h3>2. “Tôi muốn check-in.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. チェックインをお願いします。</button><button class="choice-btn" data-value="b">B. チェックインはどこですか。</button><button class="choice-btn" data-value="c">C. チェックインでした。</button></div></div><div class="quiz-q" data-answer="a"><h3>3. “Bữa sáng bắt đầu lúc mấy giờ?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 朝ご飯は何時からですか。</button><button class="choice-btn" data-value="b">B. 朝ご飯はどこですか。</button><button class="choice-btn" data-value="c">C. 朝ご飯を何時ですか。</button></div></div><div class="quiz-q" data-answer="a"><h3>4. `Wi-Fiはありますか`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. Có Wi‑Fi không?</button><button class="choice-btn" data-value="b">B. Wi‑Fi là gì?</button><button class="choice-btn" data-value="c">C. Wi‑Fi tốt không?</button></div></div><div class="quiz-q" data-answer="a"><h3>5. “Mật khẩu là gì?”</h3><div class="choices"><button class="choice-btn" data-value="a">A. パスワードは何ですか。</button><button class="choice-btn" data-value="b">B. パスワードは何時ですか。</button><button class="choice-btn" data-value="c">C. パスワードをどこですか。</button></div></div><div class="quiz-q" data-answer="a"><h3>6. `チェックアウトは何時ですか`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. Check-out lúc mấy giờ?</button><button class="choice-btn" data-value="b">B. Check-out ở đâu?</button><button class="choice-btn" data-value="c">C. Check-out được không?</button></div></div><div class="quiz-q" data-answer="a"><h3>7. `荷物を預けてもいいですか` tái sử dụng grammar nào?</h3><div class="choices"><button class="choice-btn" data-value="a">A. permission 〜てもいいですか</button><button class="choice-btn" data-value="b">B. prohibition</button><button class="choice-btn" data-value="c">C. opinion</button></div></div><div class="quiz-q" data-answer="a"><h3>8. “Phòng có vấn đề.”</h3><div class="choices"><button class="choice-btn" data-value="a">A. 部屋に問題があります。</button><button class="choice-btn" data-value="b">B. 部屋を問題です。</button><button class="choice-btn" data-value="c">C. 問題へ部屋があります。</button></div></div><div class="quiz-q" data-answer="a"><h3>9. `お湯が出ません`?</h3><div class="choices"><button class="choice-btn" data-value="a">A. Không có nước nóng chảy ra</button><button class="choice-btn" data-value="b">B. Không có phòng</button><button class="choice-btn" data-value="c">C. Không có bữa sáng</button></div></div><div class="quiz-q" data-answer="a"><h3>10. Khi không hiểu receptionist?</h3><div class="choices"><button class="choice-btn" data-value="a">A. もう一度、ゆっくりお願いします。</button><button class="choice-btn" data-value="b">B. チェックアウトです。</button><button class="choice-btn" data-value="c">C. 鍵がいいです。</button></div></div><div class="quiz-q" data-answer="a"><h3>11. `何時から` khác `何時` thế nào?</h3><div class="choices"><button class="choice-btn" data-value="a">A. hỏi bắt đầu từ mấy giờ vs hỏi mấy giờ</button><button class="choice-btn" data-value="b">B. hoàn toàn giống nhau</button><button class="choice-btn" data-value="c">C. một cái hỏi nơi chốn</button></div></div><div class="quiz-q" data-answer="a"><h3>12. Day 82 trọng tâm là?</h3><div class="choices"><button class="choice-btn" data-value="a">A. hotel survival flow</button><button class="choice-btn" data-value="b">B. học toàn bộ keigo khách sạn</button><button class="choice-btn" data-value="c">C. học past tense mới</button></div></div>
+<div class="quiz-actions"><button class="audio-btn primary" onclick="gradeQuiz()">Chấm điểm</button><button class="audio-btn" onclick="resetQuiz()">Làm lại</button></div><div class="score-box" id="scoreBox"></div></section>
+
+<section class="section-card mission-card" id="mission"><div class="section-kicker">21 · Hotel Simulation</div><h2>Reservation → Room → Problem — 10–12 minutes</h2>
+<p class="section-intro">Không nhìn Romaji. Tự đóng vai guest từ lúc tới quầy đến khi xử lý một vấn đề trong phòng.</p>
+<div class="mission-lines">
+<div class="mission-line"><div class="vi">1. Báo có reservation.</div><div class="jp">予約があります。</div></div>
+<div class="mission-line"><div class="vi">2. Xin check-in.</div><div class="jp">チェックインをお願いします。</div></div>
+<div class="mission-line"><div class="vi">3. Nói tên + đưa passport.</div><div class="jp">名前はリンです。はい、どうぞ。</div></div>
+<div class="mission-line"><div class="vi">4. Hỏi breakfast time.</div><div class="jp">朝ご飯は何時からですか。</div></div>
+<div class="mission-line"><div class="vi">5. Hỏi Wi‑Fi.</div><div class="jp">Wi-Fiはありますか。</div></div>
+<div class="mission-line"><div class="vi">6. Hỏi password.</div><div class="jp">パスワードは何ですか。</div></div>
+<div class="mission-line"><div class="vi">7. Hỏi check-out time.</div><div class="jp">チェックアウトは何時ですか。</div></div>
+<div class="mission-line"><div class="vi">8. Xin gửi hành lý sau check-out.</div><div class="jp">荷物を預けてもいいですか。</div></div>
+<div class="mission-line"><div class="vi">9. Báo room problem.</div><div class="jp">部屋に問題があります。</div></div>
+<div class="mission-line"><div class="vi">10. Nói symptom.</div><div class="jp">お湯が出ません。</div></div>
+<div class="mission-line"><div class="vi">11. Xin giúp.</div><div class="jp">手伝ってもらえますか。</div></div>
+<div class="mission-line"><div class="vi">12. Nếu không hiểu, repair.</div><div class="jp">すみません。もう一度、ゆっくりお願いします。</div></div>
+</div>
+<div class="audio-controls"><button class="audio-btn" onclick="playMission(.76)">🐢 Hotel Simulation Slow</button><button class="audio-btn primary" onclick="playMission(1)">▶ Hotel Simulation Natural</button><button class="audio-btn" onclick="stopAudio()">■ Stop</button></div>
+<div class="tip memory"><strong>✅ Pass standard</strong>Phản xạ đúng ít nhất <strong>10/12 tình huống</strong>, tự hỏi được breakfast/Wi‑Fi/check-out, xin gửi luggage và báo được một room problem mà không cần Romaji.</div>
+<div class="tip warning"><strong>➡️ Next Day</strong>Day 83 — <strong>Restaurant</strong>: số người, menu, recommendation, gọi món, hỏi ingredients, gọi thêm và thanh toán.</div>
+<div class="complete-box"><p id="completeMessage" style="margin-top:0;color:var(--muted);">Hoàn thành khi bạn có thể check-in, hỏi thông tin và báo một vấn đề ở khách sạn bằng câu ngắn, rõ.</p><button class="complete-btn" id="completeBtn" onclick="toggleComplete()">✓ Complete Day 82</button></div></section>
+
+<div class="day-nav"><a href="day81.html">← Day 81 · Airport</a><a class="next" href="day83.html">Day 83 · Restaurant →</a></div>
+</div></div></main>
+
+<footer><div class="container footer-inner"><div><span class="footer-brand">🌸 Nihongo 90</span> · Day 82</div><div>Japan Survival Simulation · Check in, confirm hotel information, leave luggage and report room problems.</div></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const DAY_KEY="n5-day-82";
+const FAVORITE_KEY="n5-favorite-day-82";
+const DISPLAY_KEY="nihongo90-display";
+const dialogueLines=["こんばんは。予約があります。チェックインをお願いします。","お名前をお願いします。","名前はリンです。パスポートです。どうぞ。","ありがとうございます。こちらが部屋の鍵です。","朝ご飯は何時からですか。","七時からです。ワイファイもあります。","パスワードは何ですか。チェックアウトは何時ですか。","十一時です。"];
+const roleplayPrompts=["予約はありますか。","お名前をお願いします。","パスポートを見せてください。","こちらが部屋の鍵です。","朝ご飯は七時からです。","ワイファイはあります。","パスワードはホテル八二です。","チェックアウトは十一時です。","荷物を預けてもいいですか。","部屋に問題があります。","お湯が出ません。","手伝ってもらえますか。","少し速く話します。","もう一度、ゆっくりお願いします。"];
+const missionPrompts=["予約があります。","チェックインをお願いします。","名前はリンです。はい、どうぞ。","朝ご飯は何時からですか。","ワイファイはありますか。","パスワードは何ですか。","チェックアウトは何時ですか。","荷物を預けてもいいですか。","部屋に問題があります。","お湯が出ません。","手伝ってもらえますか。","もう一度、ゆっくりお願いします。"];
+let voiceCache=[],japaneseVoice=null,dialogueRunId=0,playToken=0;
+
+function setupMenu(){const btn=document.getElementById("menuBtn"),menu=document.getElementById("mobileMenu");btn.addEventListener("click",()=>{const open=menu.classList.toggle("open");btn.setAttribute("aria-expanded",open?"true":"false");btn.textContent=open?"✕":"☰";});}
+function loadDisplaySettings(){let saved={furigana:true,romaji:false,vi:true};try{const p=JSON.parse(localStorage.getItem(DISPLAY_KEY));if(p&&typeof p==="object")saved={...saved,...p};}catch(_){}applyDisplaySettings(saved);}
+function applyDisplaySettings(s){document.body.classList.toggle("hide-furigana",!s.furigana);document.body.classList.toggle("hide-romaji",!s.romaji);document.body.classList.toggle("hide-vi",!s.vi);document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.toggle("active",!!s[b.dataset.toggle]));localStorage.setItem(DISPLAY_KEY,JSON.stringify(s));}
+function setupDisplayToggles(){document.querySelectorAll(".toggle-btn").forEach(btn=>btn.addEventListener("click",()=>{let s={furigana:true,romaji:false,vi:true};try{s={...s,...JSON.parse(localStorage.getItem(DISPLAY_KEY))};}catch(_){}s[btn.dataset.toggle]=!s[btn.dataset.toggle];applyDisplaySettings(s);}));}
+function loadVoices(){if(!("speechSynthesis" in window))return;voiceCache=speechSynthesis.getVoices()||[];japaneseVoice=pickJapaneseVoice();}
+function pickJapaneseVoice(){const vs=voiceCache.filter(v=>/^ja(-|_)?JP/i.test(v.lang)||/^ja/i.test(v.lang));if(!vs.length)return null;const pref=["Kyoko","Otoya","Nanami","Keita","Haruka","Google 日本語","Microsoft Nanami","Microsoft Keita","Natural","Premium","Enhanced"];for(const n of pref){const f=vs.find(v=>v.name.toLowerCase().includes(n.toLowerCase()));if(f)return f;}return vs[0];}
+async function ensureVoice(){if(!("speechSynthesis" in window))return null;loadVoices();if(japaneseVoice)return japaneseVoice;for(const d of [120,220,360,520]){await new Promise(r=>setTimeout(r,d));loadVoices();if(japaneseVoice)return japaneseVoice;}return null;}
+function stopAudio(){dialogueRunId++;playToken++;if("speechSynthesis" in window){try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}}}
+async function speakJapanese(text,rate=1){stopAudio();if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}const voice=await ensureVoice(),token=++playToken;try{speechSynthesis.cancel();speechSynthesis.resume();}catch(_){}await new Promise(r=>setTimeout(r,70));if(token!==playToken)return;const u=new SpeechSynthesisUtterance(text);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;u.volume=1;if(voice)u.voice=voice;u.onerror=()=>showToast("Audio TTS không phát được. Hãy thử lại.");speechSynthesis.speak(u);}
+async function playSequence(lines,rate=1,pause=220){stopAudio();if(!("speechSynthesis" in window)){showToast("Trình duyệt này không hỗ trợ Japanese TTS.");return;}const runId=++dialogueRunId,localToken=++playToken,voice=await ensureVoice();for(const line of lines){if(runId!==dialogueRunId||localToken!==playToken)return;await new Promise(resolve=>{const u=new SpeechSynthesisUtterance(line);u.lang="ja-JP";u.rate=rate<1?Math.max(.65,rate):.92;u.pitch=1;if(voice)u.voice=voice;u.onend=resolve;u.onerror=resolve;try{speechSynthesis.resume();}catch(_){}speechSynthesis.speak(u);});await new Promise(r=>setTimeout(r,pause));}}
+function playDialogue(rate=1){playSequence(dialogueLines,rate,180);}
+function playRoleplay(){showToast("Hotel Role-play: check in, ask, solve a problem, repair if needed.");playSequence(roleplayPrompts,1,3600);}
+function playMission(rate=1){showToast("Hotel Survival Simulation.");playSequence(missionPrompts,rate,rate<1?4300:3400);}
+
+function hasJapanese(t){return /[\u3040-\u30ff\u3400-\u9fff]/.test(t||"");}
+function baseText(node){const c=node.cloneNode(true);c.querySelectorAll("rt,.romaji,.vi,.audio-btn,.line-audio,.feedback").forEach(e=>e.remove());return(c.textContent||"").replace(/\s+/g," ").trim();}
+function getAutoAudioText(c){for(const s of [".jp",".jp-line",".vocab-jp",".mission-line .jp",".jp-inline"]){const p=[...c.querySelectorAll(s)].map(baseText).filter(t=>t&&hasJapanese(t));if(p.length)return[...new Set(p)].join("。").replace(/。。+/g,"。");}const r=c.querySelector(".rule-form");if(r){const t=baseText(r);if(t&&hasJapanese(t))return t;}const ss=[...c.querySelectorAll("strong")].map(baseText).filter(t=>t&&hasJapanese(t));if(ss.length)return[...new Set(ss)].join("。");const h=c.querySelector("h3");if(h){const t=baseText(h);if(t&&hasJapanese(t))return t;}return"";}
+function setupInlineAudioButtons(){document.querySelectorAll(".grammar-rule,.explain-card,.break-row,.answer,.mission-line,.tip").forEach(c=>{if(c.closest(".quiz-q")||c.querySelector(".audio-btn,.line-audio"))return;const t=getAutoAudioText(c);if(!t)return;const b=document.createElement("button");b.className="audio-btn auto-audio-btn";b.type="button";b.textContent="▶ Nghe";b.style.marginTop="10px";b.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();speakJapanese(t,1);});c.appendChild(b);});}
+function setupChoiceGroups(){document.querySelectorAll(".practice-box .choices").forEach(g=>{const a=g.dataset.answer,f=g.parentElement.querySelector(".feedback");g.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{g.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));if(btn.dataset.value===a){btn.classList.add("correct");f.textContent="✓ Chính xác!";}else{btn.classList.add("wrong");const c=g.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");f.textContent="Chưa đúng. Nghe hotel keyword + time/permission/problem pattern.";}}));});}
+function toggleAnswer(id){document.getElementById(id).classList.toggle("show");}
+function setupQuiz(){document.querySelectorAll(".quiz-q").forEach(q=>q.querySelectorAll(".choice-btn").forEach(btn=>btn.addEventListener("click",()=>{q.querySelectorAll(".choice-btn").forEach(b=>{b.dataset.selected="false";b.style.outline="none";b.style.background="#fff";});btn.dataset.selected="true";btn.style.outline="2px solid rgba(239,166,181,.65)";btn.style.background="#fff8fa";})));}
+function gradeQuiz(){let score=0;document.querySelectorAll(".quiz-q").forEach(q=>{const a=q.dataset.answer,s=q.querySelector('.choice-btn[data-selected="true"]');q.querySelectorAll(".choice-btn").forEach(b=>b.classList.remove("correct","wrong"));const c=q.querySelector(`[data-value="${a}"]`);if(c)c.classList.add("correct");if(s){if(s.dataset.value===a)score++;else s.classList.add("wrong");}});const total=document.querySelectorAll(".quiz-q").length,b=document.getElementById("scoreBox");b.classList.add("show");b.textContent=score===total?`${score}/${total} ✨ Excellent. Hotel survival rất chắc.`:score>=10?`${score}/${total} — Rất tốt. Review nhẹ 何時から / permission / problem chunks.`:score>=8?`${score}/${total} — Có nền. Làm lại Hotel Response Builder + Japanese First.`:`${score}/${total} — Nên luyện reservation/info/problem flow trước Day 83.`;}
+function resetQuiz(){document.querySelectorAll(".quiz-q .choice-btn").forEach(btn=>{btn.dataset.selected="false";btn.classList.remove("correct","wrong");btn.style.outline="none";btn.style.background="#fff";});const b=document.getElementById("scoreBox");b.classList.remove("show");b.textContent="";}
+function isCompleted(){return localStorage.getItem(DAY_KEY)==="completed";}
+function updateCompleteUI(){const b=document.getElementById("completeBtn"),m=document.getElementById("completeMessage");if(isCompleted()){b.classList.add("completed");b.textContent="✓ Day 82 Completed";m.textContent="Đã hoàn thành Day 82. Tiếp theo: Day 83 — Restaurant.";}else{b.classList.remove("completed");b.textContent="✓ Complete Day 82";m.textContent="Hoàn thành khi bạn có thể check-in, hỏi thông tin và báo một vấn đề ở khách sạn bằng câu ngắn, rõ.";}}
+function toggleComplete(){if(isCompleted()){localStorage.removeItem(DAY_KEY);showToast("Đã chuyển Day 82 về trạng thái chưa hoàn thành.");}else{localStorage.setItem(DAY_KEY,"completed");localStorage.setItem("n5-last-opened-day","82");showToast("Day 82 completed 🌸");}updateCompleteUI();}
+function isFavorite(){return localStorage.getItem(FAVORITE_KEY)==="true";}
+function updateFavoriteUI(){const b=document.getElementById("favoriteBtn");b.classList.toggle("active",isFavorite());b.textContent=isFavorite()?"★ Favorite":"☆ Favorite";}
+function toggleFavorite(){localStorage.setItem(FAVORITE_KEY,String(!isFavorite()));updateFavoriteUI();showToast(isFavorite()?"Đã thêm Day 82 vào Favorites ★":"Đã bỏ Day 82 khỏi Favorites");}
+function showToast(message){const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove("show"),2200);}
+document.addEventListener("DOMContentLoaded",()=>{setupMenu();setupDisplayToggles();loadDisplaySettings();setupInlineAudioButtons();setupChoiceGroups();setupQuiz();updateCompleteUI();updateFavoriteUI();localStorage.setItem("n5-last-opened-day","82");document.getElementById("favoriteBtn").addEventListener("click",toggleFavorite);if("speechSynthesis" in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}window.addEventListener("beforeunload",stopAudio);});
+</script>
+</body></html>
